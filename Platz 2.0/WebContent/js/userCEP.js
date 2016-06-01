@@ -1,7 +1,7 @@
 $(document).ready(
 
 		function() {
-
+			//Variáveis
 			var txtCep = $("#form-usuario\\:txtCep");
 			var rua = $("#form-usuario\\:txtRua");
 			var bairro = $("#form-usuario\\:txtBairro");

@@ -24,7 +24,7 @@ public class Teste {
 		conta.setDataCadastro(new Date()); 
 		conta.setEmail("email@email.com");
 		conta.setLogin("estatico666");
-		conta.setSenha("static666");
+		conta.setSenha("static666"); 
 		conta.setPerfil(Perfil.USUARIO);
 
 		// Cidade

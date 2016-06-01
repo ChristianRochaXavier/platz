@@ -24,20 +24,16 @@ import platz.util.EncriptAES;
 @ManagedBean
 @SessionScoped
 public class UsuarioBean {
-
 	private Usuario usuario;
 	private Usuario usuarioDetalhe;
 	private Usuario usuarioStatus;
 	private List<Usuario> usuarios;
-	private Conta conta;
-	private Endereco endereco;
-	private Cidade cidade;
-	private Estado estado;
+	private boolean rendered = true;//caso true mostra a lista, caso false o formulario
 
 	// Caminho da imagem estatico
 	static final String CAMINHOIMAGEM = "/resources/img/userPerfil/";
 
-	public UsuarioBean() {
+	public UsuarioBean() {		
 		usuario = new Usuario();
 		usuario.setConta(new Conta());
 		usuario.setEndereco(new Endereco());
@@ -80,40 +76,9 @@ public class UsuarioBean {
 		this.usuarios = usuarios;
 	}
 
-	public Conta getConta() {
-		return conta;
-	}
-
-	public void setConta(Conta conta) {
-		this.conta = conta;
-	}
-
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
-	public Cidade getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(Cidade cidade) {
-		this.cidade = cidade;
-	}
-
-	public Estado getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Estado estado) {
-		this.estado = estado;
-	}
-
-	public void voltar() {
-		usuario = null;
+	public void voltar() {		
+		System.out.println(rendered);
+		rendered = true;
 	}
 
 	// Método que vê o evento de upload do p:upload
@@ -185,6 +150,7 @@ public class UsuarioBean {
 
 	public void editar(Usuario usuario) {
 		this.usuario = usuario;
+		rendered = false;
 	}
 
 	public void alteraStatus() {
@@ -198,19 +164,28 @@ public class UsuarioBean {
 	public void detalhes(Usuario usuario) {
 	}
 
-	public void novoUsuario() {
-		usuario = new Usuario();
+	public void novoUsuario() {		
+		rendered = false;		
 	}
 
 	public void zerar() {
+		rendered = true;
 		usuario = new Usuario();
-		usuarios = new UsuarioDAO().listarTodos();
-		usuarioStatus = new Usuario();
+		usuario.setConta(new Conta());
+		usuario.setEndereco(new Endereco());
+		usuario.getEndereco().setCidade(new Cidade());
+		usuario.getEndereco().getCidade().setEstado(new Estado());
 		usuarioDetalhe = new Usuario();
-		conta = new Conta();
-		endereco = new Endereco();
-		cidade = new Cidade();
-		estado = new Estado();
+		usuarioStatus = new Usuario();
+		usuarios = new UsuarioDAO().listarTodos();
+	}
+
+	public boolean isRendered() {
+		return rendered;
+	}
+
+	public void setRendered(boolean redenred) {
+		this.rendered = redenred;
 	}
 
 }

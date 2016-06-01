@@ -6,8 +6,8 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
 
-	<p:panel>
-
+	<p:panel rendered="#{usuarioBean.rendered == true}">
+<p:commandButton value="Novo Usuario" action="#{usuarioBean.novoUsuario()}" update="@form"/>
 		<p:dataTable value="#{usuarioBean.usuarios}"
 			paginatorPosition="bottom" var="usuario" paginator="true" rows="25"
 			emptyMessage="Nenhum Registro Encontrado"
@@ -39,10 +39,10 @@
 
 			<p:column width="28%" exportable="false" headerText="Opções">
 
-				<p:commandButton icon="editar-icon" value="Editar"
-					oncomplete="PF('editarDialog').show()" action="#" />
+				<p:commandButton icon="editar-icon" value="Editar" update="@form"
+					oncomplete="PF('editarDialog').show()" action="#{usuarioBean.editar(usuario)}" />
 
-				<p:commandButton action="#" immediate="true"
+				<p:commandButton action="#{usuarioBean.detalhes(usuario)}" immediate="true"
 					oncomplete="$('.modalPseudoClass1').modal();return false;"
 					update="form-usuario
 					" value="Ver mais detalhes" />
@@ -72,9 +72,9 @@
 		<p:confirmDialog message="Deseja realmente excluir?"
 			widgetVar="confirmarExclusaoDialog">
 			<p:commandButton value="Sim"
-				oncomplete="PF('confirmarExclusaoDialog'.hide()" uptade=""
+				oncomplete="PF('confirmarExclusaoDialog'.hide()" uptade="@form"
 				action="#" />
-			<p:commandButton value="Não" action="#"
+			<p:commandButton value="Não"
 				oncomplete="PF('confirmarExclusaoDialog').hide()" />
 		</p:confirmDialog>
 

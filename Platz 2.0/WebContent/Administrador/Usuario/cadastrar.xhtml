@@ -6,8 +6,6 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 	<br />
 
-		<p:growl autoUpdate="true" />
-
 		<b:panel title="Cadastro de Usuario">
 
 			<b:row>
@@ -105,7 +103,7 @@
 			<br />
 			<p:commandButton value="Voltar" action="#{usuarioBean.voltar()}"
 				update="@form" immediate="true" />
-			<p:commandButton value="Cadastrar" 
+			<p:commandButton value="Cadastrar"  
 				action="#{usuarioBean.cadastrar()}" update="@form" />
 
 		</b:panel>

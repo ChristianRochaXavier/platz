@@ -23,7 +23,7 @@ public class AssuntoBean {
 		assuntoEditar = new Assunto();
 		assuntoExcluir = new Assunto();
 		assuntos = new AssuntoDAO().listarTodos();
-	}
+	} 
 
 	public Assunto getAssunto() {
 		return assunto;

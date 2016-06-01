@@ -1,13 +1,13 @@
 $(document).ready(
 
 		function() {
-
+//comentario para teste git
 			var txtCep = $("#form-usuario\\:txtCep");
 			var rua = $("#form-usuario\\:txtRua");
 			var bairro = $("#form-usuario\\:txtBairro");
 			var cidade = $("#form-usuario\\:txtCidade");
 			var estado = $("#form-usuario\\:txtEstado");
-
+			
 			function limparCep() {
 				// Limpa valores do formulário de cep.
 				rua.val("");

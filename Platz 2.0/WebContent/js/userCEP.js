@@ -4,10 +4,10 @@ $(document).ready(
 			
 			//Variáveis
 			var txtCep = $("#form-usuario\\:txtCep");
-			var rua = $("#form-usuario\\:txtRua");
-			var bairro = $("#form-usuario\\:txtBairro");
-			var cidade = $("#form-usuario\\:txtCidade");
-			var estado = $("#form-usuario\\:txtEstado");
+			var rua = $("#input_form-usuario\\:txtRua");
+			var bairro = $("#input_form-usuario\\:txtBairro");
+			var cidade = $("#input_form-usuario\\:txtCidade");
+			var estado = $("#input_form-usuario\\:txtEstado");
 			
 			function limparCep() { 
 				// Limpa valores do formulário de cep.

@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+	<title><ui:insert name="titulo" /> - PLATZ</title>
+	
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/css/icons.css" />
+		
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/css/nav.css" />
+		
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/css/footer.css" />
+		
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/css/estilo.css" />
+		
+
+	<ui:insert name="css-link" />
+</h:head>
+<h:body class="corpoPagina">
+	<b:navBar inverse="true" fixed="top" brand-img="resources/img/platz/logo1.png"
+	brand-img-style="width:100px;height:50px; margin-top:-15px;"
+	 brandHref="index.jsf"  fluid="true">
+				
+			
+		<b:navbarLinks id="link-menu">
+			<b:navLink value="Home" href="index.jsf"></b:navLink>
+			<b:navLink value="Login" href="login.jsf"></b:navLink>
+			<b:dropMenu value="Eventos">
+				<b:navLink value="Categoria" href="eventoCategoria.jsf"></b:navLink>
+				<b:navLink></b:navLink>
+				<b:navLink value="Show" href="eventoEspecifico.jsf"></b:navLink>
+				<b:navLink value="Cultura" href="#"></b:navLink>
+				<b:navLink value="Culinaria" href="#"></b:navLink>
+			</b:dropMenu>
+			<b:navLink value="Sobre" href="sobre.jsf"></b:navLink>
+		</b:navbarLinks>
+		
+		<h:form styleClass="navbar-form navbar-right">
+		
+		<div class="form-group">
+                    <b:inputText placeholder="Nome do Evento" fieldSize="sm"/>
+         </div>
+          <b:commandButton action="a"  icon="search" iconAlign="right"/>
+                                             
+         </h:form>
+		
+	</b:navBar>
+
+	<ui:insert name="corpoPagina" />
+
+	<footer>
+		<div class="rodape">
+			<b:column col-md="8">
+			<p class="titulo-platz">© Platz 2016 </p>
+			</b:column>
+			<b:column col-md="4">
+			<p class="titulo-platz">SIGA-NOS</p>
+			<ul>
+			<li><a href="#"><img src="css/icons/face2.png" alt="icone da rede social facebook" /></a></li>
+			<li><a href="#"><img src="css/icons/instagram2.png" alt="icone da rede social instagram" /></a></li>
+			<li><a href="#"><img src="css/icons/twitter2.png" alt="icone da rede social twitter" /></a></li>
+			
+			</ul>
+			</b:column>
+				
+		</div>
+		</footer>
+
+
+		<script type="text/javascript" src="../js/jquery-2.2.3.js"></script>
+		<script type="text/javascript" src="../js/footer.js"></script>
+</h:body>
+
+<ui:insert name="posFooter" />
+
+</html>

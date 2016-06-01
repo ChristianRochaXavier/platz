@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui">
+
+	<p:panel  >
+		<p:commandButton value="Novo Evento" action="#" update="@form" />
+
+		<p:dataTable var="evento" value="" paginator="true" rows="25"
+			paginatorTemplate="{RowsPerPageDropdown} 
+                 {FirstPageLink} {PreviousPageLink} {CurrentPageReport}
+                  {NextPageLink} {LastPageLink}"
+			rowsPerPageTemplate="5,10,15" id="tabela_evento">
+
+	
+
+			<p:column headerText="Evento" sortBy="#" filterBy="#">
+				<h:outputText value="#" />
+			</p:column>
+			<p:column headerText="Data de Inicio" sortBy="#" filterBy="#">
+				<h:outputText value="#" />
+			</p:column>
+			
+			<p:column width="20%">
+				<p:commandButton action="#"
+					oncomplete="$('.modalPseudoClass').modal();return false;" update="form-evento"
+					value="Ver mais detalhes" />
+				<p:commandButton action="#" value="Editar" update="form-evento" />
+				<p:commandButton action="#"
+					oncomplete="PF('confirmarExclusaoDialog').show()" value="Excluir" update="form-evento"/>
+			</p:column>
+
+		</p:dataTable>
+		
+		<p:confirmDialog message="Deseja realmente excluir ?" 
+			widgetVar="confirmarExclusaoDialog">
+			<p:commandButton value="Sim"
+				oncomplete="PF('confirmarExclusaoDialog'.hide()" uptade="@form"
+				action="#" />
+			<p:commandButton value="Não"
+				oncomplete="PF('confirmarExclusaoDialog').hide()" />
+		</p:confirmDialog>
+			
+
+
+			<b:modal id="amodal" title="Detalhes" styleClass="modalPseudoClass">
+
+			<p:panelGrid columns="2" columnClasses="label,value">
+
+				<h:outputText value="Id:" />
+					<h:outputText value="#" />
+
+					<h:outputText value="Evento" />
+					<h:outputText value="#" />
+
+					<h:outputText value="Categoria" />
+					<h:outputText value="#" />
+
+					<h:outputText value="Preço" />
+					<h:outputText value="#" />
+
+					<h:outputText value="Data Inicio" />
+					<h:outputText value="#" />
+
+					<h:outputText value="Data Fim" />
+					<h:outputText value="#" />
+
+					<h:outputText value="Horario Inicio" />
+					<h:outputText value="#" />
+
+					<h:outputText value="Horario Fim" />
+					<h:outputText value="#" />
+
+					<h:outputText value="Lotação Minima" />
+					<h:outputText value="#" />
+
+					<h:outputText value="Lotação Maxima" />
+					<h:outputText value="#" />
+
+					<h:outputText value="Detalhes" />
+					<h:outputText value="#" />
+
+					<h:outputText value="Destaque" />
+					<h:outputText value="#" />
+
+					<h:outputText value="Rua" />
+					<h:outputText value="#" />
+
+					<h:outputText value="Bairro" />
+					<h:outputText value="#" />
+
+					<h:outputText value="Complemento" />
+					<h:outputText value="#" />
+
+					<h:outputText value="Numero" />
+					<h:outputText value="#" />
+
+					<h:outputText value="CEP" />
+					<h:outputText value="#" />
+				
+			</p:panelGrid>
+			
+			<f:facet name="footer">				
+				<b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"  />
+			</f:facet>
+		</b:modal>	
+			
+	</p:panel>
+
+</ui:composition>

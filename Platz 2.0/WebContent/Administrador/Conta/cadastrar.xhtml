@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui"
+	>
+	<br />
+
+
+	<b:panel rendered="#{contaBean.conta != null}" title="Cadastro de Conta"> 
+		
+		<b:row>
+		   <b:inputText value="#{contaBean.conta.email}" span="6" label="Email" 
+		   placeholder="usuario@email.com" />
+		   <b:inputText value="#{contaBean.conta.login}" span="6" label="Nome de Login" 
+		   placeholder="usuario12" />
+		 </b:row>
+		 
+		 <b:row>
+		   <b:inputSecret value="#{contaBean.conta.senha}" span="6" label="Senha" 
+		   placeholder="******" id="txtSenha" match="txtConfirmSenha" maxlength="64"
+		   validatorMessage="As senhas não coincidem" />
+		   <b:inputSecret value="#{contaBean.conta.senha}" span="6" label="Confirme a senha" 
+		   placeholder="******" id="txtConfirmSenha" maxlength="64"/>
+		 </b:row>
+		 
+		 <b:row>
+		 <span style="font-weight: bold; margin-left:2%; margin-right: ">conta ativa/desativa</span>
+		   <p:selectBooleanButton onLabel="Conta Ativada" 
+			offLabel="Conta Desativada" value="#{contaBean.conta.ativo}" />
+		 
+		   <b:selectOneMenu value="#{contaBean.conta.perfil}" 
+		   span="6" label="Gostaria de cadastrar com perfil de : " >
+		   <f:selectItem itemLabel="--Selecione o perfil--"
+							itemValue="#{null}" /> 
+						<f:selectItems value="#{contaBean.perfis}" var="perfil"
+							itemLabel="#{perfil.label}" itemValue="#{perfil}" />
+		   </b:selectOneMenu>
+		 </b:row>
+	
+		 		
+		<br />
+		<p:commandButton value="Voltar" action="#{contaBean.voltar()}"
+			update="@form" immediate="true" />
+		<p:commandButton value="Cadastrar" action="#{contaBean.cadastrar()}"
+			update="@form" />
+</b:panel>
+	
+</ui:composition>

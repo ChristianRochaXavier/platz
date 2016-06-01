@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui">
+
+	<p:panel>
+
+
+		<p:dataTable value="#" paginatorPosition="bottom" var=""
+			paginator="true" rows="25" emptyMessage="Nenhum Registro Encontrado"
+			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+			<f:facet name="header">
+				<h:outputLabel value="Consulta de Endereços" />
+			</f:facet>
+
+			<p:column headerText="CEP" sortBy="#" filterBy="#"
+				filterMatchMode="contains">
+				<h:outputText value="#" />
+			</p:column>
+
+			<p:column headerText="Cidade" sortBy="#" filterBy="#"
+				filterMatchMode="contains">
+				<h:outputText value="#" />
+			</p:column>
+
+
+			<p:column width="28%" exportable="false" headerText="Opções">
+
+				<p:commandButton icon="editar-icon" value="Editar"
+					oncomplete="PF('editarDialog').show()" action="#" />
+					
+					<p:commandButton action="#"
+					oncomplete="$('.modalPseudoClass1').modal();return false;" update="form-endereco"
+					value="Ver mais detalhes" />
+
+				<p:commandButton icon="excluir-icon" value="Excluir"
+					actionListener="#"
+					oncomplete="PF('confirmarExclusaoDialog').show()" />
+
+			</p:column>
+		</p:dataTable>
+
+		<br />
+
+
+		<h:commandLink>
+			<h:graphicImage url="../css/icons/exportar_xls.png" />
+			<p:dataExporter type="xls" target="" fileName="" />
+		</h:commandLink>
+
+		<h:commandLink>
+			<h:graphicImage url="../css/icons/exportar_pdf.png" />
+			<p:dataExporter type="pdf" target="" fileName=""
+				encoding="iso-8859-1" />
+		</h:commandLink>
+
+
+		<p:confirmDialog message="Deseja realmente excluir "
+			widgetVar="confirmarExclusaoDialog">
+			<p:commandButton value="Sim"
+				oncomplete="PF('confirmarExclusaoDialog'.hide()" uptade=""
+				action="#" />
+			<p:commandButton value="Não" action="#"
+				oncomplete="PF('confirmarExclusaoDialog').hide()" />
+		</p:confirmDialog>
+		
+		
+		<b:modal id="amodal" title="Detalhes" styleClass="modalPseudoClass1">
+
+			<p:panelGrid columns="2" columnClasses="label,value">
+		             
+		             <h:outputText value="Estado:" />
+					<h:outputText value="#" /> 
+		             
+		             <h:outputText value="Bairro:" />
+					<h:outputText value="#" /> 
+		              
+					<h:outputText value="Rua:" />
+					<h:outputText value="#" />
+
+					<h:outputText value="Numero:" />
+					<h:outputText value="#" />
+
+					<h:outputText value="Complemento:" />
+					<h:outputText value="#" />
+					
+				
+
+					
+					
+				
+			</p:panelGrid>
+			
+			<f:facet name="footer">				
+				<b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"  />
+			</f:facet>
+		</b:modal>			
+		
+
+
+	</p:panel>
+
+</ui:composition>

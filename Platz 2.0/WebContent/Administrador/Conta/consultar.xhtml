@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+	<p:panel rendered="#{contaBean.conta == null}">
+		<p:commandButton value="Nova Conta" action="#{contaBean.novaConta()}"
+			update="@form" />
+
+		<br />
+		<br />
+
+		<p:dataTable var="conta" value="#{contaBean.contas}" paginator="true"
+			paginatorTemplate="{RowsPerPageDropdown} 
+                 {FirstPageLink} {PreviousPageLink} {CurrentPageReport}
+                  {NextPageLink} {LastPageLink}"
+			paginatorPosition="bottom" widgetVar="tabela-conta"
+			rowsPerPageTemplate="25,50,100" id="tabela-conta" rows="25">
+			<f:facet name="header">
+				<h:outputLabel value="Contas" style="font-size:22pt;" />
+			</f:facet>
+
+			<p:column headerText="Id" sortBy="#{conta.id}" width="7%">
+				<h:outputText value="#{conta.id}" />
+			</p:column>
+
+			<p:column headerText="Login" sortBy="#{conta.login}" width="20%"
+				filterBy="#{conta.login}" filterMatchMode="contains">
+				<h:outputText value="#{conta.login}" />
+			</p:column>
+
+			<p:column headerText="Email" sortBy="#{conta.email}" width="27%"
+				filterBy="#{conta.email}" filterMatchMode="contains">
+				<h:outputText value="#{conta.email}" />
+			</p:column>
+
+			<p:column headerText="Perfil" filterBy="#{conta.perfil}" width="13%"
+				filterMatchMode="exact">
+				<f:facet name="filter">
+					<p:selectOneMenu onchange="PF('tabela-conta').filter()">
+						<f:selectItem itemLabel="Todos" itemValue="#{null}" />
+						<f:selectItems value="#{contaBean.perfis}" var="perfil"
+							itemLabel="#{perfil.label}" itemValue="#{perfil}" />
+					</p:selectOneMenu>
+				</f:facet>
+				<h:outputText value="#{conta.perfil.label}" />
+			</p:column>
+
+			<p:column headerText="Status" filterBy="#{conta.ativo}" width="13%"
+				filterMatchMode="exact">
+				<f:facet name="filter">
+					<p:selectOneMenu onchange="PF('tabela-conta').filter()">
+						<f:selectItem itemLabel="Todos" itemValue="#{null}" />
+						<f:selectItem itemLabel="Ativos" itemValue="#{true}" />
+						<f:selectItem itemLabel="Inativos" itemValue="#{false}" />
+					</p:selectOneMenu>
+				</f:facet>
+				<h:outputText value="#{contaBean.isAtivo(conta.ativo)}" />
+			</p:column>
+
+			<p:column width="20%" headerText="Opções" exportable="false">
+				<p:commandButton action="#{contaBean.detalhes(conta)}"
+					immediate="true"
+					oncomplete="$('.modalPseudoClass').modal();return false;"
+					value="Ver mais detalhes" />
+				<p:commandButton action="#{contaBean.editar(conta)}" value="Editar"
+					update="form-conta" />
+				<p:commandButton action="#{contaBean.preparaExclusao(conta)}"
+					oncomplete="PF('confirmarExclusaoDialog').show()"
+					value="#{conta.ativo ?'Inativar':'Ativar'}" update="form-conta" />
+			</p:column>
+		</p:dataTable>
+
+		<br />
+
+		<h:commandLink>
+			<h:graphicImage url="../css/icons/exportar_xls.png" />
+			<p:dataExporter type="xls" target="tabela-conta" fileName="Contas" />
+		</h:commandLink>
+
+		<h:commandLink style="margin-left:15px">
+			<h:graphicImage url="../css/icons/exportar_pdf.png" />
+			<p:dataExporter type="pdf" target="tabela-conta" fileName="Contas"
+				encoding="iso-8859-1" />
+		</h:commandLink>
+
+		<p:confirmDialog rendered="#{contaBean.contaExcluir != null }"
+			message="Deseja realmente tornar #{contaBean.isAtivo(contaBean.contaExcluir.ativo)} "
+			widgetVar="confirmarExclusaoDialog">
+			<p:commandButton value="Sim"
+				oncomplete="PF('confirmarExclusaoDialog'.hide()" uptade="@form"
+				action="#{contaBean.inverterAtividade(contaBean.contaExcluir.ativo)}" />
+			<p:commandButton value="Não"
+				oncomplete="PF('confirmarExclusaoDialog').hide()" />
+		</p:confirmDialog>
+
+
+		<b:modal id="amodal" title="Detalhes" styleClass="modalPseudoClass"
+			closeOnEscape="true">
+			<b:panel>
+				<b:row>
+					<b:inputText readonly="true" label="Id " span="6"
+						value="#{contaBean.contaDetalhe.id}" />
+
+					<b:inputText readonly="true" label="Login " span="6"
+						value="#{contaBean.contaDetalhe.login}" />
+				</b:row>
+
+				<b:row>
+					<b:inputText readonly="true" label="Ativo/Inativo" span="6"
+						value="#{contaBean.isAtivo(contaBean.contaDetalhe.ativo)}" />
+
+					<b:inputText readonly="true" label="Email " span="6"
+						value="#{contaBean.contaDetalhe.email}" />
+				</b:row>
+
+				<b:row>
+					<b:inputText readonly="true" label="Perfil" span="6"
+						value="#{contaBean.contaDetalhe.perfil.label}" />
+
+					<b:inputText readonly="true" label="Data Cadastro" span="6"
+						value="#{contaBean.contaDetalhe.dataCadastro}">
+						<f:convertDateTime dateStyle="full" />
+					</b:inputText>
+				</b:row>
+
+				<b:row>
+					<b:inputText disabled="true" label="Ultimo Acesso" span="6"
+						value="#{contaBean.contaDetalhe.ultimoAcesso}" />
+				</b:row>
+			</b:panel>
+
+			<f:facet name="footer">
+				<b:button value="Ok" look="primary" dismiss="modal"
+					onclick="return false;" />
+			</f:facet>
+		</b:modal>
+	</p:panel>
+
+
+</ui:composition>
+
+
+
+
+

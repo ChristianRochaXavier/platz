@@ -1,0 +1,41 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+/* Z-index da nav menor que o z-index do p:growl(1001)  */
+body .navbar-fixed-top, .navbar-fixed-bottom{
+	z-index:500;
+}
+
+
+
+/* links da nav */
+#link-menu
+{
+ margin-left:35%;
+
+}
+
+/* links da nav do administrador */
+#link-menuAdm
+{
+	margin-left:25%;
+}
+
+/* cor dos links da nav */
+.navbar-inverse .navbar-nav > li > a
+{
+	color: white;
+}
+
+/* classe para todos os bodys , assim a nav e nem
+o footer nao fica em cima dos elementos */
+.corpoPagina
+{
+  padding-top: 5%;
+  padding-bottom: 5%;	
+}
+
+
+ 

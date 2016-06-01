@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+	
+	
+	
+	<p:panel style="margin-top:1%; width:75%; margin:0 auto;">
+		<h:form id="avaliacoes-consulta">
+			<p:growl autoUpdate="true" />
+
+			<p:dataTable value="#"
+				paginatorPosition="bottom" var="avaliacao" paginator="true" rows="10"
+				id="tabela-avaliacoes" editable="true"
+				emptyMessage="Nenhum Registro Encontrado"
+				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+				<f:facet name="header">
+					<h:outputLabel value="Avaliações" style="font-size:22pt;" />
+				</f:facet>
+
+
+				<p:column headerText="Id" sortBy="#" width="15%">
+					<h:outputText value="#" />
+				</p:column>
+				
+				<p:column headerText="Nota" sortBy="#" width="15%">
+					<h:outputText value="#" />
+				</p:column>
+				
+				<p:column headerText="Evento" sortBy="#" width="15%">
+					<h:outputText value="#" />
+				</p:column>
+				
+				<p:column headerText="Usuario" sortBy="#" width="15%">
+					<h:outputText value="#" />
+				</p:column>		
+
+			
+			</p:dataTable>
+
+			
+		</h:form>
+
+	</p:panel>
+	
+	
+	
+	</ui:composition>

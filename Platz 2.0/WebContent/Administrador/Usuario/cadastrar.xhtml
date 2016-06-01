@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+	<br />
+
+		<p:growl autoUpdate="true" />
+
+		<b:panel title="Cadastro de Usuario">
+
+			<b:row>
+				<p:fileUpload mode="advanced" fileLimit="1" id="upImgPerfil"
+					label="Imagem de Perfil" span="6"
+					fileLimitMessage="Apenas uma imagem pode ser enviada" auto="true"
+					dragDropSupport="true" fileUploadListener="#{usuarioBean.upload}" />
+			</b:row>
+
+			<hr /> 
+
+			<b:row>
+				<b:inputText value="#{usuarioBean.usuario.conta.email}" span="6"
+					label="Email" placeholder="usuario@email.com" />
+				<b:inputText value="#{usuarioBean.usuario.conta.login}" span="6"
+					label="Nome de Login" placeholder="usuario12" />
+			</b:row>
+			<hr />
+			<b:row>
+				<b:inputSecret value="#{usuarioBean.usuario.conta.senha}" span="6"
+					label="Senha" placeholder="******" id="txtSenha"
+					match="txtConfirmSenha" maxlength="64"
+					validatorMessage="As senhas não coincidem" />
+				<b:inputSecret value="#{usuarioBean.usuario.conta.senha}" span="6"
+					label="Confirme a senha" placeholder="******" id="txtConfirmSenha"
+					maxlength="64" />
+			</b:row>
+			<hr />
+			<b:row>
+				<span style="font-weight: bold; margin-left: 2%; margin-right: 2%;">conta
+					ativa/desativa</span>
+				<p:selectBooleanButton onLabel="Conta Ativada"
+					offLabel="Conta Desativada" value="#{usuarioBean.usuario.conta.ativo}" />
+
+				<span style="font-weight: bold; margin-left: 23%; margin-right: 2%;">Data
+					de Nascimento</span>
+
+
+				<p:calendar span="6" label="Data de Nascimento"
+					id="txtDataNascimento" pattern="dd/MM/yyyy"
+					value="#{usuarioBean.usuario.dataNascimento}" />
+			</b:row>
+			<hr />
+			<b:row>
+				<b:inputText value="#{usuarioBean.usuario.nome}" span="6"
+					label="Nome" placeholder="Ex: Maria" />
+
+				<span style="font-weight: bold; margin-left: 2%; margin-right: 2%;">CPF</span>
+				<br />
+				<p:inputMask id="txtCpf" mask="999.999.999-99"
+					style="margin-left:2%;" size="55"
+					value="#{usuarioBean.usuario.cpf}" />
+			</b:row>
+			<hr />
+			<b:row>
+				<span style="font-weight: bold; margin-left: 2%; margin-right: 2%;">Celular</span>
+				<p:inputMask id="txtCelular" size="30" style="margin-left:2%;"
+					mask="(99) 99999-9999" value="#{usuarioBean.usuario.celular}" />
+
+				<span style="font-weight: bold; margin-left: 13%; margin-right: 2%;">Telefone</span>
+				<p:inputMask id="txtTelefone" size="30" mask="(99) 9999-9999"
+					value="#{usuarioBean.usuario.telefone}" />
+			</b:row>
+			<hr />
+			<b:row>
+
+				<span style="font-weight: bold; margin-left: 2%; margin-right: 2%;">CEP</span>
+				<p:inputMask mask="99999-999" id="txtCep" style="margin-left:2%;"
+					size="55" value="#{usuarioBean.usuario.endereco.cep}" />
+
+			</b:row>
+			<hr />
+			<b:row>
+				<b:inputText value="#{usuarioBean.usuario.endereco.rua}" span="6"
+					label="Rua" placeholder="Rua , AV. " />
+				<b:inputText value="#{usuarioBean.usuario.endereco.numero}" span="6"
+					label="Numero" />
+
+			</b:row>
+			<hr />
+			<b:row>
+				<b:inputText  value="#{usuarioBean.usuario.endereco.complemento}" span="6"
+					label="Complemento" />
+				<b:inputText value="#{usuarioBean.usuario.endereco.bairro}" span="6"
+					label="Bairro" />
+			</b:row>
+			<hr />
+			<b:row>
+				<b:inputText value="#{usuarioBean.usuario.endereco.cidade.nome}" span="6"
+					label="Cidade" />
+				<b:inputText value="#{usuarioBean.usuario.endereco.cidade.estado.uf}" span="6"
+					label="Estado" />
+			</b:row>
+
+			<br />
+			<p:commandButton value="Voltar" action="#{usuarioBean.voltar()}"
+				update="@form" immediate="true" />
+			<p:commandButton value="Cadastrar" 
+				action="#{usuarioBean.cadastrar()}" update="@form" />
+
+		</b:panel>
+
+</ui:composition>

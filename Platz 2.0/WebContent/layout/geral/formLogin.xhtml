@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+	
+	<p:panel
+			style="width:30%; margin-left:35%; margin-top:10%; padding:1%; ">
+			<h:form style="margin-left:30%;">
+				<p:outputLabel value="Login" style="display: block;;" />
+				<p:inputText id="usuario" value="#{loginBean.conta.login}" />
+				<p:outputLabel value="Senha" style="display: block;margin-top:2px;" />
+				<p:password id="senha" value="#{loginBean.conta.senha}" />
+
+				<h:commandButton value="Logar" action="#{loginBean.logar()}"
+					style="display: block; margin-top:10px; padding:3px;" />
+			</h:form>
+		</p:panel>
+			
+	</ui:composition>

@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<p:panel style="margin-top:1%; width:75%; margin:0 auto;">
+		<h:form id="tipoPresenca-consulta">
+			<p:growl autoUpdate="true" />
+
+			<p:dataTable value="#{tipoPresencaBean.tiposPresencas}"
+				paginatorPosition="bottom" var="tipoPresenca" paginator="true" rows="10"
+				id="tabela-tipoPresenca" editable="true"
+				emptyMessage="Nenhum Registro Encontrado"
+				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+				<f:facet name="header">
+					<h:outputLabel value="Tipos de Presença" style="font-size:22pt;" />
+				</f:facet>
+
+				<!-- AQUI QUE POE O METODO PARA EDITAR -->
+				<p:ajax event="rowEdit"
+					listener="#{tipoPresencaBean.preparaEdicao(tipoPresenca)}"
+					update="tabela-tipoPresenca" />
+
+				<p:column headerText="Id" sortBy="#{tipoPresenca.id}" width="15%">
+					<h:outputText value="#{tipoPresenca.id}" />
+				</p:column>
+
+				<p:column headerText="Tipo Presença" sortBy="#{tipoPresenca.tipoPresenca}"
+					width="55%" filterBy="#{tipoPresenca.tipoPresenca}"
+					filterMatchMode="contains">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{tipoPresenca.tipoPresenca}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{tipoPresenca.tipoPresenca}" style="width:100%"
+								label="Tipo de Presença" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column width="10%" headerText="Editar">
+					<p:rowEditor />
+				</p:column>
+
+				<p:column exportable="false" style="text-align:center"
+					headerText="Opções">
+
+					<p:commandButton icon="excluir-icon" value="Excluir"
+						actionListener="#{tipoPresencaBean.preparaExclusao(tipoPresenca)}"
+						style="margin-left:20px;"
+						oncomplete="PF('confirmarExclusaoDialog').show()" />
+
+				</p:column>
+			</p:dataTable>
+
+			<br />
+
+			<h:commandLink>
+				<h:graphicImage url="../css/icons/exportar_xls.png" />
+				<p:dataExporter type="xls" target="tabela-tipoPresenca"
+					fileName="Presenças" />
+			</h:commandLink>
+
+			<h:commandLink style="margin-left:15px">
+				<h:graphicImage url="../css/icons/exportar_pdf.png" />
+				<p:dataExporter type="pdf" target="tabela-tipoPresenca"
+					fileName="Presenças" encoding="iso-8859-1" />
+			</h:commandLink>
+
+			<p:confirmDialog
+				message="Deseja realmente excluir o Tipo de Presença #{tipoPresencaBean.tipoPresenca.tipoPresenca}"
+				widgetVar="confirmarExclusaoDialog">
+				<p:commandButton value="Sim"
+					oncomplete="PF('confirmarExclusaoDialog'.hide()"
+					uptade="accordion:tipoPresenca-consulta"
+					action="#{tipoPresencaBean.excluir()}" />
+				<p:commandButton value="Não" action="#{tipoPresencaBean.zerar()}"
+					oncomplete="PF('confirmarExclusaoDialog').hide()" />
+			</p:confirmDialog>
+		</h:form>
+
+	</p:panel>
+
+
+</ui:composition>

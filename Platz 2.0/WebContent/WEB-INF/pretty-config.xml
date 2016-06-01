@@ -1,0 +1,375 @@
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                       http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+	<!-- Mapeamento para a pagina inicial -->
+	<url-mapping id="Home">
+		<pattern value="/Home" />
+		<view-id value="/index.jsf" />
+	</url-mapping>
+	<url-mapping id="home">
+		<pattern value="/home" />
+		<view-id value="/index.jsf" />
+	</url-mapping>
+	<url-mapping id="Index">
+		<pattern value="/Index" />
+		<view-id value="/index.jsf" />
+	</url-mapping>
+	<url-mapping id="index">
+		<pattern value="/index" />
+		<view-id value="/index.jsf" />
+	</url-mapping>
+	<url-mapping id="index.xhtml">
+		<pattern value="/index.xhtml" />
+		<view-id value="/index.jsf" />
+	</url-mapping>
+
+	<!-- Mapeamento para a pagina de login -->
+	<url-mapping id="Login">
+		<pattern value="/Login" />
+		<view-id value="/login.jsf" />
+	</url-mapping>
+	<url-mapping id="login">
+		<pattern value="/login" />
+		<view-id value="/login.jsf" />
+	</url-mapping>
+	<url-mapping id="Login.xhtml">
+		<pattern value="/Login.xhtml" />
+		<view-id value="/login.jsf" />
+	</url-mapping>
+
+	<!--Area Administrativa - Mapeamento para a pagina inicial Administrativa -->
+	<url-mapping id="Admin-Home">
+		<pattern value="/Administrador/Home" />
+		<view-id value="/Administrador/index.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-home">
+		<pattern value="/Administrador/home" />
+		<view-id value="/Administrador/index.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-Index">
+		<pattern value="/Administrador/Index" />
+		<view-id value="/Administrador/index.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-index">
+		<pattern value="/Administrador/index" />
+		<view-id value="/Administrador/index.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-index.xhtml">
+		<pattern value="/Administrador/index.xhtml" />
+		<view-id value="/Administrador/index.jsf" />
+	</url-mapping>
+
+	<!--Area Administrativa - Mapeamento para o CRUD de Assunto -->
+	<url-mapping id="Admin-assunto">
+		<pattern value="/Administrador/assunto" />
+		<view-id value="/Administrador/assunto.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-assuntoFolder">
+		<pattern value="/Administrador/Assunto/" />
+		<view-id value="/Administrador/assunto.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-assuntoFolderConsultaJSF">
+		<pattern value="/Administrador/Assunto/consultar.jsf" />
+		<view-id value="/Administrador/assunto.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-assuntoFolderConsultaXHTML">
+		<pattern value="/Administrador/Assunto/consultar.xhtml" />
+		<view-id value="/Administrador/assunto.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-assuntoFolderCadastrarJSF">
+		<pattern value="/Administrador/Assunto/cadastrar.jsf" />
+		<view-id value="/Administrador/assunto.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-assuntoFolderCadastrarXHTML">
+		<pattern value="/Administrador/Assunto/cadastrar.xhtml" />
+		<view-id value="/Administrador/assunto.jsf" />
+	</url-mapping>
+
+	<!--Area Administrativa - Mapeamento para o CRUD de Avaliações -->
+	<url-mapping id="Admin-avaliacoes">
+		<pattern value="/Administrador/avaliacoes" />
+		<view-id value="/Administrador/avaliacoes.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-avaliacoesFolder">
+		<pattern value="/Administrador/Avaliacoes/" />
+		<view-id value="/Administrador/avaliacoes.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-avaliacoesFolderConsultaJSF">
+		<pattern value="/Administrador/Avaliacoes/consultar.jsf" />
+		<view-id value="/Administrador/avaliacoes.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-avaliacoesFolderConsultaXHTML">
+		<pattern value="/Administrador/Avaliacoes/consultar.xhtml" />
+		<view-id value="/Administrador/avaliacoes.jsf" />
+	</url-mapping>
+
+	<!--Area Administrativa - Mapeamento para o CRUD de Categoria de Evento -->
+	<url-mapping id="Admin-categoriaEvento">
+		<pattern value="/Administrador/categoriaEvento" />
+		<view-id value="/Administrador/categoriaEvento.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-categoriaEventoFolder">
+		<pattern value="/Administrador/CategoriaEvento/" />
+		<view-id value="/Administrador/categoriaEvento.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-categoriaEventoFolderConsultaJSF">
+		<pattern value="/Administrador/CategoriaEvento/consultar.jsf" />
+		<view-id value="/Administrador/categoriaEvento.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-categoriaEventoFolderConsultaXHTML">
+		<pattern value="/Administrador/CategoriaEvento/consultar.xhtml" />
+		<view-id value="/Administrador/categoriaEvento.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-categoriaEventoFolderCadastrarJSF">
+		<pattern value="/Administrador/CategoriaEvento/cadastrar.jsf" />
+		<view-id value="/Administrador/categoriaEvento.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-categoriaEventoFolderCadastrarXHTML">
+		<pattern value="/Administrador/CategoriaEvento/cadastrar.xhtml" />
+		<view-id value="/Administrador/categoriaEvento.jsf" />
+	</url-mapping>
+
+	<!--Area Administrativa - Mapeamento para o CRUD de Conta -->
+	<url-mapping id="Admin-contaEvento">
+		<pattern value="/Administrador/conta" />
+		<view-id value="/Administrador/conta.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-contaEventoFolder">
+		<pattern value="/Administrador/Conta/" />
+		<view-id value="/Administrador/conta.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-contaFolderConsultaJSF">
+		<pattern value="/Administrador/Conta/consultar.jsf" />
+		<view-id value="/Administrador/conta.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-contaFolderConsultaXHTML">
+		<pattern value="/Administrador/Conta/consultar.xhtml" />
+		<view-id value="/Administrador/conta.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-contaFolderCadastrarJSF">
+		<pattern value="/Administrador/Conta/cadastrar.jsf" />
+		<view-id value="/Administrador/conta.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-contaFolderCadastrarXHTML">
+		<pattern value="/Administrador/Conta/cadastrar.xhtml" />
+		<view-id value="/Administrador/conta.jsf" />
+	</url-mapping>
+
+	<!--Area Administrativa - Mapeamento para o CRUD de Empresa -->
+	<url-mapping id="Admin-empresaEvento">
+		<pattern value="/Administrador/empresa" />
+		<view-id value="/Administrador/empresa.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-empresaEventoFolder">
+		<pattern value="/Administrador/Empresa/" />
+		<view-id value="/Administrador/empresa.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-empresaFolderConsultaJSF">
+		<pattern value="/Administrador/Empresa/consultar.jsf" />
+		<view-id value="/Administrador/empresa.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-empresaFolderConsultaXHTML">
+		<pattern value="/Administrador/Empresa/consultar.xhtml" />
+		<view-id value="/Administrador/empresa.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-empresaFolderCadastrarJSF">
+		<pattern value="/Administrador/Empresa/cadastrar.jsf" />
+		<view-id value="/Administrador/empresa.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-empresaFolderCadastrarXHTML">
+		<pattern value="/Administrador/Empresa/cadastrar.xhtml" />
+		<view-id value="/Administrador/empresa.jsf" />
+	</url-mapping>
+
+	<!--Area Administrativa - Mapeamento para o CRUD de Endereço -->
+	<url-mapping id="Admin-enderecoEvento">
+		<pattern value="/Administrador/endereco" />
+		<view-id value="/Administrador/endereco.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-enderecoEventoFolder">
+		<pattern value="/Administrador/Endereco/" />
+		<view-id value="/Administrador/endereco.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-enderecoFolderConsultaJSF">
+		<pattern value="/Administrador/Endereco/consultar.jsf" />
+		<view-id value="/Administrador/endereco.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-enderecoFolderConsultaXHTML">
+		<pattern value="/Administrador/Endereco/consultar.xhtml" />
+		<view-id value="/Administrador/endereco.jsf" />
+	</url-mapping>
+
+	<!--Area Administrativa - Mapeamento para o CRUD de Estado -->
+	<url-mapping id="Admin-estadoEvento">
+		<pattern value="/Administrador/estado" />
+		<view-id value="/Administrador/estado.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-estadoEventoFolder">
+		<pattern value="/Administrador/Estado/" />
+		<view-id value="/Administrador/estado.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-estadoFolderConsultaJSF">
+		<pattern value="/Administrador/Estado/consultar.jsf" />
+		<view-id value="/Administrador/estado.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-estadoFolderConsultaXHTML">
+		<pattern value="/Administrador/Estado/consultar.xhtml" />
+		<view-id value="/Administrador/estado.jsf" />
+	</url-mapping>
+
+	<!--Area Administrativa - Mapeamento para o CRUD de Evento -->
+	<url-mapping id="Admin-eventoEvento">
+		<pattern value="/Administrador/evento" />
+		<view-id value="/Administrador/evento.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-eventoEventoFolder">
+		<pattern value="/Administrador/Evento/" />
+		<view-id value="/Administrador/evento.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-eventoFolderConsultaJSF">
+		<pattern value="/Administrador/Evento/consultar.jsf" />
+		<view-id value="/Administrador/evento.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-eventoFolderConsultaXHTML">
+		<pattern value="/Administrador/Evento/consultar.xhtml" />
+		<view-id value="/Administrador/evento.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-eventoFolderCadastrarJSF">
+		<pattern value="/Administrador/Evento/cadastrar.jsf" />
+		<view-id value="/Administrador/evento.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-eventoFolderCadastrarXHTML">
+		<pattern value="/Administrador/Evento/cadastrar.xhtml" />
+		<view-id value="/Administrador/evento.jsf" />
+	</url-mapping>
+
+	<!--Area Administrativa - Mapeamento para o CRUD de Mensagem -->
+	<url-mapping id="Admin-mensagemEvento">
+		<pattern value="/Administrador/mensagem" />
+		<view-id value="/Administrador/mensagem.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-mensagemEventoFolder">
+		<pattern value="/Administrador/Mensagem/" />
+		<view-id value="/Administrador/mensagem.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-mensagemFolderConsultaJSF">
+		<pattern value="/Administrador/Mensagem/consultar.jsf" />
+		<view-id value="/Administrador/mensagem.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-mensagemFolderConsultaXHTML">
+		<pattern value="/Administrador/Mensagem/consultar.xhtml" />
+		<view-id value="/Administrador/mensagem.jsf" />
+	</url-mapping>
+
+	<!--Area Administrativa - Mapeamento para o CRUD de Postagem -->
+	<url-mapping id="Admin-postagemEvento">
+		<pattern value="/Administrador/postagem" />
+		<view-id value="/Administrador/postagem.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-postagemEventoFolder">
+		<pattern value="/Administrador/Postagem/" />
+		<view-id value="/Administrador/postagem.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-postagemFolderConsultaJSF">
+		<pattern value="/Administrador/Postagem/consultar.jsf" />
+		<view-id value="/Administrador/postagem.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-postagemFolderConsultaXHTML">
+		<pattern value="/Administrador/Postagem/consultar.xhtml" />
+		<view-id value="/Administrador/postagem.jsf" />
+	</url-mapping>
+
+	<!--Area Administrativa - Mapeamento para o CRUD de Tipo de Presenca -->
+	<url-mapping id="Admin-tipoPresencaEvento">
+		<pattern value="/Administrador/tipoPresenca" />
+		<view-id value="/Administrador/tipoPresenca.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-tipoPresencaEventoFolder">
+		<pattern value="/Administrador/TipoPresenca/" />
+		<view-id value="/Administrador/tipoPresenca.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-tipoPresencaFolderConsultaJSF">
+		<pattern value="/Administrador/TipoPresenca/consultar.jsf" />
+		<view-id value="/Administrador/tipoPresenca.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-tipoPresencaFolderConsultaXHTML">
+		<pattern value="/Administrador/TipoPresenca/consultar.xhtml" />
+		<view-id value="/Administrador/tipoPresenca.jsf" />
+	</url-mapping>
+
+	<!--Area Administrativa - Mapeamento para o CRUD de Usuario -->
+	<url-mapping id="Admin-usuario">
+		<pattern value="/Administrador/usuario" />
+		<view-id value="/Administrador/usuario.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-usuarioEventoFolder">
+		<pattern value="/Administrador/Usuario/" />
+		<view-id value="/Administrador/usuario.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-usuarioFolderConsultaJSF">
+		<pattern value="/Administrador/Usuario/consultar.jsf" />
+		<view-id value="/Administrador/usuario.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-usuarioFolderConsultaXHTML">
+		<pattern value="/Administrador/usuario/consultar.xhtml" />
+		<view-id value="/Administrador/usuario.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-suarioFolderCadastrarJSF">
+		<pattern value="/Administrador/Usuario/cadastrar.jsf" />
+		<view-id value="/Administrador/usuario.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-usuarioFolderCadastrarXHTML">
+		<pattern value="/Administrador/Usuario/cadastrar.xhtml" />
+		<view-id value="/Administrador/usuario.jsf" />
+	</url-mapping>
+
+
+	<!-- Mapeamento para a pagina inicial do Usuario -->
+	<url-mapping id="Usuario-Home">
+		<pattern value="/Usuario/Home" />
+		<view-id value="/Usuario/index.jsf" />
+	</url-mapping>
+	<url-mapping id="Usuario-home">
+		<pattern value="/Usuario/home" />
+		<view-id value="/Usuario/index.jsf" />
+	</url-mapping>
+	<url-mapping id="Usuario-Index">
+		<pattern value="/Usuario/Index" />
+		<view-id value="/Usuario/index.jsf" />
+	</url-mapping>
+	<url-mapping id="Usuario-index">
+		<pattern value="/Usuario/index" />
+		<view-id value="/Usuario/index.jsf" />
+	</url-mapping>
+	<url-mapping id="Usuario-index.xhtml">
+		<pattern value="/Usuario/index.xhtml" />
+		<view-id value="/Usuario/index.jsf" />
+	</url-mapping>
+
+
+
+	<!-- Mapeamento para a pagina inicial da Empresa -->
+	<url-mapping id="Empresa-Home">
+		<pattern value="/Empresa/Home" />
+		<view-id value="/Empresa/index.jsf" />
+	</url-mapping>
+	<url-mapping id="Empresa-home">
+		<pattern value="/Empresa/home" />
+		<view-id value="/Empresa/index.jsf" />
+	</url-mapping>
+	<url-mapping id="Empresa-Index">
+		<pattern value="/Empresa/Index" />
+		<view-id value="/Empresa/index.jsf" />
+	</url-mapping>
+	<url-mapping id="Empresa-index">
+		<pattern value="/Empresa/index" />
+		<view-id value="/Empresa/index.jsf" />
+	</url-mapping>
+	<url-mapping id="Empresa-index.xhtml">
+		<pattern value="/Empresa/index.xhtml" />
+		<view-id value="/Empresa/index.jsf" />
+	</url-mapping>
+
+</pretty-config>

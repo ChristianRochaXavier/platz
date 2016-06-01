@@ -1,0 +1,37 @@
+#form-conta , #form-usuario , #form-empresa,#form-evento
+{
+	width:60%;
+	margin: 0 auto;
+}
+.label
+{
+	font-family:Verdana;
+}
+.input
+{
+	width: 70%;
+	
+}
+
+.evento-especifico
+{
+	margin: 0 auto;
+	width:70%;
+}
+.img-destaque
+{
+	padding: 2%;
+	height:500px;
+	width:96%;
+}
+#evento-especifico-painel
+{
+	margin-top:2%;
+	border:none;
+}
+
+#img-detalhe-painel
+{
+	width:20%;
+	height:10%:
+}

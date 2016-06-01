@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title><ui:insert name="titulo" /> - PLATZ</title>	
+	
+	<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/estiloUsuario.css" />
+	<script type="text/javascript" src="/js/jquery-2.2.3.js"></script>
+	<ui:insert name="css-link" />
+</h:head>
+
+<h:body>
+	<ui:insert name="preNav" />
+	<div id="menuUsuario">
+		<ul>
+			<li id="list-img">
+				 <h:graphicImage style="width:80%;margin-left:10%;" value="/resources/img/temp/avatar.png"/>
+				<p>Maria Joaquina</p>
+				
+				</li>
+			<li class="list"><a href="#">Buscar Evento</a></li>
+			<li class="list"><a href="#">Minhas Avaliações</a></li>
+			<li class="list"><a href="#">Eventos Passados</a></li>
+			<li class="list"><a href="#">Proximos Eventos</a></li>
+			<li class="list"><a href="#">Ranking</a></li>
+			<li class="list"><a href="#">Categoria Dos Eventos</a></li>
+			<li class="list"><a href="#">Empresas</a></li>
+			<li class="list"><a href="#">Online/Offline</a></li>
+			<li class="list"><a href="#">Configurações</a></li>
+			<li class="list"><a href="#">Logout</a></li>
+		</ul>
+	</div>
+
+	<ui:insert name="corpoPagina" />
+
+	<!-- Footer -->	
+	<script type="text/javascript" src="/js/footer.js"></script>
+	<ui:insert name="posFooter" />
+</h:body>
+</html>

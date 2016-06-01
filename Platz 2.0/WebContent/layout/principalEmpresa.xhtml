@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title> <ui:insert name="titulo" /> - PLATZ	</title>
+	
+	<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/estiloEmpresa.css" />
+	<script type="text/javascript" src="/js/jquery-2.2.3.js"></script>
+	<ui:insert name="css-link" />
+</h:head>
+
+<h:body>
+	<ui:insert name="preNav" />
+	<!-- Nav  -->
+
+	<ui:insert name="corpoPagina" />
+
+	<!-- Footer -->
+	<script type="text/javascript" src="/js/footer.js"></script>
+	<ui:insert name="posFooter" />
+</h:body>
+</html>

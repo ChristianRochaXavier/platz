@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+	<title><ui:insert name="titulo" /> - PLATZ</title>
+
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/css/nav.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/css/estilo.css" />
+
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/css/estiloAdm.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/css/icons.css" />
+
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/css/footer.css" />
+
+	<ui:insert name="css-link" />
+</h:head>
+<h:body class="corpoPagina">
+	<b:navBar inverse="true" fixed="top"
+		brand-img="../resources/img/platz/logo1.png"
+		brand-img-style="width:100px;height:50px; margin-top:-15px;"
+		brandHref="index.jsf" fluid="true">
+
+		<b:navbarLinks id="link-menuAdm">
+			<b:navLink value="Home" href="../Administrador/index.xhtml"></b:navLink>
+
+			<b:dropMenu value="Contas">
+				<b:navLink value="Empresa" href="../Administrador/empresa"></b:navLink>
+				<b:navLink value="Usuário" href="../Administrador/usuario"></b:navLink>
+				<b:navLink value="Conta" href="../Administrador/conta"></b:navLink>
+			</b:dropMenu>
+
+			<b:dropMenu value="Evento">
+				<b:navLink value="Eventos" href="../Administrador/evento"></b:navLink>
+				<b:navLink />
+				<b:navLink value="Avaliações" href="../Administrador/avalicoes"></b:navLink>
+				<b:navLink value="Categoria de eventos"
+					href="../Administrador/categoriaEvento"></b:navLink>
+				<b:navLink value="Postagem" href="../Administrador/postagem"></b:navLink>
+				<b:navLink value="Presença" href="../Administrador/presenca"></b:navLink>
+				<b:navLink value="Tipo de Presença"
+					href="../Administrador/tipoPresenca"></b:navLink>
+
+
+			</b:dropMenu>
+
+			<b:dropMenu value="Contato">
+				<b:navLink value="Assunto" href="../Administrador/assunto"></b:navLink>
+				<b:navLink value="Mensagem" href="../Administrador/mensagem"></b:navLink>
+			</b:dropMenu>
+
+			<b:dropMenu value="Locais">
+				<b:navLink value="Endereco" href="../Administrador/endereco"></b:navLink>
+				<b:navLink value="Cidade" href="../Administrador/cidade"></b:navLink>
+				<b:navLink value="Estado" href="../Administrador/estado"></b:navLink>
+			</b:dropMenu>
+			<b:navLink value="Logout" href="../login"></b:navLink>
+
+		</b:navbarLinks>
+	</b:navBar>
+
+
+	<ui:insert name="corpoPagina" />
+
+
+	<footer>
+	<div class="rodape">
+		<b:column col-md="8">
+			<p class="titulo-platz">© Platz 2016</p>
+		</b:column>
+		<b:column col-md="4">
+			<p class="titulo-platz">Area Administrativa</p>
+
+		</b:column>
+
+	</div>
+	</footer>
+
+
+
+</h:body>
+
+<ui:insert name="posFooter" />
+
+</html>

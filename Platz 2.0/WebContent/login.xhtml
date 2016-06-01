@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/layout/principal.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+
+	<ui:define name="titulo">Login</ui:define>
+
+	<ui:define name="corpoPagina">
+	<b:container id="corpo">
+            <h:form styleClass="form-signin" prependId="false">
+            <p:growl id="growl" autoUpdate="true" life="10000"/>
+                <h2 class="form-signin-heading">Entre com seu Login</h2>
+                <b:inputText id="usuario" value="#{loginBean.conta.login}" >
+                    <f:facet name="prepend">
+                        <b:icon name="user" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText  id="senha" value="#{loginBean.conta.senha}" type="password">
+                    <f:facet name="prepend">
+                        <b:iconAwesome name="key" />
+                    </f:facet>
+                </b:inputText>
+               
+                <b:commandButton look="primary btn-block" value="Logar" action="#{loginBean.logar()}"
+                 icon="log-in" size="lg"/>
+            </h:form>
+        </b:container>
+		
+	
+	</ui:define>
+
+</ui:composition>

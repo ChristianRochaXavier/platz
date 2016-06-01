@@ -1,0 +1,35 @@
+/* div que fica dentro do footer */
+.rodape
+{
+	bottom:0;
+	position:fixed;
+	background: #3C3E47; 
+	width: 100%; 
+	height: 5.5%;
+	padding-top: 1%;
+}
+
+/* class para o elemento p do footer */
+.titulo-platz
+{	
+	width:10%;
+	display:inline;
+	margin-top:1%;
+	margin-left:25%;
+	color:white;
+	font-family:Verdana;
+	font-size:15px;
+}
+
+/* lista com os icones das redes sociais */
+.rodape ul
+{
+display: inline;	
+}
+
+/* itens da lista dos icones das redes sociais */
+.rodape ul li
+{
+	display:inline;
+	margin-left:1%;
+}

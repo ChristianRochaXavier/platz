@@ -45,9 +45,7 @@
 			<span style="font-weight: bold; margin-left: 23%; margin-right: 2%;">Data
 				de Nascimento</span>
 
-
-			<p:calendar span="6" label="Data de Nascimento"
-				id="txtDataNascimento" pattern="dd/MM/yyyy"
+			<p:calendar mask="dd/MM/yyyy" id="txtDataNascimento"
 				value="#{usuarioBean.usuario.dataNascimento}" />
 		</b:row>
 		<hr />
@@ -102,8 +100,8 @@
 		</b:row>
 
 		<br />
-		<p:commandButton immediate="true" value="Voltar" 
-			action="#{usuarioBean.voltar}" update="form-usuario" />
+		<p:commandButton immediate="true" value="Voltar"
+			action="#{usuarioBean.voltar}" update="@form" />
 
 		<p:commandButton value="Cadastrar" action="#{usuarioBean.cadastrar()}"
 			update="@form" />

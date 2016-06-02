@@ -162,6 +162,7 @@ public class UsuarioBean {
 	}
 
 	public void detalhes(Usuario usuario) {
+		this.usuarioDetalhe = usuario;
 	}
 
 	public void novoUsuario() {		

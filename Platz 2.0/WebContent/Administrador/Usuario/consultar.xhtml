@@ -7,7 +7,7 @@
 
 
 	<p:panel rendered="#{usuarioBean.rendered == true}">
-		<p:commandButton value="Novo Usuario"
+		<p:commandButton value="Novo Usuario" 
 			action="#{usuarioBean.novoUsuario()}" update="@form" />
 
 		<p:dataTable value="#{usuarioBean.usuarios}"

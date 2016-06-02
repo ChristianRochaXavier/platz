@@ -9,13 +9,12 @@
 	<b:panel title="Cadastro de Usuario"
 		rendered="#{usuarioBean.rendered == false}">
 
-		<b:row>
-			<p:fileUpload mode="advanced" fileLimit="1" id="upImgPerfil"
-				label="Imagem de Perfil" span="6"
-				fileLimitMessage="Apenas uma imagem pode ser enviada" auto="true"
-				dragDropSupport="true" fileUploadListener="#{usuarioBean.upload}" />
-		</b:row>
-		<hr />
+
+		<p:fileUpload mode="advanced" fileLimit="1" auto="true"
+			fileLimitMessage="Apenas uma imagem pode ser enviada" update="@form"
+			id="upImgPerfil" label="Imagem de Perfil" dragDropSupport="true"
+			fileUploadListener="#{usuarioBean.upload()}" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" invalidFileMessage="Arquivo inválido"/>
+
 		<b:row>
 			<b:inputText value="#{usuarioBean.usuario.conta.email}" span="6"
 				label="Email" placeholder="usuario@email.com" />

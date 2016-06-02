@@ -6,94 +6,131 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
 	<br />
-	
+
 	<b:panel title="Cadastro de Empresa">
 	
-	 <b:row>
-		 
-		  <p:fileUpload mode="advanced" fileLimit="1" id="upImgPerfil"  label="Imagem de Perfil" span="6"
-		fileLimitMessage="Apenas uma imagem pode ser enviada" auto="true"
-		dragDropSupport="true" fileUploadListener="#{empresaBean.upload}" />
-						
-		 </b:row>
-		 
-		 <hr/>
-	
-		<b:row>
-		   <b:inputText value="#" span="6" label="Email" 
-		   placeholder="usuario@email.com" />
-		   <b:inputText value="#" span="6" label="Nome de Login" 
-		   placeholder="usuario12" />
-		 </b:row>
-		 <hr/>
-		 <b:row>
-		   <b:inputSecret value="#" span="6" label="Senha" 
-		   placeholder="******" id="txtSenha" match="txtConfirmSenha" maxlength="64"
-		   validatorMessage="As senhas não coincidem" />
-		   <b:inputSecret value="#" span="6" label="Confirme a senha" 
-		   placeholder="******" id="txtConfirmSenha" maxlength="64"/>
-		 </b:row>
-		 <hr/>
-		 <b:row>
-		 <span style="font-weight: bold; margin-left:2%; margin-right: 2%;">conta ativa/desativa</span>
-		   <p:selectBooleanButton onLabel="Conta Ativada" 
-			offLabel="Conta Desativada" value="#" />
-		
-		<span style="font-weight: bold; margin-left:23%; margin-right: 2%;">CNPJ</span>
-		   <p:inputMask id="txtCnpj" mask="99.999.999/9999-99" style="margin-left:2%;" size="55"
-			value="#" />	
-		</b:row>
-		<hr/>
-		<b:row>
-		 <b:inputText value="#" span="6" label="Razão Social" 
-		   placeholder="Ex: Platz.ltda" />
-		 
-		<b:inputText value="#" span="6" label="Nome Fantasia" />
-		 </b:row>
-		 <hr/>
-		 <b:row>
-		  <span style="font-weight: bold; margin-left:2%; margin-right: 2%;">Celular</span>
-		<p:inputMask id="txtCelular" size="30" style="margin-left:2%;"
-		mask="(99) 99999-9999" value="#" />
-		 
-		  <span style="font-weight: bold; margin-left:13%; margin-right: 2%;">Telefone </span>
-		  <p:inputMask id="txtTelefone" size="30"
-		mask="(99) 9999-9999" value="#" />
-		 </b:row>
-		 <hr/>
-		 <b:row>
-		   
-		    <span style="font-weight: bold; margin-left:2%; margin-right: 2%;">CEP</span>
-		   <p:inputMask mask="99999-999" id="txtCep" style="margin-left:2%;" size="55"
-			value="#" />
-			
-		 </b:row>
-		 <hr/>
-		 <b:row>
-		 <b:inputText value="#" span="6" label="Rua" 
-		   placeholder="Rua , AV. " />
-		 <b:inputText value="#" span="6" label="Numero" />		   
-		   
-		 </b:row>
-		 <hr/>
-		 <b:row>
-		 <b:inputText value="#" span="6" label="Complemento" />
-		 <b:inputText value="#" span="6" label="Bairro" />		   
-		   
-		 </b:row>
-		 <hr/>
-		 <b:row>
-		 <b:inputText value="#" span="6" label="Cidade" />
-		 <b:inputText value="#" span="6" label="Estado" />		   
-		   
-		 </b:row>
 
+		<b:well styleClass="well-cadastro">
+			<h4>Informações da Conta</h4>
+		</b:well>
+		
+		<b:row>
+		<b:column col-md="8" style="margin-left:17%;">
+			<p:fileUpload mode="advanced" fileLimit="1" id="upImgPerfil"
+				label="Imagem de Perfil" span="6"
+				fileLimitMessage="Apenas uma imagem pode ser enviada" auto="true"
+				dragDropSupport="true" fileUploadListener="#{empresaBean.upload}" />
+			</b:column>
+		</b:row>
+
+		<hr />
+
+		<b:row>
+			<b:inputText value="#" span="6" label="Email"
+				placeholder="usuario@email.com" />
+			<b:inputText value="#" span="6" label="Nome de Login"
+				placeholder="usuario12" />
+		</b:row>
+		<hr />
+		<b:row>
+			<b:inputSecret value="#" span="6" label="Senha" placeholder="******"
+				id="txtSenha" match="txtConfirmSenha" maxlength="64"
+				validatorMessage="As senhas não coincidem" />
+			<b:inputSecret value="#" span="6" label="Confirme a senha"
+				placeholder="******" id="txtConfirmSenha" maxlength="64" />
+		</b:row>
+		<hr />
+		<b:row>
+			<span style="font-weight: bold; margin-left: 2%; margin-right: 2%;">conta
+				ativa/desativa</span>
+			<p:selectBooleanButton onLabel="Conta Ativada"
+				offLabel="Conta Desativada" value="#" />
+
+		</b:row>
 		<br />
+		<br />
+
+		<b:well styleClass="well-cadastro">
+			<h4>Informações Pessoais</h4>
+		</b:well>
+		<br />
+		<br />
+
+
+		<b:row>
+			<b:inputText value="#" span="6" label="Razão Social"
+				placeholder="Ex: Platz.ltda" />
+
+			<b:inputText value="#" span="6" label="Nome Fantasia" />
+		</b:row>
+		
+		<hr />
+		
+		<b:row>
+		<b:column col-md="4">
+			<span style="font-weight: bold;">CNPJ</span>
+			<p:inputMask id="txtCnpj" mask="99.999.999/9999-99" size="30" value="#"  styleClass="inputCad-Empresa"/>
+		</b:column>
+		
+		<b:column col-md="4">	
+			<span style="font-weight: bold;">Celular</span>
+			<p:inputMask id="txtCelular" size="30" mask="(99) 99999-9999" value="#" styleClass="inputCad-Empresa"/>
+		</b:column>
+		
+		<b:column col-md="4">
+			<span style="font-weight: bold;">Telefone
+			</span>
+			<p:inputMask id="txtTelefone" size="30" mask="(99) 9999-9999" value="#" styleClass="inputCad-Empresa"/>
+		</b:column>		
+		
+		</b:row>
+		<br />
+		<br />
+
+		<b:well styleClass="well-cadastro">
+			<h4>Endereço</h4>
+		</b:well>
+		<br />
+		<br />
+
+
+
+		<b:row>
+			<b:column col-md="4">
+			<span style="font-weight: bold;">CEP</span>
+			<p:inputMask mask="99999-999" id="txtCep" size="30" value="#" styleClass="inputCad-Empresa"/>
+			</b:column>
+			<b:column col-md="4">
+			<span style="font-weight: bold;">Numero</span>
+			<p:inputText maxlength="13" size="30" value="#" styleClass="inputCad-Empresa" />
+			</b:column>
+			<b:column col-md="4">
+			<span style="font-weight: bold;">Complemento</span>
+			<p:inputText maxlength="13" size="30" value="#" styleClass="inputCad-Empresa" />
+			</b:column>
+		</b:row>
+		<hr />
+		<b:row>
+			<b:inputText value="#" span="6" label="Rua" placeholder="Rua , AV. " />
+			<b:inputText value="#" span="6" label="Bairro" />
+		</b:row>
+		<hr />
+		<b:row>
+		    <b:inputText value="#" span="6" label="Cidade" />
+			<b:inputText value="#" span="6" label="Estado" />			
+		</b:row>
+		<hr />
+		
+		<b:row>
+		<b:column col-md="12">
 		<p:commandButton value="Voltar" action="#{empresaBean.voltar()}"
-			update="@form" immediate="true" />
+			update="@form" immediate="true" styleClass="btnVoltar-empresa" />
+		
 		<p:commandButton value="Cadastrar" action="#{empresaBean.cadastrar()}"
-			update="@form" />
-		</b:panel>
+			update="@form" styleClass="btnCadastrar-empresa" />
+		</b:column>	
+		</b:row>
+	</b:panel>
 
 
 

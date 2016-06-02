@@ -33,5 +33,35 @@
 #img-detalhe-painel
 {
 	width:20%;
-	height:10%:
+	height:10%;
+}
+.well-cadastro 
+{
+	background: rgba(26, 188, 156,1.0);
+	font-family: Verdana;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+}
+.inputCad-Empresa
+{
+	padding: 7px;
+	margin-left: 2%;
+	
+}
+.btnVoltar-empresa , .btnCadastrar-empresa
+{
+	background: rgba(243, 156, 18,1.0);
+	font-family: Verdana;
+	color: white;
+	font-size: 15px;
+	
+}
+.btnVoltar-empresa
+{
+	margin-left: 43%;
+}
+.btnCadastrar-empresa
+{
+	margin-left:3px;
 }

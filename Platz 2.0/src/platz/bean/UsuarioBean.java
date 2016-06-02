@@ -83,7 +83,9 @@ public class UsuarioBean {
 
 	// Método que vê o evento de upload do p:upload
 	public void upload(FileUploadEvent event) {
-
+		
+		System.out.println("Entrou no método upload");
+		
 		System.out.println("Nome do Arquivo: " + event.getFile().getFileName());
 
 		FacesContext.getCurrentInstance().addMessage(null,
@@ -162,6 +164,7 @@ public class UsuarioBean {
 	}
 
 	public void detalhes(Usuario usuario) {
+		this.usuarioDetalhe = usuario;
 	}
 
 	public void novoUsuario() {		

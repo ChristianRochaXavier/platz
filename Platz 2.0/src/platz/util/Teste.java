@@ -1,18 +1,9 @@
 package platz.util;
 
-import java.util.Date;
-
-import platz.dao.CidadeDAO;
-import platz.dao.UsuarioDAO;
-import platz.model.Cidade;
-import platz.model.Conta;
-import platz.model.Endereco;
-import platz.model.Perfil;
-import platz.model.Usuario;
-
 public class Teste {
 
-	public static void main(String[] args) {
+	//Teste para Cadastro de Usuários
+	/*public static void main(String[] args) {
 
 		Conta conta = new Conta();
 		Usuario user = new Usuario();
@@ -71,6 +62,6 @@ public class Teste {
 		//
 		// }
 
-	}
+	}*/
 
 }

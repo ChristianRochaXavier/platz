@@ -12,6 +12,7 @@
 			<h4>Informações da Conta</h4>
 		</b:well>
 
+
 		<b:row>
 			<b:column col-md="8" style="margin-left:17%;">
 				<p:fileUpload mode="advanced" fileLimit="1" id="upImgPerfil"
@@ -21,6 +22,7 @@
 			</b:column>
 		</b:row>
 		<hr />
+
 		<b:row>
 			<b:inputText value="#{usuarioBean.usuario.conta.email}" span="6"
 				label="Email" placeholder="usuario@email.com" />
@@ -44,7 +46,6 @@
 			<p:selectBooleanButton onLabel="Conta Ativada"
 				offLabel="Conta Desativada"
 				value="#{usuarioBean.usuario.conta.ativo}" />
-
 		</b:row>
 		<hr />
 
@@ -141,9 +142,8 @@
 		</b:row>
 
 		<br />
-		<p:commandButton immediate="true" value="Voltar"
-			action="#{usuarioBean.voltar}" update="form-usuario"
-			styleClass="btnVoltar-empresa" />
+		<p:commandButton immediate="true" value="Voltar" action="#{usuarioBean.voltar}" update="form-usuario" styleClass="btnVoltar-empresa" /> 
+
 
 		<p:commandButton value="Cadastrar" action="#{usuarioBean.cadastrar()}"
 			update="@form" styleClass="btnCadastrar-empresa" />

@@ -7,14 +7,16 @@
 
 
 	<p:panel rendered="#{usuarioBean.rendered == true}">
-<p:commandButton value="Novo Usuario" action="#{usuarioBean.novoUsuario()}" update="@form"/>
+		<p:commandButton value="Novo Usuario" 
+			action="#{usuarioBean.novoUsuario()}" update="@form" />
+
 		<p:dataTable value="#{usuarioBean.usuarios}"
 			paginatorPosition="bottom" var="usuario" paginator="true" rows="25"
 			emptyMessage="Nenhum Registro Encontrado"
 			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 
-			<f:facet name="header">
-				<h:outputLabel value="Consulta de Usuarios" />
+			<f:facet name="header"> 
+				<h:outputLabel value="Consulta de Usuarios" /> 
 			</f:facet>
 
 			<p:column headerText="Id" sortBy="#{usuario.id}">
@@ -40,9 +42,11 @@
 			<p:column width="28%" exportable="false" headerText="Opções">
 
 				<p:commandButton icon="editar-icon" value="Editar" update="@form"
-					oncomplete="PF('editarDialog').show()" action="#{usuarioBean.editar(usuario)}" />
+					oncomplete="PF('editarDialog').show()"
+					action="#{usuarioBean.editar(usuario)}" />
 
-				<p:commandButton action="#{usuarioBean.detalhes(usuario)}" immediate="true"
+				<p:commandButton action="#{usuarioBean.detalhes(usuario)}"
+					immediate="true"
 					oncomplete="$('.modalPseudoClass1').modal();return false;"
 					update="form-usuario
 					" value="Ver mais detalhes" />
@@ -56,7 +60,6 @@
 
 		<br />
 
-
 		<h:commandLink>
 			<h:graphicImage url="../css/icons/exportar_xls.png" />
 			<p:dataExporter type="xls" target="" fileName="" />
@@ -68,7 +71,6 @@
 				encoding="iso-8859-1" />
 		</h:commandLink>
 
-
 		<p:confirmDialog message="Deseja realmente excluir?"
 			widgetVar="confirmarExclusaoDialog">
 			<p:commandButton value="Sim"
@@ -77,7 +79,6 @@
 			<p:commandButton value="Não"
 				oncomplete="PF('confirmarExclusaoDialog').hide()" />
 		</p:confirmDialog>
-
 
 		<b:modal id="amodal" title="Detalhes" styleClass="modalPseudoClass1">
 
@@ -92,46 +93,50 @@
 
 			<b:panel>
 				<b:row>
-					<b:inputText label="Login" span="6" readonly="true" value="#" />
+					<b:inputText label="Login" span="6" readonly="true"
+						value="#{usuarioBean.usuarioDetalhe.conta.login}" />
 
-					<b:inputText label="Email" span="6" readonly="true" value="#" />
+					<b:inputText label="Email" span="6" readonly="true"
+						value="#{usuarioBean.usuarioDetalhe.conta.email}" />
 				</b:row>
 
 				<b:row>
 					<b:inputText label="Ativa/Inativa" span="6" readonly="true"
-						value="#" />
+						value="#{usuarioBean.usuarioDetalhe.conta.ativo? 'Ativo' : 'Inativo'}" />
 
 					<b:inputText label="Data de Nascimento" span="6" readonly="true"
-						value="#" />
+						value="#{usuarioBean.usuarioDetalhe.dataNascimento}">
+							<f:convertDateTime dateStyle="full"/>
+						</b:inputText>
 				</b:row>
 
 				<b:row>
-					<b:inputText label="Celular" span="6" readonly="true" value="#" />
+					<b:inputText label="Celular" span="6" readonly="true" value="#{usuarioBean.usuarioDetalhe.celular}" />
 
-					<b:inputText label="Telefone" span="6" readonly="true" value="#" />
+					<b:inputText label="Telefone" span="6" readonly="true" value="#{usuarioBean.usuarioDetalhe.telefone}" />
 				</b:row>
 
 				<b:row>
-					<b:inputText label="CEP" span="6" readonly="true" value="#" />
+					<b:inputText label="CEP" span="6" readonly="true" value="#{usuarioBean.usuarioDetalhe.endereco.cep}" />
 
-					<b:inputText label="Rua" span="6" readonly="true" value="#" />
+					<b:inputText label="Rua" span="6" readonly="true" value="#{usuarioBean.usuarioDetalhe.endereco.rua}" />
 				</b:row>
 
 				<b:row>
-					<b:inputText label="Numero" span="6" readonly="true" value="#" />
+					<b:inputText label="Numero" span="6" readonly="true" value="#{usuarioBean.usuarioDetalhe.endereco.numero}" />
 
-					<b:inputText label="Bairro" span="6" readonly="true" value="#" />
+					<b:inputText label="Bairro" span="6" readonly="true" value="#{usuarioBean.usuarioDetalhe.endereco.bairro}" />
 				</b:row>
 
 				<b:row>
-					<b:inputText label="Cidade" span="6" readonly="true" value="#" />
+					<b:inputText label="Cidade" span="6" readonly="true" value="#{usuarioBean.usuarioDetalhe.endereco.cidade.nome}" />
 
-					<b:inputText label="Estado" span="6" readonly="true" value="#" />
+					<b:inputText label="Estado" span="6" readonly="true" value="#{usuarioBean.usuarioDetalhe.endereco.cidade.estado.uf}" />
 				</b:row>
 
 				<b:row>
 					<b:inputText label="Complemento" span="6" readonly="true"
-						value="#{empresaBean.empresaDetalhe.telefone}" />
+						value="#{usuarioBean.usuarioDetalhe.endereco.complemento}" />
 				</b:row>
 
 			</b:panel>
@@ -143,10 +148,7 @@
 			</f:facet>
 		</b:modal>
 
-
-
 	</p:panel>
-
 
 </ui:composition>
 

@@ -6,14 +6,19 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 	<br />
 
-	<b:panel title="Cadastro de Usuario"
-		rendered="#{usuarioBean.rendered == false}">
+	<b:panel rendered="#{usuarioBean.rendered == false}">
+
+		<b:well styleClass="well-cadastro">
+			<h4>Informações da Conta</h4>
+		</b:well>
 
 		<b:row>
-			<p:fileUpload mode="advanced" fileLimit="1" id="upImgPerfil"
-				label="Imagem de Perfil" span="6"
-				fileLimitMessage="Apenas uma imagem pode ser enviada" auto="true"
-				dragDropSupport="true" fileUploadListener="#{usuarioBean.upload}" />
+			<b:column col-md="8" style="margin-left:17%;">
+				<p:fileUpload mode="advanced" fileLimit="1" id="upImgPerfil"
+					label="Imagem de Perfil" span="6"
+					fileLimitMessage="Apenas uma imagem pode ser enviada" auto="true"
+					dragDropSupport="true" fileUploadListener="#{usuarioBean.upload}" />
+			</b:column>
 		</b:row>
 		<hr />
 		<b:row>
@@ -40,54 +45,90 @@
 				offLabel="Conta Desativada"
 				value="#{usuarioBean.usuario.conta.ativo}" />
 
-			<span style="font-weight: bold; margin-left: 23%; margin-right: 2%;">Data
-				de Nascimento</span>
-
-
-			<p:calendar span="6" label="Data de Nascimento"
-				id="txtDataNascimento" pattern="dd/MM/yyyy"
-				value="#{usuarioBean.usuario.dataNascimento}" />
 		</b:row>
 		<hr />
+
+		<br />
+		<br />
+
+		<b:well styleClass="well-cadastro">
+			<h4>Informações Pessoais</h4>
+		</b:well>
+		<br />
+		<br />
+
 		<b:row>
-			<b:inputText value="#{usuarioBean.usuario.nome}" span="6"
-				label="Nome" placeholder="Ex: Maria" />
+			<b:column col-md="4">
+				<span style="font-weight: bold;">Nome</span>
+				<p:inputText value="#{usuarioBean.usuario.nome}" size="30"
+					placeholder="Ex: Maria" styleClass="inputCad-Usuario" />
+			</b:column>
+			<b:column col-md="4">
 
-			<span style="font-weight: bold; margin-left: 2%; margin-right: 2%;">CPF</span>
-			<br />
-			<p:inputMask id="txtCpf" mask="999.999.999-99"
-				style="margin-left:2%;" size="55" value="#{usuarioBean.usuario.cpf}" />
+				<span style="font-weight: bold;">CPF</span>
+				<p:inputMask id="txtCpf" size="30" mask="999.999.999-99"
+					value="#{usuarioBean.usuario.cpf}" styleClass="inputCad-Usuario" />
+			</b:column>
+			<b:column col-md="4">
+				<span style="font-weight: bold;">Data de Nascimento</span>
+
+				<p:calendar size="20" id="txtDataNascimento" pattern="dd/MM/yyyy" value="#{usuarioBean.usuario.dataNascimento}" />
+			</b:column>
 		</b:row>
+
 		<hr />
+
 		<b:row>
-			<span style="font-weight: bold; margin-left: 2%; margin-right: 2%;">Celular</span>
-			<p:inputMask id="txtCelular" size="30" style="margin-left:2%;"
-				mask="(99) 99999-9999" value="#{usuarioBean.usuario.celular}" />
-
-			<span style="font-weight: bold; margin-left: 13%; margin-right: 2%;">Telefone</span>
-			<p:inputMask id="txtTelefone" size="30" mask="(99) 9999-9999"
-				value="#{usuarioBean.usuario.telefone}" />
+			<b:column col-md="4">
+				<span style="font-weight: bold;">Celular</span>
+				<p:inputMask id="txtCelular" size="30" styleClass="inputCad-Usuario"
+					mask="(99) 99999-9999" value="#{usuarioBean.usuario.celular}" />
+			</b:column>
+			<b:column col-md="4">
+				<span style="font-weight: bold;">Telefone</span>
+				<p:inputMask id="txtTelefone" size="30" mask="(99) 9999-9999"
+					styleClass="inputCad-Usuario"
+					value="#{usuarioBean.usuario.telefone}" />
+			</b:column>
 		</b:row>
-		<hr />
+
+
+		<br />
+		<br />
+
+		<b:well styleClass="well-cadastro">
+			<h4>Endereço</h4>
+		</b:well>
+		<br />
+		<br />
+
 		<b:row>
-
-			<span style="font-weight: bold; margin-left: 2%; margin-right: 2%;">CEP</span>
-			<p:inputMask mask="99999-999" id="txtCep" style="margin-left:2%;"
-				size="55" value="#{usuarioBean.usuario.endereco.cep}" />
-
+			<b:column col-md="4">
+				<span style="font-weight: bold;">CEP</span>
+				<p:inputMask mask="99999-999" id="txtCep" size="30"
+					value="#{usuarioBean.usuario.endereco.cep}"
+					styleClass="inputCad-Usuario" />
+			</b:column>
+			<b:column col-md="4">
+				<span style="font-weight: bold;">Numero</span>
+				<p:inputText maxlength="13" size="30"
+					value="#{usuarioBean.usuario.endereco.numero}"
+					styleClass="inputCad-Usuario" />
+			</b:column>
+			<b:column col-md="4">
+				<span style="font-weight: bold;">Complemento</span>
+				<p:inputText maxlength="13" size="30"
+					value="#{usuarioBean.usuario.endereco.complemento}"
+					styleClass="inputCad-Usuario" />
+			</b:column>
 		</b:row>
+
 		<hr />
+
 		<b:row>
 			<b:inputText value="#{usuarioBean.usuario.endereco.rua}" span="6"
 				id="txtRua" label="Rua" placeholder="Rua , AV. " />
-			<b:inputText value="#{usuarioBean.usuario.endereco.numero}" span="6"
-				id="txtNum" label="Numero" />
 
-		</b:row>
-		<hr />
-		<b:row>
-			<b:inputText value="#{usuarioBean.usuario.endereco.complemento}"
-				span="6" id="txtCompl" label="Complemento" />
 			<b:inputText value="#{usuarioBean.usuario.endereco.bairro}" span="6"
 				id="txtBairro" label="Bairro" />
 		</b:row>
@@ -100,11 +141,12 @@
 		</b:row>
 
 		<br />
-		<p:commandButton immediate="true" value="Voltar" 
-			action="#{usuarioBean.voltar}" update="form-usuario" />
+		<p:commandButton immediate="true" value="Voltar"
+			action="#{usuarioBean.voltar}" update="form-usuario"
+			styleClass="btnVoltar-empresa" />
 
 		<p:commandButton value="Cadastrar" action="#{usuarioBean.cadastrar()}"
-			update="@form" />
+			update="@form" styleClass="btnCadastrar-empresa" />
 
 	</b:panel>
 

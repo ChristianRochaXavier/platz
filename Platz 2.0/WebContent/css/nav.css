@@ -23,6 +23,27 @@ body .navbar-fixed-top, .navbar-fixed-bottom{
 	margin-left:25%;
 }
 
+#link-menuUser
+{
+	
+	margin-left:10%;
+}
+
+#link-perfil
+{
+	margin-left:5%;
+}
+.nome-perfil
+{
+	margin-left: 10%;
+}
+.linha
+{
+	width:100%;
+	height:5px;
+	background: black;
+}
+
 /* cor dos links da nav */
 .navbar-inverse .navbar-nav > li > a
 {

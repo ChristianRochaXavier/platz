@@ -1,5 +1,6 @@
 package platz.bean;
 
+import java.io.IOException;
 import java.util.Date;
 
 import javax.faces.application.FacesMessage;
@@ -48,11 +49,15 @@ public class LoginBean {
 		this.perfil = perfil;
 	}
 
-	public void ultimoAcesso(Conta conta) {
-		System.out.println(conta.getUltimoAcesso());
-		conta.setUltimoAcesso(new Date());
-		System.out.println(conta.getUltimoAcesso());
+	public void ultimoAcesso(Conta conta) {		
+		conta.setUltimoAcesso(new Date());		
 		new ContaDAO().cadastrar(conta);
+	}
+	public void logoff() throws IOException{		
+		System.out.println(conta.getLogin());
+		this.conta = new Conta();				
+		FacesContext.getCurrentInstance().getExternalContext().redirect("../");
+		System.out.println("   ");
 	}
 
 	public String logar() {

@@ -14,7 +14,7 @@
             <h:form styleClass="form-signin" prependId="false">
             <p:growl id="growl" autoUpdate="true" life="10000"/>
                 <h2 class="form-signin-heading">Entre com seu Login</h2>
-                <b:inputText id="usuario" value="#{loginBean.conta.login}" >
+                <b:inputText id="usuario" value="#{loginBean.conta.login}">
                     <f:facet name="prepend">
                         <b:icon name="user" />
                     </f:facet>
@@ -28,9 +28,7 @@
                 <b:commandButton look="primary btn-block" value="Logar" action="#{loginBean.logar()}"
                  icon="log-in" size="lg"/>
             </h:form>
-        </b:container>
-		
-	
+        </b:container>	
 	</ui:define>
 
 </ui:composition>

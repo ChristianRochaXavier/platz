@@ -1,6 +1,5 @@
 package platz.bean;
 
-import java.io.IOException;
 import java.util.Date;
 
 import javax.faces.application.FacesMessage;
@@ -53,9 +52,8 @@ public class LoginBean {
 		conta.setUltimoAcesso(new Date());		
 		new ContaDAO().cadastrar(conta);
 	}
-	public void logoff() throws IOException{		
-		System.out.println(conta.getLogin());
-		this.conta = null;
+	public void logoff(){			
+		this.conta = new Conta();
 	}
 
 	public String logar() {

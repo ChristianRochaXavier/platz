@@ -4,8 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:b="http://bootsfaces.net/ui">
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 	<h:head>
 		<ui:define name="titulo">Sua rota, Seu evento</ui:define>
 		<ui:define name="css-link">
@@ -20,38 +19,37 @@
 				<p>Projeto Voltado a Necessidade de Rotas seguras a eventos ,
 					Aqui você consegue encontrar os eventos mais badalados pode avaliar
 					e dar sua nota , alem muitas outras coisas</p>
-
 			</b:container>
 
 		</b:jumbotron>
 		<b:container>
-		
-		<b:row>
-			<b:column col-md="12">
+
+			<b:row>
+				<b:column col-md="12">
 					<h2>PLATZ</h2>
-					<p align="justify"> Projeto que visa melhorar a experiencia das pessoas a respeito das
-					rotas e eventos!! 
-						projetos ut fermentum massa justo sit amet risus. Etiam porta sem
-						malesuada magna mollis euismod. Donec sed odio dui.</p>
+					<p align="justify">Projeto que visa melhorar a experiencia das
+						pessoas a respeito das rotas e eventos!! projetos ut fermentum
+						massa justo sit amet risus. Etiam porta sem malesuada magna mollis
+						euismod. Donec sed odio dui.</p>
 					<p>
 						<b:modal id="amodal3" title="Envie um Email"
 							styleClass="modalPseudoClass">
 							<h:form>
-							<p:outputLabel value="Nome" />
-							<b:inputText value=""/>
-							
-							<p:outputLabel value="Email" />
-							<b:inputText value=""/>
-							
-							
-							<p:outputLabel value="Assunto" />
-							<b:inputText value=""/>
-							
-							
-							<p:outputLabel value="Mensagem" />
-							<b:inputTextarea rows="5"  />
-							
-									</h:form>		
+								<p:outputLabel value="Nome" />
+								<b:inputText value="" />
+
+								<p:outputLabel value="Email" />
+								<b:inputText value="" />
+
+
+								<p:outputLabel value="Assunto" />
+								<b:inputText value="" />
+
+
+								<p:outputLabel value="Mensagem" />
+								<b:inputTextarea rows="5" />
+
+							</h:form>
 							<f:facet name="footer">
 								<b:button value="Fechar" dismiss="modal" onclick="return false;" />
 								<b:button value="Ok" look="primary" dismiss="modal"
@@ -61,58 +59,61 @@
 						<b:row>
 
 							<b:column span="3">
-								<button id="btrigger" class="btn btn-info btn-lg" data-target="#amodal3"
-								 data-toggle="modal" style="align:center;" >Entre
-									em Contato</button>
+								<button id="btrigger" class="btn btn-info btn-lg"
+									data-target="#amodal3" data-toggle="modal"
+									style="align: center;">Entre em Contato</button>
 							</b:column>
 
 						</b:row>
 					</p>
 				</b:column>
 			</b:row>
-		
-		<hr/>
-		
+
+			<hr />
+
 			<b:row>
 				<b:column col-md="3">
 					<h2>Anderson Pessoa</h2>
-					<p align="justify" >Gerente do Projeto Platz e desenvolvedor back-end, tem 17
-						anos , mora em São Paulo Capital, está disponivel para novos
-						projetos ut fermentum massa justo sit amet risus. Etiam porta sem
-						malesuada magna mollis euismod. Donec sed odio dui.</p>
+					<p align="justify">Gerente do Projeto Platz e desenvolvedor
+						back-end, tem 17 anos , mora em São Paulo Capital, está disponivel
+						para novos projetos ut fermentum massa justo sit amet risus. Etiam
+						porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
 				</b:column>
-				
-				
+
+
 				<b:column col-md="3">
 					<h2>Christian Xavier</h2>
-					<p align="justify">Especialista no banco de dados e desenvolvedor back-end, tem
-						19 anos , mora em São Paulo Capital, está disponivel para novos
-						projetos ut fermentum massa justo sit amet risus. Etiam porta sem
-						malesuada magna mollis euismod. Donec sed odio dui.</p>			
+					<p align="justify">Especialista no banco de dados e
+						desenvolvedor back-end, tem 19 anos , mora em São Paulo Capital,
+						está disponivel para novos projetos ut fermentum massa justo sit
+						amet risus. Etiam porta sem malesuada magna mollis euismod. Donec
+						sed odio dui.</p>
 				</b:column>
-				
-				
-				
-				
+
+
+
+
 				<b:column col-md="3">
 					<h2>Gabriela Alvarenga</h2>
-					<p align="justify">Especialista em android e desenvolvedora front-end, tem 18
-						anos , mora em São Paulo Capital, está disponivel para novos
-						projetos ut fermentum massa justo sit amet risus. Etiam porta sem
-						malesuada magna mollis euismod. Donec sed odio dui.</p>				 
+					<p align="justify">Especialista em android e desenvolvedora
+						front-end, tem 18 anos , mora em São Paulo Capital, está
+						disponivel para novos projetos ut fermentum massa justo sit amet
+						risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
+						odio dui.</p>
 				</b:column>
 
 				<b:column col-md="3">
 					<h2>Juliana Cerqueira</h2>
-					<p align="justify">Especialista em Android e desenvolvedora front-end, tem 16
-						anos , mora em São Paulo Capital, está disponivel para novos
-						projetos ut fermentum massa justo sit amet risus. Etiam porta sem
-						malesuada magna mollis euismod. Donec sed odio dui.</p>	
+					<p align="justify">Especialista em Android e desenvolvedora
+						front-end, tem 16 anos , mora em São Paulo Capital, está
+						disponivel para novos projetos ut fermentum massa justo sit amet
+						risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
+						odio dui.</p>
 				</b:column>
 
 			</b:row>
 			<hr />
-			
+
 		</b:container>
 	</ui:define>
 

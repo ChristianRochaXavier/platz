@@ -1,5 +1,7 @@
 package platz.bean;
 
+import java.util.Date;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -46,6 +48,13 @@ public class LoginBean {
 		this.perfil = perfil;
 	}
 
+	public void ultimoAcesso(Conta conta) {
+		System.out.println(conta.getUltimoAcesso());
+		conta.setUltimoAcesso(new Date());
+		System.out.println(conta.getUltimoAcesso());
+		new ContaDAO().cadastrar(conta);
+	}
+
 	public String logar() {
 
 		// Criptografia
@@ -74,18 +83,20 @@ public class LoginBean {
 			if (conta.isAtivo() == true) {
 
 				if (conta.getPerfil().equals(Perfil.ADMINISTRADOR)) {// Admin
+					this.ultimoAcesso(conta);
 					return "/Administrador/index?faces-redirect=true";
 
 				} else if (conta.getPerfil().equals(Perfil.EMPRESA)) {
+					this.ultimoAcesso(conta);
 					return "/Empresa/index?faces-redirect=true";
 
 				} else if (conta.getPerfil().equals(Perfil.USUARIO)) {
+					this.ultimoAcesso(conta);
 					return "/Usuario/index?faces-redirect=true";
 
 				} else { // Perfil errado
 					FacesContext.getCurrentInstance().addMessage(null,
 							new FacesMessage(FacesMessage.SEVERITY_ERROR, "Perfil Inválido", "Erro no Login!"));
-
 					return null;
 				}
 			} else {

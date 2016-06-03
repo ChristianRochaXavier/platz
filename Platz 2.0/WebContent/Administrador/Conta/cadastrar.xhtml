@@ -9,7 +9,11 @@
 	<br />
 
 
-	<b:panel rendered="#{contaBean.conta != null}" title="Cadastro de Conta"> 
+	<b:panel rendered="#{contaBean.conta != null}" > 
+	
+	<b:well styleClass="well-cadastro">
+			<h4>Cadastro de Conta</h4>
+		</b:well>
 		
 		<b:row>
 		   <b:inputText value="#{contaBean.conta.email}" span="6" label="Email" 
@@ -42,9 +46,9 @@
 	
 		 		
 		<br />
-		<p:commandButton value="Voltar" action="#{contaBean.voltar()}"
+		<p:commandButton value="Voltar" action="#{contaBean.voltar()}" styleClass="btnConta-volta"
 			update="@form" immediate="true" />
-		<p:commandButton value="Cadastrar" action="#{contaBean.cadastrar()}"
+		<p:commandButton value="Cadastrar" action="#{contaBean.cadastrar()}" styleClass="btnConta-cad"
 			update="@form" />
 </b:panel>
 	

@@ -50,7 +50,7 @@
 	margin-left: 2%;
 	
 }
-.btnVoltar-empresa , .btnCadastrar-empresa
+.btnVoltar-empresa , .btnCadastrar-empresa , .btnConta-cad, .btnConta-volta
 {
 	background: rgba(243, 156, 18,1.0);
 	font-family: Verdana;
@@ -58,7 +58,7 @@
 	font-size: 15px;
 	
 }
-.btnVoltar-empresa
+.btnVoltar-empresa,.btnConta-volta
 {
 	margin-left: 43%;
 }

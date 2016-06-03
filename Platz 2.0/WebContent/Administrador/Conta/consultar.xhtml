@@ -96,7 +96,6 @@
 				oncomplete="PF('confirmarExclusaoDialog').hide()" />
 		</p:confirmDialog>
 
-
 		<b:modal id="amodal" title="Detalhes" styleClass="modalPseudoClass"
 			closeOnEscape="true">
 			<b:panel>
@@ -128,7 +127,9 @@
 
 				<b:row>
 					<b:inputText disabled="true" label="Ultimo Acesso" span="6"
-						value="#{contaBean.contaDetalhe.ultimoAcesso}" />
+						value="#{contaBean.contaDetalhe.ultimoAcesso}" >
+							<f:convertDateTime dateStyle="full"/>
+						</b:inputText>
 				</b:row>
 			</b:panel>
 

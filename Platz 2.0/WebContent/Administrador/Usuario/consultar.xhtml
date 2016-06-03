@@ -7,16 +7,17 @@
 
 
 	<p:panel rendered="#{usuarioBean.rendered == true}">
-		<p:commandButton value="Novo Usuario" 
+		<p:commandButton value="Novo Usuario"
 			action="#{usuarioBean.novoUsuario()}" update="@form" />
 
 		<p:dataTable value="#{usuarioBean.usuarios}"
-			paginatorPosition="bottom" var="usuario" paginator="true" rows="25"
-			emptyMessage="Nenhum Registro Encontrado"
+			widgetVar="tabela-usuario" paginatorPosition="bottom" var="usuario"
+			paginator="true" rows="25" emptyMessage="Nenhum Registro Encontrado"
+			id="tabela-usuario"
 			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 
-			<f:facet name="header"> 
-				<h:outputLabel value="Consulta de Usuarios" /> 
+			<f:facet name="header">
+				<h:outputLabel value="Consulta de Usuarios" />
 			</f:facet>
 
 			<p:column headerText="Id" sortBy="#{usuario.id}">
@@ -51,9 +52,9 @@
 					update="form-usuario
 					" value="Ver mais detalhes" />
 
-				<p:commandButton icon="excluir-icon" value="Excluir"
-					actionListener="#"
-					oncomplete="PF('confirmarExclusaoDialog').show()" />
+				<p:commandButton action="#{usuarioBean.preparaStatus(usuario)}"
+					oncomplete="PF('confirmarStatusDialog').show()"
+					value="#{usuario.conta.ativo ?'Inativar':'Ativar'}" update="@form" />
 
 			</p:column>
 		</p:dataTable>
@@ -62,22 +63,24 @@
 
 		<h:commandLink>
 			<h:graphicImage url="../css/icons/exportar_xls.png" />
-			<p:dataExporter type="xls" target="" fileName="" />
+			<p:dataExporter type="xls" target="tabela-usuario"
+				fileName="Usuários" />
 		</h:commandLink>
 
 		<h:commandLink>
 			<h:graphicImage url="../css/icons/exportar_pdf.png" />
-			<p:dataExporter type="pdf" target="" fileName=""
-				encoding="iso-8859-1" />
+			<p:dataExporter type="pdf" target="tabela-usuario"
+				fileName="Usuários" encoding="iso-8859-1" />
 		</h:commandLink>
 
-		<p:confirmDialog message="Deseja realmente excluir?"
-			widgetVar="confirmarExclusaoDialog">
-			<p:commandButton value="Sim"
-				oncomplete="PF('confirmarExclusaoDialog'.hide()" uptade="@form"
-				action="#" />
-			<p:commandButton value="Não"
-				oncomplete="PF('confirmarExclusaoDialog').hide()" />
+		<p:confirmDialog rendered="#{usuarioBean.usuarioStatus != null}"
+			message="Deseja realmente tornar esse usuário #{usuarioBean.usuarioStatus.conta.ativo? 'Inativo' : 'Ativo' }"
+			widgetVar="confirmarStatusDialog">
+			<p:commandButton value="Sim" uptade="@form"
+				oncomplete="PF('confirmarStatusDialog').hide()"
+				action="#{usuarioBean.inverterAtividade(usuarioBean.usuarioStatus.conta.ativo)}" />
+			<p:commandButton value="Não" update="@form"
+				oncomplete="PF('confirmarStatusDialog').hide()" />
 		</p:confirmDialog>
 
 		<b:modal id="amodal" title="Detalhes" styleClass="modalPseudoClass1">
@@ -85,8 +88,8 @@
 			<b:row>
 				<b:column col-md="4" style="margin-left:35%;">
 					<b:thumbnail>
-						<img src="../resources/img/temp/avatar.png"
-							alt="Generic placeholder thumbnail" />
+						<p:graphicImage id="imgPerfil"
+							url="#{usuarioBean.pegarImagem(usuarioBean.usuarioDetalhe)}" />
 					</b:thumbnail>
 				</b:column>
 			</b:row>
@@ -106,37 +109,50 @@
 
 					<b:inputText label="Data de Nascimento" span="6" readonly="true"
 						value="#{usuarioBean.usuarioDetalhe.dataNascimento}">
-							<f:convertDateTime dateStyle="full"/>
-						</b:inputText>
+						<f:convertDateTime dateStyle="full" />
+					</b:inputText>
 				</b:row>
 
 				<b:row>
-					<b:inputText label="Celular" span="6" readonly="true" value="#{usuarioBean.usuarioDetalhe.celular}" />
+					<b:inputText label="Celular" span="6" readonly="true"
+						value="#{usuarioBean.usuarioDetalhe.celular}" />
 
-					<b:inputText label="Telefone" span="6" readonly="true" value="#{usuarioBean.usuarioDetalhe.telefone}" />
+					<b:inputText label="Telefone" span="6" readonly="true"
+						value="#{usuarioBean.usuarioDetalhe.telefone}" />
 				</b:row>
 
 				<b:row>
-					<b:inputText label="CEP" span="6" readonly="true" value="#{usuarioBean.usuarioDetalhe.endereco.cep}" />
+					<b:inputText label="CEP" span="6" readonly="true"
+						value="#{usuarioBean.usuarioDetalhe.endereco.cep}" />
 
-					<b:inputText label="Rua" span="6" readonly="true" value="#{usuarioBean.usuarioDetalhe.endereco.rua}" />
+					<b:inputText label="Rua" span="6" readonly="true"
+						value="#{usuarioBean.usuarioDetalhe.endereco.rua}" />
 				</b:row>
 
 				<b:row>
-					<b:inputText label="Numero" span="6" readonly="true" value="#{usuarioBean.usuarioDetalhe.endereco.numero}" />
+					<b:inputText label="Numero" span="6" readonly="true"
+						value="#{usuarioBean.usuarioDetalhe.endereco.numero}" />
 
-					<b:inputText label="Bairro" span="6" readonly="true" value="#{usuarioBean.usuarioDetalhe.endereco.bairro}" />
+					<b:inputText label="Bairro" span="6" readonly="true"
+						value="#{usuarioBean.usuarioDetalhe.endereco.bairro}" />
 				</b:row>
 
 				<b:row>
-					<b:inputText label="Cidade" span="6" readonly="true" value="#{usuarioBean.usuarioDetalhe.endereco.cidade.nome}" />
+					<b:inputText label="Cidade" span="6" readonly="true"
+						value="#{usuarioBean.usuarioDetalhe.endereco.cidade.nome}" />
 
-					<b:inputText label="Estado" span="6" readonly="true" value="#{usuarioBean.usuarioDetalhe.endereco.cidade.estado.uf}" />
+					<b:inputText label="Estado" span="6" readonly="true"
+						value="#{usuarioBean.usuarioDetalhe.endereco.cidade.estado.uf}" />
 				</b:row>
 
 				<b:row>
 					<b:inputText label="Complemento" span="6" readonly="true"
 						value="#{usuarioBean.usuarioDetalhe.endereco.complemento}" />
+
+					<b:inputText disabled="true" label="Ultimo Acesso" span="6"
+						value="#{contaBean.contaDetalhe.ultimoAcesso}">
+						<f:convertDateTime dateStyle="full" />
+					</b:inputText>
 				</b:row>
 
 			</b:panel>

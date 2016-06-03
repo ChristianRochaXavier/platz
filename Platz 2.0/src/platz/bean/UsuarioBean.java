@@ -28,12 +28,13 @@ public class UsuarioBean {
 	private Usuario usuarioDetalhe;
 	private Usuario usuarioStatus;
 	private List<Usuario> usuarios;
-	private boolean rendered = true;//caso true mostra a lista, caso false o formulario
+	private boolean rendered = true;// caso true mostra a lista, caso false o
+									// formulario
 
 	// Caminho da imagem estatico
 	static final String CAMINHOIMAGEM = "/resources/img/userPerfil/";
 
-	public UsuarioBean() {		
+	public UsuarioBean() {
 		usuario = new Usuario();
 		usuario.setConta(new Conta());
 		usuario.setEndereco(new Endereco());
@@ -41,51 +42,19 @@ public class UsuarioBean {
 		usuario.getEndereco().getCidade().setEstado(new Estado());
 		usuarioDetalhe = new Usuario();
 		usuarioStatus = new Usuario();
-		usuarios = new UsuarioDAO().listarTodos();		
+		usuarios = new UsuarioDAO().listarTodos();
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public Usuario getUsuarioDetalhe() {
-		return usuarioDetalhe;
-	}
-
-	public void setUsuarioDetalhe(Usuario usuarioDetalhe) {
-		this.usuarioDetalhe = usuarioDetalhe;
-	}
-
-	public Usuario getUsuarioStatus() {
-		return usuarioStatus;
-	}
-
-	public void setUsuarioStatus(Usuario usuarioStatus) {
-		this.usuarioStatus = usuarioStatus;
-	}
-
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
-
-	public void voltar() {		
+	public void voltar() {
 		System.out.println(rendered);
 		rendered = true;
 	}
 
 	// Método que vê o evento de upload do p:upload
 	public void upload(FileUploadEvent event) {
-		
+
 		System.out.println("Entrou no método upload");
-		
+
 		System.out.println("Nome do Arquivo: " + event.getFile().getFileName());
 
 		FacesContext.getCurrentInstance().addMessage(null,
@@ -110,7 +79,7 @@ public class UsuarioBean {
 			fos.write(input);
 			fos.close();
 
-			// System.out.println("Upload OK");
+			System.out.println("Upload OK");
 
 		} catch (IOException e) {
 			System.out.println("Erro: " + e.getMessage());
@@ -119,9 +88,7 @@ public class UsuarioBean {
 		// Seta o caminho da imagem para ser salvo no banco baseado no caminho
 		// estático criado acima
 		usuario.setImagemPerfil(CAMINHOIMAGEM + event.getFile().getFileName());
-		System.out.println(usuario.getImagemPerfil());
-		System.out.println("");
-
+		// System.out.println(usuario.getImagemPerfil());
 	}
 
 	public void cadastrar() {
@@ -155,8 +122,14 @@ public class UsuarioBean {
 		rendered = false;
 	}
 
-	public void alteraStatus() {
-		usuarioStatus.getConta().setAtivo(!usuario.getConta().isAtivo());
+	public void inverterAtividade(boolean status) {
+
+		usuarioStatus.getConta().setAtivo(!status);
+
+		new UsuarioDAO().cadastrar(usuarioStatus);
+		this.zerar();
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Status alterado com sucesso"));
+
 	}
 
 	public void preparaStatus(Usuario usuario) {
@@ -167,8 +140,18 @@ public class UsuarioBean {
 		this.usuarioDetalhe = usuario;
 	}
 
-	public void novoUsuario() {		
-		rendered = false;		
+	public void novoUsuario() {
+		rendered = false;
+	}
+
+	public String pegarImagem(Usuario usuario) {
+
+		if (usuario.getImagemPerfil() == null || usuario.getImagemPerfil().equals("")) {
+			return "/resources/img/userPerfil/user.png";
+		} else {
+			return usuario.getImagemPerfil();
+		}
+
 	}
 
 	public void zerar() {
@@ -181,6 +164,38 @@ public class UsuarioBean {
 		usuarioDetalhe = new Usuario();
 		usuarioStatus = new Usuario();
 		usuarios = new UsuarioDAO().listarTodos();
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Usuario getUsuarioDetalhe() {
+		return usuarioDetalhe;
+	}
+
+	public void setUsuarioDetalhe(Usuario usuarioDetalhe) {
+		this.usuarioDetalhe = usuarioDetalhe;
+	}
+
+	public Usuario getUsuarioStatus() {
+		return usuarioStatus;
+	}
+
+	public void setUsuarioStatus(Usuario usuarioStatus) {
+		this.usuarioStatus = usuarioStatus;
+	}
+
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 
 	public boolean isRendered() {

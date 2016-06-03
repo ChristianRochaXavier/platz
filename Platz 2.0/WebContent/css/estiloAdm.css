@@ -17,6 +17,7 @@
 {
 	margin: 0 auto;
 	width:70%;
+	
 }
 
 .img-destaque
@@ -62,6 +63,10 @@
 .btnVoltar-empresa,.btnConta-volta , .btnVoltar-evento
 {
 	margin-left: 43%;
+}
+.btnDestaque
+{
+	margin-left:25%;
 }
 .btnCadastrar-empresa
 {

@@ -1,15 +1,15 @@
 $(document).ready(
 
 		function() {
-			
-			//Variáveis
+
+			// Variáveis
 			var txtCep = $("#form-usuario\\:txtCep");
 			var rua = $("#input_form-usuario\\:txtRua");
 			var bairro = $("#input_form-usuario\\:txtBairro");
 			var cidade = $("#input_form-usuario\\:txtCidade");
 			var estado = $("#input_form-usuario\\:txtEstado");
-			
-			function limparCep() { 
+
+			function limparCep() {
 				// Limpa valores do formulário de cep.
 				rua.val("");
 				bairro.val("");

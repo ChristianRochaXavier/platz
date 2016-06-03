@@ -5,18 +5,21 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 	<br />
- 
+
 	<b:panel rendered="#{usuarioBean.rendered == false}">
 
 		<b:well styleClass="well-cadastro">
 			<h4>Informações da Conta</h4>
-		</b:well> 
+		</b:well>
 
 		<b:row>
 			<b:column col-md="8" style="margin-left:17%;">
 				<p:fileUpload mode="advanced" fileLimit="1" id="upImgPerfil"
-					label="Imagem de Perfil" span="6"
-					fileLimitMessage="Apenas uma imagem pode ser enviada" auto="true"
+					invalidFileMessage="Arquivo inválido"
+					label="Selecione a Imagem de Perfil" uploadLabel="Salvar"
+					cancelLabel="Cancelar" span="6"
+					allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+					fileLimitMessage="Apenas uma imagem pode ser enviada"
 					dragDropSupport="true" fileUploadListener="#{usuarioBean.upload}" />
 			</b:column>
 		</b:row>
@@ -72,7 +75,8 @@
 			<b:column col-md="4">
 				<span style="font-weight: bold;">Data de Nascimento</span>
 
-				<p:calendar size="20" id="txtDataNascimento" pattern="dd/MM/yyyy" value="#{usuarioBean.usuario.dataNascimento}" />
+				<p:calendar size="20" id="txtDataNascimento" pattern="dd/MM/yyyy"
+					value="#{usuarioBean.usuario.dataNascimento}" />
 			</b:column>
 		</b:row>
 
@@ -101,7 +105,7 @@
 		</b:well>
 		<br />
 		<br />
- 
+
 		<b:row>
 			<b:column col-md="4">
 				<span style="font-weight: bold;">CEP</span>
@@ -141,8 +145,9 @@
 		</b:row>
 
 		<br />
-		<p:commandButton immediate="true" value="Voltar" action="#{usuarioBean.voltar}" update="form-usuario" styleClass="btnVoltar-empresa" /> 
-
+		<p:commandButton immediate="true" value="Voltar"
+			action="#{usuarioBean.voltar}" update="form-usuario"
+			styleClass="btnVoltar-empresa" />
 
 		<p:commandButton value="Cadastrar" action="#{usuarioBean.cadastrar()}"
 			update="@form" styleClass="btnCadastrar-empresa" />

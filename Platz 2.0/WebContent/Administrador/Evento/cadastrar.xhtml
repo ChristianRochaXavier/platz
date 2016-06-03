@@ -3,63 +3,68 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui" 	xmlns:b="http://bootsfaces.net/ui">
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
 	<br />
-	
-	<b:panel> 
+
+	<b:panel>
 		<b:well styleClass="well-cadastro">
 			<h4>Cadastro de Evento</h4>
 		</b:well>
-		 <b:row>
-		 <b:column col-md="8" style="margin-left:17%;">
-		  <p:fileUpload mode="advanced" fileLimit="1" id="upImgPerfil"  label="Imagem do Evento" span="6"
-		fileLimitMessage="Apenas uma imagem pode ser enviada" auto="true"
-		dragDropSupport="true" fileUploadListener="#{eventoBean.upload}" />		
-		</b:column>	
-		 </b:row>
-		 
-		 <hr/>
-		 
-		 <b:row>
-		 <b:selectOneMenu value="#" 
-		   span="6" label="Categoria do Evento : " >
-		   <f:selectItem itemLabel="--Selecione a Categoria--"
-							itemValue="#{null}" /> 
-						<f:selectItems value="#" var=""
-							itemLabel="#" itemValue="#" />
-		   </b:selectOneMenu>
-		   
-		   <b:inputText value="#" span="6" label="Evento" 
-		   placeholder="Ex: 15 Fest" />
-		 </b:row>
-		 <hr/>
 		<b:row>
-		   <b:inputTextarea value="#" span="12" rows="5" label="Detalhes" />
-		 </b:row>
-		  <hr/>
-		  
-		 <b:row>
-		 <b:column col-md="3">
-		  <span style="font-weight: bold;">Data de Inicio</span><br/>
-		 <p:calendar id="txtDataInicio" size="20" />
-		 </b:column>
-		 <b:column col-md="3">
-		   <span style="font-weight: bold; ">Data de Termino</span><br/>
-		 <p:calendar id="txtDataTermino" size="20"/>
-		 </b:column>
-		  <b:inputText value="#" span="3" label="Horario Inicio" 
-		   placeholder="00:00" />
-		   <b:inputText value="#" span="3" label="Horario Termino" 
-		   placeholder="00:00" />
-		 </b:row> 
-		 <hr/>
-		 <b:row>
-		 <b:inputText value="#" span="4" label="Lotação Minima" />
-		   <b:inputText value="#" span="4" label="Lotação Maxima" />
-		 <b:inputText value="#" span="4" label="Preço" />
-		 </b:row>
-		  <br />
+			<b:column col-md="8" style="margin-left:17%;">
+				<p:fileUpload mode="advanced" fileLimit="1" id="upImgPerfil"
+					label="Imagem do Evento" span="6"
+					fileLimitMessage="Apenas uma imagem pode ser enviada" auto="true"
+					dragDropSupport="true" fileUploadListener="#{eventoBean.upload}" />
+			</b:column>
+		</b:row>
+
+		<hr />
+
+		<b:row>
+			<b:selectOneMenu value="#" span="6" label="Categoria do Evento : ">
+				<f:selectItem itemLabel="--Selecione a Categoria--"
+					itemValue="#{null}" />
+				<f:selectItems value="#" var="" itemLabel="#" itemValue="#" />
+			</b:selectOneMenu>
+
+			<b:inputText value="#" span="6" label="Evento"
+				placeholder="Ex: 15 Fest" />
+		</b:row>
+		<hr />
+		<b:row>
+			<b:inputTextarea value="#" span="12" rows="5" label="Detalhes" />
+		</b:row>
+		<hr />
+
+		<b:row>
+			<b:column col-md="3">
+				<span style="font-weight: bold;">Data de Inicio</span>
+				<br />
+				<p:calendar id="txtDataInicio" size="20" />
+			</b:column>
+			<b:column col-md="3">
+				<span style="font-weight: bold;">Data de Termino</span>
+				<br />
+				<p:calendar id="txtDataTermino" size="20" />
+			</b:column>
+			<b:inputText value="#" span="3" label="Horario Inicio"
+				placeholder="00:00" />
+			<b:inputText value="#" span="3" label="Horario Termino"
+				placeholder="00:00" />
+		</b:row>
+		<hr />
+		<b:row>
+			<b:inputText value="#" span="4" label="Lotação Minima" />
+			<b:inputText value="#" span="4" label="Lotação Maxima" />
+			<b:inputText span="4" label="Preço">
+				<f:facet name="prepend">
+					<h:outputText value="$" />
+				</f:facet>
+			</b:inputText>
+		</b:row>
+		<br />
 		<br />
 
 		<b:well styleClass="well-cadastro">
@@ -67,55 +72,63 @@
 		</b:well>
 		<br />
 		<br />
-		  
-		  <b:row>
+
+		<b:row>
 			<b:column col-md="4">
-			<span style="font-weight: bold;">CEP</span>
-			<p:inputMask mask="99999-999" id="txtCep" size="30" value="#" styleClass="inputCad-Evento"/>
+				<span style="font-weight: bold;">CEP</span>
+				<p:inputMask mask="99999-999" id="txtCep" size="30" value="#"
+					styleClass="inputCad-Evento" />
 			</b:column>
 			<b:column col-md="4">
-			<span style="font-weight: bold;">Numero</span>
-			<p:inputText maxlength="13" size="30" value="#" styleClass="inputCad-Evento" />
+				<span style="font-weight: bold;">Numero</span>
+				<p:inputText maxlength="13" size="30" value="#"
+					styleClass="inputCad-Evento" />
 			</b:column>
 			<b:column col-md="4">
-			<span style="font-weight: bold;">Complemento</span>
-			<p:inputText maxlength="13" size="30" value="#" styleClass="inputCad-Evento" />
+				<span style="font-weight: bold;">Complemento</span>
+				<p:inputText maxlength="13" size="30" value="#"
+					styleClass="inputCad-Evento" />
 			</b:column>
 		</b:row>
-		 <hr/>
-		 <b:row>
-		 <b:inputText value="#" span="6" label="Rua" 
-		   placeholder="Rua , AV. " />
-		 <b:inputText value="#" span="6" label="Bairro" />		   
-		   
-		 </b:row>
-		 <hr/>
-		 <b:row>
-		 <b:inputText value="#" span="6" label="Cidade" />
-		 <b:inputText value="#" span="6" label="Estado" />		   
-		   
-		 </b:row>
-		 <hr/>
-		 <b:row>
-		 
-		 <b:selectOneMenu span="8" label="Gostaria de Deixar seu evento em Destaque?" value="">
-		 <f:selectItem itemLabel="--Selecione--"
-							itemValue="#{null}" /> 
-						<f:selectItems value="#" var=""
-							itemLabel="#" itemValue="#" />
-		   </b:selectOneMenu>	   
-		   
-		 </b:row>
-	
-		 		
-		<br />
-		<p:commandButton value="Voltar" action="#" styleClass="btnVoltar-evento" 
-			update="@form" immediate="true" />
-		<p:commandButton value="Cadastrar" action="#" styleClass="btnCad-evento" 
-			update="@form" />
-		</b:panel>
+		<hr />
+		<b:row>
+			<b:inputText value="#" span="6" label="Rua" placeholder="Rua , AV. " />
+			<b:inputText value="#" span="6" label="Bairro" />
 
-	
+		</b:row>
+		<hr />
+		<b:row>
+			<b:inputText value="#" span="6" label="Cidade" />
+			<b:inputText value="#" span="6" label="Estado" />
+
+		</b:row>
+		<hr />
+		<b:row>
+
+			<b:column col-md="4" />
+
+			<b:column col-md="6">
+				<span style="font-weight: bold;">Gostaria de deixar seu
+					evento em destaque ?</span>
+					<br/>
+					<br/>
+
+				<p:selectBooleanButton onLabel="Não" offLabel="Sim" id="destaque" value="#" styleClass="btnDestaque"/>
+
+			</b:column>
+
+
+		</b:row>
+
+		<hr />
+		<br />
+		<p:commandButton value="Voltar" action="#"
+			styleClass="btnVoltar-evento" update="@form" immediate="true" />
+		<p:commandButton value="Cadastrar" action="#"
+			styleClass="btnCad-evento" update="@form" />
+	</b:panel>
+
+
 
 
 </ui:composition>

@@ -44,13 +44,14 @@
 	color: white;
 	font-weight: bold;
 }
-.inputCad-Empresa , .inputCad-Usuario
+.inputCad-Empresa , .inputCad-Usuario, .inputCad-Evento
 {
 	padding: 7px;
 	margin-left: 2%;
 	
 }
-.btnVoltar-empresa , .btnCadastrar-empresa , .btnConta-cad, .btnConta-volta
+.btnVoltar-empresa , .btnCadastrar-empresa , .btnConta-cad, .btnConta-volta ,
+.btnCad-evento , .btnVoltar-evento
 {
 	background: rgba(243, 156, 18,1.0);
 	font-family: Verdana;
@@ -58,7 +59,7 @@
 	font-size: 15px;
 	
 }
-.btnVoltar-empresa,.btnConta-volta
+.btnVoltar-empresa,.btnConta-volta , .btnVoltar-evento
 {
 	margin-left: 43%;
 }

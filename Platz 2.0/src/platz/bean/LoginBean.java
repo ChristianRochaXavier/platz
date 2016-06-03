@@ -55,9 +55,7 @@ public class LoginBean {
 	}
 	public void logoff() throws IOException{		
 		System.out.println(conta.getLogin());
-		this.conta = new Conta();				
-		FacesContext.getCurrentInstance().getExternalContext().redirect("../");
-		System.out.println("   ");
+		this.conta = null;
 	}
 
 	public String logar() {

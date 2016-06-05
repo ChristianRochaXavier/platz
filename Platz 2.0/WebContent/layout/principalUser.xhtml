@@ -3,15 +3,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui" 
-	xmlns:b="http://bootsfaces.net/ui">
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
-	<title><ui:insert name="titulo" /> - PLATZ</title>	
-	
-	<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/estilo.css" />
-	<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/nav.css" />
-	<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/estiloUsuario.css" />
+	<title><ui:insert name="titulo" /> - PLATZ</title>
+
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/css/estilo.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/css/nav.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/css/estiloUsuario.css" />
 	<script type="text/javascript" src="/js/jquery-2.2.3.js"></script>
 	<ui:insert name="css-link" />
 </h:head>
@@ -31,31 +33,32 @@
 			<b:navLink value="Ranking" href="#"></b:navLink>
 			<b:navLink value="Categoria Dos Eventos" href="#"></b:navLink>
 			<b:navLink value="Empresas" href="#"></b:navLink>
-			
-			
+
+
 		</b:navbarLinks>
 		<b:navbarLinks id="link-perfil">
-        <b:dropMenu  value="Meu Perfil" icon="user" >
-               
-				<b:column col-md="12" >
-				
+			<b:dropMenu value="Meu Perfil" icon="user">
+
+				<b:column col-md="12">
+
 					<b:thumbnail>
-					<p:graphicImage id="imgPerfil" alt="Imagem de perfil do usuario"
-							url="#{usuarioBean.pegarImagem(loginBean.usuarioLogado)}" />						
+						<p:graphicImage id="imgPerfil" alt="Imagem de perfil do usuario"
+							url="#{usuarioBean.pegarImagem(loginBean.usuarioLogado)}" />
 					</b:thumbnail>
-				</b:column> 
-				 <p:outputLabel styleClass="nome-perfil" value="#{loginBean.nomeUsuario()}" />
+				</b:column>
+				<p:outputLabel styleClass="nome-perfil"
+					value="#{loginBean.nomeUsuario()}" />
 				<b:navLink styleClass="linha"></b:navLink>
-            <b:navLink value="Configurações" icon="cog" href="#"></b:navLink>
-            <b:navLink value="Sair" icon="log-out" href="../"></b:navLink>
-        </b:dropMenu>
-            </b:navbarLinks>
-            
+				<b:navLink value="Configurações" icon="cog" href="#"></b:navLink>
+				<b:navLink value="Sair" icon="log-out" href="../"></b:navLink>
+			</b:dropMenu>
+		</b:navbarLinks>
+
 	</b:navBar>
 
 	<ui:insert name="corpoPagina" />
 
-	<!-- Footer -->	
+	<!-- Footer -->
 	<script type="text/javascript" src="/js/footer.js"></script>
 	<ui:insert name="posFooter" />
 </h:body>

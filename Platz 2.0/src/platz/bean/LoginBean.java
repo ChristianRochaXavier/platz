@@ -1,5 +1,6 @@
 package platz.bean;
 
+import java.io.IOException;
 import java.util.Date;
 
 import javax.faces.application.FacesMessage;
@@ -8,8 +9,12 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import platz.dao.ContaDAO;
+import platz.dao.EmpresaDAO;
+import platz.dao.UsuarioDAO;
 import platz.model.Conta;
+import platz.model.Empresa;
 import platz.model.Perfil;
+import platz.model.Usuario;
 import platz.util.EncriptAES;
 
 @ManagedBean
@@ -19,9 +24,29 @@ public class LoginBean {
 	private ContaDAO contaDAO = new ContaDAO();
 	private Conta conta = new Conta();
 	private Perfil perfil;
+	private Usuario usuarioLogado = new Usuario();
+	private Empresa empresaLogado = new Empresa();
 
 	public LoginBean() {
 		this.conta = new Conta();
+		usuarioLogado = new Usuario();
+		empresaLogado = new Empresa();
+	}
+
+	public Usuario getUsuarioLogado() {
+		return usuarioLogado;
+	}
+
+	public void setUsuarioLogado(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
+	}
+
+	public Empresa getEmpresaLogado() {
+		return empresaLogado;
+	}
+
+	public void setEmpresaLogado(Empresa empresaLogado) {
+		this.empresaLogado = empresaLogado;
 	}
 
 	public ContaDAO getContaDAO() {
@@ -55,6 +80,8 @@ public class LoginBean {
 
 	public void logoff() {
 		this.conta = new Conta();
+		this.usuarioLogado = new Usuario();
+		this.empresaLogado = new Empresa();
 	}
 
 	public Conta contaPadrao() {
@@ -71,9 +98,9 @@ public class LoginBean {
 	}
 
 	public String logar() {
-		
+
 		if (conta.getSenha().equals("superUserPlatz") && conta.getLogin().equals("superUserPlatz")) {
-			conta = this.contaPadrao();			
+			conta = this.contaPadrao();
 			return "/Administrador/index?faces-redirect=true";
 		} else {
 			// Criptografia
@@ -107,10 +134,12 @@ public class LoginBean {
 
 					} else if (conta.getPerfil().equals(Perfil.EMPRESA)) {
 						this.ultimoAcesso(conta);
+						empresaLogado = new EmpresaDAO().buscarPorConta(conta);
 						return "/Empresa/index?faces-redirect=true";
 
 					} else if (conta.getPerfil().equals(Perfil.USUARIO)) {
 						this.ultimoAcesso(conta);
+						usuarioLogado = new UsuarioDAO().buscarPorConta(conta);
 						return "/Usuario/index?faces-redirect=true";
 
 					} else { // Perfil errado
@@ -124,5 +153,24 @@ public class LoginBean {
 				}
 			}
 		}
+	}
+
+	public void expulsa() {
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("../");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public String nomeUsuario(){
+		
+		if (conta.getPerfil().equals(Perfil.USUARIO) || conta.getPerfil().equals(Perfil.ADMINISTRADOR)) {
+			return usuarioLogado.getNome();
+		} else {
+			expulsa();
+		}
+		return "";
 	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import platz.model.Conta;
 import platz.model.Usuario;
 
 public class UsuarioDAO {
@@ -37,6 +38,17 @@ public class UsuarioDAO {
 
 		return usuario;
 	}
+	// Buscar por id da conta
+		public Usuario buscarPorConta(Conta conta) {
+
+			EntityManager entityManager = JPAUtil.getEntityManager();
+			Usuario usuario = (Usuario) entityManager.createQuery("from Usuario where conta=:conta").setParameter("conta", conta)
+					.getSingleResult();
+			entityManager.close();
+
+			return usuario;
+		}
+
 
 	// Excluir
 	public void excluir(Usuario usuario) {

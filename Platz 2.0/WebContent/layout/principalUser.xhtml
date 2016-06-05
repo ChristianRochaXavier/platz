@@ -24,7 +24,7 @@
 		brandHref="index.jsf" fluid="true">
 
 		<b:navbarLinks id="link-menuUser">
-			<b:navLink value="Home" href="../Administrador/index.xhtml"></b:navLink>
+			<b:navLink value="Home" href="../Usuario/Home"></b:navLink>
 			<b:navLink value="Minhas Avaliações" href="#"></b:navLink>
 			<b:navLink value="Eventos Passados" href="#"></b:navLink>
 			<b:navLink value="Proximos Eventos" href="#"></b:navLink>
@@ -44,10 +44,10 @@
 							alt="Generic placeholder thumbnail" />	
 					</b:thumbnail>
 				</b:column> 
-				 <p:outputLabel styleClass="nome-perfil" value="Nome" />
+				 <p:outputLabel styleClass="nome-perfil" value="#{loginBean.nomeUsuario()}" />
 				<b:navLink styleClass="linha"></b:navLink>
             <b:navLink value="Configurações" icon="cog" href="#"></b:navLink>
-            <b:navLink value="Sair" icon="log-out" href="#"></b:navLink>
+            <b:navLink value="Sair" icon="log-out" href="../"></b:navLink>
         </b:dropMenu>
             </b:navbarLinks>
             

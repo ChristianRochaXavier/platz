@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import platz.model.Conta;
 import platz.model.Empresa;
 
 
@@ -33,6 +34,17 @@ public class EmpresaDAO {
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		Empresa empresa= (Empresa) entityManager.createQuery("from Empresa where id=:id")
 				.setParameter("id", id).getSingleResult();
+		entityManager.close();
+
+		return empresa;
+	}
+
+	// Buscar por conta
+	public Empresa buscarPorConta(Conta conta) {
+
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		Empresa empresa= (Empresa) entityManager.createQuery("from Empresa where conta=:conta")
+				.setParameter("conta", conta).getSingleResult();
 		entityManager.close();
 
 		return empresa;

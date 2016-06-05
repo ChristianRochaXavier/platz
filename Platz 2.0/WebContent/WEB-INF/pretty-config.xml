@@ -1,8 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
                        http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
- 
+
 	<!-- Mapeamento para a pagina inicial -->
 	<url-mapping id="Home">
 		<pattern value="/Home" />
@@ -131,12 +132,30 @@
 		<view-id value="/Administrador/categoriaEvento.jsf" />
 	</url-mapping>
 
+	<!--Area Administrativa - Mapeamento para o CRUD de Cidade -->
+	<url-mapping id="Admin-cidade">
+		<pattern value="/Administrador/cidade" />
+		<view-id value="/Administrador/cidade.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-cidadeFolder">
+		<pattern value="/Administrador/Cidade/" />
+		<view-id value="/Administrador/cidade.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-cidadeFolderConsultaJSF">
+		<pattern value="/Administrador/Cidade/consultar.jsf" />
+		<view-id value="/Administrador/cidade.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-cidadeFolderConsultaXHTML">
+		<pattern value="/Administrador/Cidade/consultar.xhtml" />
+		<view-id value="/Administrador/cidade.jsf" />
+	</url-mapping>
+
 	<!--Area Administrativa - Mapeamento para o CRUD de Conta -->
-	<url-mapping id="Admin-contaEvento">
+	<url-mapping id="Admin-conta">
 		<pattern value="/Administrador/conta" />
 		<view-id value="/Administrador/conta.jsf" />
 	</url-mapping>
-	<url-mapping id="Admin-contaEventoFolder">
+	<url-mapping id="Admin-contaFolder">
 		<pattern value="/Administrador/Conta/" />
 		<view-id value="/Administrador/conta.jsf" />
 	</url-mapping>
@@ -158,11 +177,11 @@
 	</url-mapping>
 
 	<!--Area Administrativa - Mapeamento para o CRUD de Empresa -->
-	<url-mapping id="Admin-empresaEvento">
+	<url-mapping id="Admin-empresa">
 		<pattern value="/Administrador/empresa" />
 		<view-id value="/Administrador/empresa.jsf" />
 	</url-mapping>
-	<url-mapping id="Admin-empresaEventoFolder">
+	<url-mapping id="Admin-empresaFolder">
 		<pattern value="/Administrador/Empresa/" />
 		<view-id value="/Administrador/empresa.jsf" />
 	</url-mapping>
@@ -184,11 +203,11 @@
 	</url-mapping>
 
 	<!--Area Administrativa - Mapeamento para o CRUD de Endereço -->
-	<url-mapping id="Admin-enderecoEvento">
+	<url-mapping id="Admin-endereco">
 		<pattern value="/Administrador/endereco" />
 		<view-id value="/Administrador/endereco.jsf" />
 	</url-mapping>
-	<url-mapping id="Admin-enderecoEventoFolder">
+	<url-mapping id="Admin-enderecoFolder">
 		<pattern value="/Administrador/Endereco/" />
 		<view-id value="/Administrador/endereco.jsf" />
 	</url-mapping>
@@ -201,30 +220,12 @@
 		<view-id value="/Administrador/endereco.jsf" />
 	</url-mapping>
 
-	<!--Area Administrativa - Mapeamento para o CRUD de Estado -->
-	<url-mapping id="Admin-estadoEvento">
-		<pattern value="/Administrador/estado" />
-		<view-id value="/Administrador/estado.jsf" />
-	</url-mapping>
-	<url-mapping id="Admin-estadoEventoFolder">
-		<pattern value="/Administrador/Estado/" />
-		<view-id value="/Administrador/estado.jsf" />
-	</url-mapping>
-	<url-mapping id="Admin-estadoFolderConsultaJSF">
-		<pattern value="/Administrador/Estado/consultar.jsf" />
-		<view-id value="/Administrador/estado.jsf" />
-	</url-mapping>
-	<url-mapping id="Admin-estadoFolderConsultaXHTML">
-		<pattern value="/Administrador/Estado/consultar.xhtml" />
-		<view-id value="/Administrador/estado.jsf" />
-	</url-mapping>
-
 	<!--Area Administrativa - Mapeamento para o CRUD de Evento -->
-	<url-mapping id="Admin-eventoEvento">
+	<url-mapping id="Admin-evento">
 		<pattern value="/Administrador/evento" />
 		<view-id value="/Administrador/evento.jsf" />
 	</url-mapping>
-	<url-mapping id="Admin-eventoEventoFolder">
+	<url-mapping id="Admin-eventoFolder">
 		<pattern value="/Administrador/Evento/" />
 		<view-id value="/Administrador/evento.jsf" />
 	</url-mapping>
@@ -246,11 +247,11 @@
 	</url-mapping>
 
 	<!--Area Administrativa - Mapeamento para o CRUD de Mensagem -->
-	<url-mapping id="Admin-mensagemEvento">
+	<url-mapping id="Admin-mensagem">
 		<pattern value="/Administrador/mensagem" />
 		<view-id value="/Administrador/mensagem.jsf" />
 	</url-mapping>
-	<url-mapping id="Admin-mensagemEventoFolder">
+	<url-mapping id="Admin-mensagemFolder">
 		<pattern value="/Administrador/Mensagem/" />
 		<view-id value="/Administrador/mensagem.jsf" />
 	</url-mapping>
@@ -264,11 +265,11 @@
 	</url-mapping>
 
 	<!--Area Administrativa - Mapeamento para o CRUD de Postagem -->
-	<url-mapping id="Admin-postagemEvento">
+	<url-mapping id="Admin-postagem">
 		<pattern value="/Administrador/postagem" />
 		<view-id value="/Administrador/postagem.jsf" />
 	</url-mapping>
-	<url-mapping id="Admin-postagemEventoFolder">
+	<url-mapping id="Admin-postagemFolder">
 		<pattern value="/Administrador/Postagem/" />
 		<view-id value="/Administrador/postagem.jsf" />
 	</url-mapping>
@@ -282,11 +283,11 @@
 	</url-mapping>
 
 	<!--Area Administrativa - Mapeamento para o CRUD de Tipo de Presenca -->
-	<url-mapping id="Admin-tipoPresencaEvento">
+	<url-mapping id="Admin-tipoPresenca">
 		<pattern value="/Administrador/tipoPresenca" />
 		<view-id value="/Administrador/tipoPresenca.jsf" />
 	</url-mapping>
-	<url-mapping id="Admin-tipoPresencaEventoFolder">
+	<url-mapping id="Admin-tipoPresencaFolder">
 		<pattern value="/Administrador/TipoPresenca/" />
 		<view-id value="/Administrador/tipoPresenca.jsf" />
 	</url-mapping>
@@ -304,7 +305,7 @@
 		<pattern value="/Administrador/usuario" />
 		<view-id value="/Administrador/usuario.jsf" />
 	</url-mapping>
-	<url-mapping id="Admin-usuarioEventoFolder">
+	<url-mapping id="Admin-usuarioFolder">
 		<pattern value="/Administrador/Usuario/" />
 		<view-id value="/Administrador/usuario.jsf" />
 	</url-mapping>

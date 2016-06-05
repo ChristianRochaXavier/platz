@@ -1,5 +1,6 @@
 package platz.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,10 +18,10 @@ public class Empresa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="idConta")
 	private Conta conta;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="idEndereco")
 	private Endereco endereco;
 	private String cnpj;
@@ -81,7 +82,7 @@ public class Empresa {
 	}
 	
 	@NotEmpty(message = "O telefone deve ser informado")
-	@Length(min = 9, max = 10, message = "Telefone inválido")
+	@Length(min = 5, max = 15, message = "Telefone inválido")
 	public String getTelefone() {
 		return telefone;
 	}

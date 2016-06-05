@@ -153,6 +153,8 @@ public class LoginBean {
 			}
 		}
 	}
+	
+	
 
 	public void expulsa() {
 		try {
@@ -173,6 +175,8 @@ public class LoginBean {
 		}
 		return "";
 	}
+	
+	
 	public String nomeAdministrador(){
 		if(conta.getPerfil() == null){
 			expulsa();

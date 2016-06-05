@@ -3,14 +3,15 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:b="http://bootsfaces.net/ui">
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
-	<p:panel>
+	<p:panel rendered="#{empresaBean.rendered == true}">
+		<p:commandButton value="Nova Empresa"
+			action="#{empresaBean.novaEmpresa}" update="@form" />
 
-
-		<p:dataTable value="#" paginatorPosition="bottom" var=""
-			paginator="true" rows="25" emptyMessage="Nenhum Registro Encontrado"
+		<p:dataTable value="#{empresaBean.empresas}"
+			paginatorPosition="bottom" var="empresa" paginator="true" rows="25"
+			emptyMessage="Nenhum Registro Encontrado"
 			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 			<f:facet name="header">
 				<h:outputLabel value="Consulta de Empresa" />
@@ -18,27 +19,28 @@
 
 			<p:column headerText="Nome Fantasia" sortBy="#" filterBy="#"
 				filterMatchMode="contains">
-				<h:outputText value="#" />
+				<h:outputText value="#{empresa.nomeFantasia}" />
 			</p:column>
 
 			<p:column headerText="CNPJ" sortBy="#" filterBy="#"
 				filterMatchMode="contains">
-				<h:outputText value="#" />
+				<h:outputText value="#{empresa.cnpj}" />
 			</p:column>
 
 
 			<p:column width="28%" exportable="false" headerText="Opções">
 
 				<p:commandButton icon="editar-icon" value="Editar"
-					oncomplete="PF('editarDialog').show()" action="#" />
-					
-					<p:commandButton action="#"
-					oncomplete="$('.modalPseudoClass1').modal();return false;" update="form-empresa"
-					value="Ver mais detalhes" />
+					oncomplete="PF('editarDialog').show()"
+					action="#{empresaBean.editar(empresa)}" />
 
-				<p:commandButton icon="excluir-icon" value="Excluir"
-					actionListener="#"
-					oncomplete="PF('confirmarExclusaoDialog').show()" />
+				<p:commandButton action="#{empresaBean.detalhes(empresa)}"
+					oncomplete="$('.modalPseudoClass1').modal();return false;"
+					update="form-empresa" value="Ver mais detalhes" />
+
+				<p:commandButton action="#{empresaBean.preparaStatus(empresa)}"
+					oncomplete="PF('confirmarStatusDialog').show()"
+					value="#{empresa.conta.ativo ?'Inativar':'Ativar'}" update="@form" />
 
 			</p:column>
 		</p:dataTable>
@@ -57,96 +59,89 @@
 				encoding="iso-8859-1" />
 		</h:commandLink>
 
-
-		<p:confirmDialog message="Deseja realmente excluir "
-			widgetVar="confirmarExclusaoDialog">
-			<p:commandButton value="Sim"
-				oncomplete="PF('confirmarExclusaoDialog'.hide()" uptade=""
-				action="#" />
-			<p:commandButton value="Não" action="#"
-				oncomplete="PF('confirmarExclusaoDialog').hide()" />
+		<p:confirmDialog rendered="#{empresaBean.empresaStatus != null}"
+			message="Deseja realmente tornar essa empresa #{empresaBean.empresaStatus.conta.ativo? 'Inativo' : 'Ativo' }"
+			widgetVar="confirmarStatusDialog">
+			<p:commandButton value="Sim" uptade="@form"
+				oncomplete="PF('confirmarStatusDialog').hide()"
+				action="#{empresaBean.inverterAtividade(empresaBean.empresaStatus.conta.ativo)}" />
+			<p:commandButton value="Não" update="@form"
+				oncomplete="PF('confirmarStatusDialog').hide()" />
 		</p:confirmDialog>
-		
-		
+
+
 		<b:modal id="amodal" title="Detalhes" styleClass="modalPseudoClass1">
-		
-		<b:row>
-                <b:column col-md="4" style="margin-left:35%;">
-                    <b:thumbnail>
-                        <img src ="../resources/img/temp/avatar.png" alt="Generic placeholder thumbnail"/>
-                    </b:thumbnail>
-                </b:column>
-   	   </b:row>
-   	   
-   	   <b:panel>
-   	   
-   	   <b:row>
-   	   <b:inputText label="Razão Social" span="6" readonly="true"
-   	    value="#" />
-   	   
-   	   <b:inputText label="CNPJ" span="6" readonly="true"
-   	    value="#" />
-   	   </b:row>
-   	   
-   	   <b:row>
-   	   
-   	   <b:inputText label="Nome Fantasia" span="6" readonly="true"
-   	    value="#" />
-   	   
-   	   <b:inputText label="Login" span="6" readonly="true"
-   	    value="#" />
 
-   	   </b:row>
-   	   
-   	   <b:row>	   
-   	   <b:inputText label="Email" span="6" readonly="true"
-   	    value="#" />
-   	    
-   	   <b:inputText label="Ativa/Inativa" span="6" readonly="true"
-   	    value="#" />
+			<b:row>
+				<b:column col-md="4" style="margin-left:35%;">
+					<b:thumbnail>
+						<p:graphicImage id="imgPerfil"
+							url="#{empresaBean.pegarImagem(empresaBean.empresaDetalhe)}" />
+					</b:thumbnail>
+				</b:column>
+			</b:row>
 
-   	   </b:row>
-   	   
-   	   <b:row>
-   	   <b:inputText label="Telefone" span="6" readonly="true"
-   	    value="#" />
-   	   
-   	   <b:inputText label="CEP" span="6" readonly="true"
-   	    value="#" />
-  
-   	   </b:row>
-   	   
-   	   <b:row>
-   	   <b:inputText label="Rua" span="6" readonly="true"
-   	    value="#" />
-   	   
-   	   <b:inputText label="Numero" span="6" readonly="true"
-   	    value="#" />
+			<b:panel>
 
-   	   </b:row>
-   	   
-   	   <b:row>
-   	   <b:inputText label="Bairro" span="6" readonly="true"
-   	    value="#" />
-   	    <b:inputText label="Complemento" span="6" readonly="true"
-   	    value="#" />
-   	   
-   	   </b:row>
-   	   
-   	   <b:row>
-   	   <b:inputText label="Estado" span="6" readonly="true"
-   	    value="#" />
-   	   <b:inputText label="Cidade" span="6" readonly="true"
-   	    value="#" />
-   	   </b:row>
-   	   
-   	   </b:panel>
-			
-			<f:facet name="footer">				
-				<b:button value="Ok" look="primary" dismiss="modal" onclick="return false;"  />
+				<b:row>
+					<b:inputText label="Razão Social" span="6" readonly="true"
+						value="#{empresaBean.empresaDetalhe.razaoSocial}" />
+
+					<b:inputText label="CNPJ" span="6" readonly="true"
+						value="#{empresaBean.empresaDetalhe.cnpj}" />
+				</b:row>
+
+				<b:row>
+
+					<b:inputText label="Nome Fantasia" span="6" readonly="true"
+						value="#{empresaBean.empresaDetalhe.nomeFantasia}" />
+
+					<b:inputText label="Login" span="6" readonly="true"
+						value="#{empresaBean.empresaDetalhe.conta.login}" />
+
+				</b:row>
+
+				<b:row>
+					<b:inputText label="Email" span="6" readonly="true" value="#{empresaBean.empresaDetalhe.conta.email}" />
+
+					<b:inputText label="Ativa/Inativa" span="6" readonly="true"
+						value="#{empresaBean.empresaDetalhe.conta.ativo? 'Ativo' : 'Inativo'}" />
+
+				</b:row>
+
+				<b:row>
+					<b:inputText label="Telefone" span="6" readonly="true" value="#{empresaBean.empresaDetalhe.telefone}" />
+
+					<b:inputText label="CEP" span="6" readonly="true" value="#{empresaBean.empresaDetalhe.endereco.cep}" />
+
+				</b:row>
+
+				<b:row>
+					<b:inputText label="Rua" span="6" readonly="true" value="#{empresaBean.empresaDetalhe.endereco.rua}" />
+
+					<b:inputText label="Numero" span="6" readonly="true" value="#{empresaBean.empresaDetalhe.endereco.numero}" />
+
+				</b:row>
+
+				<b:row>
+					<b:inputText label="Bairro" span="6" readonly="true" value="#{empresaBean.empresaDetalhe.endereco.bairro}" />
+					<b:inputText label="Complemento" span="6" readonly="true" value="#{empresaBean.empresaDetalhe.endereco.complemento}" />
+
+				</b:row>
+
+				<b:row>
+					<b:inputText label="Cidade" span="6" readonly="true" value="#{empresaBean.empresaDetalhe.endereco.cidade.nome}" />
+					<b:inputText label="Estado" span="6" readonly="true" value="#{empresaBean.empresaDetalhe.endereco.cidade.estado.uf}" />
+				</b:row>
+
+			</b:panel>
+
+			<f:facet name="footer">
+				<b:button value="Ok" look="primary" dismiss="modal"
+					onclick="return false;" />
 			</f:facet>
-		</b:modal>			
-		
+		</b:modal>
+
 
 
 	</p:panel>

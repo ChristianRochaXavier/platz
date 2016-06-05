@@ -12,14 +12,13 @@
 	<ui:define name="corpoPagina">
 
 		<h:form id="form-empresa">
-			<p:growl />
+			<p:growl autoUpdate="true"/>
 			<ui:include src="/Administrador/Empresa/consultar.xhtml" />
 			<ui:include src="/Administrador/Empresa/cadastrar.xhtml" />
 		</h:form>
 	</ui:define>
 
-	<ui:define name="posFooter">
-	<!-- <script type="text/javascript" src="../js/jquery-2.2.3.js" /> -->
+	<ui:define name="posFooter">	
 		<script type="text/javascript" src="../js/userCEP.js" />
 	</ui:define>
 </ui:composition>

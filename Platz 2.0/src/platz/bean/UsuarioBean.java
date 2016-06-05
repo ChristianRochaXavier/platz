@@ -32,14 +32,6 @@ public class UsuarioBean {
 									// formulario
 	private boolean editar = false;
 
-	public boolean isEditar() {
-		return editar;
-	}
-
-	public void setEditar(boolean editar) {
-		this.editar = editar;
-	}
-
 	// Caminho da imagem estatico
 	static final String CAMINHOIMAGEM = "/resources/img/userPerfil/";
 
@@ -217,6 +209,14 @@ public class UsuarioBean {
 
 	public void setRendered(boolean redenred) {
 		this.rendered = redenred;
+	}
+
+	public boolean isEditar() {
+		return editar;
+	}
+
+	public void setEditar(boolean editar) {
+		this.editar = editar;
 	}
 
 }

@@ -40,8 +40,8 @@
 				<b:column col-md="12" >
 				
 					<b:thumbnail>
-						<img src="../resources/img/temp/avatar.png"
-							alt="Generic placeholder thumbnail" />	
+					<p:graphicImage id="imgPerfil" alt="Imagem de perfil do usuario"
+							url="#{usuarioBean.pegarImagem(loginBean.usuarioLogado)}" />						
 					</b:thumbnail>
 				</b:column> 
 				 <p:outputLabel styleClass="nome-perfil" value="#{loginBean.nomeUsuario()}" />

@@ -35,7 +35,7 @@ public class Conta {
 	}
 	
 	@NotEmpty(message = "O Login deve ser informado")
-	@Length(min = 3, max = 40, message = "O Login deve ter entre 3 e 40 caracteres")
+	@Length(min = 3, max = 40, message = "O Login deve ter entre 3 e 40 caracteres")	
 	public String getLogin() {
 		return login;
 	}

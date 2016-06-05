@@ -9,7 +9,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import platz.dao.ContaDAO;
-import platz.dao.EmpresaDAO;
 import platz.dao.UsuarioDAO;
 import platz.model.Conta;
 import platz.model.Empresa;
@@ -134,7 +133,7 @@ public class LoginBean {
 
 					} else if (conta.getPerfil().equals(Perfil.EMPRESA)) {
 						this.ultimoAcesso(conta);
-						empresaLogado = new EmpresaDAO().buscarPorConta(conta);
+						//empresaLogado = new EmpresaDAO().buscarPorConta(conta);
 						return "/Empresa/index?faces-redirect=true";
 
 					} else if (conta.getPerfil().equals(Perfil.USUARIO)) {
@@ -157,17 +156,40 @@ public class LoginBean {
 
 	public void expulsa() {
 		try {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("../");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			FacesContext.getCurrentInstance().getExternalContext().redirect("../Login");
+		} catch (IOException e) {			
 			e.printStackTrace();
 		}
 	}
 
 	public String nomeUsuario(){
-		
-		if (conta.getPerfil().equals(Perfil.USUARIO) || conta.getPerfil().equals(Perfil.ADMINISTRADOR)) {
+		if(conta.getPerfil() == null){
+			expulsa();
+			
+		}else if (conta.getPerfil().equals(Perfil.USUARIO)) {
 			return usuarioLogado.getNome();
+		} else {
+			expulsa();
+		}
+		return "";
+	}
+	public String nomeAdministrador(){
+		if(conta.getPerfil() == null){
+			expulsa();
+			
+		}else if (conta.getPerfil().equals(Perfil.ADMINISTRADOR)) {
+			return conta.getLogin();
+		} else {
+			expulsa();
+		}
+		return "";
+	}
+	public String nomeEmpresa(){
+		if(conta.getPerfil() == null){
+			expulsa();
+			
+		}else if (conta.getPerfil().equals(Perfil.EMPRESA)) {
+			return empresaLogado.getNomeFantasia();
 		} else {
 			expulsa();
 		}

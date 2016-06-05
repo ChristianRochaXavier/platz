@@ -43,8 +43,7 @@ public class EmpresaDAO {
 	public Empresa buscarPorConta(Conta conta) {
 
 		EntityManager entityManager = JPAUtil.getEntityManager();
-		Empresa empresa= (Empresa) entityManager.createQuery("from Empresa where conta=:conta")
-				.setParameter("conta", conta).getSingleResult();
+		Empresa empresa = (Empresa) entityManager.createQuery("from Empresa where conta=:conta").setParameter("conta", conta).getSingleResult();
 		entityManager.close();
 
 		return empresa;

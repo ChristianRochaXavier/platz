@@ -23,6 +23,15 @@ public class ContaBean {
 	private List<Conta> contas = new ArrayList<Conta>();
 	private List<Perfil> perfis;
 	private Conta contaDetalhe;
+	private boolean editar = false;
+
+	public boolean isEditar() {
+		return editar;
+	}
+
+	public void setEditar(boolean editar) {
+		this.editar = editar;
+	}
 
 	public ContaBean() {
 		perfis = Arrays.asList(Perfil.values());
@@ -71,20 +80,24 @@ public class ContaBean {
 	}
 
 	public void cadastrar() {
-
-		// Parte da criptografia
 		String textoEncriptado = "";
-		EncriptAES aes = new EncriptAES();
-		byte[] textoEmBytesEncriptados;
-		try {
 
-			textoEmBytesEncriptados = aes.encrypt(conta.getSenha(), EncriptAES.getChaveEncriptacao());
-			textoEncriptado = aes.byteParaString(textoEmBytesEncriptados);
+		if (editar) {
+			textoEncriptado = conta.getSenha();
+		} else {
+			// Parte da criptografia
 
-		} catch (Exception e) {
-			e.printStackTrace();
+			EncriptAES aes = new EncriptAES();
+			byte[] textoEmBytesEncriptados;
+			try {
+
+				textoEmBytesEncriptados = aes.encrypt(conta.getSenha(), EncriptAES.getChaveEncriptacao());
+				textoEncriptado = aes.byteParaString(textoEmBytesEncriptados);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-
 		conta.setSenha(textoEncriptado);
 		conta.setDataCadastro(new Date());
 		new ContaDAO().cadastrar(conta);
@@ -93,6 +106,7 @@ public class ContaBean {
 	}
 
 	public void editar(Conta conta) {
+		this.editar = true;
 		this.conta = conta;
 	}
 
@@ -119,7 +133,7 @@ public class ContaBean {
 	}
 
 	public void voltar() {
-		conta = null;
+		this.zerar();
 	}
 
 	public String isAtivo(boolean ativo) {
@@ -132,6 +146,7 @@ public class ContaBean {
 
 	public void zerar() {
 		this.conta = null;
+		this.editar = false;
 		this.contas = new ContaDAO().listarTodos();
 		this.contaDetalhe = null;
 		this.contaExcluir = null;

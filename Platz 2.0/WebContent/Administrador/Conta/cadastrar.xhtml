@@ -22,7 +22,7 @@
 		   placeholder="usuario12" />
 		 </b:row>
 		 
-		 <b:row>
+		 <b:row rendered="#{!contaBean.editar}">
 		   <b:inputSecret value="#{contaBean.conta.senha}" span="6" label="Senha" 
 		   placeholder="******" id="txtSenha" match="txtConfirmSenha" maxlength="64"
 		   validatorMessage="As senhas não coincidem" />

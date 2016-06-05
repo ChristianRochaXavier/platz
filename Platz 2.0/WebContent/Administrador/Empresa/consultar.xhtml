@@ -32,6 +32,7 @@
 
 				<p:commandButton icon="editar-icon" value="Editar"
 					oncomplete="PF('editarDialog').show()"
+					update="@form"
 					action="#{empresaBean.editar(empresa)}" />
 
 				<p:commandButton action="#{empresaBean.detalhes(empresa)}"
@@ -40,7 +41,7 @@
 
 				<p:commandButton action="#{empresaBean.preparaStatus(empresa)}"
 					oncomplete="PF('confirmarStatusDialog').show()"
-					value="#{empresa.conta.ativo ?'Inativar':'Ativar'}" update="@form" />
+					value="#{empresa.conta.ativo ?'Inativar':'Ativar'}" update="form-empresa" />
 
 			</p:column>
 		</p:dataTable>
@@ -62,10 +63,10 @@
 		<p:confirmDialog rendered="#{empresaBean.empresaStatus != null}"
 			message="Deseja realmente tornar essa empresa #{empresaBean.empresaStatus.conta.ativo? 'Inativo' : 'Ativo' }"
 			widgetVar="confirmarStatusDialog">
-			<p:commandButton value="Sim" uptade="@form"
+			<p:commandButton value="Sim" uptade="form-empresa"
 				oncomplete="PF('confirmarStatusDialog').hide()"
 				action="#{empresaBean.inverterAtividade(empresaBean.empresaStatus.conta.ativo)}" />
-			<p:commandButton value="Não" update="@form"
+			<p:commandButton value="Não" update="form-empresa"
 				oncomplete="PF('confirmarStatusDialog').hide()" />
 		</p:confirmDialog>
 

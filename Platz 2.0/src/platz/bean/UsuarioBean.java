@@ -30,6 +30,15 @@ public class UsuarioBean {
 	private List<Usuario> usuarios;
 	private boolean rendered = true;// caso true mostra a lista, caso false o
 									// formulario
+	private boolean editar = false;
+
+	public boolean isEditar() {
+		return editar;
+	}
+
+	public void setEditar(boolean editar) {
+		this.editar = editar;
+	}
 
 	// Caminho da imagem estatico
 	static final String CAMINHOIMAGEM = "/resources/img/userPerfil/";
@@ -46,8 +55,7 @@ public class UsuarioBean {
 	}
 
 	public void voltar() {
-		System.out.println(rendered);
-		rendered = true;
+		this.zerar();
 	}
 
 	// Método que vê o evento de upload do p:upload
@@ -97,17 +105,20 @@ public class UsuarioBean {
 
 		// Parte da criptografia
 		String textoEncriptado = "";
-		EncriptAES aes = new EncriptAES();
-		byte[] textoEmBytesEncriptados;
-		try {
+		if (editar) {
+			textoEncriptado = usuario.getConta().getSenha();
+		} else {
+			EncriptAES aes = new EncriptAES();
+			byte[] textoEmBytesEncriptados;
+			try {
 
-			textoEmBytesEncriptados = aes.encrypt(usuario.getConta().getSenha(), EncriptAES.getChaveEncriptacao());
-			textoEncriptado = aes.byteParaString(textoEmBytesEncriptados);
+				textoEmBytesEncriptados = aes.encrypt(usuario.getConta().getSenha(), EncriptAES.getChaveEncriptacao());
+				textoEncriptado = aes.byteParaString(textoEmBytesEncriptados);
 
-		} catch (Exception e) {
-			e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-
 		usuario.getConta().setSenha(textoEncriptado);
 		usuario.getConta().setPerfil(Perfil.USUARIO);
 		usuario.getConta().setDataCadastro(new Date());
@@ -119,6 +130,7 @@ public class UsuarioBean {
 
 	public void editar(Usuario usuario) {
 		this.usuario = usuario;
+		this.editar = true;
 		rendered = false;
 	}
 
@@ -156,6 +168,7 @@ public class UsuarioBean {
 
 	public void zerar() {
 		rendered = true;
+		editar = false;
 		usuario = new Usuario();
 		usuario.setConta(new Conta());
 		usuario.setEndereco(new Endereco());

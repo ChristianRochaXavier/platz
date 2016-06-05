@@ -32,7 +32,8 @@
 				label="Nome de Login" placeholder="usuario12" />
 		</b:row>
 		<hr />
-		<b:row>
+		
+		<b:row rendered="#{!usuarioBean.editar}">
 			<b:inputSecret value="#{usuarioBean.usuario.conta.senha}" span="6"
 				label="Senha" placeholder="******" id="txtSenha"
 				match="txtConfirmSenha" maxlength="64"

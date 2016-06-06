@@ -54,11 +54,7 @@ public class UsuarioBean {
 	public void upload(FileUploadEvent event) {
 
 		System.out.println("Entrou no método upload");
-
 		System.out.println("Nome do Arquivo: " + event.getFile().getFileName());
-
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(event.getFile().getFileName() + " is uploaded."));
 
 		// Pega o caminho completo do diretório
 		String caminhoCompleto = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/").toString()
@@ -79,7 +75,7 @@ public class UsuarioBean {
 			fos.write(input);
 			fos.close();
 
-			System.out.println("Upload OK");
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Upload feito com sucesso"));
 
 		} catch (IOException e) {
 			System.out.println("Erro: " + e.getMessage());
@@ -151,7 +147,7 @@ public class UsuarioBean {
 	public String pegarImagem(Usuario usuario) {
 
 		if (usuario.getImagemPerfil() == null || usuario.getImagemPerfil().equals("")) {
-			return "/resources/img/userPerfil/user.png";
+			return CAMINHOIMAGEM + "user.png";
 		} else {
 			return usuario.getImagemPerfil();
 		}

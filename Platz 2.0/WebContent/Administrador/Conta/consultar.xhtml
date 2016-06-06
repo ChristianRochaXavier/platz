@@ -22,7 +22,7 @@
 				<h:outputLabel value="Consulta de Contas"/>
 			</f:facet>
 
-			<p:column headerText="Id" sortBy="#{conta.id}" width="7%">
+			<p:column headerText="Id" sortBy="#{conta.id}" width="5%">
 				<h:outputText value="#{conta.id}" />
 			</p:column>
 
@@ -60,7 +60,7 @@
 				<h:outputText value="#{contaBean.isAtivo(conta.ativo)}" />
 			</p:column>
 
-			<p:column width="20%" headerText="Opções" exportable="false">
+			<p:column width="22%" headerText="Opções" exportable="false">
 				<p:commandButton action="#{contaBean.detalhes(conta)}"
 					immediate="true"
 					oncomplete="$('.modalPseudoClass').modal();return false;"

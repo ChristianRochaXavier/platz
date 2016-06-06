@@ -22,7 +22,7 @@ public class LoginBean {
 
 	private ContaDAO contaDAO = new ContaDAO();
 	private Conta conta = new Conta();
-	private Perfil perfil;
+	private Perfil perfil; 
 	private Usuario usuarioLogado = new Usuario();
 	private Empresa empresaLogado = new Empresa();
 

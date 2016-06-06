@@ -63,6 +63,18 @@
 			</b:dropMenu>
 				<b:navLink value="Logout" href="../Login"></b:navLink>
 		</b:navbarLinks>
+		
+		<b:navbarLinks id="link-perfil">
+			<b:dropMenu value="Meu Perfil" icon="user">
+
+			
+				<p:outputLabel styleClass="nome-perfil"
+					value="#" />
+				<b:navLink styleClass="linha"></b:navLink>
+				<b:navLink value="Configurações" icon="cog" href="#"></b:navLink>
+				<b:navLink value="Sair" icon="log-out" href="../"></b:navLink>
+			</b:dropMenu>
+		</b:navbarLinks>
 	</b:navBar>
 	<ui:insert name="corpoPagina" />
 

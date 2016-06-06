@@ -4,11 +4,14 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui">
 
 	<ui:define name="titulo">Tipo de Presença</ui:define>
 
 	<ui:define name="corpoPagina">
+	<b:column col-md="2"/>
+	<b:column col-md="8">
 		<p:accordionPanel id="accordion">
 			<p:tab title="Consultar">
 				<ui:include src="/Administrador/TipoPresenca/consultar.xhtml" />
@@ -17,6 +20,7 @@
 				<ui:include src="/Administrador/TipoPresenca/cadastrar.xhtml" />
 			</p:tab>
 		</p:accordionPanel>
+		</b:column>
 	</ui:define>
 
 </ui:composition>

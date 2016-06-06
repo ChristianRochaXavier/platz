@@ -5,34 +5,46 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
-	<p:panel rendered="#{empresaBean.rendered == false}">
+	<p:panel rendered="#{empresaBean.rendered != false}">
 		<p:commandButton value="Nova Empresa"
 			action="#{empresaBean.novaEmpresa}" update="@form" />
 
-		<p:dataTable value="#{empresaBean.empresas}"
+		<p:dataTable value="#{empresaBean.empresas}" id="tabela-empresa"
 			paginatorPosition="bottom" var="empresa" paginator="true" rows="25"
-			emptyMessage="Nenhum Registro Encontrado" 
+			emptyMessage="Nenhum Registro Encontrado" widgetVar="tabela-empresa"
 			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 			<f:facet name="header">
 				<h:outputLabel value="Consulta de Empresa" />
 			</f:facet>
 
-			<p:column headerText="Nome Fantasia" sortBy="#" filterBy="#"
-				filterMatchMode="contains">
+			<p:column headerText="Id" sortBy="#{empresa.id}" width="5%">
+				<h:outputText value="#{empresa.id}" />
+			</p:column>
+
+			<p:column headerText="Razão Social" filterBy="#{empresa.razaoSocial}"
+				filterMatchMode="contains" width="20%">
+				<h:outputText value="#{empresa.razaoSocial}" />
+			</p:column>
+
+			<p:column headerText="Nome Fantasia" width="20%"
+				filterBy="#{empresa.nomeFantasia}" filterMatchMode="contains">
 				<h:outputText value="#{empresa.nomeFantasia}" />
 			</p:column>
 
-			<p:column headerText="CNPJ" sortBy="#" filterBy="#"
+			<p:column headerText="CNPJ" filterBy="#{empresa.cnpj}" width="18%"
 				filterMatchMode="contains">
 				<h:outputText value="#{empresa.cnpj}" />
 			</p:column>
 
+			<p:column headerText="Email" filterBy="#{empresa.conta.email}" width="17%"
+				filterMatchMode="#{empresa.conta.email}">
+				<h:outputText value="#{empresa.conta.email}" />
+			</p:column>
 
-			<p:column width="28%" exportable="false" headerText="Opções">
+			<p:column width="30%" exportable="false" headerText="Opções">
 
 				<p:commandButton icon="editar-icon" value="Editar"
-					oncomplete="PF('editarDialog').show()"
-					update="@form"
+					oncomplete="PF('editarDialog').show()" update="@form"
 					action="#{empresaBean.editar(empresa)}" />
 
 				<p:commandButton action="#{empresaBean.detalhes(empresa)}"
@@ -41,7 +53,7 @@
 
 				<p:commandButton action="#{empresaBean.preparaStatus(empresa)}"
 					oncomplete="PF('confirmarStatusDialog').show()"
-					value="#{empresa.conta.ativo ?'Inativar':'Ativar'}" update="form-empresa" />
+					value="#{empresa.conta.ativo ?'Inativar':'Ativar'}" update="@form" />
 
 			</p:column>
 		</p:dataTable>
@@ -51,12 +63,12 @@
 
 		<h:commandLink>
 			<h:graphicImage url="../css/icons/exportar_xls.png" />
-			<p:dataExporter type="xls" target="" fileName="" />
+			<p:dataExporter type="xls" target="tabela-empresa" fileName="Empresas" />
 		</h:commandLink>
 
 		<h:commandLink>
 			<h:graphicImage url="../css/icons/exportar_pdf.png" />
-			<p:dataExporter type="pdf" target="" fileName=""
+			<p:dataExporter type="pdf" target="tabela-empresa" fileName="Empresas"
 				encoding="iso-8859-1" />
 		</h:commandLink>
 
@@ -103,7 +115,8 @@
 				</b:row>
 
 				<b:row>
-					<b:inputText label="Email" span="6" readonly="true" value="#{empresaBean.empresaDetalhe.conta.email}" />
+					<b:inputText label="Email" span="6" readonly="true"
+						value="#{empresaBean.empresaDetalhe.conta.email}" />
 
 					<b:inputText label="Ativa/Inativa" span="6" readonly="true"
 						value="#{empresaBean.empresaDetalhe.conta.ativo? 'Ativo' : 'Inativo'}" />
@@ -111,28 +124,36 @@
 				</b:row>
 
 				<b:row>
-					<b:inputText label="Telefone" span="6" readonly="true" value="#{empresaBean.empresaDetalhe.telefone}" />
+					<b:inputText label="Telefone" span="6" readonly="true"
+						value="#{empresaBean.empresaDetalhe.telefone}" />
 
-					<b:inputText label="CEP" span="6" readonly="true" value="#{empresaBean.empresaDetalhe.endereco.cep}" />
-
-				</b:row>
-
-				<b:row>
-					<b:inputText label="Rua" span="6" readonly="true" value="#{empresaBean.empresaDetalhe.endereco.rua}" />
-
-					<b:inputText label="Numero" span="6" readonly="true" value="#{empresaBean.empresaDetalhe.endereco.numero}" />
+					<b:inputText label="CEP" span="6" readonly="true"
+						value="#{empresaBean.empresaDetalhe.endereco.cep}" />
 
 				</b:row>
 
 				<b:row>
-					<b:inputText label="Bairro" span="6" readonly="true" value="#{empresaBean.empresaDetalhe.endereco.bairro}" />
-					<b:inputText label="Complemento" span="6" readonly="true" value="#{empresaBean.empresaDetalhe.endereco.complemento}" />
+					<b:inputText label="Rua" span="6" readonly="true"
+						value="#{empresaBean.empresaDetalhe.endereco.rua}" />
+
+					<b:inputText label="Numero" span="6" readonly="true"
+						value="#{empresaBean.empresaDetalhe.endereco.numero}" />
 
 				</b:row>
 
 				<b:row>
-					<b:inputText label="Cidade" span="6" readonly="true" value="#{empresaBean.empresaDetalhe.endereco.cidade.nome}" />
-					<b:inputText label="Estado" span="6" readonly="true" value="#{empresaBean.empresaDetalhe.endereco.cidade.estado.uf}" />
+					<b:inputText label="Bairro" span="6" readonly="true"
+						value="#{empresaBean.empresaDetalhe.endereco.bairro}" />
+					<b:inputText label="Complemento" span="6" readonly="true"
+						value="#{empresaBean.empresaDetalhe.endereco.complemento}" />
+
+				</b:row>
+
+				<b:row>
+					<b:inputText label="Cidade" span="6" readonly="true"
+						value="#{empresaBean.empresaDetalhe.endereco.cidade.nome}" />
+					<b:inputText label="Estado" span="6" readonly="true"
+						value="#{empresaBean.empresaDetalhe.endereco.cidade.estado.uf}" />
 				</b:row>
 
 			</b:panel>

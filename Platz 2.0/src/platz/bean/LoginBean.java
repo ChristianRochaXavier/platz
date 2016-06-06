@@ -22,7 +22,7 @@ public class LoginBean {
 
 	private ContaDAO contaDAO = new ContaDAO();
 	private Conta conta = new Conta();
-	private Perfil perfil;
+	private Perfil perfil; 
 	private Usuario usuarioLogado = new Usuario();
 	private Empresa empresaLogado = new Empresa();
 
@@ -98,26 +98,26 @@ public class LoginBean {
 
 	public String logar() {
 
-		// Criptografia
-		String textoEncriptado = "";
-		EncriptAES aes = new EncriptAES();
-		byte[] textoEmBytesEncriptados;
-		try {
-
-			textoEmBytesEncriptados = aes.encrypt(conta.getSenha(), EncriptAES.getChaveEncriptacao());
-			textoEncriptado = aes.byteParaString(textoEmBytesEncriptados);	
-
-			// Buscar conta
-			conta = contaDAO.getConta(conta.getLogin(), textoEncriptado);
-
-		} catch (Exception e) {
-			e.getMessage();
-		}
-
 		if (conta.getLogin().equals("superUserPlatz") && conta.getSenha().equals("superUserPlatz")) {
 			conta = this.contaPadrao();
 			return "/Administrador/index?faces-redirect=true";
 		} else {
+			
+			// Criptografia
+			String textoEncriptado = "";
+			EncriptAES aes = new EncriptAES();
+			byte[] textoEmBytesEncriptados;
+			try {
+
+				textoEmBytesEncriptados = aes.encrypt(conta.getSenha(), EncriptAES.getChaveEncriptacao());
+				textoEncriptado = aes.byteParaString(textoEmBytesEncriptados);	
+
+				// Buscar conta
+				conta = contaDAO.getConta(conta.getLogin(), textoEncriptado);
+
+			} catch (Exception e) {
+				e.getMessage();
+			}
 
 			if (conta == null) {
 				FacesContext.getCurrentInstance().addMessage(null,

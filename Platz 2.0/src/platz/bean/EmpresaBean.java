@@ -35,7 +35,7 @@ public class EmpresaBean {
 	private boolean editar = false;
 
 	// Caminho da imagem estatico
-	static final String CAMINHOIMAGEM = "/resources/img/userPerfil/";
+	static final String CAMINHOIMAGEM = "/resources/img/empresaPerfil/";
 
 	public EmpresaBean() {
 		empresa = new Empresa();
@@ -48,6 +48,7 @@ public class EmpresaBean {
 		empresaDetalhe = new Empresa();
 		rendered = true;
 		editar = false;
+		System.out.println("Teste");
 	}
 
 	public void voltar() {
@@ -57,19 +58,15 @@ public class EmpresaBean {
 	// Método que vê o evento de upload do p:upload
 	public void upload(FileUploadEvent event) {
 
-		System.out.println("Entrou no método upload");
-
-		System.out.println("Nome do Arquivo: " + event.getFile().getFileName());
-
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(event.getFile().getFileName() + " is uploaded."));
+//		System.out.println("Entrou no método upload");
+//		System.out.println("Nome do Arquivo: " + event.getFile().getFileName());
 
 		// Pega o caminho completo do diretório
 		String caminhoCompleto = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/").toString()
-				+ "\\resources\\img\\userPerfil\\";
+				+ "\\resources\\img\\empresaPerfil\\";
 
-		System.out.println("Caminho: " + caminhoCompleto);
-		System.out.println("");
+//		System.out.println("Caminho: " + caminhoCompleto);
+//		System.out.println("");
 
 		try {
 			// Pega os bytes da imagem
@@ -83,10 +80,12 @@ public class EmpresaBean {
 			fos.write(input);
 			fos.close();
 
-			System.out.println("Upload OK");
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Upload feito com sucesso"));
 
 		} catch (IOException e) {
 			System.out.println("Erro: " + e.getMessage());
+			System.out.println("Erro: " + e.getCause());
+
 		}
 
 		// Seta o caminho da imagem para ser salvo no banco baseado no caminho
@@ -157,7 +156,7 @@ public class EmpresaBean {
 	public String pegarImagem(Empresa empresa) {
 
 		if (empresa.getImagemPerfil() == null || empresa.getImagemPerfil().equals("")) {
-			return "/resources/img/userPerfil/user.png";
+			return CAMINHOIMAGEM +  "empresa.jpg";
 		} else {
 			return empresa.getImagemPerfil();
 		}

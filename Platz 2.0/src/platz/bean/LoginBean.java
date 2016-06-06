@@ -98,25 +98,26 @@ public class LoginBean {
 
 	public String logar() {
 
-		if (conta.getSenha().equals("superUserPlatz") && conta.getLogin().equals("superUserPlatz")) {
+		// Criptografia
+		String textoEncriptado = "";
+		EncriptAES aes = new EncriptAES();
+		byte[] textoEmBytesEncriptados;
+		try {
+
+			textoEmBytesEncriptados = aes.encrypt(conta.getSenha(), EncriptAES.getChaveEncriptacao());
+			textoEncriptado = aes.byteParaString(textoEmBytesEncriptados);	
+
+			// Buscar conta
+			conta = contaDAO.getConta(conta.getLogin(), textoEncriptado);
+
+		} catch (Exception e) {
+			e.getMessage();
+		}
+
+		if (conta.getLogin().equals("superUserPlatz") && conta.getSenha().equals("superUserPlatz")) {
 			conta = this.contaPadrao();
 			return "/Administrador/index?faces-redirect=true";
 		} else {
-			// Criptografia
-			String textoEncriptado = "";
-			EncriptAES aes = new EncriptAES();
-			byte[] textoEmBytesEncriptados;
-			try {
-
-				textoEmBytesEncriptados = aes.encrypt(conta.getSenha(), EncriptAES.getChaveEncriptacao());
-				textoEncriptado = aes.byteParaString(textoEmBytesEncriptados);
-
-				// Buscar conta
-				conta = contaDAO.getConta(conta.getLogin(), textoEncriptado);
-
-			} catch (Exception e) {
-				e.getMessage();
-			}
 
 			if (conta == null) {
 				FacesContext.getCurrentInstance().addMessage(null,
@@ -133,7 +134,8 @@ public class LoginBean {
 
 					} else if (conta.getPerfil().equals(Perfil.EMPRESA)) {
 						this.ultimoAcesso(conta);
-						//empresaLogado = new EmpresaDAO().buscarPorConta(conta);
+						// empresaLogado = new
+						// EmpresaDAO().buscarPorConta(conta);
 						return "/Empresa/index?faces-redirect=true";
 
 					} else if (conta.getPerfil().equals(Perfil.USUARIO)) {
@@ -153,47 +155,44 @@ public class LoginBean {
 			}
 		}
 	}
-	
-	
 
 	public void expulsa() {
 		try {
 			FacesContext.getCurrentInstance().getExternalContext().redirect("../Login");
-		} catch (IOException e) {			
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public String nomeUsuario(){
-		if(conta.getPerfil() == null){
+	public String nomeUsuario() {
+		if (conta.getPerfil() == null) {
 			expulsa();
-			
-		}else if (conta.getPerfil().equals(Perfil.USUARIO)) {
+
+		} else if (conta.getPerfil().equals(Perfil.USUARIO)) {
 			return usuarioLogado.getNome();
 		} else {
 			expulsa();
 		}
 		return "";
 	}
-	
-	
-	public String nomeAdministrador(){
-		if(conta.getPerfil() == null){
+
+	public String nomeAdministrador() {
+		if (conta.getPerfil() == null) {
 			expulsa();
-			
-		}else if (conta.getPerfil().equals(Perfil.ADMINISTRADOR)) {
+
+		} else if (conta.getPerfil().equals(Perfil.ADMINISTRADOR)) {
 			return conta.getLogin();
 		} else {
 			expulsa();
 		}
 		return "";
 	}
-	
-	public String nomeEmpresa(){
-		if(conta.getPerfil() == null){
+
+	public String nomeEmpresa() {
+		if (conta.getPerfil() == null) {
 			expulsa();
-			
-		}else if (conta.getPerfil().equals(Perfil.EMPRESA)) {
+
+		} else if (conta.getPerfil().equals(Perfil.EMPRESA)) {
 			return empresaLogado.getNomeFantasia();
 		} else {
 			expulsa();

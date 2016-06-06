@@ -188,6 +188,7 @@ public class LoginBean {
 		}
 		return "";
 	}
+	
 	public String nomeEmpresa(){
 		if(conta.getPerfil() == null){
 			expulsa();

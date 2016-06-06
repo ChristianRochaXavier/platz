@@ -5,13 +5,13 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
-	<p:panel rendered="#{empresaBean.rendered == true}">
+	<p:panel rendered="#{empresaBean.rendered == false}">
 		<p:commandButton value="Nova Empresa"
 			action="#{empresaBean.novaEmpresa}" update="@form" />
 
 		<p:dataTable value="#{empresaBean.empresas}"
 			paginatorPosition="bottom" var="empresa" paginator="true" rows="25"
-			emptyMessage="Nenhum Registro Encontrado"
+			emptyMessage="Nenhum Registro Encontrado" 
 			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 			<f:facet name="header">
 				<h:outputLabel value="Consulta de Empresa" />

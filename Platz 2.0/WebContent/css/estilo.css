@@ -232,3 +232,20 @@ transform: rotateY(0deg);
 .vertical.flip-container:hover .front { transform: rotateX(180deg);}
 
 
+#ev-especifico
+{
+	width:75%;
+	margin:0 auto;
+}
+.label-ev
+{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	margin:5px;
+}
+.info-ev
+{
+	margin-left:10px;
+	margin-right:20px;
+	
+}

@@ -45,11 +45,11 @@
 
 					<b:thumbnail>
 						<p:graphicImage id="imgPerfil" alt="Imagem de perfil da empresa"
-							url="#" />
+							url="#{empresaBean.pegarImagem(loginBean.empresaLogado)}" />
 					</b:thumbnail>
 				</b:column>
 				<p:outputLabel styleClass="nome-perfil"
-					value="#" />
+					value="#{loginBean.nomeEmpresa()}" />
 				<b:navLink styleClass="linha"></b:navLink>
 				<b:navLink value="Configurações" icon="cog" href="#"></b:navLink>
 				<b:navLink value="Sair" icon="log-out" href="../"></b:navLink>

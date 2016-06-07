@@ -9,6 +9,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import platz.dao.ContaDAO;
+import platz.dao.EmpresaDAO;
 import platz.dao.UsuarioDAO;
 import platz.model.Conta;
 import platz.model.Empresa;
@@ -133,9 +134,8 @@ public class LoginBean {
 						return "/Administrador/index?faces-redirect=true";
 
 					} else if (conta.getPerfil().equals(Perfil.EMPRESA)) {
-						this.ultimoAcesso(conta);
-						// empresaLogado = new
-						// EmpresaDAO().buscarPorConta(conta);
+						this.ultimoAcesso(conta);						
+						 empresaLogado = new EmpresaDAO().buscarPorConta(conta);
 						return "/Empresa/index?faces-redirect=true";
 
 					} else if (conta.getPerfil().equals(Perfil.USUARIO)) {

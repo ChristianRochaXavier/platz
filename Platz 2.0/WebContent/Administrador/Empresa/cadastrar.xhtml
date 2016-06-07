@@ -64,7 +64,6 @@
 		<br />
 		<br />
 
-
 		<b:row>
 			<b:inputText value="#{empresaBean.empresa.razaoSocial}" span="6"
 				label="Razão Social" placeholder="Ex: Platz.ltda" />
@@ -81,7 +80,6 @@
 				<p:inputMask id="txtCnpj" mask="99.999.999/9999-99" size="30"
 					value="#{empresaBean.empresa.cnpj}" styleClass="inputCad-Empresa" />
 			</b:column>
-
 
 			<b:column col-md="4">
 				<span style="font-weight: bold;">Telefone </span>
@@ -106,8 +104,7 @@
 		</b:well>
 		<br />
 		<br />
-
-
+		
 		<b:row>
 			<b:column col-md="4">
 				<span style="font-weight: bold;">CEP</span>
@@ -130,16 +127,16 @@
 		</b:row>
 		<hr />
 		<b:row>
-			<b:inputText value="#{empresaBean.empresa.endereco.rua}" span="6"
+			<b:inputText value="#{empresaBean.empresa.endereco.rua}" span="6" id="txtRua"
 				label="Rua" placeholder="Rua , AV. " />
-			<b:inputText value="#{empresaBean.empresa.endereco.bairro}" span="6"
+			<b:inputText value="#{empresaBean.empresa.endereco.bairro}" span="6" id="txtBairro"
 				label="Bairro" />
 		</b:row>
 		<hr />
 		<b:row>
-			<b:inputText value="#{empresaBean.empresa.endereco.cidade.nome}"
+			<b:inputText value="#{empresaBean.empresa.endereco.cidade.nome}" id="txtCidade"
 				span="6" label="Cidade" />
-			<b:inputText value="#{empresaBean.empresa.endereco.cidade.estado.uf}"
+			<b:inputText value="#{empresaBean.empresa.endereco.cidade.estado.uf}" id="txtEstado"
 				span="6" label="Estado" />
 		</b:row>
 		<hr />
@@ -158,9 +155,5 @@
 			</b:column>
 		</b:row>
 	</b:panel>
-
-
-
-
 
 </ui:composition>

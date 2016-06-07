@@ -3,20 +3,60 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
 	<title> <ui:insert name="titulo" /> - PLATZ	</title>
 	
-	<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/estilo.css" />
-	<link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/estiloEmpresa.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/css/estilo.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/css/nav.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/css/estiloEmpresa.css" />
 	<script type="text/javascript" src="/js/jquery-2.2.3.js"></script>
 	<ui:insert name="css-link" />
 </h:head>
 
-<h:body>
+<h:body styleClass="corpoPagina">
 	<ui:insert name="preNav" />
-	<!-- Nav  -->
+	<b:navBar inverse="true" fixed="top"
+		brand-img="../resources/img/platz/logo1.png"
+		brand-img-style="width:100px;height:50px; margin-top:-15px;"
+		brandHref="index.jsf" fluid="true">
+
+		<b:navbarLinks id="link-menuUser">
+			<b:navLink value="Home" href="../Empresa/index.jsf"></b:navLink>
+			<b:navLink value="Ranking" href="#"></b:navLink>			
+			<b:dropMenu value="Eventos">
+			<b:navLink value="Meus Eventos" href="#"></b:navLink>
+			<b:navLink value="Postar Evento" href="#"></b:navLink>
+			</b:dropMenu>
+			<b:navLink value="Avaliações" href="#"></b:navLink>
+			<b:navLink value="Empresas" href="#"></b:navLink>
+
+
+		</b:navbarLinks>
+		<b:navbarLinks id="link-perfil">
+			<b:dropMenu value="Meu Perfil" icon="user">
+
+				<b:column col-md="12">
+
+					<b:thumbnail>
+						<p:graphicImage id="imgPerfil" alt="Imagem de perfil da empresa"
+							url="#" />
+					</b:thumbnail>
+				</b:column>
+				<p:outputLabel styleClass="nome-perfil"
+					value="#" />
+				<b:navLink styleClass="linha"></b:navLink>
+				<b:navLink value="Configurações" icon="cog" href="#"></b:navLink>
+				<b:navLink value="Sair" icon="log-out" href="../"></b:navLink>
+			</b:dropMenu>
+		</b:navbarLinks>
+
+	</b:navBar>
 
 	<ui:insert name="corpoPagina" />
 

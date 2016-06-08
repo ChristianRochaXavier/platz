@@ -368,6 +368,10 @@
 		<pattern value="/Administrador/tipoPresenca" />
 		<view-id value="/Administrador/tipoPresenca.jsf" />
 	</url-mapping>
+	<url-mapping id="Admin-tipoPresenca.xhtml">
+		<pattern value="/Administrador/tipoPresenca.xhtml" />
+		<view-id value="/Administrador/tipoPresenca.jsf" />
+	</url-mapping>
 	<url-mapping id="Admin-tipoPresencaFolder">
 		<pattern value="/Administrador/TipoPresenca/" />
 		<view-id value="/Administrador/tipoPresenca.jsf" />
@@ -379,6 +383,32 @@
 	<url-mapping id="Admin-tipoPresencaFolderConsultaXHTML">
 		<pattern value="/Administrador/TipoPresenca/consultar.xhtml" />
 		<view-id value="/Administrador/tipoPresenca.jsf" />
+	</url-mapping>
+
+	<!--Area Administrativa - Mapeamento para o CRUD de Presenca -->
+	<url-mapping id="Admin-presenca">
+		<pattern value="/Administrador/presenca" />
+		<view-id value="/Administrador/presenca.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-presenca.xhtml">
+		<pattern value="/Administrador/presenca.xhtml" />
+		<view-id value="/Administrador/presenca.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-PresencaFolder">
+		<pattern value="/Administrador/TipoPresenca/" />
+		<view-id value="/Administrador/tipoPresenca.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-PresencaFolder">
+		<pattern value="/Administrador/tipoPresenca/" />
+		<view-id value="/Administrador/tipoPresenca.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-PresencaFolderConsultaJSF">
+		<pattern value="/Administrador/Presenca/consultar.jsf" />
+		<view-id value="/Administrador/presenca.jsf" />
+	</url-mapping>
+	<url-mapping id="Admin-PresencaFolderConsultaXHTML">
+		<pattern value="/Administrador/Presenca/consultar.xhtml" />
+		<view-id value="/Administrador/presenca.jsf" />
 	</url-mapping>
 
 	<!--Area Administrativa - Mapeamento para o CRUD de Usuario -->

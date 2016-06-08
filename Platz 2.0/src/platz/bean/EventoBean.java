@@ -1,5 +1,7 @@
 package platz.bean;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -20,7 +22,7 @@ import platz.model.Evento;
 
 @ManagedBean
 @SessionScoped
-public class EventoBean { 
+public class EventoBean {
 
 	private Evento evento;
 	private Evento eventoStatus;
@@ -28,9 +30,9 @@ public class EventoBean {
 	private Evento eventoExclusao;
 	private List<Evento> eventos;
 	private List<CategoriaEvento> categorias;
-	static final String CAMINHOIMAGEM = "/resources/img/eventos/";  
-	
-	public EventoBean(){
+	static final String CAMINHOIMAGEM = "/resources/img/eventos/";
+
+	public EventoBean() {
 		evento = new Evento();
 		evento.setCategoriaEvento(new CategoriaEvento());
 		evento.setEndereco(new Endereco());
@@ -61,25 +63,60 @@ public class EventoBean {
 		categorias = new CategoriaDAO().listarTodos();
 	}
 
-	public void cadastrar() {	
-		
+	public void cadastrar() {
+
 		new EventoDAO().cadastrar(evento);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evento cadastrado com sucesso"));
 		this.zerar();
+
 	}
 
+	// Método que vê o evento de upload do p:upload
 	public void upload(FileUploadEvent event) {
+
+		System.out.println("Entrou no método upload");
+		System.out.println("Nome do Arquivo: " + event.getFile().getFileName());
+
+		// Pega o caminho completo do diretório
+		String caminhoCompleto = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/").toString()
+				+ "\\resources\\img\\userPerfil\\";
+
+		System.out.println("Caminho: " + caminhoCompleto);
+		System.out.println("");
+
+		try {
+			// Pega os bytes da imagem
+			byte[] input = event.getFile().getContents();
+
+			// Cria um FileoutputStream que trabalhará no diretório completo
+			FileOutputStream fos = new FileOutputStream(caminhoCompleto + event.getFile().getFileName());
+
+			// Salva a imagem
+			fos.flush();
+			fos.write(input);
+			fos.close();
+
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Upload feito com sucesso"));
+
+		} catch (IOException e) {
+			System.out.println("Erro: " + e.getMessage());
+		}
+
+		// Seta o caminho da imagem para ser salvo no banco baseado no caminho
+		// estático criado acima
+		evento.setCaminhoImagem(CAMINHOIMAGEM + event.getFile().getFileName());
+		// System.out.println(usuario.getImagemPerfil());
 	}
 
 	public void inverterAtividade() {
 	}
 
-	public Empresa pegarEmpresa(Empresa empresa){
+	public Empresa pegarEmpresa(Empresa empresa) {
 		this.evento.setEmpresa(empresa);
-		
+
 		return evento.getEmpresa();
 	}
-	
+
 	public void detalhes() {
 	}
 

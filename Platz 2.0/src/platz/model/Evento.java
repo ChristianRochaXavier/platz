@@ -2,6 +2,7 @@ package platz.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,7 +38,7 @@ public class Evento {
 	@ManyToOne
 	@JoinColumn(name = "idCategoriaEvento")
 	private CategoriaEvento categoriaEvento;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idEndereco")
 	private Endereco endereco;
 

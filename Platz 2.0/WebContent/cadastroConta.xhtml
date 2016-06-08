@@ -10,299 +10,311 @@
 
 	<ui:define name="corpoPagina">
 
-<!-- CADASTRO DE EMPRESA -->
-		<b:panel style="width:60%;
-		margin: 0 auto;">
+		<!-- CADASTRO DE EMPRESA -->
+		<b:panel>
+			<h:form>
+				<h:outputLabel value="Cadastra-se como:" />
+				<p:commandButton update="container-forms" value="Usuario"
+					action="#{utilBean.alterarFormCadastroParaUsuario()}" />
+				<p:commandButton update="container-forms" value="Empresa"
+					action="#{utilBean.alterarFormCadastroParaEmpresa()}" />
+			</h:form>
+		</b:panel>
 
-			<link href="css/estiloAdm.css" rel="stylesheet" type="text/css" />
-			<b:well styleClass="well-cadastro">
-				<h4>Informações da Conta</h4>
-			</b:well>
+		<b:container id="container-forms">
+			<h:form>
+				<p:growl autoUpdate="true" />
+				<b:panel style="width:60%; margin: 0 auto;"
+					rendered="#{utilBean.cadastroUsuarioEmpresa == true}">
 
-			<b:row>
-				<b:column col-md="8" style="margin-left:17%;">
-					<p:fileUpload mode="advanced" fileLimit="1" id="upImgPerfil"
-						invalidFileMessage="Arquivo inválido"
-						label="Selecione a Imagem de Perfil" uploadLabel="Salvar"
-						cancelLabel="Cancelar" span="6"
-						allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-						fileLimitMessage="Apenas uma imagem pode ser enviada"
-						dragDropSupport="true" fileUploadListener="#{empresaBean.upload}" />
-				</b:column>
-			</b:row>
+					<link href="css/estiloAdm.css" rel="stylesheet" type="text/css" />
+					<b:well styleClass="well-cadastro">
+						<h4>Informações da Conta</h4>
+					</b:well>
 
-			<hr />
+					<b:row>
+						<b:column col-md="8" style="margin-left:17%;">
+							<p:fileUpload mode="advanced" fileLimit="1" id="upImgPerfil"
+								invalidFileMessage="Arquivo inválido"
+								label="Selecione a Imagem de Perfil" uploadLabel="Salvar"
+								cancelLabel="Cancelar" span="6"
+								allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+								fileLimitMessage="Apenas uma imagem pode ser enviada"
+								dragDropSupport="true"
+								fileUploadListener="#{empresaBean.upload}" />
+						</b:column>
+					</b:row>
 
-			<b:row>
-				<b:inputText value="#{empresaBean.empresa.conta.email}" span="6"
-					label="Email" placeholder="empresa@email.com" />
-				<b:inputText value="#{empresaBean.empresa.conta.login}" span="6"
-					label="Nome de Login" placeholder="empresa15" />
-			</b:row>
-			<hr />
+					<hr />
 
-			<b:row rendered="#{!empresaBean.editar}">
-				<b:inputSecret value="#{empresaBean.empresa.conta.senha}" span="6"
-					label="Senha" placeholder="******" id="txtSenha"
-					match="txtConfirmSenha" maxlength="64"
-					validatorMessage="As senhas não coincidem" />
-				<b:inputSecret value="#{empresaBean.empresa.conta.senha}" span="6"
-					label="Confirme a senha" placeholder="******" id="txtConfirmSenha"
-					maxlength="64" />
-			</b:row>
+					<b:row>
+						<b:inputText value="#{empresaBean.empresa.conta.email}" span="6"
+							label="Email" placeholder="empresa@email.com" />
+						<b:inputText value="#{empresaBean.empresa.conta.login}" span="6"
+							label="Nome de Login" placeholder="empresa15" />
+					</b:row>
+					<hr />
 
-
-			<br />
-			<br />
-
-			<b:well styleClass="well-cadastro">
-				<h4>Informações Empresariais</h4>
-			</b:well>
-			<br />
-			<br />
-
-
-			<b:row>
-				<b:inputText value="#{empresaBean.empresa.razaoSocial}" span="6"
-					label="Razão Social" placeholder="Ex: Platz.ltda" />
-
-				<b:inputText value="#{empresaBean.empresa.nomeFantasia}" span="6"
-					label="Nome Fantasia" />
-			</b:row>
-
-			<hr />
-
-			<b:row>
-				<b:column col-md="4">
-					<span style="font-weight: bold;">CNPJ</span>
-					<p:inputMask id="txtCnpj" mask="99.999.999/9999-99" size="30"
-						value="#{empresaBean.empresa.cnpj}" styleClass="inputCad-Empresa" />
-				</b:column>
+					<b:row rendered="#{!empresaBean.editar}">
+						<b:inputSecret value="#{empresaBean.empresa.conta.senha}" span="6"
+							label="Senha" placeholder="******" id="txtSenha"
+							match="txtConfirmSenha" maxlength="64"
+							validatorMessage="As senhas não coincidem" />
+						<b:inputSecret value="#{empresaBean.empresa.conta.senha}" span="6"
+							label="Confirme a senha" placeholder="******"
+							id="txtConfirmSenha" maxlength="64" />
+					</b:row>
 
 
-				<b:column col-md="4">
-					<span style="font-weight: bold;">Telefone </span>
-					<p:inputMask id="txtTelefone" size="30" mask="(99) 9999-9999"
-						value="#{empresaBean.empresa.telefone}"
-						styleClass="inputCad-Empresa" />
-				</b:column>
+					<br />
+					<br />
 
-				<b:column col-md="4">
-					<span style="font-weight: bold;">Telefone 2</span>
-					<p:inputMask id="txtTelefone2" size="30" mask="(99) 9999-9999"
-						value="#{empresaBean.empresa.telefone2}"
-						styleClass="inputCad-Empresa" />
-				</b:column>
-
-			</b:row>
-			<br />
-			<br />
-
-			<b:well styleClass="well-cadastro">
-				<h4>Endereço</h4>
-			</b:well>
-			<br />
-			<br />
+					<b:well styleClass="well-cadastro">
+						<h4>Informações Empresariais</h4>
+					</b:well>
+					<br />
+					<br />
 
 
-			<b:row>
-				<b:column col-md="4">
-					<span style="font-weight: bold;">CEP</span>
-					<p:inputMask mask="99999-999" id="txtCep" size="30"
-						value="#{empresaBean.empresa.endereco.cep}"
-						styleClass="inputCad-Empresa" />
-				</b:column>
-				<b:column col-md="4">
-					<span style="font-weight: bold;">Numero</span>
-					<p:inputText maxlength="13" size="30"
-						value="#{empresaBean.empresa.endereco.numero}"
-						styleClass="inputCad-Empresa" />
-				</b:column>
-				<b:column col-md="4">
-					<span style="font-weight: bold;">Complemento</span>
-					<p:inputText maxlength="13" size="30"
-						value="#{empresaBean.empresa.endereco.complemento}"
-						styleClass="inputCad-Empresa" />
-				</b:column>
-			</b:row>
-			<hr />
-			<b:row>
-				<b:inputText value="#{empresaBean.empresa.endereco.rua}" span="6"
-					label="Rua" placeholder="Rua , AV. " />
-				<b:inputText value="#{empresaBean.empresa.endereco.bairro}" span="6"
-					label="Bairro" />
-			</b:row>
-			<hr />
-			<b:row>
-				<b:inputText value="#{empresaBean.empresa.endereco.cidade.nome}"
-					span="6" label="Cidade" />
-				<b:inputText
-					value="#{empresaBean.empresa.endereco.cidade.estado.uf}" span="6"
-					label="Estado" />
-			</b:row>
-			<hr />
+					<b:row>
+						<b:inputText value="#{empresaBean.empresa.razaoSocial}" span="6"
+							label="Razão Social" placeholder="Ex: Platz.ltda" />
 
-			<b:row>
-				<b:column col-md="12">
+						<b:inputText value="#{empresaBean.empresa.nomeFantasia}" span="6"
+							label="Nome Fantasia" />
+					</b:row>
 
-					<p:commandButton immediate="true" value="Voltar"
-						action="#{empresaBean.voltar}" update=""
-						styleClass="btnVoltar-empresa" />
+					<hr />
+
+					<b:row>
+						<b:column col-md="4">
+							<span style="font-weight: bold;">CNPJ</span>
+							<p:inputMask id="txtCnpj" mask="99.999.999/9999-99" size="30"
+								value="#{empresaBean.empresa.cnpj}"
+								styleClass="inputCad-Empresa" />
+						</b:column>
+
+
+						<b:column col-md="4">
+							<span style="font-weight: bold;">Telefone </span>
+							<p:inputMask id="txtTelefone" size="30" mask="(99) 9999-9999"
+								value="#{empresaBean.empresa.telefone}"
+								styleClass="inputCad-Empresa" />
+						</b:column>
+
+						<b:column col-md="4">
+							<span style="font-weight: bold;">Telefone 2</span>
+							<p:inputMask id="txtTelefone2" size="30" mask="(99) 9999-9999"
+								value="#{empresaBean.empresa.telefone2}"
+								styleClass="inputCad-Empresa" />
+						</b:column>
+
+					</b:row>
+					<br />
+					<br />
+
+					<b:well styleClass="well-cadastro">
+						<h4>Endereço</h4>
+					</b:well>
+					<br />
+					<br />
+
+
+					<b:row>
+						<b:column col-md="4">
+							<span style="font-weight: bold;">CEP</span>
+							<p:inputMask mask="99999-999" id="txtCep" size="30"
+								value="#{empresaBean.empresa.endereco.cep}"
+								styleClass="inputCad-Empresa" />
+						</b:column>
+						<b:column col-md="4">
+							<span style="font-weight: bold;">Numero</span>
+							<p:inputText maxlength="13" size="30"
+								value="#{empresaBean.empresa.endereco.numero}"
+								styleClass="inputCad-Empresa" />
+						</b:column>
+						<b:column col-md="4">
+							<span style="font-weight: bold;">Complemento</span>
+							<p:inputText maxlength="13" size="30"
+								value="#{empresaBean.empresa.endereco.complemento}"
+								styleClass="inputCad-Empresa" />
+						</b:column>
+					</b:row>
+					<hr />
+					<b:row>
+						<b:inputText value="#{empresaBean.empresa.endereco.rua}" span="6"
+							label="Rua" placeholder="Rua , AV. " />
+						<b:inputText value="#{empresaBean.empresa.endereco.bairro}"
+							span="6" label="Bairro" />
+					</b:row>
+					<hr />
+					<b:row>
+						<b:inputText value="#{empresaBean.empresa.endereco.cidade.nome}"
+							span="6" label="Cidade" />
+						<b:inputText
+							value="#{empresaBean.empresa.endereco.cidade.estado.uf}" span="6"
+							label="Estado" />
+					</b:row>
+					<hr />
+
+					<b:row>
+						<b:column col-md="12">
+
+							<p:commandButton value="Cadastrar"
+								action="#{empresaBean.cadastrarAreaLivre()}"
+								styleClass="btnCadastrar-empresa" />
+
+						</b:column>
+					</b:row>
+				</b:panel>
+			</h:form>
+
+
+			<!-- CADASTRO DE USUARIO -->
+			<h:form>
+				<p:growl autoUpdate="true" />
+				<b:panel style="width:60%; margin: 0 auto;"
+					rendered="#{utilBean.cadastroUsuarioEmpresa == false}">
+
+					<b:well styleClass="well-cadastro">
+						<h4>Informações da Conta</h4>
+					</b:well>
+
+					<b:row>
+						<b:column col-md="8" style="margin-left:17%;">
+							<p:fileUpload mode="advanced" fileLimit="1" id="upImgPerfilUser"
+								invalidFileMessage="Arquivo inválido"
+								label="Selecione a Imagem de Perfil" uploadLabel="Salvar"
+								cancelLabel="Cancelar" span="6"
+								allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+								fileLimitMessage="Apenas uma imagem pode ser enviada"
+								dragDropSupport="true"
+								fileUploadListener="#{usuarioBean.upload}" />
+						</b:column>
+					</b:row>
+					<hr />
+
+					<b:row>
+						<b:inputText value="#{usuarioBean.usuario.conta.email}" span="6"
+							label="Email" placeholder="usuario@email.com" />
+						<b:inputText value="#{usuarioBean.usuario.conta.login}" span="6"
+							label="Nome de Login" placeholder="usuario12" />
+					</b:row>
+					<hr />
+
+					<b:row rendered="#{!usuarioBean.editar}">
+						<b:inputSecret value="#{usuarioBean.usuario.conta.senha}" span="6"
+							label="Senha" placeholder="******" id="txtSenha2"
+							match="txtConfirmSenha2" maxlength="64"
+							validatorMessage="As senhas não coincidem" />
+						<b:inputSecret value="#{usuarioBean.usuario.conta.senha}" span="6"
+							label="Confirme a senha" placeholder="******"
+							id="txtConfirmSenha2" maxlength="64" />
+					</b:row>
+
+					<br />
+					<br />
+
+					<b:well styleClass="well-cadastro">
+						<h4>Informações Pessoais</h4>
+					</b:well>
+					<br />
+					<br />
+
+					<b:row>
+						<b:column col-md="4">
+							<span style="font-weight: bold;">Nome</span>
+							<p:inputText value="#{usuarioBean.usuario.nome}" size="30"
+								placeholder="Ex: Maria" styleClass="inputCad-Usuario" />
+						</b:column>
+						<b:column col-md="4">
+
+							<span style="font-weight: bold;">CPF</span>
+							<p:inputMask id="txtCpf" size="30" mask="999.999.999-99"
+								value="#{usuarioBean.usuario.cpf}" styleClass="inputCad-Usuario" />
+						</b:column>
+						<b:column col-md="4">
+							<span style="font-weight: bold;">Data de Nascimento</span>
+
+							<p:calendar size="20" id="txtDataNascimento" pattern="dd/MM/yyyy"
+								value="#{usuarioBean.usuario.dataNascimento}" />
+						</b:column>
+					</b:row>
+
+					<hr />
+
+					<b:row>
+						<b:column col-md="4">
+							<span style="font-weight: bold;">Celular</span>
+							<p:inputMask id="txtCelular" size="30"
+								styleClass="inputCad-Usuario" mask="(99) 99999-9999"
+								value="#{usuarioBean.usuario.celular}" />
+						</b:column>
+						<b:column col-md="4">
+							<span style="font-weight: bold;">Telefone</span>
+							<p:inputMask id="txtTelefoneUser" size="30" mask="(99) 9999-9999"
+								styleClass="inputCad-Usuario"
+								value="#{usuarioBean.usuario.telefone}" />
+						</b:column>
+					</b:row>
+
+					<br />
+					<br />
+
+					<b:well styleClass="well-cadastro">
+						<h4>Endereço</h4>
+					</b:well>
+					<br />
+					<br />
+
+					<b:row>
+						<b:column col-md="4">
+							<span style="font-weight: bold;">CEP</span>
+							<p:inputMask mask="99999-999" id="txtCepUser" size="30"
+								value="#{usuarioBean.usuario.endereco.cep}"
+								styleClass="inputCad-Usuario" />
+						</b:column>
+						<b:column col-md="4">
+							<span style="font-weight: bold;">Numero</span>
+							<p:inputText maxlength="13" size="30"
+								value="#{usuarioBean.usuario.endereco.numero}"
+								styleClass="inputCad-Usuario" />
+						</b:column>
+						<b:column col-md="4">
+							<span style="font-weight: bold;">Complemento</span>
+							<p:inputText maxlength="13" size="30"
+								value="#{usuarioBean.usuario.endereco.complemento}"
+								styleClass="inputCad-Usuario" />
+						</b:column>
+					</b:row>
+
+					<hr />
+
+					<b:row>
+						<b:inputText value="#{usuarioBean.usuario.endereco.rua}" span="6"
+							id="txtRuaUser" label="Rua" placeholder="Rua , AV. " />
+
+						<b:inputText value="#{usuarioBean.usuario.endereco.bairro}"
+							span="6" id="txtBairroUser" label="Bairro" />
+					</b:row>
+					<hr />
+					<b:row>
+						<b:inputText value="#{usuarioBean.usuario.endereco.cidade.nome}"
+							span="6" id="txtCidadeUser" label="Cidade" />
+						<b:inputText
+							value="#{usuarioBean.usuario.endereco.cidade.estado.uf}" span="6"
+							id="txtEstadoUser" label="Estado" />
+					</b:row>
+
+					<br />
 
 					<p:commandButton value="Cadastrar"
-						action="#{empresaBean.cadastrar()}" update=""
+						action="#{usuarioBean.cadastrarAreaLivre()}"
 						styleClass="btnCadastrar-empresa" />
 
-				</b:column>
-			</b:row>
-		</b:panel>
-
-
-		<!-- CADASTRO DE USUARIO -->
-
-		<b:panel style="width:60%;
-		margin: 0 auto;">
-
-			<b:well styleClass="well-cadastro">
-				<h4>Informações da Conta</h4>
-			</b:well>
-
-			<b:row>
-				<b:column col-md="8" style="margin-left:17%;">
-					<p:fileUpload mode="advanced" fileLimit="1" id="upImgPerfilUser"
-						invalidFileMessage="Arquivo inválido"
-						label="Selecione a Imagem de Perfil" uploadLabel="Salvar"
-						cancelLabel="Cancelar" span="6"
-						allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-						fileLimitMessage="Apenas uma imagem pode ser enviada"
-						dragDropSupport="true" fileUploadListener="#{usuarioBean.upload}" />
-				</b:column>
-			</b:row>
-			<hr />
-
-			<b:row>
-				<b:inputText value="#{usuarioBean.usuario.conta.email}" span="6"
-					label="Email" placeholder="usuario@email.com" />
-				<b:inputText value="#{usuarioBean.usuario.conta.login}" span="6"
-					label="Nome de Login" placeholder="usuario12" />
-			</b:row>
-			<hr />
-
-			<b:row rendered="#{!usuarioBean.editar}">
-				<b:inputSecret value="#{usuarioBean.usuario.conta.senha}" span="6"
-					label="Senha" placeholder="******" id="txtSenha2"
-					match="txtConfirmSenha2" maxlength="64"
-					validatorMessage="As senhas não coincidem" />
-				<b:inputSecret value="#{usuarioBean.usuario.conta.senha}" span="6"
-					label="Confirme a senha" placeholder="******" id="txtConfirmSenha2"
-					maxlength="64" />
-			</b:row>
-
-			<br />
-			<br />
-
-			<b:well styleClass="well-cadastro">
-				<h4>Informações Pessoais</h4>
-			</b:well>
-			<br />
-			<br />
-
-			<b:row>
-				<b:column col-md="4">
-					<span style="font-weight: bold;">Nome</span>
-					<p:inputText value="#{usuarioBean.usuario.nome}" size="30"
-						placeholder="Ex: Maria" styleClass="inputCad-Usuario" />
-				</b:column>
-				<b:column col-md="4">
-
-					<span style="font-weight: bold;">CPF</span>
-					<p:inputMask id="txtCpf" size="30" mask="999.999.999-99"
-						value="#{usuarioBean.usuario.cpf}" styleClass="inputCad-Usuario" />
-				</b:column>
-				<b:column col-md="4">
-					<span style="font-weight: bold;">Data de Nascimento</span>
-
-					<p:calendar size="20" id="txtDataNascimento" pattern="dd/MM/yyyy"
-						value="#{usuarioBean.usuario.dataNascimento}" />
-				</b:column>
-			</b:row>
-
-			<hr />
-
-			<b:row>
-				<b:column col-md="4">
-					<span style="font-weight: bold;">Celular</span>
-					<p:inputMask id="txtCelular" size="30"
-						styleClass="inputCad-Usuario" mask="(99) 99999-9999"
-						value="#{usuarioBean.usuario.celular}" />
-				</b:column>
-				<b:column col-md="4">
-					<span style="font-weight: bold;">Telefone</span>
-					<p:inputMask id="txtTelefoneUser" size="30" mask="(99) 9999-9999"
-						styleClass="inputCad-Usuario"
-						value="#{usuarioBean.usuario.telefone}" />
-				</b:column>
-			</b:row>
-			
-			<br />
-			<br />
-
-			<b:well styleClass="well-cadastro">
-				<h4>Endereço</h4>
-			</b:well>
-			<br />
-			<br />
-
-			<b:row>
-				<b:column col-md="4">
-					<span style="font-weight: bold;">CEP</span>
-					<p:inputMask mask="99999-999" id="txtCepUser" size="30"
-						value="#{usuarioBean.usuario.endereco.cep}"
-						styleClass="inputCad-Usuario" />
-				</b:column>
-				<b:column col-md="4">
-					<span style="font-weight: bold;">Numero</span>
-					<p:inputText maxlength="13" size="30"
-						value="#{usuarioBean.usuario.endereco.numero}"
-						styleClass="inputCad-Usuario" />
-				</b:column>
-				<b:column col-md="4">
-					<span style="font-weight: bold;">Complemento</span>
-					<p:inputText maxlength="13" size="30"
-						value="#{usuarioBean.usuario.endereco.complemento}"
-						styleClass="inputCad-Usuario" />
-				</b:column>
-			</b:row>
-
-			<hr />
-
-			<b:row>
-				<b:inputText value="#{usuarioBean.usuario.endereco.rua}" span="6"
-					id="txtRuaUser" label="Rua" placeholder="Rua , AV. " />
-
-				<b:inputText value="#{usuarioBean.usuario.endereco.bairro}" span="6"
-					id="txtBairroUser" label="Bairro" />
-			</b:row>
-			<hr />
-			<b:row>
-				<b:inputText value="#{usuarioBean.usuario.endereco.cidade.nome}"
-					span="6" id="txtCidadeUser" label="Cidade" />
-				<b:inputText
-					value="#{usuarioBean.usuario.endereco.cidade.estado.uf}" span="6"
-					id="txtEstadoUser" label="Estado" />
-			</b:row>
-
-			<br />
-			<p:commandButton immediate="true" value="Voltar"
-				action="#{usuarioBean.voltar}" update=""
-				styleClass="btnVoltar-empresa" />
-
-			<p:commandButton value="Cadastrar"
-				action="#{usuarioBean.cadastrar()}" update=""
-				styleClass="btnCadastrar-empresa" />
-
-		</b:panel>
-		
+				</b:panel>
+			</h:form>
+		</b:container>
 	</ui:define>
 
 </ui:composition>

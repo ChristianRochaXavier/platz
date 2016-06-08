@@ -46,14 +46,14 @@
 			<b:column col-md="3">
 				<span style="font-weight: bold;">Data de Inicio</span>
 				<br />
-				<p:calendar locale="pt" id="txtDataInicio"
-					value="#{eventoBean.evento.dataInicio}" placeholder="dd/MM/aaaa HH:mm" pattern="dd/MM/yyyy HH:mm" />
+				<p:calendar id="txtDataInicio" locale="pt"
+					value="#{eventoBean.evento.dataInicio}" placeholder="dd/MM/aaaa HH:mm" pattern="dd/MM/yyyy HH:mm" stepHour="1" stepMinute="5" />
 			</b:column>
 			<b:column col-md="3">
-				<span style="font-weight: bold;">Data de Termino</span>
+				<span style="font-weight: bold;">Data de Término</span>
 				<br />
-				<p:calendar locale="pt" id="txtDataTermino"
-					value="#{eventoBean.evento.dataTermino}" pattern="dd/MM/yyyy HH:mm"  placeholder="dd/MM/aaaa HH:mm"/>
+				<p:calendar id="txtDataTermino" locale="pt"
+					value="#{eventoBean.evento.dataTermino}" placeholder="dd/MM/aaaa HH:mm" pattern="dd/MM/yyyy HH:mm" stepHour="1" stepMinute="5" />
 			</b:column>
 		</b:row>
 		<hr />
@@ -128,7 +128,8 @@
 					value="#{eventoBean.evento.destaque}" styleClass="btnDestaque" />
 
 			</b:column>
-			
+
+
 		</b:row>
 
 		<hr />
@@ -136,5 +137,8 @@
 		<p:commandButton value="Cadastrar" action="#{eventoBean.cadastrar()}"
 			styleClass="btnCad-evento" update="@form" />
 	</b:panel>
+
+
+
 
 </ui:composition>

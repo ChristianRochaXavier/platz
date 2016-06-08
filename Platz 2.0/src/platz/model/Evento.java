@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
@@ -21,6 +23,7 @@ public class Evento {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String evento;
+	private boolean destaque = false;
 	private String detalhes;
 	private Date dataInicio;
 	private Date dataTermino;
@@ -57,6 +60,14 @@ public class Evento {
 		this.evento = evento;
 	}
 
+	public boolean isDestaque() {
+		return destaque;
+	}
+
+	public void setDestaque(boolean destaque) {
+		this.destaque = destaque;
+	}
+
 	@NotEmpty(message = "Os detalhes do evento devem ser informados")
 	@Length(min = 5, max = 500, message = "Os detalhes do evento devem ter entre 5 e 500 caracteres")
 	public String getDetalhes() {
@@ -67,7 +78,8 @@ public class Evento {
 		this.detalhes = detalhes;
 	}
 
-	@NotEmpty(message = "A data de início deve ser informada")
+	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull(message = "A data de início deve ser informada")
 	public Date getDataInicio() {
 		return dataInicio;
 	}
@@ -75,8 +87,9 @@ public class Evento {
 	public void setDataInicio(Date dataInicio) {
 		this.dataInicio = dataInicio;
 	}
-
-	@NotEmpty(message = "A date de término deve ser informada")
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull(message = "A date de término deve ser informada")
 	public Date getDataTermino() {
 		return dataTermino;
 	}

@@ -3,12 +3,11 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:b="http://bootsfaces.net/ui">
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
-	<title> <ui:insert name="titulo" /> - PLATZ	</title>
-	
+	<title><ui:insert name="titulo" /> - PLATZ</title>
+
 	<link rel="stylesheet" type="text/css"
 		href="#{request.contextPath}/css/estilo.css" />
 	<link rel="stylesheet" type="text/css"
@@ -28,10 +27,10 @@
 
 		<b:navbarLinks id="link-menuUser">
 			<b:navLink value="Home" href="../Empresa/index.jsf"></b:navLink>
-			<b:navLink value="Ranking" href="#"></b:navLink>			
+			<b:navLink value="Ranking" href="#"></b:navLink>
 			<b:dropMenu value="Eventos">
-			<b:navLink value="Meus Eventos" href="#"></b:navLink>
-			<b:navLink value="Postar Evento" href="#"></b:navLink>
+				<b:navLink value="Meus Eventos" href="#"></b:navLink>
+				<b:navLink value="Postar Evento" href="../Empresa/evento.jsf"></b:navLink>
 			</b:dropMenu>
 			<b:navLink value="Avaliações" href="#"></b:navLink>
 			<b:navLink value="Empresas" href="#"></b:navLink>

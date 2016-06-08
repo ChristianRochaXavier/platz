@@ -2,17 +2,21 @@ package platz.bean;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.event.FileUploadEvent;
 
+import platz.dao.CategoriaDAO;
+import platz.dao.EventoDAO;
 import platz.model.CategoriaEvento;
 import platz.model.Evento;
 
 @ManagedBean
 @SessionScoped
-public class EventoBean {
+public class EventoBean { 
 
 	private Evento evento;
 	private Evento eventoStatus;
@@ -20,20 +24,47 @@ public class EventoBean {
 	private Evento eventoExclusao;
 	private List<Evento> eventos;
 	private List<CategoriaEvento> categorias;
-	static final String CAMINHOIMAGEM = "/resources/img/eventos/";
+	static final String CAMINHOIMAGEM = "/resources/img/eventos/";  
 	
-	public void editar(Evento evento){}
-	public void zerar(){}
-	public void cadastrar(){}
-	public void upload(FileUploadEvent event){}
-	public void inverterAtividade(){}
-	public void detalhes(){}
-	public void alteraStatus(){}
-	public void pegarImagem(){}
-	
-	
-	public EventoBean() {
+	public EventoBean(){
+		evento = new Evento();
+		eventoStatus = new Evento();
+		eventoDetalhe = new Evento();
+		eventoExclusao = new Evento();
+		eventos = new EventoDAO().listarTodos();
+		categorias = new CategoriaDAO().listarTodos();
+	}
 
+	public void editar(Evento evento) {
+	}
+
+	public void zerar() {
+		evento = new Evento();
+		eventoStatus = new Evento();
+		eventoDetalhe = new Evento();
+		eventoExclusao = new Evento();
+		eventos = new EventoDAO().listarTodos();
+		categorias = new CategoriaDAO().listarTodos();
+	}
+
+	public void cadastrar() {
+		new EventoDAO().cadastrar(evento);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evento cadastrado com sucesso"));
+	}
+
+	public void upload(FileUploadEvent event) {
+	}
+
+	public void inverterAtividade() {
+	}
+
+	public void detalhes() {
+	}
+
+	public void alteraStatus() {
+	}
+
+	public void pegarImagem() {
 	}
 
 	public Evento getEvento() {

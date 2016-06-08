@@ -40,7 +40,32 @@
 		<pattern value="/Login.xhtml" />
 		<view-id value="/login.jsf" />
 	</url-mapping>
-
+	<!-- Mapeamento para a pagina de cadastro de contas -->
+	<url-mapping id="CadastroConta">
+		<pattern value="/CadastroConta" />
+		<view-id value="/cadastroConta.jsf" />
+	</url-mapping>
+	<url-mapping id="cadastroConta">
+		<pattern value="/cadastroConta" />
+		<view-id value="/cadastroConta.jsf" />
+	</url-mapping>
+	<url-mapping id="cadastroConta.xhtml">
+		<pattern value="/cadastroConta.xhtml" />
+		<view-id value="/cadastroConta.jsf" />
+	</url-mapping>
+	<url-mapping id="CadastroConta.xhtml">
+		<pattern value="/CadastroConta.xhtml" />
+		<view-id value="/cadastroConta.jsf" />
+	</url-mapping>
+	<url-mapping id="cadastros">
+		<pattern value="/cadastros" />
+		<view-id value="/cadastroConta.jsf" />
+	</url-mapping>
+	<url-mapping id="Cadastros">
+		<pattern value="/Cadastros" />
+		<view-id value="/cadastroConta.jsf" />
+	</url-mapping>
+	
 	<!--Area Administrativa - Mapeamento para a pagina inicial Administrativa -->
 	<url-mapping id="Admin-Home">
 		<pattern value="/Administrador/Home" />

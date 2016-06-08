@@ -86,7 +86,11 @@ public class UsuarioBean {
 		usuario.setImagemPerfil(CAMINHOIMAGEM + event.getFile().getFileName());
 		// System.out.println(usuario.getImagemPerfil());
 	}
-
+	
+	public String cadastrarAreaLivre(){
+		this.cadastrar();
+		return "login.jsf?faces-redirect=true";
+	}
 	public void cadastrar() {
 
 		System.out.println("Entrou no cadastro");

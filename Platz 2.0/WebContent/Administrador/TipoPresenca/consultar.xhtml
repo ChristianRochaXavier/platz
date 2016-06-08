@@ -3,15 +3,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
-	
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui">
+
 	<p:panel style="margin-top:1%; width:75%; margin:0 auto;">
 		<h:form id="tipoPresenca-consulta">
 			<p:growl autoUpdate="true" />
 
+
 			<p:dataTable value="#{tipoPresencaBean.tiposPresencas}"
-				paginatorPosition="bottom" var="tipoPresenca" paginator="true" rows="10"
-				id="tabela-tipoPresenca" editable="true"
+				paginatorPosition="bottom" var="tipoPresenca" paginator="true"
+				rows="10" id="tabela-tipoPresenca" editable="true"
 				emptyMessage="Nenhum Registro Encontrado"
 				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
 				<f:facet name="header">
@@ -27,16 +29,16 @@
 					<h:outputText value="#{tipoPresenca.id}" />
 				</p:column>
 
-				<p:column headerText="Tipo Presença" sortBy="#{tipoPresenca.tipoPresenca}"
-					width="55%" filterBy="#{tipoPresenca.tipoPresenca}"
-					filterMatchMode="contains">
+				<p:column headerText="Tipo Presença"
+					sortBy="#{tipoPresenca.tipoPresenca}" width="55%"
+					filterBy="#{tipoPresenca.tipoPresenca}" filterMatchMode="contains">
 					<p:cellEditor>
 						<f:facet name="output">
 							<h:outputText value="#{tipoPresenca.tipoPresenca}" />
 						</f:facet>
 						<f:facet name="input">
-							<p:inputText value="#{tipoPresenca.tipoPresenca}" style="width:100%"
-								label="Tipo de Presença" />
+							<p:inputText value="#{tipoPresenca.tipoPresenca}"
+								style="width:100%" label="Tipo de Presença" />
 						</f:facet>
 					</p:cellEditor>
 				</p:column>

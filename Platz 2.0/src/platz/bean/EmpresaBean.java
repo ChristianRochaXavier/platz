@@ -58,15 +58,16 @@ public class EmpresaBean {
 	// Método que vê o evento de upload do p:upload
 	public void upload(FileUploadEvent event) {
 
-//		System.out.println("Entrou no método upload");
-//		System.out.println("Nome do Arquivo: " + event.getFile().getFileName());
+		// System.out.println("Entrou no método upload");
+		// System.out.println("Nome do Arquivo: " +
+		// event.getFile().getFileName());
 
 		// Pega o caminho completo do diretório
 		String caminhoCompleto = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/").toString()
 				+ "\\resources\\img\\empresaPerfil\\";
 
-//		System.out.println("Caminho: " + caminhoCompleto);
-//		System.out.println("");
+		// System.out.println("Caminho: " + caminhoCompleto);
+		// System.out.println("");
 
 		try {
 			// Pega os bytes da imagem
@@ -92,6 +93,11 @@ public class EmpresaBean {
 		// estático criado acima
 		empresa.setImagemPerfil(CAMINHOIMAGEM + event.getFile().getFileName());
 		// System.out.println(usuario.getImagemPerfil());
+	}
+
+	public String cadastrarAreaLivre() {
+		this.cadastrar();
+		return "login.jsf?faces-redirect=true";
 	}
 
 	public void cadastrar() {
@@ -156,7 +162,7 @@ public class EmpresaBean {
 	public String pegarImagem(Empresa empresa) {
 
 		if (empresa.getImagemPerfil() == null || empresa.getImagemPerfil().equals("")) {
-			return CAMINHOIMAGEM +  "empresa.jpg";
+			return CAMINHOIMAGEM + "empresa.jpg";
 		} else {
 			return empresa.getImagemPerfil();
 		}

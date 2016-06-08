@@ -3,9 +3,15 @@
 	margin: 0;
 }
 
+.container-fluid
+{
+	background:#363636;
+}
+
 /* Z-index da nav menor que o z-index do p:growl(1001)  */
 body .navbar-fixed-top, .navbar-fixed-bottom{
 	z-index:500;
+	opacity:0.9;
 }
 
 

@@ -4,10 +4,14 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
-
+	
+	
 	<p:panel rendered="#{empresaBean.rendered != false}">
 		<p:commandButton value="Nova Empresa"
 			action="#{empresaBean.novaEmpresa}" update="@form" />
+
+
+		
 
 		<p:dataTable value="#{empresaBean.empresas}" id="tabela-empresa"
 			paginatorPosition="bottom" var="empresa" paginator="true" rows="25"
@@ -36,8 +40,8 @@
 				<h:outputText value="#{empresa.cnpj}" />
 			</p:column>
 
-			<p:column headerText="Email" filterBy="#{empresa.conta.email}" width="17%"
-				filterMatchMode="#{empresa.conta.email}">
+			<p:column headerText="Email" filterBy="#{empresa.conta.email}"
+				width="17%" filterMatchMode="#{empresa.conta.email}">
 				<h:outputText value="#{empresa.conta.email}" />
 			</p:column>
 
@@ -63,13 +67,14 @@
 
 		<h:commandLink>
 			<h:graphicImage url="../css/icons/exportar_xls.png" />
-			<p:dataExporter type="xls" target="tabela-empresa" fileName="Empresas" />
+			<p:dataExporter type="xls" target="tabela-empresa"
+				fileName="Empresas" />
 		</h:commandLink>
 
 		<h:commandLink>
 			<h:graphicImage url="../css/icons/exportar_pdf.png" />
-			<p:dataExporter type="pdf" target="tabela-empresa" fileName="Empresas"
-				encoding="iso-8859-1" />
+			<p:dataExporter type="pdf" target="tabela-empresa"
+				fileName="Empresas" encoding="iso-8859-1" />
 		</h:commandLink>
 
 		<p:confirmDialog rendered="#{empresaBean.empresaStatus != null}"

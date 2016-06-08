@@ -12,6 +12,10 @@ import org.primefaces.event.FileUploadEvent;
 import platz.dao.CategoriaDAO;
 import platz.dao.EventoDAO;
 import platz.model.CategoriaEvento;
+import platz.model.Cidade;
+import platz.model.Empresa;
+import platz.model.Endereco;
+import platz.model.Estado;
 import platz.model.Evento;
 
 @ManagedBean
@@ -28,6 +32,11 @@ public class EventoBean {
 	
 	public EventoBean(){
 		evento = new Evento();
+		evento.setCategoriaEvento(new CategoriaEvento());
+		evento.setEndereco(new Endereco());
+		evento.setEmpresa(new Empresa());
+		evento.getEndereco().setCidade(new Cidade());
+		evento.getEndereco().getCidade().setEstado(new Estado());
 		eventoStatus = new Evento();
 		eventoDetalhe = new Evento();
 		eventoExclusao = new Evento();
@@ -40,6 +49,11 @@ public class EventoBean {
 
 	public void zerar() {
 		evento = new Evento();
+		evento.setCategoriaEvento(new CategoriaEvento());
+		evento.setEndereco(new Endereco());
+		evento.setEmpresa(new Empresa());
+		evento.getEndereco().setCidade(new Cidade());
+		evento.getEndereco().getCidade().setEstado(new Estado());
 		eventoStatus = new Evento();
 		eventoDetalhe = new Evento();
 		eventoExclusao = new Evento();
@@ -47,9 +61,11 @@ public class EventoBean {
 		categorias = new CategoriaDAO().listarTodos();
 	}
 
-	public void cadastrar() {
+	public void cadastrar() {	
+		
 		new EventoDAO().cadastrar(evento);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evento cadastrado com sucesso"));
+		this.zerar();
 	}
 
 	public void upload(FileUploadEvent event) {
@@ -58,6 +74,12 @@ public class EventoBean {
 	public void inverterAtividade() {
 	}
 
+	public Empresa pegarEmpresa(Empresa empresa){
+		this.evento.setEmpresa(empresa);
+		
+		return evento.getEmpresa();
+	}
+	
 	public void detalhes() {
 	}
 

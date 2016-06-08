@@ -21,7 +21,9 @@
 		</b:row>
 
 		<hr />
-
+		
+		<h:inputHidden value="#{eventoBean.pegarEmpresa(loginBean.empresaLogado).id}" />
+		
 		<b:row>
 			<b:selectOneMenu value="#{eventoBean.evento.categoriaEvento}"
 				span="6" label="Categoria do Evento : ">
@@ -37,7 +39,7 @@
 		</b:row>
 		<hr />
 		<b:row>
-			<b:inputTextarea value="#{eventoBean.evento.detalhes}" span="12"
+			<b:inputTextarea value="#{eventoBean.evento.detalhes}" span="12" maxlength="500" 
 				rows="5" label="Detalhes" />
 		</b:row>
 		<hr />

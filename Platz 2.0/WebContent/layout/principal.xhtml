@@ -7,72 +7,39 @@
 
 <h:head>
 	<title><ui:insert name="titulo" /> - PLATZ</title>
+	<link href="css/estiloTeste.css" rel="stylesheet" type="text/css"/>
 	
-	<link rel="stylesheet" type="text/css"
-		href="#{request.contextPath}/css/icons.css" />
-		
-	<link rel="stylesheet" type="text/css"
-		href="#{request.contextPath}/css/nav.css" />
-		
-	<link rel="stylesheet" type="text/css"
-		href="#{request.contextPath}/css/footer.css" />
-		
-	<link rel="stylesheet" type="text/css"
-		href="#{request.contextPath}/css/estilo.css" />
-		
-
 	<ui:insert name="css-link" />
 </h:head>
 
-<h:body class="corpoPagina" onload="#{loginBean.logoff()}">
-	<b:navBar inverse="true" fixed="top" brand-img="resources/img/platz/logo1.png"
+
+<h:body class="corpoPagina" onload="#{loginBean.logoff()}" >
+<ui:insert name="preNav" />
+ <b:navBar inverse="true" fixed="top" brand-img="resources/img/platz/logo1.png"
 	brand-img-style="width:100px;height:50px; margin-top:-15px;"
 	 brandHref="index.jsf"  fluid="true">
-				
-			
-		<b:navbarLinks id="link-menu">
-			<b:navLink value="Home" href="Home"></b:navLink>
-			<b:navLink value="Login" href="Login"></b:navLink>
-			<b:navLink value="Cadastre-se" href="CadastroConta"></b:navLink>
+            <b:navbarLinks>
+        <b:navLink value="Home" href="Home"></b:navLink>
+		
 			<b:dropMenu value="Eventos">
-				<b:navLink value="Categoria" href="EventoCategoria"></b:navLink>
+				<b:navLink value="Todos" href="EventoCategoria"></b:navLink>
 				<b:navLink></b:navLink>
 				<b:navLink value="Show" href="EventoEspecifico"></b:navLink>
 				<b:navLink value="Cultura" href="#"></b:navLink>
 				<b:navLink value="Culinaria" href="#"></b:navLink>
 			</b:dropMenu>
 			<b:navLink value="Sobre" href="Sobre"></b:navLink>
-		</b:navbarLinks>
-		
-
-		
-	</b:navBar>
-
-	<ui:insert name="corpoPagina" />
-
-	<footer>
-		<div class="rodape">
-			<b:column col-md="8">
-			<p class="titulo-platz">© Platz 2016 </p>
-			</b:column>
-			<b:column col-md="4">
-			<p class="titulo-platz">SIGA-NOS</p>
-			<ul>
-			<li><a href="#"><img src="css/icons/face2.png" alt="icone da rede social facebook" /></a></li>
-			<li><a href="#"><img src="css/icons/instagram2.png" alt="icone da rede social instagram" /></a></li>
-			<li><a href="#"><img src="css/icons/twitter2.png" alt="icone da rede social twitter" /></a></li>
-			
-			</ul>
-			</b:column>
-				
-		</div>
-		</footer>
-
-
-		<script type="text/javascript" src="../js/jquery-2.2.3.js"></script>
-		<script type="text/javascript" src="../js/footer.js"></script>
+             
+            </b:navbarLinks>
+            
+            <b:navbarLinks pull="right">
+                <b:navLink value="Login" href="Login" id="link-login" outcome="navbar"></b:navLink>
+                <b:navLink value="Cadastre-se" href="CadastroConta" id="link-cadastro"
+                 outcome="navbar-static-top"></b:navLink>
+            </b:navbarLinks>
+        </b:navBar>
+  <ui:insert name="corpoPagina" />
 </h:body>
 
 <ui:insert name="posFooter" />
-
 </html>

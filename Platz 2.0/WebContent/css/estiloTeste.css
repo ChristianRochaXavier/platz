@@ -1,0 +1,10 @@
+#pagina-inicial
+{
+	margin-top : 15%;
+}
+.navbar-nav > #link-cadastro > a
+{
+	color:white;
+	border-radius:5px;
+	background: orange;
+}

@@ -67,6 +67,10 @@
 .btnDestaque
 {
 	margin-left:25%;
+	background: rgba(26, 188, 156,1.0);
+	font-family: Verdana;
+	color: white;
+	font-size: 15px;
 }
 .btnCadastrar-empresa
 {

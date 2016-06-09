@@ -6,8 +6,6 @@
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
 	<p:panel>
-
-
 		<p:dataTable value="#{enderecoBean.enderecos}"
 			paginatorPosition="bottom" var="endereco" paginator="true" rows="25"
 			emptyMessage="Nenhum Registro Encontrado"
@@ -79,7 +77,8 @@
 				<h:outputText value="#{enderecoBean.enderecoDetalhe.cidade.nome}" />
 
 				<h:outputText value="UF:" />
-				<h:outputText value="#{enderecoBean.enderecoDetalhe.cidade.estado.uf}" />
+				<h:outputText
+					value="#{enderecoBean.enderecoDetalhe.cidade.estado.uf}" />
 
 			</p:panelGrid>
 

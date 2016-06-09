@@ -47,6 +47,13 @@ public class EventoBean {
 	}
 
 	public void editar(Evento evento) {
+		this.evento = evento;
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("evento.jsf");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public void zerar() {
@@ -63,8 +70,9 @@ public class EventoBean {
 		categorias = new CategoriaDAO().listarTodos();
 	}
 
-	public void cadastrar() {
+	public void cadastrar(Empresa empresa) {
 
+		this.evento.setEmpresa(empresa);
 		new EventoDAO().cadastrar(evento);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evento cadastrado com sucesso"));
 		this.zerar();
@@ -109,12 +117,6 @@ public class EventoBean {
 	}
 
 	public void inverterAtividade() {
-	}
-
-	public Empresa pegarEmpresa(Empresa empresa) {
-		this.evento.setEmpresa(empresa);
-
-		return evento.getEmpresa();
 	}
 
 	public void detalhes() {
@@ -173,5 +175,6 @@ public class EventoBean {
 	public void setCategorias(List<CategoriaEvento> categorias) {
 		this.categorias = categorias;
 	}
+
 
 }

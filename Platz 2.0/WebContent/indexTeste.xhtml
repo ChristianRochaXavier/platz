@@ -13,8 +13,10 @@
 	</ui:define>
 	<ui:define name="corpoPagina">
 		
+		
 		<div id="pagina-inicial" >
 		
+		<b:column col-md="3" />
 		<b:column col-md="6">
 		<h1>PLATZ</h1>
 		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
@@ -26,10 +28,12 @@
 		   and more recently with desktop publishing software like Aldus PageMaker including 
 		   versions of Lorem Ipsum.</p>
 		</b:column>
-		<b:column col-md="1" />
-		<b:column col-md="5">
+		
+		<b:column col-md="3" />
+		
+		<b:column col-md="6" style="margin-left:25%;">
 		<b:column col-md="12">
-		<h2>Busque Por Eventos </h2>
+		<h2 >Busque Por Eventos </h2>
 		</b:column>
 			<b:column col-md="4">
 		  <b:selectOneMenu value="#"  id="brandID" >
@@ -47,13 +51,108 @@
 			</b:column>
 		</b:column>
 		
+		
 		</div>
 		
-		<b:container>
 		
+			
 		
+		<div class="eventos-destaque">
+			<b:column>
+			
+			<p:carousel styleClass="carrossel" headerText="Eventos"
+				numVisible="3" autoPlayInterval="30000"
+				itemStyle="text-align:center;" responsive="true">
+				
+			<b:panel >
+			<b:row>
+			<b:column col-md="3"/>
+			<b:column col-md="6">
+			<b:thumbnail>
+				<h:graphicImage value="/resources/img/temp/evento1.jpg"/>
+			</b:thumbnail>		
+			</b:column>
+			</b:row>
+			<b:row>
+			
+			<b:column col-md="12">
+			    <h1>Evento</h1>
+			    <h2>Empresa</h2>
+			    <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+			    <p><a class="btn btn-warning btn-lg">Ver Mais detalhes</a></p>
+			    
+			  </b:column>  
+			</b:row>
+			</b:panel>
+			
+			<b:panel >
+			<b:row>
+				<b:column col-md="3"/>
+			<b:column col-md="6">
+			<b:thumbnail>
+				<h:graphicImage value="resources/img/temp/evento1.jpg" />	
+			</b:thumbnail>		
+			</b:column>
+			</b:row>
+			<b:row>
+			
+			<b:column col-md="12">
+			    <h1>Evento</h1>
+			    <h2>Empresa</h2>
+			    <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+			     <p><a class="btn btn-warning btn-lg">Ver Mais detalhes</a></p>
+			    
+			  </b:column>  
+			</b:row>
+			</b:panel>
+			
+			<b:panel >
+			<b:row>
+				<b:column col-md="3"/>
+			<b:column col-md="6">
+			<b:thumbnail>
+			 	<h:graphicImage value="resources/img/temp/evento1.jpg" />	
+			</b:thumbnail>		
+			</b:column>
+			</b:row>
+			<b:row>
+			
+			<b:column col-md="12">
+			    <h1>Evento</h1>
+			    <h2>Empresa</h2>
+			    <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+			      <p><a class="btn btn-warning btn-lg">Ver Mais detalhes</a></p>
+			    
+			  </b:column>  
+			</b:row>
+			</b:panel>
+			
+			<b:panel >
+			<b:row>
+				<b:column col-md="3"/>
+			<b:column col-md="6">
+			<b:thumbnail>
+			 	<h:graphicImage value="resources/img/temp/evento1.jpg" />	
+			</b:thumbnail>		
+			</b:column>
+			</b:row>
+			<b:row>
+			
+			<b:column col-md="12">
+			    <h1>Evento</h1>
+			    <h2>Empresa</h2>
+			    <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+			      <p><a class="btn btn-warning btn-lg">Ver Mais detalhes</a></p>
+			    
+			  </b:column>  
+			</b:row>
+			</b:panel>
+			
+			</p:carousel>
+			
+			</b:column>	
+		</div>
 		
-		</b:container>
 
 	</ui:define>
 	<ui:define name="posFooter">

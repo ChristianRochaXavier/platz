@@ -1,10 +1,42 @@
+html, body{
+ height:100%;
+}
 #pagina-inicial
 {
-	margin-top : 15%;
+	padding-top : 15%;
+	width:100%;
+	 height:auto;
+	 min-height:100%; 
+ 	background:url("../resources/img/temp/teste7.jpg");
+ 	background-repeat: no-repeat;
+ 	background-size: cover;  
+ 	background-position: center;
+ 	opacity:0.8;
+ 	color:white;
+ 	
+}
+.navbar-default
+{
+	background: black;
+	border: none;
+	height: 70px
+}
+.container > .navbar-header, .container-fluid > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse
+{
+	margin-top: 10px;
 }
 .navbar-nav > #link-cadastro > a
 {
 	color:white;
 	border-radius:5px;
 	background: orange;
+}
+.navbar-default .navbar-nav > li > a
+{
+	color: white;
+}
+.eventos-destaque
+{
+	padding: 10px;
+	margin-top:5%;
 }

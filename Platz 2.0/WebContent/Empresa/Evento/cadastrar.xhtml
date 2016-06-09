@@ -26,7 +26,7 @@
 
 		<hr />
 		
-		<h:inputHidden value="#{eventoBean.pegarEmpresa(loginBean.empresaLogado).id}" />
+		
 		
 		<b:row>
 			<b:selectOneMenu value="#{eventoBean.evento.categoriaEvento}"
@@ -62,7 +62,7 @@
 					value="#{eventoBean.evento.dataTermino}" placeholder="dd/MM/aaaa HH:mm" pattern="dd/MM/yyyy HH:mm" stepHour="1" stepMinute="5" />
 			</b:column>
 			
-			<b:inputText span="4" label="Preço">
+			<b:inputText span="4" label="Preço" value="#{eventoBean.evento.preco}">
 				<f:facet name="prepend">
 					<h:outputText value="$" />
 				</f:facet>
@@ -143,7 +143,7 @@
 
 		<hr />
 		<br />
-		<p:commandButton value="Cadastrar" action="#{eventoBean.cadastrar()}"
+		<p:commandButton value="Cadastrar" action="#{eventoBean.cadastrar(loginBean.empresaLogado)}"
 			styleClass="btnCad-evento" update="@form" />
 	</b:panel>
 

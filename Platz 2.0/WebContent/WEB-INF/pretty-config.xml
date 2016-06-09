@@ -4,7 +4,6 @@
 	xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
                        http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
 
-
 	<!-- Mapeamento para a pagina inicial -->
 	<url-mapping id="Home">
 		<pattern value="/Home" />

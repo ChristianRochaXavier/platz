@@ -8,13 +8,17 @@
 	<br />
 
 	<b:panel>
+	<link rel="stylesheet" type="text/css"
+		href="#{request.contextPath}/css/estiloAdm.css" />
+	
+	
 		<b:well styleClass="well-cadastro">
 			<h4>Cadastro de Evento</h4>
 		</b:well>
 		<b:row>
 			<b:column col-md="8" style="margin-left:17%;">
 				<p:fileUpload mode="advanced" fileLimit="1" id="upImgPerfil"
-					label="Imagem do Evento" span="6"
+					label="Imagem do Evento" span="6" 
 					fileLimitMessage="Apenas uma imagem pode ser enviada" auto="true"
 					dragDropSupport="true" fileUploadListener="#{eventoBean.upload}" />
 			</b:column>
@@ -45,18 +49,25 @@
 		<hr />
 
 		<b:row>
-			<b:column col-md="3">
+			<b:column col-md="4">
 				<span style="font-weight: bold;">Data de Inicio</span>
 				<br />
-				<p:calendar id="txtDataInicio" locale="pt"
+				<p:calendar id="txtDataInicio" locale="pt" styleClass="inputCad-Evento"
 					value="#{eventoBean.evento.dataInicio}" placeholder="dd/MM/aaaa HH:mm" pattern="dd/MM/yyyy HH:mm" stepHour="1" stepMinute="5" />
 			</b:column>
-			<b:column col-md="3">
+			<b:column col-md="4">
 				<span style="font-weight: bold;">Data de Término</span>
 				<br />
-				<p:calendar id="txtDataTermino" locale="pt"
+				<p:calendar id="txtDataTermino" locale="pt" styleClass="inputCad-Evento"
 					value="#{eventoBean.evento.dataTermino}" placeholder="dd/MM/aaaa HH:mm" pattern="dd/MM/yyyy HH:mm" stepHour="1" stepMinute="5" />
 			</b:column>
+			
+			<b:inputText span="4" label="Preço">
+				<f:facet name="prepend">
+					<h:outputText value="$" />
+				</f:facet>
+			</b:inputText>
+			
 		</b:row>
 		<hr />
 		<b:row>
@@ -64,11 +75,7 @@
 				label="Lotação Minima" />
 			<b:inputText value="#{eventoBean.evento.lotacaoMax}" span="4"
 				label="Lotação Maxima" />
-			<b:inputText span="4" label="Preço">
-				<f:facet name="prepend">
-					<h:outputText value="$" />
-				</f:facet>
-			</b:inputText>
+			
 		</b:row>
 		<br />
 		<br />

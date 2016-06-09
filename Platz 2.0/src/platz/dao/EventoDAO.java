@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import platz.model.CategoriaEvento;
+import platz.model.Empresa;
 import platz.model.Evento;
 
 public class EventoDAO {
@@ -24,6 +26,42 @@ public class EventoDAO {
 		entityManager.close();
 
 		return lista;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Evento> listarPorCategoria(CategoriaEvento categoria) {
+
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		List<Evento> lista = entityManager.createQuery("select e from Evento e where e.categoriaEvento = :categoria")
+				.setParameter("categoria", categoria).getResultList();
+		entityManager.close();
+
+		return lista;
+
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Evento> listarDestaques(){
+		
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		List<Evento> lista = entityManager.createQuery("select e from Evento e where e.destaque = true").getResultList();
+		entityManager.close();
+
+		return lista;		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Evento> listarPorEmpresa(Empresa empresa){
+		
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		List<Evento> lista = entityManager.createQuery("select e from Evento e where e.empresa = :empresa")
+				.setParameter("empresa", empresa).getResultList();
+		entityManager.close();
+
+		return lista;
+
+		
+		
 	}
 
 	// Buscar por id

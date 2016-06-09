@@ -3,6 +3,7 @@
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 	<h:head>
@@ -14,165 +15,92 @@
 
 	<ui:define name="corpoPagina">
 
-		<b:row styleClass="placeholders">
 
+		<c:forEach items="#{eventoBean.categorias}" var="categoria">
+			<b:row styleClass="placeholders">
 
-			<p:carousel styleClass="carrossel" headerText="Esportes"
-				numVisible="4" autoPlayInterval="10000"
-				itemStyle="text-align:center;" responsive="true">
+				<p:carousel styleClass="carrossel"
+					headerText="#{categoria.categoria}" numVisible="4"
+					autoPlayInterval="10000" itemStyle="text-align:center;"
+					responsive="true">
 
-				<b:column col-xs="6" col-sm="3" styleClass="placeholder">
-					<div class="flip-container"
-						ontouchstart="this.classList.toggle('hover');">
+					<c:forEach items="#{eventoBean.listaPorCategoria(categoria)}"
+						var="evento">
 
-						<div class="flipper">
-							<div class="front">
-								<img src="resources/img/temp/evento2.jpg" class="img-responsive"
-									alt="Generic placeholder thumbnail" />
-								<h4>Nome Evento</h4>
+						<b:column col-xs="6" col-sm="3" styleClass="placeholder">
+							<div class="flip-container"
+								ontouchstart="this.classList.toggle('hover');">
+
+								<div class="flipper">
+
+									<!-- Frente -->
+									<div class="front">
+										<p:graphicImage src="#{evento.caminhoImagem}"
+											styleClass="img-responsive" />
+										<p:outputLabel value="#{evento.evento}"
+											style="font-size: 16pt" />
+									</div>
+
+									<!-- Fundo -->
+									<div class="back">
+										<h:outputText value="#{evento.evento}" style="font-size: 12pt" />
+										<br />
+										<p:outputLabel value="#{evento.empresa.nomeFantasia}"
+											styleClass="text-muted" />
+										<br />
+
+										<!-- Data de Início -->
+										<h:outputText value=" Início: " styleClass="text-muted" />
+										<h:outputText value="#{evento.dataInicio}"
+											styleClass="text-muted">
+											<f:convertDateTime dateStyle="full" />
+										</h:outputText>
+										<h:outputText value=" às " styleClass="text-muted" />
+										<h:outputText value="#{evento.dataInicio}"
+											styleClass="text-muted">
+											<f:convertDateTime pattern="HH:mm" type="time" />
+										</h:outputText>
+
+										<br />
+
+										<!-- Data de Término -->
+										<h:outputText value=" Término: " styleClass="text-muted" />
+										<h:outputText value="#{evento.dataTermino}"
+											styleClass="text-muted">
+											<f:convertDateTime dateStyle="full" />
+										</h:outputText>
+										<h:outputText value=" às " styleClass="text-muted" />
+										<h:outputText value="#{evento.dataTermino}"
+											styleClass="text-muted">
+											<f:convertDateTime pattern="HH:mm" type="time" />
+										</h:outputText>
+
+										<!-- Min / Max / $ -->
+
+										<h:outputText value="Mínimo de #{evento.lotacaoMin}"
+											styleClass="text-muted" />
+										<br />
+										<h:outputText value="Máximo de #{evento.lotacaoMax}"
+											styleClass="text-muted" />
+										<br />
+										<h:outputText value="Entrada: #{evento.preco}" styleClass="text-muted" rendered="#{evento.preco != null || evento.preco != 0}"/>
+										<!-- 		Pequeno problema:								 #{evento.preco != null ? '$ evento.preco'  : 'gratuito'} -->
+
+										<br />
+										<b:button look="success" value="Ver Mais" />
+									</div>
+								</div>
 							</div>
-							<div class="back">
-								<h4>Nome Evento</h4>
-								<br /> <span class="text-muted">Nome empresa</span><br /> <span
-									class="text-muted">Data Inicio</span><br /> <br /> <br />
-								<b:button look="success" value="Ver Mais" />
-							</div>
-
-						</div>
-
-					</div>
-
-				</b:column>
-
-				<b:column col-xs="6" col-sm="3" styleClass="placeholder">
-					<div class="flip-container"
-						ontouchstart="this.classList.toggle('hover');">
-
-						<div class="flipper">
-							<div class="front">
-								<img src="resources/img/temp/evento2.jpg" class="img-responsive"
-									alt="Generic placeholder thumbnail" />
-								<h4>Nome Evento</h4>
-								<span class="text-muted">Nome empresa</span><br /> <span
-									class="text-muted">Data Inicio</span><br />
-
-							</div>
-							<div class="back">
-								<h4>Nome Evento</h4>
-								<br /> <br />
-								<b:button look="success" value="Ver Mais" />
-							</div>
-
-						</div>
-
-					</div>
-
-				</b:column>
-
-				<b:column col-xs="6" col-sm="3" styleClass="placeholder">
-					<div class="flip-container"
-						ontouchstart="this.classList.toggle('hover');">
-
-						<div class="flipper">
-							<div class="front">
-								<img src="resources/img/temp/evento2.jpg" class="img-responsive"
-									alt="Generic placeholder thumbnail" />
-								<h4>Nome Evento</h4>
-								<span class="text-muted">Nome empresa</span><br /> <span
-									class="text-muted">Data Inicio</span><br />
-
-							</div>
-							<div class="back">
-								<h4>Nome Evento</h4>
-								<br /> <br />
-								<b:button look="success" value="Ver Mais" />
-							</div>
-
-						</div>
-
-					</div>
-
-				</b:column>
-
-				<b:column col-xs="6" col-sm="3" styleClass="placeholder">
-					<div class="flip-container"
-						ontouchstart="this.classList.toggle('hover');">
-
-						<div class="flipper">
-							<div class="front">
-								<img src="resources/img/temp/evento2.jpg" class="img-responsive"
-									alt="Generic placeholder thumbnail" />
-								<h4>Nome Evento</h4>
-								<span class="text-muted">Nome empresa</span><br /> <span
-									class="text-muted">Data Inicio</span><br />
-
-							</div>
-							<div class="back">
-								<h4>Nome Evento</h4>
-								<br /> <br />
-								<b:button look="success" value="Ver Mais" />
-							</div>
-
-						</div>
-
-					</div>
-
-				</b:column>
-
-				<b:column col-xs="6" col-sm="3" styleClass="placeholder">
-					<div class="flip-container"
-						ontouchstart="this.classList.toggle('hover');">
-
-						<div class="flipper">
-							<div class="front">
-								<img src="resources/img/temp/evento2.jpg" class="img-responsive"
-									alt="Generic placeholder thumbnail" />
-								<h4>Nome Evento</h4>
-								<span class="text-muted">Nome empresa</span><br /> <span
-									class="text-muted">Data Inicio</span><br />
-
-							</div>
-							<div class="back">
-								<h4>Nome Evento</h4>
-								<br /> <br />
-								<b:button look="success" value="Ver Mais" />
-							</div>
-
-						</div>
-
-					</div>
-
-				</b:column>
-
-				<b:column col-xs="6" col-sm="3" styleClass="placeholder">
-					<div class="flip-container"
-						ontouchstart="this.classList.toggle('hover');">
-
-						<div class="flipper">
-							<div class="front">
-								<img src="resources/img/temp/evento2.jpg" class="img-responsive"
-									alt="Generic placeholder thumbnail" />
-								<h4>Nome Evento</h4>
-								<span class="text-muted">Nome empresa</span><br /> <span
-									class="text-muted">Data Inicio</span><br />
-
-							</div>
-							<div class="back">
-								<h4>Nome Evento</h4>
-								<br /> <br />
-								<b:button look="success" value="Ver Mais" />
-							</div>
-
-						</div>
-
-					</div>
-
-				</b:column>
-
-			</p:carousel>
+						</b:column>
+					</c:forEach>
 
 
-		</b:row>
+				</p:carousel>
+			</b:row>
+
+		</c:forEach>
+
+
 
 	</ui:define>
 

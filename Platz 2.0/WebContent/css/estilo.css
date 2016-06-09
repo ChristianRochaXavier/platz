@@ -1,78 +1,78 @@
-#slider
-{
-	width: 75%; 
-	height: 10%; 
-	margin: 2% auto; 
-	
+#slider {
+	width: 75%;
+	height: 10%;
+	margin: 2% auto;
 }
-.img-slider
-{
-	width:100%;
-	height:600px;
+
+.img-slider {
+	width: 100%;
+	height: 600px;
 }
- .placeholders {
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        .placeholders h4 {
-            margin-bottom: 0;
-        }
-        .placeholder {
-            margin-bottom: 200px;
-        }
-.placeholder img {
-            border-radius: 5%;
-            display: inline-block;
-            width:250px;
-            height:250px;
-        }
-#cabecalho
-{
-	margin-bottom: 3%;  
-	width: 75%; 
-	height: 84px; 
-	margin: 2% auto; 
-}
-#cabecalho-fest
-{
-	background:#f39c12;
-}
-#cabecalho-fest h3
-{
+
+.placeholders {
+	margin-bottom: 30px;
 	text-align: center;
-	Font-family:Verdana;
+}
+
+.placeholders h4 {
+	margin-bottom: 0;
+}
+
+.placeholder {
+	margin-bottom: 200px;
+}
+
+.placeholder img {
+	border-radius: 5%;
+	display: inline-block;
+	width: 250px;
+	height: 250px;
+}
+
+#cabecalho {
+	margin-bottom: 3%;
+	width: 75%;
+	height: 84px;
+	margin: 2% auto;
+}
+
+#cabecalho-fest {
+	background: #f39c12;
+}
+
+#cabecalho-fest h3 {
+	text-align: center;
+	Font-family: Verdana;
 	color: white;
 	font-weight: bolder;
 }
 
-
-#carrossel-destaque
-{
-	margin-top:5%;
+#carrossel-destaque {
+	margin-top: 5%;
 }
-.carrossel
-{
+
+.carrossel {
 	width: 75%;
 	margin: 2% auto;
 }
-.carrossel-painel
-{
-	width:100%;
-	margin:5px 5px;
+
+.carrossel-painel {
+	width: 100%;
+	margin: 5px 5px;
 }
-.carrossel-img
-{
-	 width:100%;
-	 height:200px;
+
+.carrossel-img {
+	width: 100%;
+	height: 200px;
 }
-.btnsaiba
-{
-	 width:50%; 
-	 background-color: #e67e22; 
-	 border-radius: 5px; 
-	 height: 50px; 
-	 color:white; 
-	 border-color:none;
+
+.btnsaiba {
+	width: 50%;
+	background-color: #e67e22;
+	border-radius: 5px;
+	height: 50px;
+	color: white;
+	border-color: none;
 }
 
 #map_canvas {
@@ -87,9 +87,9 @@
 	margin: 0 auto;
 	padding-bottom: 2%;
 }
-#routeForm .ui-panelgrid
-{
-	width:100%;
+
+#routeForm .ui-panelgrid {
+	width: 100%;
 }
 
 #routeForm input {
@@ -118,161 +118,167 @@
 	text-align: center;
 	margin: 0 auto;
 	padding: 10px;
-	background-color:orange;
-	border:none;
-	border-radius:5px;
-	color:white;
-	font-family:Verdana;
+	background-color: orange;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	font-family: Verdana;
 	width: 100%;
-	
 }
 
-
-
-.form-signin
- {
-   margin: 0 auto;
-   max-width: 330px;
-   padding: 15px;
- }
-
-#corpo
-{
-	margin-top:3%;
-}
-.jumbotron 
-{
-  padding-top: 48px;
-  padding-bottom: 48px;
-  width: 90%;
-  margin-left: 5%;
-}
-#evento-especifico-painel
-{
-	width:50%;
+.form-signin {
 	margin: 0 auto;
+	max-width: 330px;
+	padding: 15px;
 }
-.evento-especifico
-{
-	width:100%;
+
+#corpo {
+	margin-top: 3%;
+}
+
+.jumbotron {
+	padding-top: 48px;
+	padding-bottom: 48px;
+	width: 90%;
+	margin-left: 5%;
+}
+
+#evento-especifico-painel {
+	width: 50%;
 	margin: 0 auto;
 }
 
+.evento-especifico {
+	width: 100%;
+	margin: 0 auto;
+}
 
-
-#img-categoria
-{
+#img-categoria {
 	width: 100%;
 	height: 100%;
-	border-radius:30px;
+	border-radius: 30px;
 }
 
-
-.flip-container { 
-perspective: 1000; 
-transform-style: preserve-3d; 
-}  	
-
+.flip-container {
+	perspective: 1000;
+	transform-style: preserve-3d;
+}
 
 /*  MODIFICADO! vira os containers frente e verso quando o mouse passa em cima */
-.flip-container:hover .back { transform: rotateY(0deg);}  	
-.flip-container:hover .front { transform: rotateY(180deg); }    
-.flip-container, .front, .back { 
-  width: 300px;  
-  height: 200px; 
-  
-}    
+.flip-container:hover .back {
+	transform: rotateY(0deg);
+}
+
+.flip-container:hover .front {
+	transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+	width: 300px;
+	height: 200px;
+}
 
 /* define a velocidade da animação */
-.flipper {  	
-  transition: 0.6s;  	
-  transform-style: preserve-3d;    	
-  position: relative; 
-  
-}    
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
+}
 
 /* esconde o verso durante a animação */
-.front, .back { 
-backface-visibility: hidden;  	
-transition: 0.6s;  	
-transform-style: preserve-3d;    	
-position: absolute;  	
-top: 0;  	
-left: 0;  
-}    
+.front, .back {
+	backface-visibility: hidden;
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
 
 /*  MODIFICADO! frente posicionada sobre o fundo */
-.front {  	
-z-index: 2;  	
-transform: rotateY(0deg);  
-}    
+.front {
+	z-index: 2;
+	transform: rotateY(0deg);
+}
 
 /* verso inicialmente escondido */
-.back { transform: rotateY(-180deg); background:rgba(189, 195, 199,0.2); border-radius:5%; width: 90%; margin-left:5%;}    
+.back {
+	transform: rotateY(-180deg);
+	background: rgba(189, 195, 199, 0.2);
+	border-radius: 5%;
+	width: 100%;
+	margin-left: 5%;
+}
 
-.back h3 , .back p 
-{
+.back h3, .back p {
 	text-align: center;
 }
-.btnsaiba2
-{
-	 width:50%; 
-	 background-color: #e67e22; 
-	 border-radius: 5px; 
-	 height: 50px; 
-	 color:white; 
-	 border-color:none;
-	 margin-left: 25%;
+
+.btnsaiba2 {
+	width: 50%;
+	background-color: #e67e22;
+	border-radius: 5px;
+	height: 50px;
+	color: white;
+	border-color: none;
+	margin-left: 25%;
 }
 
 /* modificações para flip vertical   */
-.vertical.flip-container { position: relative; }    	
-.vertical .back { transform: rotateX(180deg); }    	
-.vertical.flip-container:hover .back { transform: rotateX(0deg); }    	
-.vertical.flip-container:hover .front { transform: rotateX(180deg);}
-
-
-#ev-especifico
-{
-	width:75%;
-	margin:0 auto;
+.vertical.flip-container {
+	position: relative;
 }
-.label-ev
-{
+
+.vertical .back {
+	transform: rotateX(180deg);
+}
+
+.vertical.flip-container:hover .back {
+	transform: rotateX(0deg);
+}
+
+.vertical.flip-container:hover .front {
+	transform: rotateX(180deg);
+}
+
+#ev-especifico {
+	width: 75%;
+	margin: 0 auto;
+}
+
+.label-ev {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 15px;
-	margin:5px;
+	margin: 5px;
 }
-.info-ev
-{
-	margin-left:10px;
-	margin-right:20px;
-	
+
+.info-ev {
+	margin-left: 10px;
+	margin-right: 20px;
 }
-.btn-opcaao-usuario , .btn-opcaao-empresa
-{
-	background: rgba(243, 156, 18,1.0);
+
+.btn-opcaao-usuario, .btn-opcaao-empresa {
+	background: rgba(243, 156, 18, 1.0);
 	font-family: Verdana;
 	color: white;
 	font-size: 15px;
 }
-.btn-opcaao-usuario
-{
+
+.btn-opcaao-usuario {
 	margin: 0 auto;
-	
 }
-.btn-opcaao-empresa
-{
-	margin-left:2%;
+
+.btn-opcaao-empresa {
+	margin-left: 2%;
 }
-.painel-opcao
-{
+
+.painel-opcao {
 	text-align: center;
-	margin-bottom:10px;
+	margin-bottom: 10px;
 	font-family: Verdana;
 	font-size: 20px;
 }
-.titulo-painel-opcao
-{
+
+.titulo-painel-opcao {
 	text-align: center;
 }

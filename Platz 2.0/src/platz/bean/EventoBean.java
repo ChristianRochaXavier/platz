@@ -68,7 +68,6 @@ public class EventoBean {
 		new EventoDAO().cadastrar(evento);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evento cadastrado com sucesso"));
 		this.zerar();
-
 	}
 
 	// Método que vê o evento de upload do p:upload
@@ -115,6 +114,14 @@ public class EventoBean {
 		this.evento.setEmpresa(empresa);
 
 		return evento.getEmpresa();
+	}
+
+	public List<Evento> listaPorCategoria(CategoriaEvento categoria) {
+
+		List<Evento> lista = new EventoDAO().listarPorCategoria(categoria);
+
+		return lista;
+		
 	}
 
 	public void detalhes() {

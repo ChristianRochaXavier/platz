@@ -29,7 +29,9 @@ public class EventoBean {
 	private Evento eventoDetalhe;
 	private Evento eventoExclusao;
 	private List<Evento> eventos;
+
 	private List<CategoriaEvento> categorias;
+	private List<Evento> destaques;
 	static final String CAMINHOIMAGEM = "/resources/img/eventos/";
 
 	public EventoBean() {
@@ -44,6 +46,12 @@ public class EventoBean {
 		eventoExclusao = new Evento();
 		eventos = new EventoDAO().listarTodos();
 		categorias = new CategoriaDAO().listarTodos();
+		destaques = new EventoDAO().listarDestaques();
+
+	}
+
+	public List<Evento> eventosPorEmpresa(Empresa empresa) {
+		return new EventoDAO().listarPorEmpresa(empresa);
 	}
 
 	public void editar(Evento evento) {
@@ -53,7 +61,7 @@ public class EventoBean {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public void zerar() {
@@ -86,7 +94,7 @@ public class EventoBean {
 
 		// Pega o caminho completo do diretório
 		String caminhoCompleto = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/").toString()
-				+ "\\resources\\img\\userPerfil\\";
+				+ "\\resources\\img\\eventos\\";
 
 		System.out.println("Caminho: " + caminhoCompleto);
 		System.out.println("");
@@ -120,21 +128,28 @@ public class EventoBean {
 
 	public List<Evento> listaPorCategoria(CategoriaEvento categoria) {
 
-		List<Evento> lista = new EventoDAO().listarPorCategoria(categoria);
-
-		return lista;
-		
+		return new EventoDAO().listarPorCategoria(categoria);
 	}
 
-	public void detalhes() {
+	public void detalhes(Evento evento) {
+		this.eventoDetalhe = evento;
+
 	}
 
 	public void alteraStatus() {
+
 	}
 
-	public void pegarImagem() {
+	public String pegarImagem(Evento evento) {
+		if (evento.getCaminhoImagem() == null || evento.getCaminhoImagem().equals("")) {
+			return CAMINHOIMAGEM + "evento.jpg";
+		} else {
+			return evento.getCaminhoImagem();
+		}
+
 	}
 
+	// Getters and Setters
 	public Evento getEvento() {
 		return evento;
 	}
@@ -183,5 +198,12 @@ public class EventoBean {
 		this.categorias = categorias;
 	}
 
+	public List<Evento> getDestaques() {
+		return destaques;
+	}
+
+	public void setDestaques(List<Evento> destaques) {
+		this.destaques = destaques;
+	}
 
 }

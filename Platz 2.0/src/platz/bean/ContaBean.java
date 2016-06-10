@@ -34,7 +34,7 @@ public class ContaBean {
 	}
 
 	public ContaBean() {
-		perfis = Arrays.asList(Perfil.values());
+		perfis = Arrays.asList(Perfil.ADMINISTRADOR);
 		conta = null;
 		contas = new ContaDAO().listarTodos();
 	}

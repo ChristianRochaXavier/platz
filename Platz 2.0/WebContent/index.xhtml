@@ -41,10 +41,9 @@
 				</b:column>
 				<b:column col-md="4">
 					<b:selectOneMenu value="#" id="brandID">
-						<f:selectItem itemLabel="Selecione .." itemValue="1" />
-						<f:selectItem itemLabel="Esporte" itemValue="2" />
-						<f:selectItem itemLabel="Gastronomia" itemValue="3" />
-						<f:selectItem itemLabel="Show" itemValue="4" />
+						<f:selectItem itemLabel="Selecione .." itemValue="#{null}" />
+						<f:selectItems value="#{categoriaBean.categoriaseventos}" var="categoria" itemLabel="#{categoria.categoria}" itemValue="#{categoria}"/>
+						
 					</b:selectOneMenu>
 				</b:column>
 				<b:column col-md="6">

@@ -19,81 +19,66 @@
 		<c:forEach items="#{eventoBean.categorias}" var="categoria">
 			<b:row styleClass="placeholders">
 
-				<p:carousel styleClass="carrossel"
-					headerText="#{categoria.categoria}" numVisible="4"
-					autoPlayInterval="10000" itemStyle="text-align:center;"
+				<p:carousel  styleClass="carrossel"
+					headerText="#{categoria.categoria}" numVisible="3"
+					autoPlayInterval="30000" itemStyle="text-align:center;"
 					responsive="true">
 
 					<c:forEach items="#{eventoBean.listaPorCategoria(categoria)}"
 						var="evento">
 
-						<b:column col-xs="6" col-sm="3" styleClass="placeholder">
-							<div class="flip-container"
-								ontouchstart="this.classList.toggle('hover');">
+						<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
+							columnClasses="label,value" layout="grid">
+							<f:facet name="header">
+								<p:graphicImage src="#{eventoBean.pegarImagem(evento)}"
+									styleClass="img-responsive" />
+							</f:facet>
+							<b:row>
+							<h:outputText value="Evento: #{evento.evento}" />
+							</b:row>
+							<b:row>
+							<h:outputText value="Empresa: #{evento.empresa.nomeFantasia}" />
+							</b:row>
+							
+							<b:row>
+							<h:outputText value=" Inicio:  #{evento.dataInicio}">
+								<f:convertDateTime dateStyle="full" />
+							</h:outputText>
+							<h:outputText value=" às "  />
+							<h:outputText value="#{evento.dataInicio}"
+								styleClass="text-muted">
+								<f:convertDateTime pattern="HH:mm" type="time" />
+							</h:outputText>
+							</b:row>
 
-								<div class="flipper">
+							<h:outputText value=" Término: "  />
+							<h:outputText value="#{evento.dataTermino}"
+								styleClass="text-muted">
+								<f:convertDateTime dateStyle="full" />
+							</h:outputText>
+							<h:outputText value=" às "  />
+							<h:outputText value="#{evento.dataTermino}">
+								<f:convertDateTime pattern="HH:mm" type="time" />
+							</h:outputText>
 
-									<!-- Frente -->
-									<div class="front">
-										<p:graphicImage src="#{evento.caminhoImagem}"
-											styleClass="img-responsive" />
-										<p:outputLabel value="#{evento.evento}"
-											style="font-size: 16pt" />
-									</div>
-
-									<!-- Fundo -->
-									<div class="back">
-										<h:outputText value="#{evento.evento}" style="font-size: 12pt" />
+							<h:outputText value="Mínimo de #{evento.lotacaoMin}" />
 										<br />
-										<p:outputLabel value="#{evento.empresa.nomeFantasia}"
-											styleClass="text-muted" />
+										<h:outputText value="Máximo de #{evento.lotacaoMax}" />
 										<br />
-
-										<!-- Data de Início -->
-										<h:outputText value=" Início: " styleClass="text-muted" />
-										<h:outputText value="#{evento.dataInicio}"
-											styleClass="text-muted">
-											<f:convertDateTime dateStyle="full" />
-										</h:outputText>
-										<h:outputText value=" às " styleClass="text-muted" />
-										<h:outputText value="#{evento.dataInicio}"
-											styleClass="text-muted">
-											<f:convertDateTime pattern="HH:mm" type="time" />
-										</h:outputText>
-
-										<br />
-
-										<!-- Data de Término -->
-										<h:outputText value=" Término: " styleClass="text-muted" />
-										<h:outputText value="#{evento.dataTermino}"
-											styleClass="text-muted">
-											<f:convertDateTime dateStyle="full" />
-										</h:outputText>
-										<h:outputText value=" às " styleClass="text-muted" />
-										<h:outputText value="#{evento.dataTermino}"
-											styleClass="text-muted">
-											<f:convertDateTime pattern="HH:mm" type="time" />
-										</h:outputText>
-
-										<!-- Min / Max / $ -->
-
-										<h:outputText value="Mínimo de #{evento.lotacaoMin}"
-											styleClass="text-muted" />
-										<br />
-										<h:outputText value="Máximo de #{evento.lotacaoMax}"
-											styleClass="text-muted" />
-										<br />
-										<h:outputText value="Entrada: #{evento.preco}" styleClass="text-muted" rendered="#{evento.preco != null || evento.preco != 0}"/>
-										<!-- 		Pequeno problema:								 #{evento.preco != null ? '$ evento.preco'  : 'gratuito'} -->
+										<h:outputText value="Entrada: #{evento.preco}"
+											rendered="#{evento.preco != null || evento.preco != 0}" />
+										<!-- Pequeno problema:								
+										 #{evento.preco != null ? '$ evento.preco'  : 'gratuito'} -->
 
 										<br />
-										<b:button look="success" value="Ver Mais" />
-									</div>
-								</div>
-							</div>
-						</b:column>
+							<h:commandButton action="#" value="Saiba Mais"
+								style="width:50%; background-color: #e67e22;
+							border-radius: 5px;height: 50px; color:white; 
+							border-color:none;" />
+						</p:panelGrid>
+
 					</c:forEach>
- 
+
 
 				</p:carousel>
 			</b:row>

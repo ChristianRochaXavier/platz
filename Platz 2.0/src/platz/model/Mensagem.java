@@ -26,8 +26,17 @@ public class Mensagem {
 	private Conta conta = null;
 	private String email;
 	private String mensagem;
+	private boolean visualizado = false;
 
 	// Getters and Setters
+	public boolean isVisualizado() {
+		return visualizado;
+	}
+
+	public void setVisualizado(boolean visualizado) {
+		this.visualizado = visualizado;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -63,7 +72,7 @@ public class Mensagem {
 	}
 
 	@NotEmpty(message = "A mensagem deve ser informada")
-	@Length(min = 5, max = 200, message = "A mensagem deve ter entre 5 e 200 caracteres")
+	@Length(min = 5, max = 500, message = "A mensagem deve ter entre 5 e 500 caracteres")
 	public String getMensagem() {
 		return mensagem;
 	}

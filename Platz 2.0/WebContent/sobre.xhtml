@@ -14,16 +14,16 @@
 	<ui:define name="titulo">Sobre</ui:define>
 
 	<ui:define name="corpoPagina">
-	<div style="margin-top:40px;">
-		<b:jumbotron style="margin: 0 auto;border-radius:20px; width:70%;  ">
-			<b:container>
-				<h1>PLATZ - Suas Rotas, seus Eventos</h1>
-				<p>Projeto Voltado a Necessidade de Rotas seguras a eventos,
-					Aqui você consegue encontrar os eventos mais badalados pode avaliar
-					e dar sua nota, alem muitas outras coisas</p>
-			</b:container>
+		<div style="margin-top: 40px;">
+			<b:jumbotron style="margin: 0 auto;border-radius:20px; width:70%;  ">
+				<b:container>
+					<h1>PLATZ - Suas Rotas, seus Eventos</h1>
+					<p>Projeto Voltado a Necessidade de Rotas seguras a eventos,
+						Aqui você consegue encontrar os eventos mais badalados pode
+						avaliar e dar sua nota, alem muitas outras coisas</p>
+				</b:container>
 
-		</b:jumbotron>
+			</b:jumbotron>
 		</div>
 		<b:container>
 
@@ -37,22 +37,28 @@
 					<p>
 						<b:modal id="amodal3" title="Envie um Email"
 							styleClass="modalPseudoClass">
+							
 							<h:form>
-								<p:outputLabel value="Nome" />
-								<b:inputText value="" />
+								<p:growl autoUpdate="true" />
 
+								<p:outputLabel
+									value="Selecione um assunto que melhor se encaixa no contexto da mensagem" />
+								<b:selectOneMenu value="#{mensagemBean.mensagem.assunto}">
+									<f:selectItem itemLabel="-- Selecione um Assunto  --"
+										itemValue="#{null}" />
+									<f:selectItems value="#{assuntoBean.assuntos}" var="assunto"
+										itemLabel="#{assunto.assunto}" itemValue="#{assunto}" />
+								</b:selectOneMenu>
+								
 								<p:outputLabel value="Email" />
-								<b:inputText value="" />
-
-
-								<p:outputLabel value="Assunto" />
-								<b:inputText value="" />
-
+								<b:inputText value="#{mensagemBean.mensagem.email}" />
 
 								<p:outputLabel value="Mensagem" />
-								<b:inputTextarea rows="5" />
-
+								<b:inputTextarea rows="5"
+									value="#{mensagemBean.mensagem.mensagem}" />
+									<b:commandButton action="#{mensagemBean.cadastrar()}" value="Enviar mensagem" />
 							</h:form>
+							
 							<f:facet name="footer">
 								<b:button value="Fechar" dismiss="modal" onclick="return false;" />
 								<b:button value="Ok" look="primary" dismiss="modal"

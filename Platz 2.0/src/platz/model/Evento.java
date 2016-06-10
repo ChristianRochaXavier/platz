@@ -122,7 +122,7 @@ public class Evento {
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
-
+	@NotNull(message="É nessesário enviar uma imagem")
 	public String getCaminhoImagem() {
 		return caminhoImagem;
 	}
@@ -140,7 +140,7 @@ public class Evento {
 		this.empresa = empresa;
 	}
 
-	@NotNull
+	@NotNull(message="Selecione uma categoria")
 	public CategoriaEvento getCategoriaEvento() {
 		return categoriaEvento;
 	}

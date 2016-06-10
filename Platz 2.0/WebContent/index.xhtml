@@ -74,14 +74,14 @@
 						<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
 							columnClasses="label,value" layout="grid">
 							<f:facet name="header">
-								<p:graphicImage url="#{evento.caminhoImagem}"
+								<p:graphicImage url="#{eventoBean.pegarImagem(evento)}"
 									style="width:100%;height:200px;" />
 							</f:facet>
- 
+
 							<p:outputLabel value="#{evento.evento}" />
 
-							<!-- Data de Início --> 
-							<p:outputLabel value=" Início: "/>
+							<!-- Data de Início -->
+							<p:outputLabel value=" Início: " />
 							<h:outputText value="#{evento.dataInicio}">
 								<f:convertDateTime dateStyle="short" />
 							</h:outputText>
@@ -102,7 +102,7 @@
 								<f:convertDateTime pattern="HH:mm" type="time" />
 							</h:outputText>
 
-							<h:outputText value="Local:" />
+							<h:outputText value="Local: #{evento.endereco.cidade.nome}/#{evento.endereco.cidade.estado.uf} " />
 
 							<h:commandButton action="#" value="Saiba Mais"
 								style="width:50%; background-color: #e67e22;border-radius: 5px;height: 50px; color:white; border-color:none;" />
@@ -110,7 +110,7 @@
 
 					</c:forEach>
 
-
+<!-- 
 					<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
 						columnClasses="label,value" layout="grid">
 						<f:facet name="header">
@@ -319,6 +319,7 @@
 						<h:commandButton action="#" value="Saiba Mais"
 							style="width:50%; background-color: #e67e22;border-radius: 5px;height: 50px; color:white; border-color:none;" />
 					</p:panelGrid>
+					 -->
 
 				</p:carousel>
 			</b:column>

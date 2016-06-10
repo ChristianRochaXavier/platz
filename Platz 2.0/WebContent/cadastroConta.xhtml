@@ -11,7 +11,7 @@
 
 	<ui:define name="corpoPagina">
 		
-		<b:container style="margin-top:10px; margin-bottom:20px;">
+		<b:container styleClass="corpo-Cadastro">
 		<b:column col-md="2"/>
 		<b:column col-md="8">	
 		<b:panel styleClass="painel-opcao" >
@@ -32,7 +32,7 @@
 		<b:container id="container-forms" >
 			<h:form>
 				<p:growl autoUpdate="true" />
-				<b:panel style="width:100%; margin: 0 auto;"
+				<b:panel styleClass="painel-cadastros" 
 					rendered="#{utilBean.cadastroUsuarioEmpresa == true}">
 
 					<link href="css/estiloAdm.css" rel="stylesheet" type="text/css" />
@@ -186,7 +186,7 @@
 			<!-- CADASTRO DE USUARIO -->
 			<h:form>
 				<p:growl autoUpdate="true" />
-				<b:panel style="width:100%; margin: 0 auto;"
+				<b:panel styleClass="painel-cadastros" 
 					rendered="#{utilBean.cadastroUsuarioEmpresa == false}">
 					
 					<link href="css/estiloAdm.css" rel="stylesheet" type="text/css" />

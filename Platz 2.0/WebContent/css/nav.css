@@ -3,24 +3,52 @@
 	margin: 0;
 }
 
-.container-fluid
-{
-	background:#363636;
-}
 
 /* Z-index da nav menor que o z-index do p:growl(1001)  */
 body .navbar-fixed-top, .navbar-fixed-bottom{
 	z-index:500;
-	
 }
 
-
-
-/* links da nav */
-#link-menu
+.navbar-inverse
 {
- margin-left:35%;
+	background: black;
+	border: none;
+	height: 70px
+}
 
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #101010;
+    background: black;
+}
+
+.container > .navbar-header, .container-fluid > 
+.navbar-header, .container > .navbar-collapse, 
+.container-fluid > .navbar-collapse
+{
+	margin-top: 10px;
+}
+
+.navbar-inverse .navbar-nav > li > a
+{
+	color: white;
+}
+
+.navbar-nav > #link-cadastro > a
+{
+	color:white;
+	border-radius:5px;
+	background: orange;
+	margin-left: 10px;
+}
+.navbar-nav > #link-login > a
+{
+	color:white;
+	border-radius:5px;
+	background: rgb(26, 188, 156);
+}
+.navbar-default .navbar-nav > li > a
+{
+	color: white;
 }
 
 /* links da nav do administrador */
@@ -56,13 +84,7 @@ body .navbar-fixed-top, .navbar-fixed-bottom{
 	color: white;
 }
 
-/* classe para todos os bodys , assim a nav e nem
-o footer nao fica em cima dos elementos */
-.corpoPagina
-{
-  padding-top: 5%;
-  padding-bottom: 5%;	
-}
+
 
 
  

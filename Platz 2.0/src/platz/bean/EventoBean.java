@@ -30,6 +30,7 @@ public class EventoBean {
 	private Evento eventoExclusao;
 	private List<Evento> eventos;
 	private List<CategoriaEvento> categorias;
+	private List<Evento> destaques;
 	static final String CAMINHOIMAGEM = "/resources/img/eventos/";
 
 	public EventoBean() {
@@ -44,6 +45,7 @@ public class EventoBean {
 		eventoExclusao = new Evento();
 		eventos = new EventoDAO().listarTodos();
 		categorias = new CategoriaDAO().listarTodos();
+		destaques = new EventoDAO().listarDestaques();
 	}
 
 	public void editar(Evento evento) {
@@ -53,7 +55,7 @@ public class EventoBean {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public void zerar() {
@@ -123,18 +125,24 @@ public class EventoBean {
 		List<Evento> lista = new EventoDAO().listarPorCategoria(categoria);
 
 		return lista;
-		
+
 	}
 
-	public void detalhes() {
+	public void detalhes(Evento evento) {
+
+		this.eventoDetalhe = evento;
+
 	}
 
 	public void alteraStatus() {
+
 	}
 
 	public void pegarImagem() {
+
 	}
 
+	// Getters and Setters
 	public Evento getEvento() {
 		return evento;
 	}
@@ -183,5 +191,12 @@ public class EventoBean {
 		this.categorias = categorias;
 	}
 
+	public List<Evento> getDestaques() {
+		return destaques;
+	}
+
+	public void setDestaques(List<Evento> destaques) {
+		this.destaques = destaques;
+	}
 
 }

@@ -4,43 +4,45 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	 xmlns:b="http://bootsfaces.net/ui">
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
 	<ui:define name="titulo">Cadastros</ui:define>
 
 	<ui:define name="corpoPagina">
-		
+
 		<b:container style="margin-top:10px; margin-bottom:20px;">
-		<b:column col-md="2"/>
-		<b:column col-md="8">	
-		<b:panel styleClass="painel-opcao" >
-			<h:form>
-				<h:outputLabel  value="Cadastrar-se como" />
-				<br/>
-				<p:commandButton styleClass="btn-opcaao-usuario" update="container-forms" value="Usuario"
-					action="#{utilBean.alterarFormCadastroParaUsuario()}" />
-				<p:commandButton styleClass="btn-opcaao-empresa" update="container-forms" value="Empresa"
-					action="#{utilBean.alterarFormCadastroParaEmpresa()}" />
-			</h:form>
-		</b:panel>
+			<b:column col-md="2" />
+			<b:column col-md="8">
+				<b:panel styleClass="painel-opcao">
+					<h:form>
+						<h:outputLabel value="Cadastrar-se como" />
+						<br />
+						<p:commandButton styleClass="btn-opcaao-usuario"
+							update="container-forms" value="Usuario"
+							action="#{utilBean.alterarFormCadastroParaUsuario()}" />
+						<p:commandButton styleClass="btn-opcaao-empresa"
+							update="container-forms" value="Empresa"
+							action="#{utilBean.alterarFormCadastroParaEmpresa()}" />
+					</h:form>
+				</b:panel>
 			</b:column>
-			<b:column col-md="2"/>
-			</b:container>
-		
+			<b:column col-md="2" />
+		</b:container>
+
 		<!-- CADASTRO DE EMPRESA -->
-		<b:container id="container-forms" >
-			<h:form>
+		<b:container id="container-forms">
+			<h:form id="form-empresa">
 				<p:growl autoUpdate="true" />
 				<b:panel style="width:100%; margin: 0 auto;"
 					rendered="#{utilBean.cadastroUsuarioEmpresa == true}">
 
 					<link href="css/estiloAdm.css" rel="stylesheet" type="text/css" />
-					
-					<h2 class="titulo-painel-opcao">Você esta se Cadastrando Como Empresa</h2>
-					
+
+					<h2 class="titulo-painel-opcao">Você esta se Cadastrando Como
+						Empresa</h2>
+
 					<hr />
-					
+
 					<b:well styleClass="well-cadastro">
 						<h4>Informações da Conta</h4>
 					</b:well>
@@ -136,13 +138,13 @@
 					<b:row>
 						<b:column col-md="4">
 							<span style="font-weight: bold;">CEP</span>
-							<p:inputMask mask="99999-999" id="txtCep" size="30"
+							<p:inputMask mask="99999-999" id="txtCepEmpresa" size="30"
 								value="#{empresaBean.empresa.endereco.cep}"
 								styleClass="inputCad-Empresa" />
 						</b:column>
 						<b:column col-md="4">
 							<span style="font-weight: bold;">Numero</span>
-							<p:inputText maxlength="13" size="30"
+							<p:inputText maxlength="13" size="30" 
 								value="#{empresaBean.empresa.endereco.numero}"
 								styleClass="inputCad-Empresa" />
 						</b:column>
@@ -155,17 +157,17 @@
 					</b:row>
 					<hr />
 					<b:row>
-						<b:inputText value="#{empresaBean.empresa.endereco.rua}" span="6"
+						<b:inputText value="#{empresaBean.empresa.endereco.rua}" span="6" id="txtRuaEmpresa"
 							label="Rua" placeholder="Rua , AV. " />
-						<b:inputText value="#{empresaBean.empresa.endereco.bairro}"
+						<b:inputText value="#{empresaBean.empresa.endereco.bairro}" id="txtBairroEmpresa"
 							span="6" label="Bairro" />
 					</b:row>
 					<hr />
 					<b:row>
-						<b:inputText value="#{empresaBean.empresa.endereco.cidade.nome}"
+						<b:inputText value="#{empresaBean.empresa.endereco.cidade.nome}" id="txtCidadeEmpresa"
 							span="6" label="Cidade" />
 						<b:inputText
-							value="#{empresaBean.empresa.endereco.cidade.estado.uf}" span="6"
+							value="#{empresaBean.empresa.endereco.cidade.estado.uf}" span="6" id="txtEstadoEmpresa"
 							label="Estado" />
 					</b:row>
 					<hr />
@@ -184,15 +186,16 @@
 
 
 			<!-- CADASTRO DE USUARIO -->
-			<h:form>
+			<h:form id="form-usuario">
 				<p:growl autoUpdate="true" />
 				<b:panel style="width:100%; margin: 0 auto;"
 					rendered="#{utilBean.cadastroUsuarioEmpresa == false}">
-					
+
 					<link href="css/estiloAdm.css" rel="stylesheet" type="text/css" />
-					
-					<h2 class="titulo-painel-opcao">Você esta se Cadastrando Como Usuario</h2>
-					
+
+					<h2 class="titulo-painel-opcao">Você esta se Cadastrando Como
+						Usuario</h2>
+
 					<hr />
 
 					<b:well styleClass="well">
@@ -334,6 +337,11 @@
 				</b:panel>
 			</h:form>
 		</b:container>
+	</ui:define>
+
+	<ui:define name="posFooter">
+		<script type="text/javascript" src="js/raizUserCEP.js" />
+		<script type="text/javascript" src="js/raizEmpresaCEP.js" /> 
 	</ui:define>
 
 </ui:composition>

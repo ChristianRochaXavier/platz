@@ -9,7 +9,7 @@
 			ev.preventDefault();
 			calcRoute();
 
-		});
+		}); 
 
 		var directionDisplay;
 		var directionsService = new google.maps.DirectionsService();

@@ -65,61 +65,66 @@
 
 				<b:well styleClass="well-destaque">Eventos em Destaque</b:well>
 
-				<p:carousel styleClass="carrossel-index" numVisible="3"
-					value="#{eventoBean.destaques}" var="evento"
-					autoPlayInterval="30000" itemStyle="text-align:center;"
-					responsive="true">
+				<h:form>
 
-					<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
-						columnClasses="label value" layout="grid">
-						<f:facet name="header">
-							<p:graphicImage url="#{eventoBean.pegarImagem(evento)}"
-								styleClass="img-responsive" />
-							<h:outputText value="Evento: #{evento.evento}" />
-						</f:facet>
-						<b:row>
-							<h:outputText value="Empresa: #{evento.empresa.nomeFantasia}" />
-						</b:row>
+					<p:carousel styleClass="carrossel-index" numVisible="3"
+						value="#{eventoBean.destaques}" var="evento"
+						autoPlayInterval="30000" itemStyle="text-align:center;"
+						responsive="true">
 
-						<b:row>
-							<h:outputText value="Inicio:" />
-							<h:outputText value="#{evento.dataInicio}">
-								<f:convertDateTime dateStyle="full" />
-							</h:outputText>
-							<h:outputText value=" às " />
-							<h:outputText value="#{evento.dataInicio}">
-								<f:convertDateTime pattern="HH:mm" type="time" />
-							</h:outputText>
-						</b:row>
+						<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
+							columnClasses="label value" layout="grid">
+							<f:facet name="header">
+								<p:graphicImage url="#{eventoBean.pegarImagem(evento)}"
+									styleClass="img-responsive" />
+								<h:outputText value="Evento: #{evento.evento}" />
+							</f:facet>
+							<b:row>
+								<h:outputText value="Empresa: #{evento.empresa.nomeFantasia}" />
+							</b:row>
 
-						<b:row>
-							<h:outputText value=" Término: " />
-							<h:outputText value="#{evento.dataTermino}">
-								<f:convertDateTime dateStyle="full" />
-							</h:outputText>
-							<h:outputText value=" às " />
-							<h:outputText value="#{evento.dataTermino}">
-								<f:convertDateTime pattern="HH:mm" type="time" />
-							</h:outputText>
-						</b:row>
+							<b:row>
+								<h:outputText value="Inicio:" />
+								<h:outputText value="#{evento.dataInicio}">
+									<f:convertDateTime dateStyle="full" />
+								</h:outputText>
+								<h:outputText value=" às " />
+								<h:outputText value="#{evento.dataInicio}">
+									<f:convertDateTime pattern="HH:mm" type="time" />
+								</h:outputText>
+							</b:row>
 
-						<b:row>
-							<h:outputText value="Mínimo de #{evento.lotacaoMin}" />
-						</b:row>
+							<b:row>
+								<h:outputText value=" Término: " />
+								<h:outputText value="#{evento.dataTermino}">
+									<f:convertDateTime dateStyle="full" />
+								</h:outputText>
+								<h:outputText value=" às " />
+								<h:outputText value="#{evento.dataTermino}">
+									<f:convertDateTime pattern="HH:mm" type="time" />
+								</h:outputText>
+							</b:row>
 
-						<b:row>
-							<h:outputText value="Máximo de #{evento.lotacaoMax}" />
-						</b:row>
+							<b:row>
+								<h:outputText value="Mínimo de #{evento.lotacaoMin}" />
+							</b:row>
 
-						<b:row>
-							<h:outputText
-								value="Local: #{evento.endereco.cidade.nome} / #{evento.endereco.cidade.estado.uf} " />
-						</b:row>
+							<b:row>
+								<h:outputText value="Máximo de #{evento.lotacaoMax}" />
+							</b:row>
 
-						<h:commandButton action="#" value="Saiba Mais"
-							style="width:50%; background-color: #e67e22;border-radius: 5px;height: 50px; color:white; border-color:none;" />
-					</p:panelGrid>
-				</p:carousel>
+							<b:row>
+								<h:outputText
+									value="Local: #{evento.endereco.cidade.nome} / #{evento.endereco.cidade.estado.uf} " />
+							</b:row>
+
+							<h:commandButton
+								action="#{eventoBean.eventoEspecificoAreaLivre(evento)}"
+								value="Saiba Mais"
+								style="width:50%; background-color: #e67e22;border-radius: 5px;height: 50px; color:white; border-color:none;" />
+						</p:panelGrid>
+					</p:carousel>
+				</h:form>
 			</b:column>
 
 		</div>
@@ -182,7 +187,7 @@
 	</ui:define>
 
 	<ui:define name="posFooter">
-		<script type="text/javascript" src="js/routeIndex.js">
+		<script type="text/javascript" src="js/mapaIndex.js">
 		</script>
 	</ui:define>
 

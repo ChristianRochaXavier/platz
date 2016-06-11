@@ -26,8 +26,8 @@ public class EventoBean {
 
 	private Evento evento;
 	private Evento eventoStatus;
-	private Evento eventoDetalhe;
 	private Evento eventoExclusao;
+	private Evento eventoEspecifico;
 	private List<Evento> eventos;
 
 	private List<CategoriaEvento> categorias;
@@ -42,8 +42,8 @@ public class EventoBean {
 		evento.getEndereco().setCidade(new Cidade());
 		evento.getEndereco().getCidade().setEstado(new Estado());
 		eventoStatus = new Evento();
-		eventoDetalhe = new Evento();
 		eventoExclusao = new Evento();
+		eventoEspecifico = new Evento();
 		eventos = new EventoDAO().listarTodos();
 		categorias = new CategoriaDAO().listarTodos();
 		destaques = new EventoDAO().listarDestaques();
@@ -72,7 +72,6 @@ public class EventoBean {
 		evento.getEndereco().setCidade(new Cidade());
 		evento.getEndereco().getCidade().setEstado(new Estado());
 		eventoStatus = new Evento();
-		eventoDetalhe = new Evento();
 		eventoExclusao = new Evento();
 		eventos = new EventoDAO().listarTodos();
 		categorias = new CategoriaDAO().listarTodos();
@@ -124,20 +123,16 @@ public class EventoBean {
 		// System.out.println(usuario.getImagemPerfil());
 	}
 
-	public void inverterAtividade() {
-	}
-
 	public List<Evento> listaPorCategoria(CategoriaEvento categoria) {
 
 		return new EventoDAO().listarPorCategoria(categoria);
 	}
 
-	public void detalhes(Evento evento) {
-		this.eventoDetalhe = evento;
+	public String eventoEspecificoAreaLivre(Evento evento) {
 
-	}
+		this.eventoEspecifico = evento;
 
-	public void alteraStatus() {
+		return "eventoEspecifico?faces-redirec=true";
 
 	}
 
@@ -147,7 +142,13 @@ public class EventoBean {
 		} else {
 			return evento.getCaminhoImagem();
 		}
+	}
 
+	public void alteraStatus() {
+
+	}
+
+	public void inverterAtividade() {
 	}
 
 	// Getters and Setters
@@ -165,14 +166,6 @@ public class EventoBean {
 
 	public void setEventoStatus(Evento eventoStatus) {
 		this.eventoStatus = eventoStatus;
-	}
-
-	public Evento getEventoDetalhe() {
-		return eventoDetalhe;
-	}
-
-	public void setEventoDetalhe(Evento eventoDetalhe) {
-		this.eventoDetalhe = eventoDetalhe;
 	}
 
 	public Evento getEventoExclusao() {
@@ -205,6 +198,14 @@ public class EventoBean {
 
 	public void setDestaques(List<Evento> destaques) {
 		this.destaques = destaques;
+	}
+
+	public Evento getEventoEspecifico() {
+		return eventoEspecifico;
+	}
+
+	public void setEventoEspecifico(Evento eventoEspecifico) {
+		this.eventoEspecifico = eventoEspecifico;
 	}
 
 }

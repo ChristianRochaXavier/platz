@@ -42,8 +42,10 @@
 				<b:column col-md="4">
 					<b:selectOneMenu value="#" id="brandID">
 						<f:selectItem itemLabel="Selecione .." itemValue="#{null}" />
-						<f:selectItems value="#{categoriaBean.categoriaseventos}" var="categoria" itemLabel="#{categoria.categoria}" itemValue="#{categoria}"/>
-						
+						<f:selectItems value="#{categoriaBean.categoriaseventos}"
+							var="categoria" itemLabel="#{categoria.categoria}"
+							itemValue="#{categoria}" />
+
 					</b:selectOneMenu>
 				</b:column>
 				<b:column col-md="6">
@@ -63,263 +65,60 @@
 
 				<b:well styleClass="well-destaque">Eventos em Destaque</b:well>
 
-				<p:carousel styleClass="carrossel-index" numVisible="3" value="#{eventoBean.destaques}" var="evento"
-					autoPlayInterval="30000" itemStyle="text-align:center;" 
+				<p:carousel styleClass="carrossel-index" numVisible="3"
+					value="#{eventoBean.destaques}" var="evento"
+					autoPlayInterval="30000" itemStyle="text-align:center;"
 					responsive="true">
 
+					<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
+						columnClasses="label value" layout="grid">
+						<f:facet name="header">
+							<p:graphicImage url="#{eventoBean.pegarImagem(evento)}"
+								styleClass="img-responsive" />
+							<h:outputText value="Evento: #{evento.evento}" />
+						</f:facet>
+						<b:row>
+							<h:outputText value="Empresa: #{evento.empresa.nomeFantasia}" />
+						</b:row>
 
-<!-- 					<c:forEach items="#{eventoBean.destaques}" var="evento"> -->
-
-						<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
-							columnClasses="label,value" layout="grid">
-							<f:facet name="header">
-								<p:graphicImage url="#{eventoBean.pegarImagem(evento)}"
-									style="width:100%;height:200px;" />
-							</f:facet>
-
-							<p:outputLabel value="#{evento.evento}" />
-
-							<!-- Data de Início -->
-							<p:outputLabel value=" Início: " />
+						<b:row>
+							<h:outputText value="Inicio:" />
 							<h:outputText value="#{evento.dataInicio}">
-								<f:convertDateTime dateStyle="short" />
+								<f:convertDateTime dateStyle="full" />
 							</h:outputText>
 							<h:outputText value=" às " />
 							<h:outputText value="#{evento.dataInicio}">
 								<f:convertDateTime pattern="HH:mm" type="time" />
 							</h:outputText>
+						</b:row>
 
-							<br />
-
-							<!-- Data de Término -->
+						<b:row>
 							<h:outputText value=" Término: " />
 							<h:outputText value="#{evento.dataTermino}">
-								<f:convertDateTime dateStyle="short" />
+								<f:convertDateTime dateStyle="full" />
 							</h:outputText>
 							<h:outputText value=" às " />
 							<h:outputText value="#{evento.dataTermino}">
 								<f:convertDateTime pattern="HH:mm" type="time" />
 							</h:outputText>
+						</b:row>
 
-							<h:outputText value="Local: #{evento.endereco.cidade.nome}/#{evento.endereco.cidade.estado.uf} " />
+						<b:row>
+							<h:outputText value="Mínimo de #{evento.lotacaoMin}" />
+						</b:row>
 
-							<h:commandButton action="#" value="Saiba Mais"
-								style="width:50%; background-color: #e67e22;border-radius: 5px;height: 50px; color:white; border-color:none;" />
-						</p:panelGrid>
+						<b:row>
+							<h:outputText value="Máximo de #{evento.lotacaoMax}" />
+						</b:row>
 
-<!-- 					</c:forEach> -->
-
-<!-- 
-					<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
-						columnClasses="label,value" layout="grid">
-						<f:facet name="header">
-
-							<p:graphicImage library="img" name="evento2.jpg"
-								style="width:100%;height:200px;" />
-						</f:facet>
-
-						<h:outputText value="Evento: Olimpiadas Rio 2016" />
-
-						<h:outputText value="Inicio: 05/08/16" />
-
-						<h:outputText value="Fim: 21/08/16" />
-
-						<h:outputText value="Local: Rio de Janeiro Maracanã" />
-
-						<h:commandButton action="#" value="Saiba Mais"
-							style="width:50%; background-color: #e67e22;border-radius: 5px;height: 50px; color:white; border-color:none;" />
-
-					</p:panelGrid>
-
-					<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
-						columnClasses="label,value" layout="grid">
-						<f:facet name="header">
-							<p:graphicImage library="img" name="evento3.png"
-								style="width:100%;height:200px;" />
-						</f:facet>
-
-						<h:outputText value="Evento: Rolling Stones (São Paulo)" />
-
-						<h:outputText value="Inicio: 27/02/16" />
-
-						<h:outputText value="Fim: 27/02/16" />
-
-						<h:outputText value="Local: Estádio do Morumbi" />
+						<b:row>
+							<h:outputText
+								value="Local: #{evento.endereco.cidade.nome} / #{evento.endereco.cidade.estado.uf} " />
+						</b:row>
 
 						<h:commandButton action="#" value="Saiba Mais"
 							style="width:50%; background-color: #e67e22;border-radius: 5px;height: 50px; color:white; border-color:none;" />
 					</p:panelGrid>
-
-					<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
-						columnClasses="label,value" layout="grid">
-						<f:facet name="header">
-							<p:graphicImage library="img" name="evento4.jpg"
-								style="width:100%;height:200px;" />
-						</f:facet>
-
-						<h:outputText value="Evento: O Mundo de Tim Burton" />
-
-						<h:outputText value="Inicio: 03/02/16" />
-
-						<h:outputText value="Fim: 20/03/16" />
-
-						<h:outputText value="Local: Museu da Imagem e do Som" />
-						<h:commandButton action="#" value="Saiba Mais"
-							style="width:50%; background-color: #e67e22;border-radius: 5px;height: 50px; color:white; border-color:none;" />
-					</p:panelGrid>
-
-					<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
-						columnClasses="label,value" layout="grid">
-						<f:facet name="header">
-							<p:graphicImage library="img" name="evento5.jpg"
-								style="width:100%;height:200px;" />
-						</f:facet>
-
-						<h:outputText value="Evento: Mamonas assassinas" />
-
-						<h:outputText value="Inicio: 11/03/16" />
-
-						<h:outputText value="Fim: 15/04/16" />
-
-						<h:outputText value="Local: Teatro Raul Cortez" />
-
-						<h:commandButton action="#" value="Saiba Mais"
-							style="width:50%; background-color: #e67e22;border-radius: 5px;height: 50px; color:white; border-color:none;" />
-					</p:panelGrid>
-
-					<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
-						columnClasses="label,value" layout="grid">
-						<f:facet name="header">
-							<p:graphicImage library="img" name="evento6.jpg"
-								style="width:100%;height:200px;" />
-						</f:facet>
-
-						<h:outputText value=" Evento : Meu amigo Charlie Brown " />
-
-						<h:outputText value="Inicio: 05/03/2016" />
-
-						<h:outputText value="Fim: 10/04/2016" />
-
-						<h:outputText value="Local:  Teatro Frei Caneca" />
-
-						<h:commandButton action="#" value="Saiba Mais"
-							style="width:50%; background-color: #e67e22;border-radius: 5px;height: 50px; color:white; border-color:none;" />
-					</p:panelGrid>
-
-					<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
-						columnClasses="label,value" layout="grid">
-
-						<f:facet name="header">
-							<p:graphicImage library="img" name="evento1.jpg"
-								style="width:100%;height:200px;" />
-						</f:facet>
-
-						<h:outputText value="Evento: Comic Con Experience" />
-
-						<h:outputText value="Inicio: 1/12/16" />
-
-						<h:outputText value="Fim: 04/12/16" />
-
-						<h:outputText value="Local: Água Funda, São Paulo" />
-
-						<h:commandButton action="#" value="Saiba Mais"
-							style="width:50%; background-color: #e67e22;border-radius: 5px;height: 50px; color:white; border-color:none;" />
-					</p:panelGrid>
-
-					<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
-						columnClasses="label,value" layout="grid">
-						<f:facet name="header">
-
-							<p:graphicImage library="img" name="evento2.jpg"
-								style="width:100%;height:200px;" />
-						</f:facet>
-
-						<h:outputText value="Evento: Olimpiadas Rio 2016" />
-
-						<h:outputText value="Inicio: 05/08/16" />
-
-						<h:outputText value="Fim: 21/08/16" />
-
-						<h:outputText value="Local: Rio de Janeiro Maracanã" />
-						<h:commandButton action="#" value="Saiba Mais"
-							style="width:50%; background-color: #e67e22;border-radius: 5px;height: 50px; color:white; border-color:none;" />
-					</p:panelGrid>
-
-					<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
-						columnClasses="label,value" layout="grid">
-						<f:facet name="header">
-							<p:graphicImage library="img" name="evento3.png"
-								style="width:100%;height:200px;" />
-						</f:facet>
-
-						<h:outputText value="Evento: Rolling Stones (São Paulo)" />
-
-						<h:outputText value="Inicio: 27/02/16" />
-
-						<h:outputText value="Fim: 27/02/16" />
-
-						<h:outputText value="Local: Estádio do Morumbi" />
-						<h:commandButton action="#" value="Saiba Mais"
-							style="width:50%; background-color: #e67e22;border-radius: 5px;height: 50px; color:white; border-color:none;" />
-					</p:panelGrid>
-
-					<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
-						columnClasses="label,value" layout="grid">
-						<f:facet name="header">
-							<p:graphicImage library="img" name="evento4.jpg"
-								style="width:100%;height:200px;" />
-						</f:facet>
-
-						<h:outputText value="Evento: O Mundo de Tim Burton" />
-
-						<h:outputText value="Inicio: 03/02/16" />
-
-						<h:outputText value="Fim: 20/03/16" />
-
-						<h:outputText value="Local: Museu da Imagem e do Som" />
-						<h:commandButton action="#" value="Saiba Mais"
-							style="width:50%; background-color: #e67e22;border-radius: 5px;height: 50px; color:white; border-color:none;" />
-					</p:panelGrid>
-
-					<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
-						columnClasses="label,value" layout="grid">
-						<f:facet name="header">
-							<p:graphicImage library="img" name="evento5.jpg"
-								style="width:100%;height:200px;" />
-						</f:facet>
-
-						<h:outputText value="Evento: Mamonas assassinas" />
-
-						<h:outputText value="Inicio: 11/03/16" />
-
-						<h:outputText value="Fim: 15/04/16" />
-
-						<h:outputText value="Local: Teatro Raul Cortez" />
-
-						<h:commandButton action="#" value="Saiba Mais"
-							style="width:50%; background-color: #e67e22;border-radius: 5px;height: 50px; color:white; border-color:none;" />
-					</p:panelGrid>
-
-					<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
-						columnClasses="label,value" layout="grid">
-						<f:facet name="header">
-							<p:graphicImage library="img" name="evento6.jpg"
-								style="width:100%;height:200px;" />
-						</f:facet>
-
-						<h:outputText value=" Evento : Meu amigo Charlie Brown " />
-
-						<h:outputText value="Inicio: 05/03/2016" />
-
-						<h:outputText value="Fim: 10/04/2016" />
-
-						<h:outputText value="Local:  Teatro Frei Caneca" />
-
-						<h:commandButton action="#" value="Saiba Mais"
-							style="width:50%; background-color: #e67e22;border-radius: 5px;height: 50px; color:white; border-color:none;" />
-					</p:panelGrid>
-					 -->
-
 				</p:carousel>
 			</b:column>
 

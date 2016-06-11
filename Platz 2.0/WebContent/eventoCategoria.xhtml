@@ -15,70 +15,68 @@
 
 	<ui:define name="corpoPagina">
 
-
 		<c:forEach items="#{eventoBean.categorias}" var="categoria">
 			<b:row styleClass="placeholders">
 
-				<p:carousel  styleClass="carrossel"
-					headerText="#{categoria.categoria}" numVisible="3"
+				<p:carousel styleClass="carrossel"
+					value="#{eventoBean.listaPorCategoria(categoria)}"
+					headerText="#{categoria.categoria}" numVisible="3" var="evento"
 					autoPlayInterval="30000" itemStyle="text-align:center;"
 					responsive="true">
 
-					<c:forEach items="#{eventoBean.listaPorCategoria(categoria)}"
-						var="evento">
-
-						<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
-							columnClasses="label,value" layout="grid">
-							<f:facet name="header">
-								<p:graphicImage src="#{eventoBean.pegarImagem(evento)}"
-									styleClass="img-responsive" />
-							</f:facet>
-							<b:row>
+					<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
+						columnClasses="label value" layout="grid">
+						<f:facet name="header">
+							<p:graphicImage url="#{eventoBean.pegarImagem(evento)}"
+								styleClass="img-responsive" />
 							<h:outputText value="Evento: #{evento.evento}" />
-							</b:row>
-							<b:row>
+						</f:facet>
+						<b:row>
 							<h:outputText value="Empresa: #{evento.empresa.nomeFantasia}" />
-							</b:row>
-							
-							<b:row>
-							<h:outputText value=" Inicio:  #{evento.dataInicio}">
+						</b:row>
+
+						<b:row>
+							<h:outputText value="Inicio:" />
+							<h:outputText value="#{evento.dataInicio}">
 								<f:convertDateTime dateStyle="full" />
 							</h:outputText>
-							<h:outputText value=" às "  />
-							<h:outputText value="#{evento.dataInicio}"
-								styleClass="text-muted">
+							<h:outputText value=" às " />
+							<h:outputText value="#{evento.dataInicio}">
 								<f:convertDateTime pattern="HH:mm" type="time" />
 							</h:outputText>
-							</b:row>
+						</b:row>
 
-							<h:outputText value=" Término: "  />
-							<h:outputText value="#{evento.dataTermino}"
-								styleClass="text-muted">
+						<b:row>
+							<h:outputText value=" Término: " />
+							<h:outputText value="#{evento.dataTermino}">
 								<f:convertDateTime dateStyle="full" />
 							</h:outputText>
-							<h:outputText value=" às "  />
+							<h:outputText value=" às " />
 							<h:outputText value="#{evento.dataTermino}">
 								<f:convertDateTime pattern="HH:mm" type="time" />
 							</h:outputText>
+						</b:row>
 
+						<b:row>
 							<h:outputText value="Mínimo de #{evento.lotacaoMin}" />
-										<br />
-										<h:outputText value="Máximo de #{evento.lotacaoMax}" />
-										<br />
-										<h:outputText value="Entrada: #{evento.preco}"
-											rendered="#{evento.preco != null || evento.preco != 0}" />
-										<!-- Pequeno problema:								
-										 #{evento.preco != null ? '$ evento.preco'  : 'gratuito'} -->
+						</b:row>
 
-										<br />
-							<h:commandButton action="#" value="Saiba Mais"
-								style="width:50%; background-color: #e67e22;
+						<b:row>
+							<h:outputText value="Máximo de #{evento.lotacaoMax}" />
+						</b:row>
+
+						<b:row>
+							<h:outputText value="Entrada: #{evento.preco}"
+								rendered="#{evento.preco != null || evento.preco != 0}" />
+							<!-- Pequeno problema:								
+										 #{evento.preco != null ? '$ evento.preco'  : 'gratuito'} -->
+						</b:row>
+
+						<h:commandButton action="#" value="Saiba Mais"
+							style="width:50%; background-color: #e67e22;
 							border-radius: 5px;height: 50px; color:white; 
 							border-color:none;" />
-						</p:panelGrid>
-
-					</c:forEach>
-
+					</p:panelGrid>
 
 				</p:carousel>
 			</b:row>

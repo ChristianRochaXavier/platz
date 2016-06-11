@@ -76,6 +76,7 @@ public class EventoBean {
 		eventoExclusao = new Evento();
 		eventos = new EventoDAO().listarTodos();
 		categorias = new CategoriaDAO().listarTodos();
+		destaques = new EventoDAO().listarDestaques();
 	}
 
 	public void cadastrar(Empresa empresa) {

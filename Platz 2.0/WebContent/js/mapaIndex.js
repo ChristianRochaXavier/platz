@@ -1,73 +1,65 @@
-		var tipoViagemSelect;
-		var travelModeSelect;
-		var centro = new google.maps.LatLng(-23.550520,-46.633309);
+var centro = new google.maps.LatLng(-23.550520, -46.633309);
+var matrizDeInputsDeEnderecos = $(".enderecoCompleto");
+var eventosEmDestaqueEndereco = [];
 
-		window.onload = initialize();
-		
-		document.getElementById("routeForm").addEventListener("submit",function(ev){
+for (var i=0; i < matrizDeInputsDeEnderecos.length; i++) {
+	eventosEmDestaqueEndereco[i] = matrizDeInputsDeEnderecos[i].value;
+}
 
-			ev.preventDefault();
-			calcRoute();
 
-		}); 
+window.onload = initialize();
 
-		var directionDisplay;
-		var directionsService = new google.maps.DirectionsService();
+function initialize() {
 
-		function initialize() {
+	var myOptions = {
+		zoom : 15,
+		center : centro,
+		mapTypeId : google.maps.MapTypeId.ROADMAP,
+		mapTypeControl : false
+	};
+
+	var map = new google.maps.Map(document.getElementById("map_canvas"),
+			myOptions);
+
+	// Se o navegador do usuário tem suporte ao Geolocation
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function(position) {
+			// Com a latitude e longitude que retornam do Geolocation, criamos
+			// um LatLng
+			centro = new google.maps.LatLng(position.coords.latitude,
+					position.coords.longitude);
+			// Definimos a latitude e longitude acima como centro do mapa
+			map.setCenter(centro);
+		});
+	}
+
+	// Objeto do Google Geocoder
+	var geocoder = new google.maps.Geocoder();
+
+	// Geocoder
+	for (var i = 0; i < eventosEmDestaqueEndereco.length; i++) {
+
+		geocoder.geocode({
+			'address' : eventosEmDestaqueEndereco[i]
+		}, function(results, status) {
+			// Se o status da busca é ok
+			if (status == google.maps.GeocoderStatus.OK) {
+				// Set a latitude
+				latitude = results[0].geometry.location.lat();
+				// Set a longitude
+				longitude = results[0].geometry.location.lng();
 			
-			directionsDisplay = new google.maps.DirectionsRenderer();
-			var myOptions = {
-				zoom: 15,
-				center: centro,
-				mapTypeId: google.maps.MapTypeId.ROADMAP,
-				mapTypeControl: false
-			};
+				// Marcador
+				var marker = new google.maps.Marker({
+					position: new google.maps.LatLng(latitude, longitude),
+					map : map
+				});		
 			
-			var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
-			directionsDisplay.setMap(map);
-
-			if (navigator.geolocation) { // Se o navegador do usuário tem suporte ao Geolocation
-				navigator.geolocation.getCurrentPosition(function (position) {
-				      centro = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); // Com a latitude e longitude que retornam do Geolocation, criamos um LatLng
-				      map.setCenter(centro);
-				  });
 			}
-			
-			//Adiciona o passo a passo de como chegar no painel
-			directionsDisplay.setPanel(document.getElementById("directionsPanel"));
-			
-			var marker = new google.maps.Marker({
-				map: map, 
-				title:"Ponto A"
-			}); 
-		}
+		});
 
-		//Calcula Rota
-		function calcRoute() {
+	}
 
-			tipoViagemSelect = document.getElementById("routeForm:tipoViagem").value;
+	
 
-			//Seleciona o tipo de Viagem
-			if (tipoViagemSelect === "DRIVING") {
-				travelModeSelect = google.maps.DirectionsTravelMode.DRIVING;
-			} else if (tipoViagemSelect === "TRANSIT") {
-				travelModeSelect = google.maps.DirectionsTravelMode.TRANSIT;					
-			}else{
-				travelModeSelect = google.maps.DirectionsTravelMode.DRIVING;
-			}
-
-			var start = document.getElementById("routeForm:routeStart").value;
-			var end = document.getElementById("routeForm:routeEnd").value;
-			var request = {
-				origin:start,
-				destination:end,
-				travelMode: travelModeSelect,			
-			};
-
-			directionsService.route(request, function(response, status) {
-				if (status == google.maps.DirectionsStatus.OK) {
-					directionsDisplay.setDirections(response);
-				}
-			});
-		}
+}

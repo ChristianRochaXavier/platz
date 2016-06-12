@@ -65,7 +65,7 @@
 
 				<b:well styleClass="well-destaque">Eventos em Destaque</b:well>
 
-				<h:form>
+				<h:form id="form-destaques">
 
 					<p:carousel styleClass="carrossel-index" numVisible="3"
 						value="#{eventoBean.destaques}" var="evento"
@@ -77,8 +77,11 @@
 							<f:facet name="header">
 								<p:graphicImage url="#{eventoBean.pegarImagem(evento)}"
 									styleClass="img-responsive" />
-								<h:outputText value="Evento: #{evento.evento}" />
 							</f:facet>
+							<b:row>
+								<h:outputText value="Evento: #{evento.evento}" />
+							</b:row>
+
 							<b:row>
 								<h:outputText value="Empresa: #{evento.empresa.nomeFantasia}" />
 							</b:row>
@@ -114,6 +117,8 @@
 							</b:row>
 
 							<b:row>
+								<input type="hidden" class="enderecoCompleto"
+									value="#{evento.endereco.cep} #{evento.endereco.rua}" />
 								<h:outputText
 									value="Local: #{evento.endereco.cidade.nome} / #{evento.endereco.cidade.estado.uf} " />
 							</b:row>
@@ -187,8 +192,7 @@
 	</ui:define>
 
 	<ui:define name="posFooter">
-		<script type="text/javascript" src="js/mapaIndex.js">
-		</script>
+		<script type="text/javascript" src="js/mapaIndex.js" />
 	</ui:define>
 
 </ui:composition>

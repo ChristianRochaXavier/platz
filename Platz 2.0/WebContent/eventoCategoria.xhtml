@@ -28,8 +28,11 @@
 							<f:facet name="header">
 								<p:graphicImage url="#{eventoBean.pegarImagem(evento)}"
 									styleClass="img-responsive" />
-								<h:outputText value="Evento: #{evento.evento}" />
 							</f:facet>
+							<b:row>
+								<h:outputText value="Evento: #{evento.evento}" />
+							</b:row>
+							
 							<b:row>
 								<h:outputText value="Empresa: #{evento.empresa.nomeFantasia}" />
 							</b:row>

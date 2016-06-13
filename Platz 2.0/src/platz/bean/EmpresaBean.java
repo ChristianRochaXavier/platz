@@ -162,7 +162,7 @@ public class EmpresaBean {
 	public String pegarImagem(Empresa empresa) {
 
 		if (empresa.getImagemPerfil() == null || empresa.getImagemPerfil().equals("")) {
-			return CAMINHOIMAGEM + "empresa.jpg";
+			return CAMINHOIMAGEM + "empresa.png";
 		} else {
 			return empresa.getImagemPerfil();
 		}

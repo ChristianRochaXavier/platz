@@ -1,6 +1,10 @@
 //Centro do mapa estático
 var centro = new google.maps.LatLng(-23.550520, -46.633309);
 
+var minhaImagem = 'css/icons/pointer7.png';
+var imagemEventos = 'css/icons/pointer6.png';
+
+
 // Matriz contando os inputs dos endereços dos eventos em destaque
 var matrizDeInputsDeEnderecos = $(".enderecoCompleto");
 
@@ -54,14 +58,17 @@ function initialize() {
 				position : new google.maps.LatLng(position.coords.latitude,
 						position.coords.longitude),
 				map : map,
-				title : "você está aqui"
+
+				title: "você está aqui",
+				icon: minhaImagem
+
 			});
 
 		});
 	}
 
 	// Objeto do Google Geocoder
-	var geocoder = new google.maps.Geocoder();
+	var geocoder = new google.maps.Geocoder(); 
 	// Geocoder
 	for (var i = 0; i < eventosEmDestaqueEndereco.length; i++) {
 						
@@ -83,7 +90,9 @@ function initialize() {
 				// Marcador
 				var marker = new google.maps.Marker({
 					position : new google.maps.LatLng(latitude, longitude),
-					map : map
+					map : map,
+					icon: imagemEventos
+					
 				});
 				
 				//Evento de Click no marker

@@ -4,22 +4,37 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
 	<ui:define name="titulo">Área administrativa</ui:define>
 
 	<ui:define name="corpoPagina">
-		<p:panel
-			style="width:30%; text-align:center; margin-left:10%; position:absolute; bottom:40%;">
-			<h4>Bem Vindo a Área Administrativa.</h4>
-			<p>Aqui será possível realizar as configurações voltadas ao
-				Sistema do PLATZ- Eventos;</p>
-			<p>Faça um bom uso e garanta ao Cliente conforto e segurança!</p>
-		</p:panel>
-		 
-		 <h:graphicImage icon="img" library="img/platz" name="imagem-fundo.jpg"
-			style="margin-left:55%; top:35%;" />
-		
+
+
+
+		<div id="pagina-inicialAdm">
+
+
+			<h:graphicImage styleClass="img-index-adm"
+				value="/resources/img/temp/testeee.jpg">
+			</h:graphicImage>
+
+
+
+
+			<b:column col-md="12">
+				<div id="painel-adm">
+					<h1>Bem Vindo a Área Administrativa.</h1>
+					<p>Aqui será possível realizar as configurações voltadas ao
+						Sistema do PLATZ- Eventos;</p>
+					<p>Faça um bom uso e garanta ao Cliente conforto e segurança!</p>
+				</div>
+			</b:column>
+		</div>
+
+
+
+
 	</ui:define>
 
 </ui:composition>

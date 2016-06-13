@@ -7,8 +7,17 @@ var matrizDeInputsDeEnderecos = $(".enderecoCompleto");
 // Matriz contando as strings dos endereços dos eventos em destaque
 var eventosEmDestaqueEndereco = [];
 
+//Matriz contendo os inputs com os detalhes
+var matrizDeInputsDetalhes = $(".detalhesMapa");
+
+var detalhesDosEventosEmDestaque = [];
+
 for (var i = 0; i < matrizDeInputsDeEnderecos.length; i++) {
 	eventosEmDestaqueEndereco[i] = matrizDeInputsDeEnderecos[i].value;
+	detalhesDosEventosEmDestaque[i] = matrizDeInputsDetalhes[i].value;
+	
+	console.log(detalhesDosEventosEmDestaque[i]);
+	
 }
 
 // Carregar o mapa assim que a página termina de carregar
@@ -32,17 +41,22 @@ function initialize() {
 	// Se o navegador do usuário tem suporte ao Geolocation
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function(position) {
-			/* Com a latitude e longitude que retornam do Geolocation, criamos um LatLng onde
-			definimos a latitude e longitude acima como centro do mapa*/
-			map.setCenter( new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
-			
-			// Marcador com a sua localização 
+			/*
+			 * Com a latitude e longitude que retornam do Geolocation, criamos
+			 * um LatLng onde definimos a latitude e longitude acima como centro
+			 * do mapa
+			 */
+			map.setCenter(new google.maps.LatLng(position.coords.latitude,
+					position.coords.longitude));
+
+			// Marcador com a sua localização
 			var marker = new google.maps.Marker({
-				position :  new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+				position : new google.maps.LatLng(position.coords.latitude,
+						position.coords.longitude),
 				map : map,
-				title: "você está aqui"
+				title : "você está aqui"
 			});
-			
+
 		});
 	}
 
@@ -50,7 +64,7 @@ function initialize() {
 	var geocoder = new google.maps.Geocoder();
 	// Geocoder
 	for (var i = 0; i < eventosEmDestaqueEndereco.length; i++) {
-
+						
 		geocoder.geocode({
 			'address' : eventosEmDestaqueEndereco[i]
 		}, function(results, status) {
@@ -61,13 +75,23 @@ function initialize() {
 				// Set a longitude
 				longitude = results[0].geometry.location.lng();
 
+				// Janela de Informações
+				var infowindow = new google.maps.InfoWindow({
+					content : "<h4>" + "Detalhes Adicionais" + "</h4>"
+				});
+				
 				// Marcador
 				var marker = new google.maps.Marker({
 					position : new google.maps.LatLng(latitude, longitude),
 					map : map
 				});
+				
+				//Evento de Click no marker
+				marker.addListener("click", function() {
+				    infowindow.open(map, marker);
+				});
 			}
 		});
 	}
 
-}
+} 

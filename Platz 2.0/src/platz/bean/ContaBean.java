@@ -25,22 +25,95 @@ public class ContaBean {
 	private Conta contaDetalhe;
 	private boolean editar = false;
 
-	public boolean isEditar() {
-		return editar;
-	}
-
-	public void setEditar(boolean editar) {
-		this.editar = editar;
-	}
-
 	public ContaBean() {
 		perfis = Arrays.asList(Perfil.ADMINISTRADOR);
 		conta = null;
 		contas = new ContaDAO().listarTodos();
 	}
 
+	public void cadastrar() {
+		String textoEncriptado = "";
+
+		if (editar) {
+			textoEncriptado = conta.getSenha();
+		} else {
+			// Parte da criptografia
+
+			EncriptAES aes = new EncriptAES();
+			byte[] textoEmBytesEncriptados;
+			try {
+
+				textoEmBytesEncriptados = aes.encrypt(conta.getSenha(), EncriptAES.getChaveEncriptacao());
+				textoEncriptado = aes.byteParaString(textoEmBytesEncriptados);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		conta.setSenha(textoEncriptado);
+		conta.setDataCadastro(new Date());
+		new ContaDAO().cadastrar(conta);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Conta salva com sucesso"));
+		this.zerar();
+	}
+
+	public void editar(Conta conta) {
+		this.editar = true;
+		this.conta = conta;
+	}
+
+	public void detalhes(Conta conta) {
+		this.contaDetalhe = new ContaDAO().buscarPorId(conta.getId());
+	}
+
+	public void inverterAtividade(boolean status) {
+
+		this.contaExcluir.setAtivo(!status);
+
+		new ContaDAO().cadastrar(contaExcluir);
+		this.zerar();
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Status alterado com sucesso"));
+
+	}
+
+	public void preparaExclusao(Conta conta) {
+		this.contaExcluir = conta;
+	}
+
+	public void novaConta() {
+		conta = new Conta();
+	}
+
+	public void voltar() {
+		this.zerar();
+	}
+
+	public String isAtivo(boolean ativo) {
+		if (ativo) {
+			return "Ativo";
+		} else {
+			return "Inativo";
+		}
+	}
+
+	public void zerar() {
+		this.conta = null;
+		this.editar = false;
+		this.contas = new ContaDAO().listarTodos();
+		this.contaDetalhe = new Conta();
+		this.contaExcluir = null;
+	}
+
 	public List<Perfil> getPerfis() {
 		return perfis;
+	}
+
+	public boolean isEditar() {
+		return editar;
+	}
+
+	public void setEditar(boolean editar) {
+		this.editar = editar;
 	}
 
 	public void setPerfis(List<Perfil> perfis) {
@@ -79,76 +152,4 @@ public class ContaBean {
 		this.contas = contas;
 	}
 
-	public void cadastrar() {
-		String textoEncriptado = "";
-
-		if (editar) {
-			textoEncriptado = conta.getSenha();
-		} else {
-			// Parte da criptografia
-
-			EncriptAES aes = new EncriptAES();
-			byte[] textoEmBytesEncriptados;
-			try {
-
-				textoEmBytesEncriptados = aes.encrypt(conta.getSenha(), EncriptAES.getChaveEncriptacao());
-				textoEncriptado = aes.byteParaString(textoEmBytesEncriptados);
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		conta.setSenha(textoEncriptado);
-		conta.setDataCadastro(new Date());
-		new ContaDAO().cadastrar(conta);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Conta salva com sucesso"));
-		this.zerar();
-	}
-
-	public void editar(Conta conta) {
-		this.editar = true;
-		this.conta = conta;
-	}
-
-	public void detalhes(Conta conta) {
-		this.contaDetalhe = conta;
-	}
-
-	public void inverterAtividade(boolean status) {
-
-		this.contaExcluir.setAtivo(!status);
-
-		new ContaDAO().cadastrar(contaExcluir);
-		this.zerar();
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Status alterado com sucesso"));
-
-	}
-
-	public void preparaExclusao(Conta conta) {
-		this.contaExcluir = conta;
-	}
-
-	public void novaConta() {
-		conta = new Conta();
-	}
-
-	public void voltar() {
-		this.zerar();
-	}
-
-	public String isAtivo(boolean ativo) {
-		if (ativo) {
-			return "Ativo";
-		} else {
-			return "Inativo";
-		}
-	}
-
-	public void zerar() {
-		this.conta = null;
-		this.editar = false;
-		this.contas = new ContaDAO().listarTodos();
-		this.contaDetalhe = null;
-		this.contaExcluir = null;
-	}
 }

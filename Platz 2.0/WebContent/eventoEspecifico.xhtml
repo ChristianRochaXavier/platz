@@ -148,13 +148,14 @@
 				</b:well>
 				</b:column>
 
-
 				<p:panelGrid id="painel-Calcula-Rota">
 					<b:column col-md="12">
 						<p:row>
 							<p:column>
 								<p:outputLabel value="Ponto Inicial" />
 								<h:inputText type="text" id="routeStart" />
+								<input type="hidden" id="localizacaoEvento"
+									value="#{eventoBean.eventoEspecifico.endereco.cep} #{eventoBean.eventoEspecifico.endereco.rua}" />
 							</p:column>
 
 							<!-- <p:column>
@@ -198,7 +199,7 @@
 	</ui:define>
 
 	<ui:define name="posFooter">
-
+		<script type="text/javascript" src="js/mapaEventoEspecifico.js" />
 	</ui:define>
 
 </ui:composition>

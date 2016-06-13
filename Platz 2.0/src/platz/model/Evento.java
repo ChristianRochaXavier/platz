@@ -42,6 +42,22 @@ public class Evento {
 	@JoinColumn(name = "idEndereco")
 	private Endereco endereco;
 
+	// Contrutores
+	public Evento() {
+		
+	}
+
+	public Evento(Integer id, String evento, Date dataInicio, Date dataTermino, String nomeFantasia, String caminhoImagem, Endereco endereco) {
+		this.id = id;
+		this.evento = evento;
+		this.dataInicio = dataInicio;
+		this.dataTermino = dataTermino;
+		this.caminhoImagem = caminhoImagem;
+		empresa = new Empresa();
+		empresa.setNomeFantasia(nomeFantasia);
+		this.endereco = endereco;
+	}
+
 	// Getters and Setters
 	public Integer getId() {
 		return id;
@@ -88,7 +104,7 @@ public class Evento {
 	public void setDataInicio(Date dataInicio) {
 		this.dataInicio = dataInicio;
 	}
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull(message = "A date de término deve ser informada")
 	public Date getDataTermino() {
@@ -123,6 +139,7 @@ public class Evento {
 		this.preco = preco;
 	}
 
+	@NotNull(message = "É nessesário enviar uma imagem")
 	public String getCaminhoImagem() {
 		return caminhoImagem;
 	}
@@ -140,7 +157,7 @@ public class Evento {
 		this.empresa = empresa;
 	}
 
-	@NotNull
+	@NotNull(message = "Selecione uma categoria")
 	public CategoriaEvento getCategoriaEvento() {
 		return categoriaEvento;
 	}

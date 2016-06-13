@@ -14,117 +14,128 @@
 	<ui:define name="titulo">Sobre</ui:define>
 
 	<ui:define name="corpoPagina">
-	<div style="margin-top:40px;">
-		<b:jumbotron style="margin: 0 auto;border-radius:20px; width:70%;  ">
-			<b:container>
-				<h1>PLATZ - Suas Rotas, seus Eventos</h1>
-				<p>Projeto Voltado a Necessidade de Rotas seguras a eventos,
-					Aqui você consegue encontrar os eventos mais badalados pode avaliar
-					e dar sua nota, alem muitas outras coisas</p>
-			</b:container>
 
-		</b:jumbotron>
-		</div>
-		<b:container>
-
-			<b:row>
-				<b:column col-md="12">
-					<h2>PLATZ</h2>
-					<p align="justify">Projeto que visa melhorar a experiencia das
-						pessoas a respeito das rotas e eventos!! projetos ut fermentum
-						massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-						euismod. Donec sed odio dui.</p>
-					<p>
-						<b:modal id="amodal3" title="Envie um Email"
-							styleClass="modalPseudoClass">
-							<h:form>
-								<p:outputLabel value="Nome" />
-								<b:inputText value="" />
-
-								<p:outputLabel value="Email" />
-								<b:inputText value="" />
+				<div class="corpo-Sobre">
+					<b:jumbotron id="jumbotron-sobre">
+						<b:container>
+							<h1>PLATZ - Suas Rotas, seus Eventos</h1>
+							<p>Projeto Voltado a Necessidade de Rotas seguras a eventos,
+								Aqui você consegue encontrar os eventos mais badalados pode
+								avaliar e dar sua nota, alem muitas outras coisas</p>
+						</b:container>
 
 
-								<p:outputLabel value="Assunto" />
-								<b:inputText value="" />
+					</b:jumbotron>
+				</div>
+				<b:container>
 
+					<b:row>
+						<b:column col-md="12">
+							<h2>PLATZ</h2>
+							<p align="justify">Projeto que visa melhorar a experiencia
+								das pessoas a respeito das rotas e eventos!! projetos ut
+								fermentum massa justo sit amet risus. Etiam porta sem malesuada
+								magna mollis euismod. Donec sed odio dui.</p>
+							<p>
+								<b:modal id="amodal3" title="Envie um Email"
+									styleClass="modalPseudoClass">
 
-								<p:outputLabel value="Mensagem" />
-								<b:inputTextarea rows="5" />
+									<h:form>
+										<p:growl autoUpdate="true" />
 
-							</h:form>
-							<f:facet name="footer">
-								<b:button value="Fechar" dismiss="modal" onclick="return false;" />
-								<b:button value="Ok" look="primary" dismiss="modal"
-									onclick="return false;" />
-							</f:facet>
-						</b:modal>
-						<b:row>
+										<p:outputLabel
+											value="Selecione um assunto que melhor se encaixa no contexto da mensagem" />
+										<b:selectOneMenu value="#{mensagemBean.mensagem.assunto}">
+											<f:selectItem itemLabel="-- Selecione um Assunto  --"
+												itemValue="#{null}" />
+											<f:selectItems value="#{assuntoBean.assuntos}" var="assunto"
+												itemLabel="#{assunto.assunto}" itemValue="#{assunto}" />
+										</b:selectOneMenu>
 
-							<b:column span="3">
-								<button id="btrigger" class="btn btn-info btn-lg"
-									data-target="#amodal3" data-toggle="modal"
-									style="align: center;">Entre em Contato</button>
-							</b:column>
+										<p:outputLabel value="Email" />
+										<b:inputText value="#{mensagemBean.mensagem.email}" />
 
-						</b:row>
-					</p>
-				</b:column>
-			</b:row>
+										<p:outputLabel value="Mensagem" />
+										<b:inputTextarea rows="5"
+											value="#{mensagemBean.mensagem.mensagem}" />
+										<b:commandButton action="#{mensagemBean.cadastrar()}"
+											value="Enviar mensagem" />
+									</h:form>
 
-			<hr />
+									<f:facet name="footer">
+										<b:button value="Fechar" dismiss="modal"
+											onclick="return false;" />
+										<b:button value="Ok" look="primary" dismiss="modal"
+											onclick="return false;" />
+									</f:facet>
+								</b:modal>
+								<b:row>
 
-			<b:row>
-				<b:column col-md="3">
+									<b:column span="3">
+										<button id="btrigger" class="btn btn-info btn-lg"
+											data-target="#amodal3" data-toggle="modal"
+											style="align: center;">Entre em Contato</button>
+									</b:column>
 
-					<h:graphicImage value="/resources/img/platz/sobreAndy.png"
-						style="width:50%; margin-left:25%;" styleClass="img-circle" />
+								</b:row>
+							</p>
+						</b:column>
+					</b:row>
 
-					<h2>Anderson Pessoa</h2>
-					<p align="justify">Gerente do Projeto Platz e desenvolvedor
-						back-end, tem 17 anos , mora em São Paulo Capital, está disponivel
-						para novos projetos ut fermentum massa justo sit amet risus. Etiam
-						porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-				</b:column>
+					<hr />
 
-				<b:column col-md="3">
+					<b:row>
+						<b:column col-md="3">
 
-					<h:graphicImage value="/resources/img/platz/sobreChris.png"
-						style="width:50%; margin-left:25%;" styleClass="img-circle" />
-					<h2>Christian Xavier</h2>
-					<p align="justify">Especialista no banco de dados e
-						desenvolvedor back-end, tem 19 anos , mora em São Paulo Capital,
-						está disponivel para novos projetos ut fermentum massa justo sit
-						amet risus. Etiam porta sem malesuada magna mollis euismod. Donec
-						sed odio dui.</p>
-				</b:column>
+							<h:graphicImage value="/resources/img/platz/sobreAndy.png"
+								id="img-sobre1" styleClass="img-circle" />
 
-				<b:column col-md="3">
-					<h:graphicImage value="/resources/img/platz/sobreGabs.png"
-						style="width:50%; margin-left:25%;" styleClass="img-circle" />
-					<h2>Gabriela Alvarenga</h2>
-					<p align="justify">Especialista em android e desenvolvedora
-						front-end, tem 18 anos , mora em São Paulo Capital, está
-						disponivel para novos projetos ut fermentum massa justo sit amet
-						risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
-						odio dui.</p>
-				</b:column>
+							<h2>Anderson Pessoa</h2>
+							<p class="texto-Sobre">Gerente do Projeto Platz e
+								desenvolvedor back-end, tem 17 anos , mora em São Paulo Capital,
+								está disponivel para novos projetos ut fermentum massa justo sit
+								amet risus. Etiam porta sem malesuada magna mollis euismod.
+								Donec sed odio dui.</p>
+						</b:column>
 
-				<b:column col-md="3">
-					<h:graphicImage value="/resources/img/platz/sobreJuh.png"
-						style="width:50%; margin-left:25%;" styleClass="img-circle" />
-					<h2>Juliana Cerqueira</h2>
-					<p align="justify">Especialista em Android e desenvolvedora
-						front-end, tem 16 anos , mora em São Paulo Capital, está
-						disponivel para novos projetos ut fermentum massa justo sit amet
-						risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
-						odio dui.</p>
-				</b:column>
+						<b:column col-md="3">
 
-			</b:row>
-			<hr />
+							<h:graphicImage value="/resources/img/platz/sobreChris.png"
+								id="img-sobre2" styleClass="img-circle" />
+							<h2>Christian Xavier</h2>
+							<p class="texto-Sobre">Especialista no banco de dados e
+								desenvolvedor back-end, tem 19 anos , mora em São Paulo Capital,
+								está disponivel para novos projetos ut fermentum massa justo sit
+								amet risus. Etiam porta sem malesuada magna mollis euismod.
+								Donec sed odio dui.</p>
+						</b:column>
 
-		</b:container>
+						<b:column col-md="3">
+							<h:graphicImage value="/resources/img/platz/sobreGabs.png"
+								id="img-sobre3" styleClass="img-circle" />
+							<h2>Gabriela Alvarenga</h2>
+							<p class="texto-Sobre">Especialista em android e
+								desenvolvedora front-end, tem 18 anos , mora em São Paulo
+								Capital, está disponivel para novos projetos ut fermentum massa
+								justo sit amet risus. Etiam porta sem malesuada magna mollis
+								euismod. Donec sed odio dui.</p>
+						</b:column>
+
+						<b:column col-md="3">
+							<h:graphicImage value="/resources/img/platz/sobreJuh.png"
+								id="img-sobre4" styleClass="img-circle" />
+							<h2>Juliana Cerqueira</h2>
+							<p class="texto-Sobre">Especialista em Android e
+								desenvolvedora front-end, tem 16 anos , mora em São Paulo
+								Capital, está disponivel para novos projetos ut fermentum massa
+								justo sit amet risus. Etiam porta sem malesuada magna mollis
+								euismod. Donec sed odio dui.</p>
+						</b:column>
+
+					</b:row>
+					<hr />
+
+				</b:container>
 	</ui:define>
 
 

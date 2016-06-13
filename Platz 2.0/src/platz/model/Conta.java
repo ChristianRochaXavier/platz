@@ -25,20 +25,33 @@ public class Conta {
 	private Date dataCadastro;
 	private Date ultimoAcesso;
 	private boolean ativo = true;
-	
+
+	// Contrutores
+	public Conta() {
+	}
+
+	public Conta(Integer id, String login, Perfil perfil, boolean ativo) {
+		this.id = id;
+		this.login = login;		
+		this.perfil = perfil;
+		this.ativo = ativo;
+	}
+
 	// Getters and Setters
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	@NotEmpty(message = "O Login deve ser informado")
-	@Length(min = 3, max = 40, message = "O Login deve ter entre 3 e 40 caracteres")	
+	@Length(min = 3, max = 40, message = "O Login deve ter entre 3 e 40 caracteres")
 	public String getLogin() {
 		return login;
 	}
+
 	public void setLogin(String login) {
 		this.login = login;
 	}
@@ -48,6 +61,7 @@ public class Conta {
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -57,6 +71,7 @@ public class Conta {
 	public String getSenha() {
 		return senha;
 	}
+
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
@@ -65,6 +80,7 @@ public class Conta {
 	public Date getDataCadastro() {
 		return dataCadastro;
 	}
+
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
@@ -72,22 +88,26 @@ public class Conta {
 	public Date getUltimoAcesso() {
 		return ultimoAcesso;
 	}
+
 	public void setUltimoAcesso(Date ultimoAcesso) {
 		this.ultimoAcesso = ultimoAcesso;
 	}
+
 	@NotNull
 	public Perfil getPerfil() {
 		return perfil;
 	}
+
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
 	}
+
 	public boolean isAtivo() {
 		return ativo;
 	}
+
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-	
 
 }

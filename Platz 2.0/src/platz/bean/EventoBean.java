@@ -26,10 +26,12 @@ public class EventoBean {
 
 	private Evento evento;
 	private Evento eventoStatus;
-	private Evento eventoDetalhe;
 	private Evento eventoExclusao;
+	private Evento eventoEspecifico;
 	private List<Evento> eventos;
+
 	private List<CategoriaEvento> categorias;
+	private List<Evento> destaques;
 	static final String CAMINHOIMAGEM = "/resources/img/eventos/";
 
 	public EventoBean() {
@@ -40,10 +42,16 @@ public class EventoBean {
 		evento.getEndereco().setCidade(new Cidade());
 		evento.getEndereco().getCidade().setEstado(new Estado());
 		eventoStatus = new Evento();
-		eventoDetalhe = new Evento();
 		eventoExclusao = new Evento();
+		eventoEspecifico = new Evento();
 		eventos = new EventoDAO().listarTodos();
 		categorias = new CategoriaDAO().listarTodos();
+		destaques = new EventoDAO().listarDestaques();
+
+	}
+
+	public List<Evento> eventosPorEmpresa(Empresa empresa) {
+		return new EventoDAO().listarPorEmpresa(empresa);
 	}
 
 	public void editar(Evento evento) {
@@ -53,7 +61,7 @@ public class EventoBean {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public void zerar() {
@@ -64,10 +72,10 @@ public class EventoBean {
 		evento.getEndereco().setCidade(new Cidade());
 		evento.getEndereco().getCidade().setEstado(new Estado());
 		eventoStatus = new Evento();
-		eventoDetalhe = new Evento();
 		eventoExclusao = new Evento();
 		eventos = new EventoDAO().listarTodos();
 		categorias = new CategoriaDAO().listarTodos();
+		destaques = new EventoDAO().listarDestaques();
 	}
 
 	public void cadastrar(Empresa empresa) {
@@ -86,7 +94,7 @@ public class EventoBean {
 
 		// Pega o caminho completo do diretório
 		String caminhoCompleto = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/").toString()
-				+ "\\resources\\img\\userPerfil\\";
+				+ "\\resources\\img\\eventos\\";
 
 		System.out.println("Caminho: " + caminhoCompleto);
 		System.out.println("");
@@ -115,26 +123,35 @@ public class EventoBean {
 		// System.out.println(usuario.getImagemPerfil());
 	}
 
-	public void inverterAtividade() {
-	}
-
 	public List<Evento> listaPorCategoria(CategoriaEvento categoria) {
 
-		List<Evento> lista = new EventoDAO().listarPorCategoria(categoria);
-
-		return lista;
-		
+		return new EventoDAO().listarPorCategoria(categoria);
 	}
 
-	public void detalhes() {
+	public String eventoEspecificoAreaLivre(Evento evento) {
+
+		this.eventoEspecifico = evento;
+
+		return "eventoEspecifico?faces-redirec=true";
+
+	}
+
+	public String pegarImagem(Evento evento) {
+		if (evento.getCaminhoImagem() == null || evento.getCaminhoImagem().equals("")) {
+			return CAMINHOIMAGEM + "evento.jpg";
+		} else {
+			return evento.getCaminhoImagem();
+		}
 	}
 
 	public void alteraStatus() {
+
 	}
 
-	public void pegarImagem() {
+	public void inverterAtividade() {
 	}
 
+	// Getters and Setters
 	public Evento getEvento() {
 		return evento;
 	}
@@ -149,14 +166,6 @@ public class EventoBean {
 
 	public void setEventoStatus(Evento eventoStatus) {
 		this.eventoStatus = eventoStatus;
-	}
-
-	public Evento getEventoDetalhe() {
-		return eventoDetalhe;
-	}
-
-	public void setEventoDetalhe(Evento eventoDetalhe) {
-		this.eventoDetalhe = eventoDetalhe;
 	}
 
 	public Evento getEventoExclusao() {
@@ -183,5 +192,20 @@ public class EventoBean {
 		this.categorias = categorias;
 	}
 
+	public List<Evento> getDestaques() {
+		return destaques;
+	}
+
+	public void setDestaques(List<Evento> destaques) {
+		this.destaques = destaques;
+	}
+
+	public Evento getEventoEspecifico() {
+		return eventoEspecifico;
+	}
+
+	public void setEventoEspecifico(Evento eventoEspecifico) {
+		this.eventoEspecifico = eventoEspecifico;
+	}
 
 }

@@ -42,7 +42,8 @@ public class ContaDAO {
 	public List<Conta> listarTodos() {
 
 		EntityManager entityManager = JPAUtil.getEntityManager();
-		List<Conta> lista = entityManager.createQuery("from Conta").getResultList();
+		//List<Conta> lista = entityManager.createQuery("from Conta").getResultList();
+		List<Conta> lista = entityManager.createQuery("select new platz.model.Conta(id, login, perfil, ativo) from Conta").getResultList();
 		entityManager.close();
 
 		return lista;

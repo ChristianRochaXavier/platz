@@ -11,7 +11,7 @@
 
 	<ui:define name="corpoPagina">
 
-		<c:forEach items="#{eventoBean.eventos}" var="evento">
+		<c:forEach items="#{eventoBean.eventosPorEmpresa(loginBean.empresaLogado)}" var="evento">
 			<h:form>
 				<div>
 					<p:outputLabel value="#{evento.detalhes}" />

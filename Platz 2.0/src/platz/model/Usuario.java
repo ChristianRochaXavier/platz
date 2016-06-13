@@ -33,6 +33,19 @@ public class Usuario {
 	private String imagemPerfil;
 	private Date dataNascimento;
 
+	// Contrutores
+	public Usuario() {
+
+	}
+
+	public Usuario(Integer id, String nome, String cpf, String email) {
+		this.id = id;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.conta = new Conta();
+		this.conta.setEmail(email);
+	}
+
 	// Getters and Setters
 
 	public Integer getId() {

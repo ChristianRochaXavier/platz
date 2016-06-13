@@ -108,7 +108,9 @@
 								</h:outputText>
 							</b:row>
 
+							
 							<b:row>
+								<input type="hidden" class="detalhesMapa" value="#{evento.evento}"/>
 								<input type="hidden" class="enderecoCompleto"
 									value="#{evento.endereco.cep} #{evento.endereco.rua}" />
 								<h:outputText
@@ -167,7 +169,7 @@
 
 		</h:form> -->
 
-				<!-- Mapa --> 
+				<!-- Mapa -->
 
 				<div id="map_canvas"
 					style="width: 100%; height: 500px; margin: 0 auto;"></div>

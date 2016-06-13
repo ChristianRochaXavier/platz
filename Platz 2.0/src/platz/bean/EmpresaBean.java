@@ -132,7 +132,7 @@ public class EmpresaBean {
 	}
 
 	public void editar(Empresa empresa) {
-		this.empresa = empresa;
+		this.empresa = new EmpresaDAO().buscarPorId(empresa.getId());
 		this.editar = true;
 		rendered = false;
 	}
@@ -152,7 +152,7 @@ public class EmpresaBean {
 	}
 
 	public void detalhes(Empresa empresa) {
-		this.empresaDetalhe = empresa;
+		this.empresaDetalhe = new EmpresaDAO().buscarPorId(empresa.getId());
 	}
 
 	public void novaEmpresa() {

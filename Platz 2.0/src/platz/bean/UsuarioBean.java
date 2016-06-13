@@ -121,7 +121,7 @@ public class UsuarioBean {
 	}
 
 	public void editar(Usuario usuario) {
-		this.usuario = usuario;
+		this.usuario = new UsuarioDAO().buscarPorId(usuario.getId());
 		this.editar = true;
 		rendered = false;
 	}
@@ -141,7 +141,7 @@ public class UsuarioBean {
 	}
 
 	public void detalhes(Usuario usuario) {
-		this.usuarioDetalhe = usuario;
+		this.usuarioDetalhe = new UsuarioDAO().buscarPorId(usuario.getId());
 	}
 
 	public void novoUsuario() {

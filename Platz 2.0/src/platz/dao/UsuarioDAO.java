@@ -22,7 +22,8 @@ public class UsuarioDAO {
 	public List<Usuario> listarTodos() {
 
 		EntityManager entityManager = JPAUtil.getEntityManager();
-		List<Usuario> lista = entityManager.createQuery("from Usuario").getResultList();
+		//List<Usuario> lista = entityManager.createQuery("from Usuario").getResultList();
+		List<Usuario> lista = entityManager.createQuery("select new platz.model.Usuario(id, nome, cpf, conta.email) from Usuario").getResultList();
 		entityManager.close();
 
 		return lista;

@@ -59,7 +59,7 @@ public class ContaBean {
 
 	public void editar(Conta conta) {
 		this.editar = true;
-		this.conta = conta;
+		this.conta = new ContaDAO().buscarPorId(conta.getId());
 	}
 
 	public void detalhes(Conta conta) {

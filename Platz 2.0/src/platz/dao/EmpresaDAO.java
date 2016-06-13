@@ -22,7 +22,8 @@ public class EmpresaDAO {
 	public List<Empresa> listarTodos() {
 
 		EntityManager entityManager = JPAUtil.getEntityManager();
-		List<Empresa> lista = entityManager.createQuery("from Empresa").getResultList();
+		//List<Empresa> lista = entityManager.createQuery("from Empresa").getResultList();
+		List<Empresa> lista = entityManager.createQuery("select new platz.model.Empresa(id, nomeFantasia, razaoSocial, cnpj, conta.email) from Empresa").getResultList();
 		entityManager.close();
 
 		return lista;

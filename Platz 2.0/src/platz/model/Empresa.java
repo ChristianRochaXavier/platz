@@ -31,6 +31,18 @@ public class Empresa {
 	private String telefone2;
 	private String imagemPerfil;
 	
+	//contrutores
+	public Empresa() {
+	}
+	public Empresa(Integer id, String nomeFantasia, String razaoSocial, String cnpj, String email) {
+		this.id = id;
+		this.nomeFantasia = nomeFantasia;
+		this.razaoSocial = razaoSocial;
+		this.cnpj = cnpj;
+		conta = new Conta();
+		conta.setEmail(email);
+	}
+	
 	//Getters and Setters
 
 	public Integer getId() {

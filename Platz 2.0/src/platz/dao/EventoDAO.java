@@ -23,6 +23,7 @@ public class EventoDAO {
 
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		List<Evento> lista = entityManager.createQuery("from Evento").getResultList();
+		//List<Evento> lista = entityManager.createQuery("select new platz.model.Evento(id, evento, dataInicio, dataTermino, empresa.nomeFantasia, caminhoImagem, endereco) from Evento").getResultList();
 		entityManager.close();
 
 		return lista;
@@ -44,7 +45,7 @@ public class EventoDAO {
 	public List<Evento> listarDestaques(){
 		
 		EntityManager entityManager = JPAUtil.getEntityManager();
-		List<Evento> lista = entityManager.createQuery("select e from Evento e where e.destaque = true").getResultList();
+		List<Evento> lista = entityManager.createQuery("from Evento e where e.destaque = true").getResultList();
 		entityManager.close();
 
 		return lista;		

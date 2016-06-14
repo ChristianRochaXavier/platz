@@ -12,7 +12,7 @@
 		<h:form id="avaliacoes-consulta">
 			<p:growl autoUpdate="true" />
 
-			<p:dataTable value="#"
+			<p:dataTable value="#{avaliacoesBean.avaliacoes}"
 				paginatorPosition="bottom" var="avaliacao" paginator="true" rows="10"
 				id="tabela-avaliacoes" editable="true"
 				emptyMessage="Nenhum Registro Encontrado"
@@ -22,20 +22,20 @@
 				</f:facet>
 
 
-				<p:column headerText="Id" sortBy="#" width="15%">
-					<h:outputText value="#" />
+				<p:column headerText="Id" sortBy="#{avaliacao.id}" width="15%">
+					<h:outputText value="#{avaliacao.id}" />
 				</p:column>
 				
-				<p:column headerText="Nota" sortBy="#" width="15%">
-					<h:outputText value="#" />
+				<p:column headerText="Nota" sortBy="#{avaliacao.nota}" width="15%">
+					<h:outputText value="#{avaliacao.nota}" />
 				</p:column>
 				
-				<p:column headerText="Evento" sortBy="#" width="15%">
-					<h:outputText value="#" />
+				<p:column headerText="nome do evento" sortBy="#{avaliacao.evento.evento}" width="15%">
+					<h:outputText value="#{avaliacao.evento.evento}" />
 				</p:column>
 				
-				<p:column headerText="Usuario" sortBy="#" width="15%">
-					<h:outputText value="#" />
+				<p:column headerText="Login do usuário" sortBy="#{avaliacao.usuario.nome}" width="15%">
+					<h:outputText value="#{avaliacao.usuario.nome}" />
 				</p:column>		
 
 			

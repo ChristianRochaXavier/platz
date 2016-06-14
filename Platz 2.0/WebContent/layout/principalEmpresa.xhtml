@@ -23,15 +23,12 @@
 	<b:navBar inverse="true" fixed="top"
 		brand-img="../resources/img/platz/logo1.png"
 		brand-img-style="width:100px;height:50px; margin-top:-15px;"
-		brandHref="index.jsf" fluid="true">
+		brandHref="../Home" fluid="true">
 
 		<b:navbarLinks id="link-menuUser">
 			<b:navLink value="Home" href="../Empresa/index.jsf"></b:navLink>
 			<b:navLink value="Ranking" href="#"></b:navLink>
-			<b:dropMenu value="Eventos">
-				<b:navLink value="Meus Eventos" href="#"></b:navLink>
-				<b:navLink value="Postar Evento" href="../Empresa/evento.jsf"></b:navLink>
-			</b:dropMenu>
+			<b:navLink value="Postar Evento" href="../Empresa/evento.jsf"></b:navLink>
 			<b:navLink value="Avaliações" href="#"></b:navLink>
 			<b:navLink value="Empresas" href="#"></b:navLink>
 
@@ -54,10 +51,10 @@
 				<b:navLink value="Sair" icon="log-out" href="../"></b:navLink>
 			</b:dropMenu>
 		</b:navbarLinks>
-		
+
 
 	</b:navBar>
-	
+
 
 	<ui:insert name="corpoPagina" />
 

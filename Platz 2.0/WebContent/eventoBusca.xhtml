@@ -12,62 +12,65 @@
 	<ui:define name="corpoPagina">
 
 		<div class="corpo-Busca">
-			<c:forEach items="#{eventoBean.eventosPesquisa}" var="evento" >
-				<b:column col-md="4" styleClass="evento-busca">
-					<b:column>
-						<b:thumbnail>
-							<h:graphicImage style="height:250px"
-								value="#{eventoBean.pegarImagem(evento)}">
-							</h:graphicImage>
-						</b:thumbnail>
+			<h:form>
+				<c:forEach items="#{eventoBean.eventosPesquisa}" var="evento">
+					<b:column col-md="4" styleClass="evento-busca">
+						<b:column>
+							<b:thumbnail>
+								<h:graphicImage style="height:250px"
+									value="#{eventoBean.pegarImagem(evento)}">
+								</h:graphicImage>
+							</b:thumbnail>
+						</b:column>
+						<b:column col-md="3" />
+
+						<b:column col-md="4">
+
+							<b:row>
+								<h:outputText value="Evento: #{evento.evento}" />
+							</b:row>
+
+							<b:row>
+								<h:outputText value="Empresa: #{evento.empresa.nomeFantasia}" />
+							</b:row>
+
+							<b:row>
+								<h:outputText value="Inicio:" />
+								<h:outputText value="#{evento.dataInicio}">
+									<f:convertDateTime dateStyle="full" />
+								</h:outputText>
+								<h:outputText value=" às " />
+								<h:outputText value="#{evento.dataInicio}">
+									<f:convertDateTime pattern="HH:mm" type="time" />
+								</h:outputText>
+							</b:row>
+
+							<b:row>
+								<h:outputText value=" Término: " />
+								<h:outputText value="#{evento.dataTermino}">
+									<f:convertDateTime dateStyle="full" />
+								</h:outputText>
+								<h:outputText value=" às " />
+								<h:outputText value="#{evento.dataTermino}">
+									<f:convertDateTime pattern="HH:mm" type="time" />
+								</h:outputText>
+							</b:row>
+
+
+							<b:row>
+								<h:outputText
+									value="Local: #{evento.endereco.cidade.nome} / #{evento.endereco.cidade.estado.uf} " />
+							</b:row>
+ 
+							<h:commandButton
+								action="#{eventoBean.eventoEspecificoAreaLivre(evento)}"
+								value="Saiba Mais" styleClass="btn btn-warning" />
+						</b:column>
+
 					</b:column>
-					<b:column col-md="3" />
-
-					<b:column col-md="4">
-
-						<b:row>
-							<h:outputText value="Evento: #{evento.evento}" />
-						</b:row>
-
-						<b:row>
-							<h:outputText value="Empresa: #{evento.empresa.nomeFantasia}" />
-						</b:row>
-
-						<b:row>
-							<h:outputText value="Inicio:" />
-							<h:outputText value="#{evento.dataInicio}">
-								<f:convertDateTime dateStyle="full" />
-							</h:outputText>
-							<h:outputText value=" às " />
-							<h:outputText value="#{evento.dataInicio}">
-								<f:convertDateTime pattern="HH:mm" type="time" />
-							</h:outputText>
-						</b:row>
-
-						<b:row>
-							<h:outputText value=" Término: " />
-							<h:outputText value="#{evento.dataTermino}">
-								<f:convertDateTime dateStyle="full" />
-							</h:outputText>
-							<h:outputText value=" às " />
-							<h:outputText value="#{evento.dataTermino}">
-								<f:convertDateTime pattern="HH:mm" type="time" />
-							</h:outputText>
-						</b:row>
-
-
-						<b:row>
-							<h:outputText
-								value="Local: #{evento.endereco.cidade.nome} / #{evento.endereco.cidade.estado.uf} " />
-						</b:row>
-
-						<h:commandButton action="#" value="Saiba Mais"
-							styleClass="btn btn-warning" />
-					</b:column>
-
-				</b:column>
-			</c:forEach>
-			<!-- 
+				</c:forEach>
+			</h:form>
+			<!--  
 				<b:column col-md="4" styleClass="evento-busca">
 				<b:column>
 					<b:thumbnail>

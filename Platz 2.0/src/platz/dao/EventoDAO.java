@@ -23,7 +23,10 @@ public class EventoDAO {
 
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		List<Evento> lista = entityManager.createQuery("from Evento").getResultList();
-		//List<Evento> lista = entityManager.createQuery("select new platz.model.Evento(id, evento, dataInicio, dataTermino, empresa.nomeFantasia, caminhoImagem, endereco) from Evento").getResultList();
+		// List<Evento> lista = entityManager.createQuery("select new
+		// platz.model.Evento(id, evento, dataInicio, dataTermino,
+		// empresa.nomeFantasia, caminhoImagem, endereco) from
+		// Evento").getResultList();
 		entityManager.close();
 
 		return lista;
@@ -40,20 +43,20 @@ public class EventoDAO {
 		return lista;
 
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public List<Evento> listarDestaques(){
-		
+	public List<Evento> listarDestaques() {
+
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		List<Evento> lista = entityManager.createQuery("from Evento e where e.destaque = true").getResultList();
 		entityManager.close();
 
-		return lista;		
+		return lista;
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public List<Evento> listarPorEmpresa(Empresa empresa){
-		
+	public List<Evento> listarPorEmpresa(Empresa empresa) {
+
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		List<Evento> lista = entityManager.createQuery("select e from Evento e where e.empresa = :empresa")
 				.setParameter("empresa", empresa).getResultList();
@@ -61,8 +64,16 @@ public class EventoDAO {
 
 		return lista;
 
-		
-		
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Evento> buscarporNomeCategoria(CategoriaEvento categoria, String nomePesquisa) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		List<Evento> lista = entityManager
+				.createQuery("select e from Evento e where e.categoriaEvento=:categoria and e.evento LIKE :nome ")
+				.setParameter("categoria", categoria).setParameter("nome", nomePesquisa+"%").getResultList();
+		entityManager.close();
+		return lista;
 	}
 
 	// Buscar por id

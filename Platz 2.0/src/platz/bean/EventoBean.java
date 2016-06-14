@@ -2,6 +2,7 @@ package platz.bean;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -29,7 +30,9 @@ public class EventoBean {
 	private Evento eventoExclusao;
 	private Evento eventoEspecifico;
 	private List<Evento> eventos;
-
+	private CategoriaEvento categoriaPesquisa;
+	private String stringPesquisa;
+	private List<Evento> eventosPesquisa;
 	private List<CategoriaEvento> categorias;
 	private List<Evento> destaques;
 	static final String CAMINHOIMAGEM = "/resources/img/eventos/";
@@ -47,7 +50,11 @@ public class EventoBean {
 		eventos = new EventoDAO().listarTodos();
 		categorias = new CategoriaDAO().listarTodos();
 		destaques = new EventoDAO().listarDestaques();
+	}
 
+	public String pesquisaNomeCategoria() {
+		eventosPesquisa = new EventoDAO().buscarporNomeCategoria(categoriaPesquisa, stringPesquisa);
+		return "eventoBusca.jsf?faces-redirect=true";
 	}
 
 	public List<Evento> eventosPorEmpresa(Empresa empresa) {
@@ -76,6 +83,7 @@ public class EventoBean {
 		eventos = new EventoDAO().listarTodos();
 		categorias = new CategoriaDAO().listarTodos();
 		destaques = new EventoDAO().listarDestaques();
+		eventosPesquisa = new ArrayList<Evento>(); 
 	}
 
 	public void cadastrar(Empresa empresa) {
@@ -207,5 +215,30 @@ public class EventoBean {
 	public void setEventoEspecifico(Evento eventoEspecifico) {
 		this.eventoEspecifico = eventoEspecifico;
 	}
+
+	public CategoriaEvento getCategoriaPesquisa() {
+		return categoriaPesquisa;
+	}
+
+	public void setCategoriaPesquisa(CategoriaEvento categoriaPesquisa) {
+		this.categoriaPesquisa = categoriaPesquisa;
+	}
+
+	public String getStringPesquisa() {
+		return stringPesquisa;
+	}
+
+	public void setStringPesquisa(String stringPesquisa) {
+		this.stringPesquisa = stringPesquisa;
+	}
+
+	public List<Evento> getEventosPesquisa() {
+		return eventosPesquisa;
+	}
+
+	public void setEventosPesquisa(List<Evento> eventosPesquisa) {
+		this.eventosPesquisa = eventosPesquisa;
+	}
+	
 
 }

@@ -11,7 +11,7 @@
 	<ui:define name="css-link">
 		<script type="text/javascript"
 			src="http://maps.google.com/maps/api/js?key=AIzaSyBdWHheIGYeuOEDTS4iYFI1lbIbq7-W7Hw" />
- 
+
 
 	</ui:define>
 	<ui:define name="corpoPagina">
@@ -34,28 +34,28 @@
 			</b:column>
 
 			<b:column col-md="3" />
+			<h:form>
+				<b:column col-md="6" style="margin-left:25%;">
+					<b:column col-md="12">
+						<h2>Busque Por Eventos</h2>
+					</b:column>
+					<b:column col-md="4">
+						<b:selectOneMenu value="#{eventoBean.categoriaPesquisa}" id="brandID">
+							
+							<f:selectItems value="#{categoriaBean.categoriaseventos}"
+								var="categoria" itemLabel="#{categoria.categoria}"
+								itemValue="#{categoria}" />
 
-			<b:column col-md="6" style="margin-left:25%;">
-				<b:column col-md="12">
-					<h2>Busque Por Eventos</h2>
+						</b:selectOneMenu>
+					</b:column>
+					<b:column col-md="6">
+						<b:inputText placeholder="Nome do evento:" value="#{eventoBean.stringPesquisa}"/>
+					</b:column>
+					<b:column col-md="2">						
+						<b:commandButton icon="search" action="#{eventoBean.pesquisaNomeCategoria()}"/>
+					</b:column>
 				</b:column>
-				<b:column col-md="4">
-					<b:selectOneMenu value="#" id="brandID">
-						<f:selectItem itemLabel="Selecione .." itemValue="#{null}" />
-						<f:selectItems value="#{categoriaBean.categoriaseventos}"
-							var="categoria" itemLabel="#{categoria.categoria}"
-							itemValue="#{categoria}" />
-
-					</b:selectOneMenu>
-				</b:column>
-				<b:column col-md="6">
-					<b:inputText />
-				</b:column>
-				<b:column col-md="2">
-					<b:button value="" icon="search" />
-				</b:column>
-			</b:column>
-
+			</h:form>
 
 		</div>
 
@@ -76,7 +76,8 @@
 							columnClasses="label value" layout="grid">
 							<f:facet name="header">
 								<p:graphicImage url="#{eventoBean.pegarImagem(evento)}"
-									styleClass="img-responsive"  style="height:250px; width:90%; margin:5%;" />
+									styleClass="img-responsive"
+									style="height:250px; width:90%; margin:5%;" />
 							</f:facet>
 							<b:row>
 								<h:outputText value="Evento: #{evento.evento}" />
@@ -108,19 +109,19 @@
 								</h:outputText>
 							</b:row>
 
-							
+
 							<b:row>
-								<input type="hidden" class="detalhesMapa" value="#{evento.evento}"/>
+								<input type="hidden" class="detalhesMapa"
+									value="#{evento.evento}" />
 								<input type="hidden" class="enderecoCompleto"
 									value="#{evento.endereco.cep} #{evento.endereco.rua}" />
 								<h:outputText
 									value="Local: #{evento.endereco.cidade.nome} - #{evento.endereco.cidade.estado.uf} " />
 							</b:row>
 
-							<h:commandButton 
+							<h:commandButton
 								action="#{eventoBean.eventoEspecificoAreaLivre(evento)}"
-								value="Saiba Mais"
-								styleClass="btn btn-warning" />
+								value="Saiba Mais" styleClass="btn btn-warning" />
 						</p:panelGrid>
 					</p:carousel>
 				</h:form>

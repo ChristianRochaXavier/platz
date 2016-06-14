@@ -17,7 +17,7 @@
 
 			<c:forEach items="#{eventoBean.categorias}" var="categoria">
 				<b:row styleClass="placeholders">
-					<p:carousel styleClass="carrossel"
+					<p:carousel styleClass="carrossel" rendered="#{eventoBean.listaPorCategoria(categoria).size() != 0}"
 						value="#{eventoBean.listaPorCategoria(categoria)}"
 						headerText="#{categoria.categoria}" numVisible="3" var="evento"
 						autoPlayInterval="30000" 
@@ -84,7 +84,7 @@
 							<h:commandButton
 								action="#{eventoBean.eventoEspecificoAreaLivre(evento)}"
 								value="Saiba Mais"
-								class="btn btn-warning btn-lg"/>
+								class="btn btn-warning "/>
 						</p:panelGrid>
 
 					</p:carousel>

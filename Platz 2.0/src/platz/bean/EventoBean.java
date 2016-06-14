@@ -132,7 +132,7 @@ public class EventoBean {
 
 		this.eventoEspecifico = evento;
 
-		return "eventoEspecifico?faces-redirec=true";
+		return "eventoEspecifico?faces-redirect=true";
 
 	}
 

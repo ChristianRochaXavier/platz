@@ -24,7 +24,7 @@
 		<b:column  col-md="4" styleClass="sidebar">
 			
 			<b:thumbnail>
-				<p:graphicImage url="#{eventoBean.eventoEspecifico.caminhoImagem}" />
+				<p:graphicImage url="#{eventoBean.pegarImagem(eventoBean.eventoEspecifico)}" />
 			</b:thumbnail>
 			
 			<h1>#{eventoBean.eventoEspecifico.evento}</h1>
@@ -119,17 +119,8 @@
 				<b:row styleClass="label-ev">
 					<h:outputLabel value="Cidade: " />
 					<h:outputText styleClass="info-ev" id="cidade"
-						value="#{eventoBean.eventoEspecifico.endereco.cidade.nome}" />
-				</b:row>
-				<hr/>
-				<b:row styleClass="label-ev">
-					<h:outputLabel value="Estado: " />
-					<h:outputText styleClass="info-ev"
-						value="#{eventoBean.eventoEspecifico.endereco.cidade.estado.uf}" />
-
-				</b:row>
-	
-			          
+						value="#{eventoBean.eventoEspecifico.endereco.cidade.nome} - #{eventoBean.eventoEspecifico.endereco.cidade.estado.uf}" />
+				</b:row>  
                 </b:column>
                 
 

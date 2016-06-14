@@ -1,9 +1,46 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
-	
-	</ui:composition>
+	<p:panel style="margin-top:1%; width:75%; margin:0 auto;">
+		<h:form id="mensagens-consulta">
+			<p:growl autoUpdate="true" />
+
+			<p:dataTable value="#{mensagemBean.mensagens}" var="mensagem"
+				paginatorPosition="bottom" paginator="true" rows="10"
+				id="tabela-mensagens" editable="true"
+				emptyMessage="Nenhum Registro Encontrado"
+				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+				<f:facet name="header">
+					<h:outputLabel value="Avaliações" style="font-size:22pt;" />
+				</f:facet>
+
+				<p:column headerText="Id" sortBy="#{mensagem.id}" width="15%">
+					<h:outputText value="#{mensagem.id}" />
+				</p:column>
+				
+				<p:column headerText="Assunto" sortBy="#{mensagem.assunto.assunto}" width="15%">
+					<h:outputText value="#{mensagem.assunto.assunto}" />
+				</p:column>
+				
+				<p:column headerText="Email" sortBy="#{mensagem.email}" width="15%">
+					<h:outputText value="#{mensagem.email}" />
+				</p:column>
+				
+				<p:column headerText="Visualizada" sortBy="#{mensagem.visualizado}" width="15%">
+					<h:outputText value="#{mensagem.visualizado}" />
+				</p:column>
+				<p:column headerText="Opções"  width="15%">
+					<p:commandButton value="Ver mais detalhes" action="#"/>
+				</p:column>
+				
+				
+				
+
+			</p:dataTable>
+		</h:form>
+	</p:panel>
+</ui:composition>

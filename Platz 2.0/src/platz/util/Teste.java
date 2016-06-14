@@ -1,24 +1,29 @@
 package platz.util;
 
+import platz.dao.CategoriaDAO;
+import platz.dao.EventoDAO;
+import platz.model.CategoriaEvento;
+
 public class Teste {
 
 	public static void main(String args[]) {
-		
-		/*	NOT DELETE
-		EntityManager entityManager = JPAUtil.getEntityManager();
-		
-		List<Conta> contas = entityManager.createQuery("select new platz.model.Conta(login, email) from Conta").getResultList();
-		
-		for (int i = 0; i < contas.size(); i++) {	
-			System.out.println(contas.get(i).getLogin() + "<--");
-			System.out.println(contas.get(i).getEmail() + "<--");
-			System.out.println(contas.get(i).getPerfil() + "<--");
-		}
+		CategoriaEvento categoria = new CategoriaDAO().buscarPorId(2);
+		System.out.println(new EventoDAO().buscarporNomeCategoria(categoria, "").get(0).getEvento());
+		/*
+		 * NOT DELETE EntityManager entityManager = JPAUtil.getEntityManager();
+		 * 
+		 * List<Conta> contas = entityManager.createQuery(
+		 * "select new platz.model.Conta(login, email) from Conta"
+		 * ).getResultList();
+		 * 
+		 * for (int i = 0; i < contas.size(); i++) {
+		 * System.out.println(contas.get(i).getLogin() + "<--");
+		 * System.out.println(contas.get(i).getEmail() + "<--");
+		 * System.out.println(contas.get(i).getPerfil() + "<--"); }
+		 * 
+		 * entityManager.close();
+		 */
 
-		entityManager.close();
-*/
-		
-		
 		/*
 		 * CategoriaEvento categoria = new CategoriaDAO().buscarPorId(1);
 		 * Empresa empresa = new EmpresaDAO().buscarPorId(1);

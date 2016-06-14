@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
@@ -97,6 +98,7 @@ public class Evento {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull(message = "A data de início deve ser informada")
+	@Future(message= "Data do evento menor que a data atual")
 	public Date getDataInicio() {
 		return dataInicio;
 	}
@@ -107,6 +109,7 @@ public class Evento {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull(message = "A date de término deve ser informada")
+	@Future(message= "Data do evento menor que a data atual")
 	public Date getDataTermino() {
 		return dataTermino;
 	}

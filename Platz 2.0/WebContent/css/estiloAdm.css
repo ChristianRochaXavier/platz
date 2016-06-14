@@ -27,10 +27,16 @@ html, body{
 }
 
 
-#form-conta , #form-usuario , #form-empresa,#form-evento
+#form-conta , #form-usuario , #form-empresa,#form-evento,#form-avaliacoes,#form-cidade,#form-endereco
 {
 	width:60%;
 	margin: 0 auto;
+	padding-top: 6%;
+}
+#accordion
+{
+	margin: 0 auto;
+	padding-top: 10%;
 }
 .label
 {

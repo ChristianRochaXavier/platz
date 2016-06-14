@@ -20,9 +20,11 @@
 					<p:carousel styleClass="carrossel"
 						value="#{eventoBean.listaPorCategoria(categoria)}"
 						headerText="#{categoria.categoria}" numVisible="3" var="evento"
-						autoPlayInterval="30000" itemStyle="text-align:center;"
+						autoPlayInterval="30000" 
 						responsive="true">
-
+						
+						
+						
 						<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
 							columnClasses="label value" layout="grid">
 							<f:facet name="header">
@@ -82,9 +84,7 @@
 							<h:commandButton
 								action="#{eventoBean.eventoEspecificoAreaLivre(evento)}"
 								value="Saiba Mais"
-								style="width:50%; background-color: #e67e22;
-							border-radius: 5px;height: 50px; color:white; 
-							border-color:none;" />
+								class="btn btn-warning btn-lg"/>
 						</p:panelGrid>
 
 					</p:carousel>

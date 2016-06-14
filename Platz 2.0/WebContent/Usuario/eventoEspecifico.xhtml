@@ -1,39 +1,37 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition template="/layout/principal.xhtml"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../layout/principalUser.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
+	<ui:define name="titulo">Usuario</ui:define>
 
-	<ui:define name="titulo">Sua rota, Seu evento</ui:define>
-	<ui:define name="css-link">
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans'
-			rel='stylesheet' type='text/css' />
-
-		<script type="text/javascript"
-			src="http://maps.google.com/maps/api/js?key=AIzaSyBdWHheIGYeuOEDTS4iYFI1lbIbq7-W7Hw"></script>
-	</ui:define>
 
 	<ui:define name="corpoPagina">
 	
-	
-		<b:column  col-md="4" styleClass="sidebar">
-			
+	<div id="ev-especifico">
+		<b:column col-md="6" id="img-especifico">
 			<b:thumbnail>
-				<p:graphicImage url="#{eventoBean.eventoEspecifico.caminhoImagem}" />
+				<p:graphicImage url="../resources/img/temp/back-adm1.jpg" />
+				<!-- url="#{eventoBean.eventoEspecifico.caminhoImagem}" -->
 			</b:thumbnail>
+		</b:column>
+			<b:column col-md="6">
+
+				<h1>#{eventoBean.eventoEspecifico.evento}</h1>
+				<h2>#{eventoBean.eventoEspecifico.empresa.nomeFantasia}</h2>
+				<h:outputText value="#{eventoBean.eventoEspecifico.detalhes}" />
 			
-			<h1>#{eventoBean.eventoEspecifico.evento}</h1>
-			<h2>#{eventoBean.eventoEspecifico.empresa.nomeFantasia}</h2>
-			<h:outputText value="#{eventoBean.eventoEspecifico.detalhes}" />
-			
-			<hr/> 
-			<h2>Informações</h2>
-			<h:outputLabel value="Data de Inicio: " />
+
+
+				<h2 class="titulos-especifico">Informações</h2>
+
+				<b:row styleClass="label-ev">
+
+					<!--  Data de Iníco -->
+					<h:outputLabel value="Data de Inicio: " />
 					<h:outputText styleClass="info-ev"
 						value="#{eventoBean.eventoEspecifico.dataInicio}">
 						<f:convertDateTime dateStyle="full" />
@@ -43,10 +41,11 @@
 						value="#{eventoBean.eventoEspecifico.dataInicio}">
 						<f:convertDateTime pattern="HH:mm" type="time" />
 					</h:outputText>
-					
-				<hr/>
-				
-				<h:outputLabel value="Data de Término " />
+
+					<hr />
+
+					<!--  Data de Término -->
+					<h:outputLabel value="Data de Término " />
 					<h:outputText styleClass="info-ev"
 						value="#{eventoBean.eventoEspecifico.dataTermino}">
 						<f:convertDateTime dateStyle="full" />
@@ -56,9 +55,10 @@
 						value="#{eventoBean.eventoEspecifico.dataTermino}">
 						<f:convertDateTime pattern="HH:mm" type="time" />
 					</h:outputText>
-					
+				</b:row>
 					<hr/>
-					<b:row styleClass="label-ev">
+				<b:row styleClass="label-ev">
+
 					<h:outputLabel value="Lotação Minima:" />
 					<h:outputText styleClass="info-ev"
 						value="#{eventoBean.eventoEspecifico.lotacaoMin}" />
@@ -74,74 +74,68 @@
 					<h:outputLabel value="Preço: " />
 					<h:outputText styleClass="info-ev"
 						value="#{eventoBean.eventoEspecifico.preco}" />
-			          </b:row>   
-			          
-			           <hr/>
-                <h2>Endereço</h2>
+				</b:row>
 				
-					
+				</b:column>
+				
+				<b:column col-md="12">
+
+				<h2 class="titulos-especifico" >Endereço</h2>
+
 				<b:row styleClass="label-ev">
 
 					<h:outputLabel value="CEP:" />
 					<h:outputText styleClass="info-ev" id="cep"
 						value="#{eventoBean.eventoEspecifico.endereco.cep}" />
-						</b:row>
-						<hr/>
-						<b:row styleClass="label-ev">
+
 					<h:outputLabel value="Rua: " />
 					<h:outputText styleClass="info-ev" id="rua"
 						value="#{eventoBean.eventoEspecifico.endereco.rua}" />
-						</b:row>
-						<hr/>
-				
+
+				</b:row>
 
 				<b:row styleClass="label-ev">
 
 					<h:outputLabel value="Numero:" />
 					<h:outputText styleClass="info-ev" id="numero" value="440" />
-				</b:row>
-				<hr/>
-				<b:row styleClass="label-ev">
+
 					<h:outputLabel value="Bairro: " />
 					<h:outputText styleClass="info-ev" id="bairro"
 						value="#{eventoBean.eventoEspecifico.endereco.bairro}" />
+
 				</b:row>
-				<hr/>
-				
 
 				<b:row styleClass="label-ev">
 
 					<h:outputLabel value="Complemento: " />
 					<h:outputText styleClass="info-ev" id="complemento"
 						value="#{eventoBean.eventoEspecifico.endereco.complemento}" />
-					</b:row>
-				<hr/>
-				<b:row styleClass="label-ev">
+
 					<h:outputLabel value="Cidade: " />
 					<h:outputText styleClass="info-ev" id="cidade"
 						value="#{eventoBean.eventoEspecifico.endereco.cidade.nome}" />
 				</b:row>
-				<hr/>
 				<b:row styleClass="label-ev">
 					<h:outputLabel value="Estado: " />
 					<h:outputText styleClass="info-ev"
 						value="#{eventoBean.eventoEspecifico.endereco.cidade.estado.uf}" />
 
 				</b:row>
-	
-			          
-                </b:column>
-                
+				
+			</b:column>	
+
+
+		</div>
 
 		<div class="painel-rotas-especifico">
 
 			<h:form id="routeForm">
 
-				 <b:column col-md="12" style="margin-top:50px;">
+				<b:column col-md="12" style="margin-top:50px;">
 					<b:well styleClass="well-Especifico">
-					Calcular Rota
+					Veja as Melhores Rotas
 				</b:well>
-				</b:column> 
+				</b:column>
 
 				<p:panelGrid id="painel-Calcula-Rota">
 					<b:column col-md="12">
@@ -186,9 +180,9 @@
 		</div>
 
 	</ui:define>
-
+	
 	<ui:define name="posFooter">
-		<script type="text/javascript" src="js/mapaEventoEspecifico.js" />
+		<script type="text/javascript" src="../js/mapaEventoEspecifico.js" />
 	</ui:define>
 
 </ui:composition>

@@ -9,12 +9,9 @@
 	<title><ui:insert name="titulo" /> - PLATZ</title>
 
 	<link rel="stylesheet" type="text/css"
-		href="#{request.contextPath}/css/estilo.css" />
-	<link rel="stylesheet" type="text/css"
 		href="#{request.contextPath}/css/nav.css" />
 	<link rel="stylesheet" type="text/css"
 		href="#{request.contextPath}/css/estiloUsuario.css" />
-	<script type="text/javascript" src="/js/jquery-2.2.3.js"></script>
 	<ui:insert name="css-link" />
 </h:head>
 
@@ -28,8 +25,7 @@
 		<b:navbarLinks id="link-menuUser">
 			<b:navLink value="Home" href="../Usuario/Home"></b:navLink>
 			<b:navLink value="Minhas Avaliações" href="#"></b:navLink>
-			<b:navLink value="Eventos Passados" href="#"></b:navLink>
-			<b:navLink value="Proximos Eventos" href="#"></b:navLink>
+			<b:navLink value="Eventos Passados" href="../Usuario/eventoEspecifico.jsf"></b:navLink>
 			<b:navLink value="Ranking" href="#"></b:navLink>
 			<b:navLink value="Categoria Dos Eventos" href="#"></b:navLink>
 			<b:navLink value="Empresas" href="#"></b:navLink>
@@ -59,7 +55,6 @@
 	<ui:insert name="corpoPagina" />
 
 	<!-- Footer -->
-	<script type="text/javascript" src="/js/footer.js"></script>
 	<ui:insert name="posFooter" />
 </h:body>
 </html>

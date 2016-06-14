@@ -11,118 +11,75 @@
 
 	<ui:define name="corpoPagina">
 
-		<h:form id="EventoInteresse">
+	<div class="eventos-destaque">
+			<b:column col-md="1" />
+			<b:column col-md="10">
 
-			<h1 style="text-align: center;">Eventos que Tenho Interesse</h1>
+				<b:well styleClass="well-destaque">Eventos em Destaque</b:well>
 
-			<p:carousel styleClass="carrossel" headerText="Eventos"
-				numVisible="3" autoPlayInterval="10000"
-				itemStyle="text-align:center;" responsive="true">
+				<h:form id="form-destaques">
 
-				<b:panel>
-					<b:row>
-						<b:column col-md="3" />
-						<b:column col-md="6">
-							<b:thumbnail>
-								<h:graphicImage value="../resources/img/temp/evento1.jpg" />
+					<p:carousel styleClass="carrossel-index" numVisible="3"
+						value="#{eventoBean.destaques}" var="evento"  headerText="Eventos Que tenho Interesse"
+						autoPlayInterval="30000"  
+						responsive="true">
 
-							</b:thumbnail>
-						</b:column>
-					</b:row>
-					<b:row>
+						<p:panelGrid columns="1" style="width:100%;margin:5px 5px"
+							columnClasses="label value" layout="grid">
+							<f:facet name="header">
+								<p:graphicImage url="#{eventoBean.pegarImagem(evento)}"
+									styleClass="img-responsive"  style="height:250px; width:90%; margin:5%;" />
+							</f:facet>
+							
+							<b:row>
+								<h:outputText value="Evento: #{evento.evento}" />
+							</b:row>
 
-						<b:column col-md="12">
-							<h1>Evento</h1>
-							<h2>Empresa</h2>
-							<p>This is a simple hero unit, a simple jumbotron-style
-								component for calling extra attention to featured content or
-								information.</p>
-							<p>
-								<a class="btn btn-warning btn-lg">Ver Mais detalhes</a>
-							</p>
+							<b:row>
+								<h:outputText value="Empresa: #{evento.empresa.nomeFantasia}" />
+							</b:row>
 
-						</b:column>
-					</b:row>
-				</b:panel>
+							<b:row>
+								<h:outputText value="Inicio:" />
+								<h:outputText value="#{evento.dataInicio}">
+									<f:convertDateTime dateStyle="full" />
+								</h:outputText>
+								<h:outputText value=" às " />
+								<h:outputText value="#{evento.dataInicio}">
+									<f:convertDateTime pattern="HH:mm" type="time" />
+								</h:outputText>
+							</b:row>
 
-				<b:panel>
-					<b:row>
-						<b:column col-md="3" />
-						<b:column col-md="6">
-							<b:thumbnail>
-								<h:graphicImage value="../resources/img/temp/evento1.jpg" />
-							</b:thumbnail>
-						</b:column>
-					</b:row>
-					<b:row>
+							<b:row>
+								<h:outputText value=" Término: " />
+								<h:outputText value="#{evento.dataTermino}">
+									<f:convertDateTime dateStyle="full" />
+								</h:outputText>
+								<h:outputText value=" às " />
+								<h:outputText value="#{evento.dataTermino}">
+									<f:convertDateTime pattern="HH:mm" type="time" />
+								</h:outputText>
+							</b:row>
 
-						<b:column col-md="12">
-							<h1>Evento</h1>
-							<h2>Empresa</h2>
-							<p>This is a simple hero unit, a simple jumbotron-style
-								component for calling extra attention to featured content or
-								information.</p>
-							<p>
-								<a class="btn btn-warning btn-lg">Ver Mais detalhes</a>
-							</p>
+							
+							<b:row>
+								<input type="hidden" class="detalhesMapa" value="#{evento.evento}"/>
+								<input type="hidden" class="enderecoCompleto"
+									value="#{evento.endereco.cep} #{evento.endereco.rua}" />
+								<h:outputText
+									value="Local: #{evento.endereco.cidade.nome} / #{evento.endereco.cidade.estado.uf} " />
+							</b:row>
 
-						</b:column>
-					</b:row>
-				</b:panel>
+							<h:commandButton
+								action="#{eventoBean.eventoEspecificoAreaLivre(evento)}"
+								value="Saiba Mais" style="margin-left:39%;"
+								styleClass="btn btn-warning" />
+						</p:panelGrid>
+					</p:carousel>
+				</h:form>
+			</b:column>
 
-				<b:panel>
-					<b:row>
-						<b:column col-md="3" />
-						<b:column col-md="6">
-							<b:thumbnail>
-								<h:graphicImage value="../resources/img/temp/evento1.jpg" />
-							</b:thumbnail>
-						</b:column>
-					</b:row>
-					<b:row>
-
-						<b:column col-md="12">
-							<h1>Evento</h1>
-							<h2>Empresa</h2>
-							<p>This is a simple hero unit, a simple jumbotron-style
-								component for calling extra attention to featured content or
-								information.</p>
-							<p>
-								<a class="btn btn-warning btn-lg">Ver Mais detalhes</a>
-							</p>
-
-						</b:column>
-					</b:row>
-				</b:panel>
-
-				<b:panel>
-					<b:row>
-						<b:column col-md="3" />
-						<b:column col-md="6">
-							<b:thumbnail>
-								<h:graphicImage value="../resources/img/temp/evento1.jpg" />
-							</b:thumbnail>
-						</b:column>
-					</b:row>
-					<b:row>
-
-						<b:column col-md="12">
-							<h1>Evento</h1>
-							<h2>Empresa</h2>
-							<p>This is a simple hero unit, a simple jumbotron-style
-								component for calling extra attention to featured content or
-								information.</p>
-							<p>
-								<a class="btn btn-warning btn-lg">Ver Mais detalhes</a>
-							</p>
-
-						</b:column>
-					</b:row>
-				</b:panel>
-
-			</p:carousel>
-
-		</h:form>
+		</div>
 
 
 	</ui:define>

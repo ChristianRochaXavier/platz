@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/layout/principal.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+	<ui:define name="titulo">Busca</ui:define>
+
+	<ui:define name="corpoPagina">
+
+		<div class="corpo-Busca">
+
+			<b:column col-md="4" styleClass="evento-busca">
+				<b:column>
+					<b:thumbnail>
+						<h:graphicImage  style="height:250px"
+						value="resources/img/temp/evento2.jpg">
+						</h:graphicImage>
+					</b:thumbnail>
+				</b:column>
+				<b:column col-md="3" />
+
+				<b:column col-md="4">
+
+					<b:row>
+						<h:outputText value="Evento: #{evento.evento}" />
+					</b:row>
+
+					<b:row>
+						<h:outputText value="Empresa: #{evento.empresa.nomeFantasia}" />
+					</b:row>
+
+					<b:row>
+						<h:outputText value="Inicio:" />
+						<h:outputText value="#{evento.dataInicio}">
+							<f:convertDateTime dateStyle="full" />
+						</h:outputText>
+						<h:outputText value=" às " />
+						<h:outputText value="#{evento.dataInicio}">
+							<f:convertDateTime pattern="HH:mm" type="time" />
+						</h:outputText>
+					</b:row>
+
+					<b:row>
+						<h:outputText value=" Término: " />
+						<h:outputText value="#{evento.dataTermino}">
+							<f:convertDateTime dateStyle="full" />
+						</h:outputText>
+						<h:outputText value=" às " />
+						<h:outputText value="#{evento.dataTermino}">
+							<f:convertDateTime pattern="HH:mm" type="time" />
+						</h:outputText>
+					</b:row>
+
+
+					<b:row>
+						<input type="hidden" class="detalhesMapa" value="#{evento.evento}" />
+						<input type="hidden" class="enderecoCompleto"
+							value="#{evento.endereco.cep} #{evento.endereco.rua}" />
+						<h:outputText
+							value="Local: #{evento.endereco.cidade.nome} / #{evento.endereco.cidade.estado.uf} " />
+					</b:row>
+
+					<h:commandButton action="#" value="Saiba Mais"
+						styleClass="btn btn-warning" />
+				</b:column>
+
+			</b:column>
+			
+				<b:column col-md="4" styleClass="evento-busca">
+				<b:column>
+					<b:thumbnail>
+						<h:graphicImage  style="height:250px"
+						value="resources/img/temp/evento2.jpg">
+						</h:graphicImage>
+					</b:thumbnail>
+				</b:column>
+				<b:column col-md="3" />
+
+				<b:column col-md="4">
+
+					<b:row>
+						<h:outputText value="Evento: #{evento.evento}" />
+					</b:row>
+
+					<b:row>
+						<h:outputText value="Empresa: #{evento.empresa.nomeFantasia}" />
+					</b:row>
+
+					<b:row>
+						<h:outputText value="Inicio:" />
+						<h:outputText value="#{evento.dataInicio}">
+							<f:convertDateTime dateStyle="full" />
+						</h:outputText>
+						<h:outputText value=" às " />
+						<h:outputText value="#{evento.dataInicio}">
+							<f:convertDateTime pattern="HH:mm" type="time" />
+						</h:outputText>
+					</b:row>
+
+					<b:row>
+						<h:outputText value=" Término: " />
+						<h:outputText value="#{evento.dataTermino}">
+							<f:convertDateTime dateStyle="full" />
+						</h:outputText>
+						<h:outputText value=" às " />
+						<h:outputText value="#{evento.dataTermino}">
+							<f:convertDateTime pattern="HH:mm" type="time" />
+						</h:outputText>
+					</b:row>
+
+
+					<b:row>
+						<input type="hidden" class="detalhesMapa" value="#{evento.evento}" />
+						<input type="hidden" class="enderecoCompleto"
+							value="#{evento.endereco.cep} #{evento.endereco.rua}" />
+						<h:outputText
+							value="Local: #{evento.endereco.cidade.nome} / #{evento.endereco.cidade.estado.uf} " />
+					</b:row>
+
+					<h:commandButton action="#" value="Saiba Mais"
+						styleClass="btn btn-warning" />
+				</b:column>
+
+			</b:column>
+			
+				<b:column col-md="4" styleClass="evento-busca">
+				<b:column>
+					<b:thumbnail>
+						<h:graphicImage  style="height:250px"
+						value="resources/img/temp/evento2.jpg">
+						</h:graphicImage>
+					</b:thumbnail>
+				</b:column>
+				<b:column col-md="3" />
+
+				<b:column col-md="4">
+
+					<b:row>
+						<h:outputText value="Evento: #{evento.evento}" />
+					</b:row>
+
+					<b:row>
+						<h:outputText value="Empresa: #{evento.empresa.nomeFantasia}" />
+					</b:row>
+
+					<b:row>
+						<h:outputText value="Inicio:" />
+						<h:outputText value="#{evento.dataInicio}">
+							<f:convertDateTime dateStyle="full" />
+						</h:outputText>
+						<h:outputText value=" às " />
+						<h:outputText value="#{evento.dataInicio}">
+							<f:convertDateTime pattern="HH:mm" type="time" />
+						</h:outputText>
+					</b:row>
+
+					<b:row>
+						<h:outputText value=" Término: " />
+						<h:outputText value="#{evento.dataTermino}">
+							<f:convertDateTime dateStyle="full" />
+						</h:outputText>
+						<h:outputText value=" às " />
+						<h:outputText value="#{evento.dataTermino}">
+							<f:convertDateTime pattern="HH:mm" type="time" />
+						</h:outputText>
+					</b:row>
+
+
+					<b:row>
+						<input type="hidden" class="detalhesMapa" value="#{evento.evento}" />
+						<input type="hidden" class="enderecoCompleto"
+							value="#{evento.endereco.cep} #{evento.endereco.rua}" />
+						<h:outputText
+							value="Local: #{evento.endereco.cidade.nome} / #{evento.endereco.cidade.estado.uf} " />
+					</b:row>
+
+					<h:commandButton action="#" value="Saiba Mais"
+						styleClass="btn btn-warning" />
+				</b:column>
+
+			</b:column>
+			
+				<b:column col-md="4" styleClass="evento-busca">
+				<b:column>
+					<b:thumbnail>
+						<h:graphicImage  style="height:250px"
+						value="resources/img/temp/evento2.jpg">
+						</h:graphicImage>
+					</b:thumbnail>
+				</b:column>
+				<b:column col-md="3" />
+
+				<b:column col-md="4">
+
+					<b:row>
+						<h:outputText value="Evento: #{evento.evento}" />
+					</b:row>
+
+					<b:row>
+						<h:outputText value="Empresa: #{evento.empresa.nomeFantasia}" />
+					</b:row>
+
+					<b:row>
+						<h:outputText value="Inicio:" />
+						<h:outputText value="#{evento.dataInicio}">
+							<f:convertDateTime dateStyle="full" />
+						</h:outputText>
+						<h:outputText value=" às " />
+						<h:outputText value="#{evento.dataInicio}">
+							<f:convertDateTime pattern="HH:mm" type="time" />
+						</h:outputText>
+					</b:row>
+
+					<b:row>
+						<h:outputText value=" Término: " />
+						<h:outputText value="#{evento.dataTermino}">
+							<f:convertDateTime dateStyle="full" />
+						</h:outputText>
+						<h:outputText value=" às " />
+						<h:outputText value="#{evento.dataTermino}">
+							<f:convertDateTime pattern="HH:mm" type="time" />
+						</h:outputText>
+					</b:row>
+
+
+					<b:row>
+						<input type="hidden" class="detalhesMapa" value="#{evento.evento}" />
+						<input type="hidden" class="enderecoCompleto"
+							value="#{evento.endereco.cep} #{evento.endereco.rua}" />
+						<h:outputText
+							value="Local: #{evento.endereco.cidade.nome} / #{evento.endereco.cidade.estado.uf} " />
+					</b:row>
+
+					<h:commandButton action="#" value="Saiba Mais"
+						styleClass="btn btn-warning" />
+				</b:column>
+
+			</b:column>
+			
+				<b:column col-md="4" styleClass="evento-busca">
+				<b:column>
+					<b:thumbnail>
+						<h:graphicImage  style="height:250px"
+						value="resources/img/temp/evento2.jpg">
+						</h:graphicImage>
+					</b:thumbnail>
+				</b:column>
+				<b:column col-md="3" />
+
+				<b:column col-md="4">
+
+					<b:row>
+						<h:outputText value="Evento: #{evento.evento}" />
+					</b:row>
+
+					<b:row>
+						<h:outputText value="Empresa: #{evento.empresa.nomeFantasia}" />
+					</b:row>
+
+					<b:row>
+						<h:outputText value="Inicio:" />
+						<h:outputText value="#{evento.dataInicio}">
+							<f:convertDateTime dateStyle="full" />
+						</h:outputText>
+						<h:outputText value=" às " />
+						<h:outputText value="#{evento.dataInicio}">
+							<f:convertDateTime pattern="HH:mm" type="time" />
+						</h:outputText>
+					</b:row>
+
+					<b:row>
+						<h:outputText value=" Término: " />
+						<h:outputText value="#{evento.dataTermino}">
+							<f:convertDateTime dateStyle="full" />
+						</h:outputText>
+						<h:outputText value=" às " />
+						<h:outputText value="#{evento.dataTermino}">
+							<f:convertDateTime pattern="HH:mm" type="time" />
+						</h:outputText>
+					</b:row>
+
+
+					<b:row>
+						<input type="hidden" class="detalhesMapa" value="#{evento.evento}" />
+						<input type="hidden" class="enderecoCompleto"
+							value="#{evento.endereco.cep} #{evento.endereco.rua}" />
+						<h:outputText
+							value="Local: #{evento.endereco.cidade.nome} / #{evento.endereco.cidade.estado.uf} " />
+					</b:row>
+
+					<h:commandButton action="#" value="Saiba Mais"
+						styleClass="btn btn-warning" />
+				</b:column>
+
+			</b:column>
+			
+				<b:column col-md="4" styleClass="evento-busca">
+				<b:column>
+					<b:thumbnail>
+						<h:graphicImage  style="height:250px"
+						value="resources/img/temp/evento2.jpg">
+						</h:graphicImage>
+					</b:thumbnail>
+				</b:column>
+				<b:column col-md="3" />
+
+				<b:column col-md="4">
+
+					<b:row>
+						<h:outputText value="Evento: #{evento.evento}" />
+					</b:row>
+
+					<b:row>
+						<h:outputText value="Empresa: #{evento.empresa.nomeFantasia}" />
+					</b:row>
+
+					<b:row>
+						<h:outputText value="Inicio:" />
+						<h:outputText value="#{evento.dataInicio}">
+							<f:convertDateTime dateStyle="full" />
+						</h:outputText>
+						<h:outputText value=" às " />
+						<h:outputText value="#{evento.dataInicio}">
+							<f:convertDateTime pattern="HH:mm" type="time" />
+						</h:outputText>
+					</b:row>
+
+					<b:row>
+						<h:outputText value=" Término: " />
+						<h:outputText value="#{evento.dataTermino}">
+							<f:convertDateTime dateStyle="full" />
+						</h:outputText>
+						<h:outputText value=" às " />
+						<h:outputText value="#{evento.dataTermino}">
+							<f:convertDateTime pattern="HH:mm" type="time" />
+						</h:outputText>
+					</b:row>
+
+
+					<b:row>
+						<input type="hidden" class="detalhesMapa" value="#{evento.evento}" />
+						<input type="hidden" class="enderecoCompleto"
+							value="#{evento.endereco.cep} #{evento.endereco.rua}" />
+						<h:outputText
+							value="Local: #{evento.endereco.cidade.nome} / #{evento.endereco.cidade.estado.uf} " />
+					</b:row>
+
+					<h:commandButton action="#" value="Saiba Mais"
+						styleClass="btn btn-warning" />
+				</b:column>
+
+			</b:column>
+			
+				<b:column col-md="4" styleClass="evento-busca">
+				<b:column>
+					<b:thumbnail>
+						<h:graphicImage  style="height:250px"
+						value="resources/img/temp/evento2.jpg">
+						</h:graphicImage>
+					</b:thumbnail>
+				</b:column>
+				<b:column col-md="3" />
+
+				<b:column col-md="4">
+
+					<b:row>
+						<h:outputText value="Evento: #{evento.evento}" />
+					</b:row>
+
+					<b:row>
+						<h:outputText value="Empresa: #{evento.empresa.nomeFantasia}" />
+					</b:row>
+
+					<b:row>
+						<h:outputText value="Inicio:" />
+						<h:outputText value="#{evento.dataInicio}">
+							<f:convertDateTime dateStyle="full" />
+						</h:outputText>
+						<h:outputText value=" às " />
+						<h:outputText value="#{evento.dataInicio}">
+							<f:convertDateTime pattern="HH:mm" type="time" />
+						</h:outputText>
+					</b:row>
+
+					<b:row>
+						<h:outputText value=" Término: " />
+						<h:outputText value="#{evento.dataTermino}">
+							<f:convertDateTime dateStyle="full" />
+						</h:outputText>
+						<h:outputText value=" às " />
+						<h:outputText value="#{evento.dataTermino}">
+							<f:convertDateTime pattern="HH:mm" type="time" />
+						</h:outputText>
+					</b:row>
+
+
+					<b:row>
+						<input type="hidden" class="detalhesMapa" value="#{evento.evento}" />
+						<input type="hidden" class="enderecoCompleto"
+							value="#{evento.endereco.cep} #{evento.endereco.rua}" />
+						<h:outputText
+							value="Local: #{evento.endereco.cidade.nome} / #{evento.endereco.cidade.estado.uf} " />
+					</b:row>
+
+					<h:commandButton action="#" value="Saiba Mais"
+						styleClass="btn btn-warning" />
+				</b:column>
+
+			</b:column>
+
+
+		</div>
+	</ui:define>
+
+</ui:composition>

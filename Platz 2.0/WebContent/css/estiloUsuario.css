@@ -20,6 +20,11 @@ html, body{
 	text-align: center;
 }
 
+.row
+{
+	text-align: center;
+}
+
 #menuUsuario
 {
 	position: fixed;
@@ -66,4 +71,17 @@ html, body{
 p a .btn .btn-warning .btn-lg
 {
 	color:white;
+}
+.ui-widget-header {
+  border: none;
+  background: none;
+  color: #333333;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.ui-widget-content {
+    border: none;
+    background: #ffffff;
+    color: #333333;
 }

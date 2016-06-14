@@ -2,6 +2,16 @@ html, body{
  height:100%;
 }
 
+.corpo-Busca
+{
+	padding-top: 5%;
+}
+
+.evento-busca
+{
+	margin-bottom: 3%;
+}
+
 #corpo-Login
 {
 	margin-top: 10%;
@@ -349,8 +359,6 @@ html, body{
     color: #333333;
     font-weight: bold;
 }
-
-
 
 
 

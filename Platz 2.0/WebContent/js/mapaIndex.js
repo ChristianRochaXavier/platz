@@ -32,7 +32,7 @@ function initialize() {
 
 	// Opções padrões do mapa
 	var myOptions = {
-		zoom : 15,
+		zoom : 12,
 		center : centro,
 		mapTypeId : google.maps.MapTypeId.ROADMAP,
 		mapTypeControl : true

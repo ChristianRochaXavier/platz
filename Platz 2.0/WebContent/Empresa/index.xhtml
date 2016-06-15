@@ -12,16 +12,19 @@
 	<ui:define name="corpoPagina">
 
 		<c:forEach items="#{eventoBean.eventosPorEmpresa(loginBean.empresaLogado)}" var="evento">
-			<h:form>
+			<h:form id="Eventos-editar">
 				<div>
 					<p:outputLabel value="#{evento.detalhes}" />
 					<p:outputLabel value="" />
 					<p:outputLabel value="" />
 					<p:commandButton action="#{eventoBean.editar(evento)}"
-						value="Editar evento" />
+						value="Editar evento" styleClass="btn btn-warning" />
 				</div>
 			</h:form>
 		</c:forEach>
+		
+		
+		
 	</ui:define>
 
 </ui:composition>

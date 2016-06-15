@@ -1,5 +1,6 @@
 html, body{
  height:100%;
+  background:rgba(236, 240, 241,0.8);
 }
 
 
@@ -14,6 +15,8 @@ html, body{
 {
 	text-align: center;
 	margin-top: 2%;
+	 background:rgba(236, 240, 241,0.8);
+	margin-bottom: 10%;
 }
 
 #pagina-inicialAdm
@@ -32,6 +35,7 @@ html, body{
 	width:60%;
 	margin: 0 auto;
 	padding-top: 6%;
+	padding-bottom: 6%;
 }
 #accordion
 {

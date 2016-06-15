@@ -13,6 +13,11 @@ html, body{
   color: #CCC;
 }
 
+.row
+{
+	margin-left:0;
+}
+
 .label-avaliacao
 {
 	font-size: 20px; 

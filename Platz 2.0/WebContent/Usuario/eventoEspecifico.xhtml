@@ -8,36 +8,89 @@
 
 	<ui:define name="titulo">Usuario</ui:define>
 
-		<ui:define name="css-link">
-			<link href='https://fonts.googleapis.com/css?family=Open+Sans'
-				rel='stylesheet' type='text/css' />
+	<ui:define name="css-link">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans'
+			rel='stylesheet' type='text/css' />
 
-			<script type="text/javascript"
-				src="http://maps.google.com/maps/api/js?key=AIzaSyBdWHheIGYeuOEDTS4iYFI1lbIbq7-W7Hw"></script>
-		</ui:define>
+		<script type="text/javascript"
+			src="http://maps.google.com/maps/api/js?key=AIzaSyBdWHheIGYeuOEDTS4iYFI1lbIbq7-W7Hw"></script>
+	</ui:define>
 
 	<ui:define name="corpoPagina">
+	
+	<b:row>
+				<b:modal style="z-index:3000;" id="amodal3" title="Calcule Sua Rota" closeOnEscape="true"
+					backdrop="false" styleClass="modalPseudoClass">
+
+					<h:form id="routeForm">
+
+						<b:column col-md="12" >
+							<b:well styleClass="well-Especifico">
+					Calcular Rota
+				</b:well>
+						</b:column>
+
+						<p:panelGrid id="painel-Calcula-Rota">
+							<b:column col-md="12">
+								<p:row>
+									<p:column>
+										<p:outputLabel value="Ponto Inicial" />
+										<h:inputText type="text" id="routeStart" />
+										<input type="hidden" id="localizacaoEvento"
+											value="#{eventoBean.eventoEspecifico.endereco.cep} #{eventoBean.eventoEspecifico.endereco.rua}" />
+									</p:column>
+
+									<p:column>
+										<p:outputLabel value="Tipo de Viagem" />
+										<h:selectOneMenu id="tipoViagem">
+											<f:selectItem itemLabel="Selecione" itemValue="0" />
+											<f:selectItem itemLabel="Carro" itemValue="DRIVING" />
+											<f:selectItem itemLabel="Transporte Público"
+												itemValue="TRANSIT" />
+										</h:selectOneMenu>
+									</p:column>
+
+									<p:column>
+										<h:commandButton value="Buscar"  />
+									</p:column>
+
+								</p:row>
+							</b:column>
+						</p:panelGrid>
+						</h:form>
+
+						<f:facet name="footer">
+							<b:button value="Fechar" dismiss="modal" onclick="return false;" />
+						</f:facet>
+				</b:modal>
+			</b:row>
 
 		<b:column col-md="4" styleClass="sidebar">
 
 			<link rel="stylesheet"
 				href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
 			<div class="estrelas">
-				<label class="label-avaliacao" >Avalie</label>
-				<input type="radio" id="cm_star-empty"  name="fb" checked="checked" />
-				<label for="cm_star-1"><i class="fa" ></i></label>
-				 <input type="radio" id="cm_star-1" name="fb" value="1" />
-				  <label for="cm_star-2"><i class="fa"></i></label>
-				   <input type="radio" id="cm_star-2" name="fb" value="2" /> 
-				   <label for="cm_star-3">	<i class="fa"></i></label> 
-				   <input type="radio" id="cm_star-3" name="fb" value="3" />
-				    <label for="cm_star-4"><i class="fa"></i></label>
-				     <input type="radio" id="cm_star-4" name="fb" value="4" />
-				      <label for="cm_star-5"><i class="fa"></i>
-				      </label> <input type="radio" id="cm_star-5" name="fb" value="5" />
+				<label class="label-avaliacao">Avalie</label> <input type="radio"
+					id="cm_star-empty" name="fb" checked="checked" /> <label
+					for="cm_star-1"><i class="fa"></i></label> <input type="radio"
+					id="cm_star-1" name="fb" value="1" /> <label for="cm_star-2"><i
+					class="fa"></i></label> <input type="radio" id="cm_star-2" name="fb"
+					value="2" /> <label for="cm_star-3"> <i class="fa"></i></label> <input
+					type="radio" id="cm_star-3" name="fb" value="3" /> <label
+					for="cm_star-4"><i class="fa"></i></label> <input type="radio"
+					id="cm_star-4" name="fb" value="4" /> <label for="cm_star-5"><i
+					class="fa"></i> </label> <input type="radio" id="cm_star-5" name="fb"
+					value="5" />
 			</div>
-		<hr/>
-			<b:thumbnail>
+			<hr />
+
+			
+				<button id="btrigger" class="btn btn-warning btn-lg"
+					data-target="#amodal3" data-toggle="modal" style="align: center;">Calcular
+					Rota</button>
+			
+			<hr />
+			<b:thumbnail style="margin-top:10%;">
 				<p:graphicImage
 					url="#{eventoBean.pegarImagem(eventoBean.eventoEspecifico)}" />
 			</b:thumbnail>
@@ -141,46 +194,10 @@
 
 		<div class="painel-rotas-especifico">
 
-			<h:form id="routeForm">
-
-				<b:column col-md="12" style="margin-top:50px;">
-					<b:well styleClass="well-Especifico">
-					Calcular Rota
-				</b:well>
-				</b:column>
-
-				<p:panelGrid id="painel-Calcula-Rota">
-					<b:column col-md="12">
-						<p:row>
-							<p:column>
-								<p:outputLabel value="Ponto Inicial" />
-								<h:inputText type="text" id="routeStart" />
-								<input type="hidden" id="localizacaoEvento"
-									value="#{eventoBean.eventoEspecifico.endereco.cep} #{eventoBean.eventoEspecifico.endereco.rua}" />
-							</p:column>
-
-							<p:column>
-								<p:outputLabel value="Tipo de Viagem" />
-								<h:selectOneMenu id="tipoViagem">
-									<f:selectItem itemLabel="Selecione" itemValue="0" />
-									<f:selectItem itemLabel="Carro" itemValue="DRIVING" />
-									<f:selectItem itemLabel="Transporte Público"
-										itemValue="TRANSIT" />
-								</h:selectOneMenu>
-							</p:column>
-
-							<p:column>
-								<h:commandButton value="Buscar" />
-							</p:column>
-
-						</p:row>
-					</b:column>
-				</p:panelGrid>
-
-			</h:form>
+			
 
 			<!-- Mapa -->
-			<div id="map_canvas" class="mapa-especifico"></div>
+			<div id="map_canvas" class="mapa-especifico" style="margin-top:60px;"></div>
 
 			<!-- Painel de como chegar no local -->
 			<p:accordionPanel styleClass="accordion-rotas">
